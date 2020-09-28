@@ -25,7 +25,7 @@
 
 1.  https://spring.io/[](https://spring.io/)
 2.  [https://mybatis.org/mybatis-3/zh/index.html](https://mybatis.org/mybatis-3/zh/index.html)
-3.  提交代码
+3.  git 教程[https://www.yiibai.com/git/git_merge.html](https://www.yiibai.com/git/git_merge.html)
 4.  新建 Pull Request
 
 
