@@ -11,9 +11,9 @@
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  修改自己的maven 仓库为你自己电脑的 路径。不知道，就新建一个项目，看下路径
+2.  选app下的作为运行。
+3.  打包选择maven 打包 ，而不是idea 的打包
 
 #### 使用说明
 
@@ -51,4 +51,4 @@
 
    3. 使用maven打包而不是idea
 
-2. Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
+2.  git clone  -b docs https://gitee.com/mai-tao/Shetuankaif.git
