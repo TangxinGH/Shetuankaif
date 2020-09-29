@@ -6,6 +6,7 @@
     <modules>
         <module>app</module>
         <module>Service</module>
+        <module>kotlin</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

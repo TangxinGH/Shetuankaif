@@ -34,7 +34,9 @@
 1.  https://spring.io/[](https://spring.io/)
 2.  [https://mybatis.org/mybatis-3/zh/index.html](https://mybatis.org/mybatis-3/zh/index.html)
 3.  git 教程[https://www.yiibai.com/git/git_merge.html](https://www.yiibai.com/git/git_merge.html)
-4.  新建 Pull Request
+4.  idea 的iml 模块管理 
+5.  maven 的模块管理
+6.  Gradle的模块管理
 
 
 #### 特技
