@@ -53,4 +53,6 @@
 
    3. 使用maven打包而不是idea
 
-2.  git clone  -b docs https://gitee.com/mai-tao/Shetuankaif.git
+2. git clone  -b docs https://gitee.com/mai-tao/Shetuankaif.git
+
+3. 每个模块必须有一个包
