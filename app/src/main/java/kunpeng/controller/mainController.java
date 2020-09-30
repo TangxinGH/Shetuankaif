@@ -1,22 +1,17 @@
 package kunpeng.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.org.apache.xml.internal.security.utils.XalanXPathAPI;
-import org.apache.juli.logging.LogFactory;
 import org.apache.tomcat.jni.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController;
-import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import sun.rmi.runtime.Log;
 
-import java.awt.image.Kernel;
 import java.io.IOException;
+
+/*
+*  模块依赖 尽量单向依赖，不要循环依赖
+* A->B->C 不能再 C->A
+* */
 //@RestController 等于 @Controller + @ResponseBody  REST风格
 @Controller
 @RequestMapping("/")

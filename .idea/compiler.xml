@@ -9,10 +9,12 @@
         <module name="app" />
         <module name="kotlin" />
         <module name="service" />
+        <module name="DAL" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="app" target="1.8" />
+      <module name="DAL" target="1.8" />
       <module name="kotlin" target="1.8" />
       <module name="service" target="1.8" />
       <module name="shetuankaifa" target="1.8" />
@@ -20,6 +22,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="DAL" options="-parameters" />
       <module name="app" options="-parameters" />
       <module name="kotlin" options="-parameters" />
       <module name="service" options="-parameters" />
