@@ -1,0 +1,731 @@
+<template>
+    <div class="g-doc">
+      <nav-component></nav-component>
+      <Thumbnails></Thumbnails>
+      <div class="wrapAll clearfix">
+        <div class="sidebar">
+          <div class="logo">
+            <a href="/"><img src='../../assets/logo.png' alt="logo"></a>
+          </div>
+          <div class="navigation">
+            <ul>
+              <li><a href="#">Main page</a></li>
+              <li><a href="#">Contents</a></li>
+              <li><a href="#">Featured content</a></li>
+            </ul>
+            <h3>Interaction</h3>
+            <ul>
+              <li><a href="#">Help</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Portal</a></li>
+            </ul>
+            <h3>Interaction</h3>
+            <ul>
+              <li><a href="#">Help</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Portal</a></li>
+            </ul>
+          </div>
+
+<!--文章内容-->
+        </div>
+        <div class="mainsection">
+          <div class="headerLinks">
+            <span class="user">Not logged in</span> <a href="#">Talk</a> <a href="#">Contributions</a> <a href="#">Create account</a> <a href="#">Log in</a>
+          </div>
+          <div class="tabs clearfix">
+            <div class="tabsLeft">
+              <ul>
+                <li><a href="#" class="active">Article</a></li>
+                <li><a href="#">Talk</a></li>
+              </ul>
+            </div>
+            <div id="simpleSearch">
+              <input type="text" name="searchInput" id="searchInput" placeholder="Search Wikipedia" size="12" />
+              <div id="submitSearch"></div>
+            </div>
+            <div class="tabsRight">
+              <ul>
+                <li><a href="#" class="active">Read</a></li>
+                <li><a href="#">View source</a></li>
+                <li><a href="#">View history</a></li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="article">
+            <h1>Simple Wikipedia Website Template</h1>
+            <p class="siteSub">From Wikipedia, the free encyclopedia</p>
+            <p class="roleNote">This article is about the writing implement. For other uses, see Pencil (disambiguation).</p>
+
+            <div class="articleRight">
+              <div class="articleRightInner">
+                <img src="../../assets/logo.png" alt="pencil" />
+              </div>
+              This is a blue <a href="">pencil</a>
+            </div>
+
+            <div class="contentsPanel">
+              <div class="contentsHeader">Contents</div>
+              <ul>
+                <li>
+                  <span>1</span><a href="#">History</a>
+                  <ul>
+                    <li><span>1.1</span><a href="#">Camel's hair pencil</a> </li>
+                    <li><span>1.2</span><a href="#">Discovery of graphite deposit</a> </li>
+                    <li><span>1.3</span><a href="#">Wood holders added </a></li>
+                    <li><span>1.4</span><a href="#">The pencil in America </a></li>
+                    <li><span>1.5</span><a href="#">Eraser attached </a></li>
+                    <li><span>1.6</span><a href="#">Marking material </a></li>
+                    <li><span>1.7</span><a href="#">Pencil extenders </a></li>
+                  </ul>
+                </li>
+                <li><span>2</span><a href="#">Health</a></li>
+                <li><span>3</span><a href="#">Manufacture</a></li>
+                <li><span>4</span><a href="#">Grading and classification</a></li>
+              </ul>
+            </div>
+            <div class="categories">
+              <a href="#">Minimum corrumpit </a> <a href="#">Regione suscipit </a> <a href="#">Has et partem </a>
+            </div>
+
+          </div>
+          <div class="pagefooter">
+            This page was last edited on 29.07.2017 | Template by <a href="http://html5-templates.com/" target="_blank" rel="nofollow">HTML5 Templates</a> <!-- Please leave this link unchanged -->
+            <div class="footerlinks">
+              <a href="#">Privacy policy</a> <a href="#">About</a> <a href="#">Terms and conditions</a> <a href="#">Cookie statement</a> <a href="#">Developers</a>
+            </div>
+          </div>
+
+<!-- 文章内容-->
+        </div>
+      </div>
+
+      <div>
+        <span v-if="hasEssay"> 附件区域</span>
+      </div>
+    </div>
+</template>
+<script>
+import Thumbnails from '@/components/Article/Thumbnails'
+import NavComponent from '@/components/nav-component'
+export default {
+  name: 'index-app',
+  components: {
+    NavComponent,
+    Thumbnails
+  },
+  data () {
+    return {
+      page: Number(new URLSearchParams(window.location.search).get('page')) || 1,
+      topics: [],
+      hasEssay: true
+    }
+  },
+  async mounted () {
+    // const { success, data } = await api.get('topics', { page: this.page })
+    // if (success) this.topics = data
+  },
+  metaInfo: {
+    title: '模块2'
+  }
+}
+
+</script>
+<style scoped>
+article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary {
+  display: block;
+}
+audio,canvas,progress,video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+[hidden],template {
+  display: none;
+}
+a {
+  background-color: transparent;
+}
+a:active,a:hover {
+  outline: 0;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+b,strong {
+  font-weight: bold;
+}
+dfn {
+  font-style: italic;
+}
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+mark {
+  background: #ff0;
+  color: #000;
+}
+small {
+  font-size: 80%;
+}
+sub,sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+img {
+  border: 0;
+  max-width: 100%;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+figure {
+  margin: 1em 40px;
+}
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+pre {
+  overflow: auto;
+}
+code,kbd,pre,samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+button,input,optgroup,select,textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+button {
+  overflow: visible;
+}
+button,select {
+  text-transform: none;
+}
+button,html input[type="button"], input[type="reset"],input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+button[disabled],html input[disabled] {
+  cursor: default;
+}
+button::-moz-focus-inner,input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+input {
+  line-height: normal;
+}
+input[type="checkbox"],input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+input[type="search"] {
+  -webkit-appearance: textfield;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+legend {
+  border: 0;
+  padding: 0;
+}
+textarea {
+  overflow: auto;
+}
+optgroup {
+  font-weight: bold;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,th {
+  padding: 0;
+}
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+audio,canvas,iframe,img,svg,video {
+  vertical-align: middle;
+}
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+textarea {
+  resize: vertical;
+}
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+.hidden {
+  display: none !important;
+}
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+.visuallyhidden.focusable:active,.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+.invisible {
+  visibility: hidden;
+}
+.clearfix:before,.clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+@media only screen and (min-width: 35em) {
+}
+@media print,(-webkit-min-device-pixel-ratio: 1.25),(min-resolution: 1.25dppx),(min-resolution: 120dpi) {
+}
+@media print {
+  *,*:before,*:after,*:first-letter,*:first-line {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  a,a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  a[href^="#"]:after,a[href^="javascript:"]:after {
+    content: "";
+  }
+  pre,blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr,img {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+  p,h2,h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,h3 {
+    page-break-after: avoid;
+  }
+}
+h1, h2, h3, h4, h5, h6 {
+  color: #000;
+  background: none;
+  font-weight: normal;
+  margin: 0;
+  overflow: hidden;
+  padding-top: 0.5em;
+  padding-bottom: 0.17em;
+}
+.article h1 {
+  font-family: 'Linux Libertine','Georgia','Times',serif;
+  border-bottom: 1px solid #a2a9b1;
+}
+.article h2 {
+  font-size: 1.6em;
+  margin: 0.5em 0 0.5em 0;
+  font-family: 'Linux Libertine','Georgia','Times',serif;
+  border-bottom: 1px solid #a2a9b1;
+  line-height: 1.4em;
+  padding-bottom: 0em;
+}
+.article h3 {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.article p.roleNote {
+  padding: 1em 0 0 1.6em;
+  font-style: italic;
+}
+p.siteSub {
+  font-size: 92%;
+}
+
+ul {
+  list-style-type: none;
+  list-style-image: none;
+  margin: 0;
+  padding: 0.3em 0 0 0;
+}
+h1 {
+  line-height: 1.3;
+  margin-bottom: 0.25em;
+  padding: 0;
+  letter-spacing: 0;
+  font-size: 2.3em;
+}
+a, a:visited {
+  color: #0645ad;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.wrapAll {
+  width: 100%
+}
+.sidebar {
+  float: left;
+  width: 9em;
+  padding: 3px 1.5em 10px 1.3em;
+  position: absolute;
+}
+.sidebar h3 {
+  font-size: 0.75em;
+  color: #4d4d4d;
+  font-weight: normal;
+  margin: 0.5em 0 0 0;
+  padding: 0.25em 0;
+  cursor: default;
+  border: 0;
+  border-bottom: 1px solid #D8D8D8;
+}
+.sidebar li {
+  line-height: 1.125em;
+  margin: 0;
+  padding: 0.25em 0;
+  font-size: 0.75em;
+  word-wrap: break-word;
+}
+div.articleRight {
+  border: 1px solid #c8ccd1;
+  padding: 3px;
+  float: right;
+  background-color: #f8f9fa;
+  font-size: 94%;
+  text-align: center;
+  overflow: hidden;
+  line-height: 1.4em;
+  padding: 3px;
+  font-size: 94%;
+  margin: 0 0 5px 15px;
+  text-align: left;
+}
+div.articleRightInner {
+  border: 1px solid #c8ccd1;
+  padding: 3px;
+  background-color: #f8f9fa;
+  font-size: 94%;
+  text-align: center;
+  overflow: hidden;
+}
+.logo {
+  margin-bottom: 20px;
+}
+.navigation {
+  padding: 0.15em 0 0 0.45em;
+}
+.mainsection {
+  margin: 0 0 0 11em;
+}
+.headerLinks {
+  text-align: right;
+  padding: 0.8em 1.4em;
+  font-size: 0.72em;
+  color: #777;
+  letter-spacing: 0.017em;
+}
+.headerLinks a{
+  display: inline-block;
+  margin: 0 0 0 0.5em;
+}
+.tabs {
+}
+.tabs ul li a {
+  display: block;
+  font-size: 0.85em;
+  padding: 1em 0.5em 0;
+  line-height: 2em;
+  position: relative;
+  top: 1px;
+  left: 1px;
+  border-bottom: 1px solid #A7D7F9;
+}
+.tabs ul li a.active {
+  background: #FFF;
+  border-bottom-color: transparent;
+}
+.tabs ul {
+  display: inline-block;
+  letter-spacing: 0;
+  margin: 0;
+  padding: 0 1px 0 0;
+}
+.tabs ul li {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  display: inline-block;
+  float: left;
+}
+.tabs ul {
+}
+.tabsLeft {
+  line-height: 0;
+  float: left;
+}
+#simpleSearch {
+  margin: 1em 1em 0em 0.5em;
+  display: block;
+  width: 267px;
+  height: 23px;
+  padding: 0 0 0 3px;
+  float: right;
+  overflow: hidden;
+  border: solid 1px #aaa;
+  background: #F6F6F6;
+  background: -moz-linear-gradient(top, #F6F6F6 0%, #FFFFFF 100%);
+  background: -webkit-linear-gradient(top, #F6F6F6 0%, #FFFFFF 100%);
+  background: linear-gradient(to bottom, #F6F6F6 0%, #FFFFFF 100%);
+}
+#searchInput {
+  background: transparent;
+  border: none;
+  vertical-align: top;
+  height: 23px;
+  width: 239px;
+  font-size: 0.8em;
+}
+#submitSearch {
+  display: inline-block;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 23px;
+  width: 23px;
+  cursor: pointer;
+}
+.tabsRight {
+  float: right;
+  line-height: 0;
+}
+.article {
+  padding: 1.25em 1.5em 1.5em 1.5em;
+  border-left: 1px solid #a7d7f9;
+  background: #FFF;
+  line-height: 1.6;
+  font-size: 0.875em;
+  border-top: 1px solid #a7d7f9;
+  border-bottom: 1px solid #a7d7f9;
+}
+.article p {
+  line-height: inherit;
+  margin: 0.5em 0;
+}
+span.user {
+  background-position: left top;
+  background-repeat: no-repeat;
+  padding-left: 15px !important;
+}
+.contentsPanel {
+  border: 1px solid #a2a9b1;
+  background-color: #f8f9fa;
+  padding: 5px;
+  font-size: 95%;
+  position: relative;
+  line-height: 1.7em;
+  width: 280px;
+}
+.contentsHeader {
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+.hidePanel, .showPanel {
+  float: right;
+  margin: 0 5px;
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+  color: #0645ad;
+  top: 4px;
+}
+.contentsPanel ul li span {
+  display: inline-block;
+  margin-right: 8px;
+}
+.contentsPanel ul li {
+}
+.contentsPanel ul {
+  padding: 0 0 5px 5px;
+}
+.contentsPanel ul li ul{
+}
+.contentsPanel ul li ul li {
+  padding: 0 0 0 25px;
+}
+.showPanel {
+  display: none;
+}
+.minimizedPanel .showPanel {
+  display: block;
+}
+.minimizedPanel .hidePanel {
+  display: none
+}
+.contentsPanel.minimizedPanel {
+  width: 130px;
+}
+.minimizedPanel .contentsHeader {
+  text-align: left;
+}
+.lavenderBox {
+  background: #fdfdfd;
+  border: 1px solid #a2a9b1;
+  clear: both;
+  font-size: 88%;
+  text-align: center;
+  padding: 3px;
+  line-height: 1.7em;
+  margin: 1em auto 0;
+}
+.lavenderBox .header {
+  background: #ccccff;
+  padding: 0.25em 1em;
+  line-height: 1.5em;
+  text-align: center;
+  font-weight: bold;
+  color: #0645ad;
+  font-size: 115%;
+  margin-bottom: 3px;
+}
+.lavenderBox .subtitle {
+  background: #ddddff;
+}
+.linklist a:after {
+  content: " · ";
+  font-weight: bold;
+}
+.linklist a:last-child:after {
+  content: "";
+}
+.linklist a {
+  white-space: nowrap;
+}
+.categories {
+  border: 1px solid #a2a9b1;
+  background-color: #f8f9fa;
+  padding: 5px;
+  margin-top: 1em;
+  font-size: 1.1em;
+  clear: both;
+}
+.categories a:after {
+  content: " | ";
+  font-weight: bold;
+}
+.categories a:last-child:after {
+  content: "";
+}
+.pagefooter {
+  padding: 1.5em 1.3em 2em;
+  font-size: 75%;
+  line-height: 2em;
+}
+.pagefooter a {
+  display: inline-block;
+  margin-right: 1em;
+}
+@media screen and (max-width: 850px) {
+  #searchInput {
+    width: 110px;
+  }
+  #simpleSearch {
+    width: 138px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .tabsRight {
+    display: none;
+  }
+}
+@media screen and (max-width: 550px) {
+  .sidebar {
+    width: 6em;
+    padding: 3px 0.5em 10px 0.5em;
+  }
+  .mainsection {
+    margin: 0 0 0 7em;
+  }
+  .contentsPanel {
+    width: auto;
+  }
+}
+@media screen and (max-width: 400px) {
+  #simpleSearch {
+    display: none;
+  }
+}
+
+</style>
