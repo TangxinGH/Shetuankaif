@@ -12,7 +12,7 @@
                 <a v-bind:href="env ? './compose.html' : './compose'"><i></i>编辑文章</a>
             </li>
             <li :class="{ current: current === 4 }">
-                <a v-bind:href="env ? './subscriber.html' : './subscriber'"><i></i>路由</a>
+                <a v-bind:href="env ? './subscriber.html' : './subscriber'"><i></i>subscriber登录</a>
             </li>
             <li :class="{ current: current === 5 }">
                 <a href="./vuex"><i></i>Vuex</a>

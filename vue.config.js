@@ -43,7 +43,8 @@ module.exports = {
         { from: /^\/$/, to: '/index.html' },
         // shows views/subpage.html for all routes starting with /subpage
         { from: /^\/article/, to: '/article.html' }, // 这东西有效？还真有效
-        { from: /^\/compose/, to: '/compose.html' }
+        { from: /^\/compose/, to: '/compose.html' },
+        { from: /^\/subscriber/, to: '/subscriber.html' }
       ]
     }
   },

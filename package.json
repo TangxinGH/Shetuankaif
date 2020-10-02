@@ -13,6 +13,7 @@
     "ant-design-vue": "^1.6.5",
     "core-js": "^3.6.5",
     "element-ui": "^2.13.2",
+    "jquery": "^3.5.1",
     "tinymce": "^5.5.1",
     "vue": "^2.6.11",
     "vue-meta": "^2.4.0",
