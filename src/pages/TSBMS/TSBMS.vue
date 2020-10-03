@@ -1,236 +1,115 @@
 <template>
-  <el-container class="tsbmsvue">
-    <div class="left-nav  el-aside">
-      <!-- <button @click="isCollapse=!isCollapse">展开</button> -->
-      <div class="nav-logo">
-      <span>
-        <img src="../../assets/img/icons8-bird-40.png" alt/>
-        <span v-show="!isCollapse">通讯录管理</span>
-      </span>
-        <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-          <i v-show="!isCollapse" class="el-icon-s-fold expandBtn" @click="isCollapse=true"></i>
-          <i v-show="isCollapse" class="el-icon-s-fold shrinkBtn" @click="isCollapse=false"></i>
-        </el-radio-group>
-      </div>
-      <el-menu
-          class="el-menu-vertical-demo"
-          :unique-opened="true"
-          router
-          background-color="#151d41"
-          text-color="#fff"
-          :collapse="isCollapse"
+  <a-layout id="components-layout-demo-side" style="min-height: 100vh">
+    <a-layout-header>
+      <div class="logoheader"/>
+      <a-menu
+          theme="dark"
+          mode="horizontal"
+          :default-selected-keys="['2']"
+          :style="{ lineHeight: '64px'  }"
       >
-        <el-menu-item index="/">
-          <i class="el-icon-s-home"></i>
-          <span slot="title">首页</span>
-        </el-menu-item>
-        <el-submenu v-for="(item,index) in menuList" :index="'' + index" :key="index">
-          <template slot="title">
-            <i :class="item.icon"></i>
-            <span>{{ item.authName }}</span>
-          </template>
-          <el-menu-item
-              v-for="(subItem,index) in item.children"
-              :index="'/' + subItem.path"
-              :key="index"
-          >
-            <span>{{ subItem.authName }}</span>
-          </el-menu-item>
-        </el-submenu>
-      </el-menu>
-    </div>
-    <el-container>
-      <el-header>Header</el-header>
-      <el-main>Main</el-main>
-      <el-footer>Footer</el-footer>
-    </el-container>
-  </el-container>
-
+        <a-menu-item key="1">
+          nav 1
+        </a-menu-item>
+        <a-menu-item key="2">
+          nav 2
+        </a-menu-item>
+        <a-menu-item key="3">
+          nav 3
+        </a-menu-item>
+      </a-menu>
+    </a-layout-header>
+    <a-layout>
+      <a-layout-sider v-model="collapsed" collapsible
+                      breakpoint="lg"
+                      collapsed-width="0"
+                      @collapse="onCollapse"
+                      @breakpoint="onBreakpoint"
+      >
+        <div class="logo"/>
+        <a-menu theme="dark" :default-selected-keys="['1']" mode="inline">
+          <a-menu-item key="1">
+            <a-icon type="pie-chart"/>
+            <span>Option 1</span>
+          </a-menu-item>
+          <a-menu-item key="2">
+            <a-icon type="desktop"/>
+            <span>Option 2</span>
+          </a-menu-item>
+          <a-sub-menu key="sub1">
+            <span slot="title"><a-icon type="user"/><span>User</span></span>
+            <a-menu-item key="3">
+              Tom
+            </a-menu-item>
+            <a-menu-item key="4">
+              Bill
+            </a-menu-item>
+            <a-menu-item key="5">
+              Alex
+            </a-menu-item>
+          </a-sub-menu>
+          <a-sub-menu key="sub2">
+            <span slot="title"><a-icon type="team"/><span>Team</span></span>
+            <a-menu-item key="6">
+              Team 1
+            </a-menu-item>
+            <a-menu-item key="8">
+              Team 2
+            </a-menu-item>
+          </a-sub-menu>
+          <a-menu-item key="9">
+            <a-icon type="file"/>
+            <span>File</span>
+          </a-menu-item>
+        </a-menu>
+      </a-layout-sider>
+      <a-layout>
+        <a-layout-content style="margin: 8px 16px">
+          <a-breadcrumb style="margin: 16px 0">
+            <a-breadcrumb-item>User</a-breadcrumb-item>
+            <a-breadcrumb-item>Bill</a-breadcrumb-item>
+          </a-breadcrumb>
+          <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
+            Bill is a cat.
+          </div>
+        </a-layout-content>
+        <a-layout-footer style="text-align: center">
+          Ant Design ©2018 Created by Ant UED
+        </a-layout-footer>
+      </a-layout>
+    </a-layout>
+  </a-layout>
 </template>
-
 <script>
 export default {
-  name: 'TSBMS',
   data () {
     return {
-      menuList: [
-        {
-          id: 0,
-          authName: '通讯录',
-          icon: 'el-icon-s-custom',
-          children: [
-            {
-              authName: '用户与部门管理',
-              id: 1,
-              path: 'department',
-              parentid: 0
-            },
-            {
-              authName: '通讯录设置',
-              id: 2,
-              path: 'adrbook',
-              parentid: 0
-            }
-          ]
-        },
-        {
-          id: 1,
-          authName: '数据报表',
-          icon: 'el-icon-s-claim',
-          children: [
-            {
-              authName: '数据概览',
-              id: 1,
-              path: 'overview',
-              parentid: 1
-            },
-            {
-              authName: '员工活跃数据',
-              id: 2,
-              path: 'employees',
-              parentid: 1
-            }
-          ]
-        },
-        {
-          id: 2,
-          authName: '企业设置',
-          icon: 'el-icon-office-building',
-          children: [
-            {
-              authName: '企业信息管理',
-              id: 1,
-              path: 'information',
-              parentid: 2
-            },
-            {
-              authName: '权限管理',
-              id: 2,
-              path: 'authority',
-              parentid: 2
-            },
-            {
-              authName: '团队邀请设置',
-              id: 3,
-              path: 'team',
-              parentid: 2
-            },
-            {
-              authName: '安全策略',
-              id: 4,
-              path: 'safety',
-              parentid: 2
-            },
-            {
-              authName: '管理员日志',
-              id: 5,
-              path: 'journal',
-              parentid: 2
-            }
-          ]
-        }
-      ],
-      isCollapse: false
+      collapsed: false,
     }
   },
-  methods: {}
+  methods: {
+    onCollapse (collapsed, type) {
+      console.log(collapsed, type)
+    },
+    onBreakpoint (broken) {
+      console.log(broken)
+    },
+  },
 }
 </script>
 
-<style lang="less" scoped>
-@bgc: #151d41;
-.left-nav {
-  .nav-logo {
-    height: 60px;
-    padding: 0 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    line-height: 60px;
-    margin-top: 16px;
-
-    .logo {
-      font-size: 30px;
-    }
-
-    img {
-      width: 28px;
-      margin: 5px;
-    }
-
-    .el-radio-group {
-      font-size: 20px;
-      line-height: 60px;
-      margin-top: 20px;
-      margin-left: 10px;
-
-      .shrinkBtn {
-        position: fixed;
-        left: -18px;
-        top: 38px;
-        color: #151d41;
-        margin-left: 100px;
-        transform: rotate(180deg);
-      }
-    }
-  }
-
-  .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 200px;
-    min-height: 400px;
-  }
-
-  .el-menu-vertical-demo {
-    border: none;
-
-    .el-menu-item {
-      span {
-        color: #909399;
-        font-size: 16px;
-      }
-    }
-
-    .el-submenu {
-      span {
-        color: #909399;
-        font-size: 16px;
-      }
-
-      .el-menu-item {
-        span {
-          color: #909399;
-          font-size: 14px;
-        }
-      }
-    }
-  }
+<style>
+#components-layout-demo-side .logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
 }
 
-.el-header {
-  background-color: #B3C0D1;
-  color: #333;
-}
-
-.el-footer {
-  background-color: #B3C0D1;
-  color: #333;
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  bottom: 0;
-}
-
-.el-aside {
-  background-color: #D3DCE6;
-  color: #333;
-}
-
-.el-main {
-  background-color: #E9EEF3;
-  color: #333;
-  margin-bottom: -450px;
-}
-
-.tsbmsvue {
-  height: calc(100vh - 30px);
+.logoheader {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 28px 16px 0;
+  float: left;
 }
 </style>
