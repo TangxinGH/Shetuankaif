@@ -29,6 +29,11 @@ module.exports = {
       entry: 'src/pages/subscriber/subscriber.js',
       template: 'public/index.html',
       filename: 'subscriber.html'
+    },
+    tsbms: {
+      entry: 'src/pages/TSBMS/TSBMS.js',
+      template: 'public/index.html',
+      filename: 'tsbms.html'
     }
   },
   devServer: {
@@ -44,7 +49,8 @@ module.exports = {
         // shows views/subpage.html for all routes starting with /subpage
         { from: /^\/article/, to: '/article.html' }, // 这东西有效？还真有效
         { from: /^\/compose/, to: '/compose.html' },
-        { from: /^\/subscriber/, to: '/subscriber.html' }
+        { from: /^\/subscriber/, to: '/subscriber.html' },
+        { from: /^\/tsbms/, to: '/tsbms.html' }
       ]
     }
   },
