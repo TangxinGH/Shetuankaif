@@ -12,13 +12,12 @@
                       @collapse="onCollapse"
                       @breakpoint="onBreakpoint"
                       class="sidebar"
-                      :style="{  height: '100vh', position: 'fixed', left: 0 }"
       >
 <!--        SideBar -->
         <lateral></lateral>
 <!--        SideBar-->
       </a-layout-sider>
-      <a-layout :style="{ marginLeft: '200px' }" style="height: 200vh">
+      <a-layout  style="height: 150vh">
         <a-layout-content :style="{ padding: '0 50px', marginTop: '64px'}" >
           <a-breadcrumb :style="{ margin: '16px 0'}">
             <a-breadcrumb-item>User</a-breadcrumb-item>
@@ -72,6 +71,6 @@ export default {
   float: left;
 }
 .sidebar{
-  margin-top: 50px;
+  margin-top: 80px;
 }
 </style>
