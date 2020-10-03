@@ -1,53 +1,50 @@
 <template>
-  <div>
-    <el-container>
-        <div class="left-nav  el-aside">
-          <!-- <button @click="isCollapse=!isCollapse">展开</button> -->
-          <div class="nav-logo">
+  <el-container class="tsbmsvue">
+    <div class="left-nav  el-aside">
+      <!-- <button @click="isCollapse=!isCollapse">展开</button> -->
+      <div class="nav-logo">
       <span>
         <img src="../../assets/img/icons8-bird-40.png" alt/>
         <span v-show="!isCollapse">通讯录管理</span>
       </span>
-            <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-              <i v-show="!isCollapse" class="el-icon-s-fold expandBtn" @click="isCollapse=true"></i>
-              <i v-show="isCollapse" class="el-icon-s-fold shrinkBtn" @click="isCollapse=false"></i>
-            </el-radio-group>
-          </div>
-          <el-menu
-              class="el-menu-vertical-demo"
-              :unique-opened="true"
-              router
-              background-color="#151d41"
-              text-color="#fff"
-              :collapse="isCollapse"
+        <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
+          <i v-show="!isCollapse" class="el-icon-s-fold expandBtn" @click="isCollapse=true"></i>
+          <i v-show="isCollapse" class="el-icon-s-fold shrinkBtn" @click="isCollapse=false"></i>
+        </el-radio-group>
+      </div>
+      <el-menu
+          class="el-menu-vertical-demo"
+          :unique-opened="true"
+          router
+          background-color="#151d41"
+          text-color="#fff"
+          :collapse="isCollapse"
+      >
+        <el-menu-item index="/">
+          <i class="el-icon-s-home"></i>
+          <span slot="title">首页</span>
+        </el-menu-item>
+        <el-submenu v-for="(item,index) in menuList" :index="'' + index" :key="index">
+          <template slot="title">
+            <i :class="item.icon"></i>
+            <span>{{ item.authName }}</span>
+          </template>
+          <el-menu-item
+              v-for="(subItem,index) in item.children"
+              :index="'/' + subItem.path"
+              :key="index"
           >
-            <el-menu-item index="/">
-              <i class="el-icon-s-home"></i>
-              <span slot="title">首页</span>
-            </el-menu-item>
-            <el-submenu v-for="(item,index) in menuList" :index="'' + index" :key="index">
-              <template slot="title">
-                <i :class="item.icon"></i>
-                <span>{{ item.authName }}</span>
-              </template>
-              <el-menu-item
-                  v-for="(subItem,index) in item.children"
-                  :index="'/' + subItem.path"
-                  :key="index"
-              >
-                <span>{{ subItem.authName }}</span>
-              </el-menu-item>
-            </el-submenu>
-          </el-menu>
-        </div>
-      <el-container>
-        <el-header>Header</el-header>
-        <el-main>Main</el-main>
-        <el-footer>Footer</el-footer>
-      </el-container>
+            <span>{{ subItem.authName }}</span>
+          </el-menu-item>
+        </el-submenu>
+      </el-menu>
+    </div>
+    <el-container>
+      <el-header>Header</el-header>
+      <el-main>Main</el-main>
+      <el-footer>Footer</el-footer>
     </el-container>
-
-  </div>
+  </el-container>
 
 </template>
 
@@ -151,18 +148,22 @@ export default {
     align-items: center;
     line-height: 60px;
     margin-top: 16px;
+
     .logo {
       font-size: 30px;
     }
+
     img {
       width: 28px;
       margin: 5px;
     }
+
     .el-radio-group {
       font-size: 20px;
       line-height: 60px;
       margin-top: 20px;
       margin-left: 10px;
+
       .shrinkBtn {
         position: fixed;
         left: -18px;
@@ -173,6 +174,7 @@ export default {
       }
     }
   }
+
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;
     min-height: 400px;
@@ -180,17 +182,20 @@ export default {
 
   .el-menu-vertical-demo {
     border: none;
+
     .el-menu-item {
       span {
         color: #909399;
         font-size: 16px;
       }
     }
+
     .el-submenu {
       span {
         color: #909399;
         font-size: 16px;
       }
+
       .el-menu-item {
         span {
           color: #909399;
@@ -200,37 +205,32 @@ export default {
     }
   }
 }
-.el-header, .el-footer {
+
+.el-header {
   background-color: #B3C0D1;
   color: #333;
-  text-align: center;
-  line-height: 60px;
+}
+
+.el-footer {
+  background-color: #B3C0D1;
+  color: #333;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  bottom: 0;
 }
 
 .el-aside {
   background-color: #D3DCE6;
   color: #333;
-  text-align: center;
-  line-height: 200px;
 }
 
 .el-main {
   background-color: #E9EEF3;
   color: #333;
-  text-align: center;
-  line-height: 160px;
+  margin-bottom: -450px;
 }
 
-body > .el-container {
-  margin-bottom: 40px;
-}
-
-.el-container:nth-child(5) .el-aside,
-.el-container:nth-child(6) .el-aside {
-  line-height: 260px;
-}
-
-.el-container:nth-child(7) .el-aside {
-  line-height: 320px;
+.tsbmsvue {
+  height: calc(100vh - 30px);
 }
 </style>
