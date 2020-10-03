@@ -1,71 +1,26 @@
 <template>
   <a-layout id="components-layout-demo-side" style="min-height: 100vh">
-    <a-layout-header>
-      <div class="logoheader"/>
-      <a-menu
-          theme="dark"
-          mode="horizontal"
-          :default-selected-keys="['2']"
-          :style="{ lineHeight: '64px'  }"
-      >
-        <a-menu-item key="1">
-          nav 1
-        </a-menu-item>
-        <a-menu-item key="2">
-          nav 2
-        </a-menu-item>
-        <a-menu-item key="3">
-          nav 3
-        </a-menu-item>
-      </a-menu>
+    <a-layout-header
+        :style="{ position: 'fixed', zIndex: 1, width: '100%' }"
+    >
+     <apex></apex>
     </a-layout-header>
     <a-layout>
       <a-layout-sider v-model="collapsed" collapsible
                       breakpoint="lg"
-                      collapsed-width="0"
+                      collapsed-width="88"
                       @collapse="onCollapse"
                       @breakpoint="onBreakpoint"
+                      class="sidebar"
+                      :style="{  height: '100vh', position: 'fixed', left: 0 }"
       >
-        <div class="logo"/>
-        <a-menu theme="dark" :default-selected-keys="['1']" mode="inline">
-          <a-menu-item key="1">
-            <a-icon type="pie-chart"/>
-            <span>Option 1</span>
-          </a-menu-item>
-          <a-menu-item key="2">
-            <a-icon type="desktop"/>
-            <span>Option 2</span>
-          </a-menu-item>
-          <a-sub-menu key="sub1">
-            <span slot="title"><a-icon type="user"/><span>User</span></span>
-            <a-menu-item key="3">
-              Tom
-            </a-menu-item>
-            <a-menu-item key="4">
-              Bill
-            </a-menu-item>
-            <a-menu-item key="5">
-              Alex
-            </a-menu-item>
-          </a-sub-menu>
-          <a-sub-menu key="sub2">
-            <span slot="title"><a-icon type="team"/><span>Team</span></span>
-            <a-menu-item key="6">
-              Team 1
-            </a-menu-item>
-            <a-menu-item key="8">
-              Team 2
-            </a-menu-item>
-          </a-sub-menu>
-          <a-menu-item key="9">
-            <a-icon type="file"/>
-            <span>File</span>
-          </a-menu-item>
-        </a-menu>
+<!--        SideBar -->
+        <lateral></lateral>
+<!--        SideBar-->
       </a-layout-sider>
-      <a-layout>
-        <a-layout-content style="margin: 8px 16px">
-          <a-breadcrumb style="margin: 16px 0">
+      <a-layout :style="{ marginLeft: '200px' }" style="height: 200vh">
+        <a-layout-content :style="{ padding: '0 50px', marginTop: '64px'}" >
+          <a-breadcrumb :style="{ margin: '16px 0'}">
             <a-breadcrumb-item>User</a-breadcrumb-item>
             <a-breadcrumb-item>Bill</a-breadcrumb-item>
           </a-breadcrumb>
@@ -73,15 +28,18 @@
             Bill is a cat.
           </div>
         </a-layout-content>
-        <a-layout-footer style="text-align: center">
-          Ant Design ©2018 Created by Ant UED
-        </a-layout-footer>
+<!--        footer-->
+        <t-b-m-s-footer></t-b-m-s-footer>
       </a-layout>
     </a-layout>
   </a-layout>
 </template>
 <script>
+import TBMSFooter from '@/pages/TSBMS/Layout/TBMSFooter'
+import Lateral from '@/pages/TSBMS/Layout/Lateral'
+import Apex from '@/pages/TSBMS/Layout/Apex'
 export default {
+  components: { Apex, Lateral, TBMSFooter },
   data () {
     return {
       collapsed: false,
@@ -96,20 +54,24 @@ export default {
     },
   },
 }
+// collapsed-width 为0时
 </script>
 
-<style>
-#components-layout-demo-side .logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
+<style scoped>
+#components-layout-demo-side >>> .logo { /*深度选择器  传递给子组件 */
+  height: 142px;
+  background: rgb(16, 0, 254);
   margin: 16px;
 }
 
-.logoheader {
+#components-layout-demo-side >>> .logoheader {
   width: 120px;
   height: 31px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(200, 35, 35, 0.2);
   margin: 16px 28px 16px 0;
   float: left;
+}
+.sidebar{
+  margin-top: 50px;
 }
 </style>
