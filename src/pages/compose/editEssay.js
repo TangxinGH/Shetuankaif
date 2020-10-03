@@ -5,11 +5,13 @@ import App from './editEssay.vue'
 // import { Select, Button, Form } from 'ant-design-vue'
 import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
+import router from '@/pages/compose/router/selectCategory'
 Vue.use(Antd)
 Vue.use(Meta)
 
 const app = new Vue({
-  ...App
+  ...App,
+  router
 })
 
 app.$mount('#app')

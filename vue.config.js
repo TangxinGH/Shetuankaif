@@ -13,7 +13,8 @@ module.exports = {
     index: {
       entry: 'src/pages/index/index.js', // entry for the public page
       template: 'public/index.html', // source template
-      filename: 'index.html' // output as dist/*
+      filename: 'index.html', // output as dist/*
+      chunks: ['chunk-vendors', 'chunk-common', 'index'] //   // 提取出来的通用 chunk 和 vendor chunk。
     },
     article: {
       entry: 'src/pages/article/article.js',
@@ -22,7 +23,7 @@ module.exports = {
     },
     compose: {
       entry: 'src/pages/compose/editEssay.js',
-      template: 'public/index.html',
+      template: 'src/pages/compose/compose.html',
       filename: 'compose.html'
     },
     subscriber: {
@@ -33,7 +34,8 @@ module.exports = {
     tsbms: {
       entry: 'src/pages/TSBMS/TSBMS.js',
       template: 'public/index.html',
-      filename: 'tsbms.html'
+      filename: 'tsbms.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'tsbms']
     }
   },
   devServer: {

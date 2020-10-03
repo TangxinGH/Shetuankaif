@@ -15,7 +15,7 @@
                 <a v-bind:href="env ? './subscriber.html' : './subscriber'"><i></i>subscriber登录</a>
             </li>
             <li :class="{ current: current === 5 }">
-                <a v-bind:href="env ? './tsbms.html' : './tsbms'"><i></i>Vuex</a>
+                <a v-bind:href="env ? './tsbms.html' : './tsbms'"><i></i>后台管理</a>
             </li>
         </ul>
     </div>

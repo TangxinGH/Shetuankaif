@@ -7,12 +7,12 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import drawer from '@/components/TSBMS/drawer'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    HelloWorld: drawer
   }
 }
 </script>

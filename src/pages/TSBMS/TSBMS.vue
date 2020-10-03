@@ -3,7 +3,7 @@
     <a-layout-header
         :style="{ position: 'fixed', zIndex: 1, width: '100%' }"
     >
-     <apex></apex>
+      <apex></apex>
     </a-layout-header>
     <a-layout>
       <a-layout-sider v-model="collapsed" collapsible
@@ -13,21 +13,22 @@
                       @breakpoint="onBreakpoint"
                       class="sidebar"
       >
-<!--        SideBar -->
+        <!--        SideBar -->
         <lateral></lateral>
-<!--        SideBar-->
+        <!--        SideBar-->
       </a-layout-sider>
-      <a-layout  style="height: 150vh">
-        <a-layout-content :style="{ padding: '0 50px', marginTop: '64px'}" >
+      <a-layout style="height: 150vh">
+        <a-layout-content :style="{ padding: '0 50px', marginTop: '64px'}">
           <a-breadcrumb :style="{ margin: '16px 0'}">
             <a-breadcrumb-item>User</a-breadcrumb-item>
             <a-breadcrumb-item>Bill</a-breadcrumb-item>
           </a-breadcrumb>
           <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
-            Bill is a cat.
+            <p>视图位置</p>
+            <router-view></router-view>
           </div>
         </a-layout-content>
-<!--        footer-->
+        <!--        footer-->
         <t-b-m-s-footer></t-b-m-s-footer>
       </a-layout>
     </a-layout>
@@ -37,8 +38,13 @@
 import TBMSFooter from '@/pages/TSBMS/Layout/TBMSFooter'
 import Lateral from '@/pages/TSBMS/Layout/Lateral'
 import Apex from '@/pages/TSBMS/Layout/Apex'
+
 export default {
-  components: { Apex, Lateral, TBMSFooter },
+  components: {
+    Apex,
+    Lateral,
+    TBMSFooter
+  },
   data () {
     return {
       collapsed: false,
@@ -70,7 +76,8 @@ export default {
   margin: 16px 28px 16px 0;
   float: left;
 }
-.sidebar{
+
+.sidebar {
   margin-top: 80px;
 }
 </style>
