@@ -1,6 +1,5 @@
 <template>
     <div class="g-doc">
-      <nav-component></nav-component>
         <navigation></navigation>
         <Carousel></Carousel>
         <HomeContent></HomeContent>
@@ -13,11 +12,9 @@ import navigation from '@/components/Home/navigation'
 import Carousel from '@/components/Home/Carousel'
 import HomeContent from '@/components/Home/essayBody'
 import pageFooter from '@/components/Home/pageFooter'
-import NavComponent from '@/components/nav-component'
 export default {
   name: 'index-app',
   components: {
-    NavComponent,
     Footer: pageFooter,
     navigation,
     Carousel,
@@ -36,3 +33,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.g-doc{
+  margin-top: 10px;
+}
+</style>
