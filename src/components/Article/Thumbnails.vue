@@ -5,7 +5,6 @@
       <h3>Reasons for Choosing US</h3>
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero nostrum quis, odio veniam itaque ullam debitis
         qui magnam consequatur ab. Vero nostrum quis, odio veniam itaque ullam debitis qui magnam consequatur ab.</p>
-      <br>
       <button>READ MORE</button>
     </div>
   </header>
@@ -18,11 +17,6 @@ export default {
 </script>
 
 <style scoped>
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
 
 header {
   text-align: center;
@@ -48,18 +42,19 @@ header .overlay {
 h1 {
   font-family: 'Dancing Script', cursive;
   font-size: 80px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 h3, p {
   font-family: 'Open Sans', sans-serif;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 button {
   border: none;
   outline: none;
   padding: 10px 20px;
+  margin-top: -50px;
   border-radius: 50px;
   color: #333;
   background: #fff;
