@@ -53,7 +53,7 @@ export default {
         language_url: '/tinymce/langs/zh_CN.js', // 语言包的路径
         language: 'zh_CN', // 语言
         skin_url: '/tinymce/skins/ui/oxide', // skin路径
-        content_css: '/tinymce/skins/',
+        content_css: '/tinymce/skins/content/default/content.css',
         height: 300, // 编辑器高度
         plugins: this.plugins,
         toolbar: this.toolbar,

@@ -1,7 +1,7 @@
 <template>
   <a-form :form="form" @submit="handleSubmit">
     <a-tag color="#108ee9">文章编辑</a-tag>
-    <a-form-item :label-col="labelCol" :wrapper-col="wrapperCol" label="文章分类">
+    <a-form-item :label-col="labelCol" :wrapper-col="wrapperColForSelect" label="文章分类">
       <a-select
           style="width: 100%"
           v-decorator="['category_id',{initialValue:article.article_id,rules: [{ required: true, message: '请选择文章分类' }]}]"
@@ -10,21 +10,21 @@
         <a-select-option v-for="(key,cate) in cate_list" v-bind:key="key"  :value="cate.category_id" >{{ cate.category_name }}</a-select-option>
       </a-select>
     </a-form-item>
-    <a-form-item :label-col="labelCol" :wrapper-col="wrapperCol" label="文章名称">
+    <a-form-item :label-col="labelCol" :wrapper-col="wrapperColForSelect" label="文章名称">
       <a-input
           v-decorator="['article_title',{initialValue:article.article_title,rules: [{ required: true, message: '请填写文章名称' }]}]"/>
     </a-form-item>
-    <a-form-item :label-col="labelCol" :wrapper-col="wrapperCol" label="关键词" help="关键词用英文逗号','分隔">
+    <a-form-item :label-col="labelCol" :wrapper-col="wrapperColForSelect" label="关键词" help="关键词用英文逗号','分隔">
       <a-input
           v-decorator="['keywords',{initialValue:article.keywords,rules: [{ required: true, message: '请填写关键词' }]}]"/>
     </a-form-item>
-    <a-form-item :label-col="labelCol" :wrapper-col="wrapperCol" label="文章摘要">
+    <a-form-item :label-col="labelCol" :wrapper-col="wrapperColForSelect" label="文章摘要">
 <!--      id 重复了-->
       <a-textarea
           v-decorator="['keyword',{initialValue:article.keywords,rules: [{ required: false, message: '请填写关键词' }]}]"
           autoSize/>
     </a-form-item>
-    <a-form-item :label-col="labelCol" :wrapper-col="wrapperCol" label="文章插图">
+    <a-form-item :label-col="labelCol" :wrapper-col="wrapperColForSelect" label="文章插图">
       <a-upload
           name="article_pic"
           listType="picture-card"
@@ -51,16 +51,13 @@
 
       </tinymce_editor>
     </a-form-item>
-    <a-form-item :label-col="labelCol" :wrapper-col="wrapperCol">
-      <div>
-        <a-button type="primary" html-type="submit" class="login-form-button" style="margin-right: 5%;">
-          保存
-        </a-button>
-
-        <a-button type="danger" class="login-form-button" @click="resetFields">
-          重置
-        </a-button>
-      </div>
+    <a-form-item :label-col="labelCol" :wrapper-col="{ span: 8, offset: 16 }">
+            <a-button type="primary" html-type="submit" class="login-form-button" style="margin-top: 8%;">
+              保存
+            </a-button>
+          <a-button type="danger" class="login-form-button" @click="resetFields" style="margin-left: 50px">
+            重置
+          </a-button>
     </a-form-item>
   </a-form>
 </template>
@@ -94,7 +91,12 @@ export default {
       },
       wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 12 }
+        sm: { span: 18 }
+      },
+      wrapperColForSelect: {
+        xs: { span: 24 },
+        sm: { span: 7 },
+        lg: { span: 9 }
       },
       disabled: false,
       msg: '欢迎来到全新编辑器'

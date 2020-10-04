@@ -26,6 +26,7 @@ module.exports = {
       template: 'src/pages/compose/compose.html',
       filename: 'compose.html'
     },
+    // devtool: 'source-map', // 调试修改source map属性，从cheap-module-eval-source-map改为source-map
     subscriber: {
       entry: 'src/pages/subscriber/subscriber.js',
       template: 'public/index.html',
@@ -36,6 +37,11 @@ module.exports = {
       template: 'public/index.html',
       filename: 'tsbms.html',
       chunks: ['chunk-vendors', 'chunk-common', 'tsbms']
+    }
+  },
+  configureWebpack: config => {
+    if (process.env.NODE_ENV === 'development') {
+      config.devtool = 'source-map' // webstorm 调试用的
     }
   },
   devServer: {
