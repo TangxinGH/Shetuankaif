@@ -96,7 +96,7 @@ input, button {
   top: 50%;
   width: 900px;
   height: 550px;
-  margin: -300px 0 0 -450px;
+  margin: 10vh 0 0 -250px;
   background: #fff;
 }
 

@@ -21,13 +21,14 @@ export default {
 
 .circle-container {
   position: relative;
-  width: 20em;
-  height: 20em;
+  width: 25em;
+  height: 25em;
   border-radius: 50%;
   padding: 0;
   list-style: none;
-  margin: 5em auto 0;
+  margin: 8em auto 0;
   border: solid 5px tomato;
+
 }
 
 .circle-container > * {
@@ -35,7 +36,7 @@ export default {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: -3em;
+  margin: -4em;
   width: 6em;
   height: 6em;
 }

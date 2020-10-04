@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="nav">
+  <a-row>
+  <div class="nav">
       <ul class="sidenav">
         <li><a class="active" href="#home">主页</a></li>
         <li><a href="#news">新闻</a></li>
@@ -8,18 +8,29 @@
         <li style="float: right;margin-right: 10vw"><a href="#about">关于</a></li>
       </ul>
     </div>
-    <circle-a-p-ps/>
-    <FromBody></FromBody>
-  </div>
+      <a-col :xs="{ span: 0, offset: 0 }" :lg="{ span: 6, offset: 2 }">
+<!--        <circle-a-p-ps/>-->
+      </a-col>
+      <a-col :xs="{ span: 11, offset: 1 }" :lg="{ span: 6, offset: 2 }">
+        <FromBody></FromBody>
+      </a-col>
+    </a-row>
 </template>
 
 <script>
 import CircleAPPs from '@/components/Subscriber/circleAPPs'
 import FromBody from '@/components/Subscriber/FormBody'
-
+import { Row, Col } from 'ant-design-vue'
+import Vue from 'vue'
+import 'ant-design-vue/dist/antd.css'
+Vue.use(Row)
+Vue.use(Col)
 export default {
   name: 'LogIn_SignIn',
-  components: { FromBody, CircleAPPs },
+  components: {
+    FromBody,
+    CircleAPPs
+  }
 
 }
 </script>
