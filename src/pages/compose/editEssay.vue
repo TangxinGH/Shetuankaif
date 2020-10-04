@@ -40,9 +40,9 @@ export default {
       console.log(key)
       if (key === 'editNotice') {
         this.$router.push({ path: '/editNotice' })
-      } else {
+      } else if (key === 'editNews') {
         this.$router.push({ path: '/editNews' })
-      }
+      } else { this.$router.push({ path: '/markdown' }) }
     },
     funurl: function () {
       console.log('url sss' + 'window.location.href:' + window.location.href + 'this.$route.params:' + this.$route.params)

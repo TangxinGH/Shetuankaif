@@ -18,12 +18,12 @@ const routes = [
     component: editNews
   },
   {
-    path: '/YES',
-    name: 'About',
+    path: '/markdown',
+    name: 'Markdown',
     // route level code-splitting
     // this generates a separate chunk (author.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "author" */ '../../../views/About.vue')
+    component: () => import(/* webpackChunkName: "author" */ '../../../components/Markdown/index')
   },
   {
     path: '/editNotice',
