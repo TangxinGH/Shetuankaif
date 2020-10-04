@@ -2,7 +2,7 @@
   <div class="wrapAll clearfix">
     <div class="sidebar">
       <div class="logo">
-        <a href="/"><img src='../../assets/logo.png' alt="logo"></a>
+        <a href="/"><img  src='../../assets/img/taxi-no-connection.png' alt="logo"></a>
       </div>
       <div class="navigation">
         <ul>
@@ -57,7 +57,7 @@
 
         <div class="articleRight">
           <div class="articleRightInner">
-            <img src="../../assets/logo.png" alt="pencil" />
+            <img width="200" src="../../assets/img/taxi-no-connection.png" alt="pencil" />
           </div>
           This is a blue <a href="">pencil</a>
         </div>
@@ -82,6 +82,18 @@
             <li><span>4</span><a href="#">Grading and classification</a></li>
           </ul>
         </div>
+        <div v-show="true">
+          <!--  附件区域   attachment -->
+          <a-divider/>
+          <a-button>附件区域 有则渲染</a-button>
+        </div>
+        <div>
+          <a-divider/>
+          <ul>
+            <li><a href="6311.htm">上一篇：关于2020级新生查看课表上课的通知</a></li><a href="6311.htm">
+          </a><li><a href="6311.htm"></a><a href="6271.htm">下一篇：关于停开2020秋专业选修（限选）课和公共选修（任选）课的通知</a></li><a href="6271.htm">
+          </a></ul>
+        </div>
         <div class="categories">
           <a href="#">Minimum corrumpit </a> <a href="#">Regione suscipit </a> <a href="#">Has et partem </a>
         </div>
@@ -102,7 +114,7 @@
 
 <script>
 export default {
-name: "ArticleContent"
+  name: 'ArticleContent'
 }
 </script>
 

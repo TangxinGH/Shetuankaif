@@ -2,9 +2,6 @@
     <div class="g-doc">
       <ArticleLayout/>
 <ArticleContent></ArticleContent>
-      <div>
-        <span v-if="hasEssay"> 附件区域</span>
-      </div>
     </div>
 </template>
 <script>
@@ -14,7 +11,7 @@ export default {
   name: 'index-app',
   components: {
     ArticleContent,
-    ArticleLayout,
+    ArticleLayout
   },
   data () {
     return {

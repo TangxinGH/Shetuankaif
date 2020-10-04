@@ -1,9 +1,10 @@
 <template>
+
 </template>
 
 <script>
 export default {
-name: "AntArticleContent"
+  name: 'AntArticleContent'
 }
 </script>
 
