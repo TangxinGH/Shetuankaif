@@ -1,6 +1,7 @@
 <template>
     <div class="g-doc">
       <nav-component></nav-component>
+      <ArticleLayout/>
       <Thumbnails></Thumbnails>
       <div class="wrapAll clearfix">
         <div class="sidebar">
@@ -109,10 +110,12 @@
 <script>
 import Thumbnails from '@/components/Article/Thumbnails'
 import NavComponent from '@/components/nav-component'
+import ArticleLayout from '@/components/Article/ArticleLayout'
 export default {
   name: 'index-app',
   components: {
     NavComponent,
+    ArticleLayout,
     Thumbnails
   },
   data () {

@@ -1,26 +1,41 @@
 <template>
-  <div>
-    <div class="nav">
-      <ul class="sidenav">
-        <li><a class="active" href="#home">主页</a></li>
-        <li><a href="#news">新闻</a></li>
-        <li><a href="#contact">联系</a></li>
-        <li style="float: right;margin-right: 10vw"><a href="#about">关于</a></li>
-      </ul>
-    </div>
-    <div class="circleAPPs">
-      <ul class='circle-container'>
-        <!--    v-slot:"boxImg" 不能加双引呈 ，不能用slot="" 因为已经废弃 无法使用，而且不报错。fuck-->
-        <neumorphism v-for="n in 8" :key="n"><!-- neumorphism 有多个的slot name 时 ，这才是正确的写法-->
-          <template v-slot:boxImg><img src='http://lorempixel.com/100/100/city'></template>
-          <template v-slot:ImgName><p>沒文憑{{ n }}</p></template>
-        </neumorphism>
-      </ul>
-    </div>
-    <div class="lessForLoginSignup">
-      <div class="content " v-bind:class="{ 's--signup': isActive}">
-        <div class="form sign-in">
-          <h2>欢迎回来</h2>
+  <div class="lessForLoginSignup">
+    <div class="content " v-bind:class="{ 's--signup': isActive}">
+      <div class="form sign-in">
+        <h2>欢迎回来</h2>
+        <label>
+          <span>邮箱</span>
+          <input type="email"/>
+        </label>
+        <label>
+          <span>密码</span>
+          <input type="password"/>
+        </label>
+        <p class="forgot-pass"><a href="javascript:">忘记密码？</a></p>
+        <button type="button" class="submit">登 录</button>
+        <button type="button" class="fb-btn">使用 <span>facebook</span> 帐号登录</button>
+      </div>
+      <div class="sub-cont">
+        <div class="img">
+          <div class="img__text m--up">
+            <h2>还未注册？</h2>
+            <p>立即注册，发现大量机会！</p>
+          </div>
+          <div class="img__text m--in">
+            <h2>已有帐号？</h2>
+            <p>有帐号就登录吧，好久不见了！</p>
+          </div>
+          <div class="img__btn" v-on:click="isActive=!isActive">
+            <span class="m--up">注 册</span>
+            <span class="m--in">登 录</span>
+          </div>
+        </div>
+        <div class="form sign-up">
+          <h2>立即注册</h2>
+          <label>
+            <span>用户名</span>
+            <input type="text"/>
+          </label>
           <label>
             <span>邮箱</span>
             <input type="email"/>
@@ -29,42 +44,8 @@
             <span>密码</span>
             <input type="password"/>
           </label>
-          <p class="forgot-pass"><a href="javascript:">忘记密码？</a></p>
-          <button type="button" class="submit">登 录</button>
-          <button type="button" class="fb-btn">使用 <span>facebook</span> 帐号登录</button>
-        </div>
-        <div class="sub-cont">
-          <div class="img">
-            <div class="img__text m--up">
-              <h2>还未注册？</h2>
-              <p>立即注册，发现大量机会！</p>
-            </div>
-            <div class="img__text m--in">
-              <h2>已有帐号？</h2>
-              <p>有帐号就登录吧，好久不见了！</p>
-            </div>
-            <div class="img__btn" v-on:click="isActive=!isActive">
-              <span class="m--up">注 册</span>
-              <span class="m--in">登 录</span>
-            </div>
-          </div>
-          <div class="form sign-up">
-            <h2>立即注册</h2>
-            <label>
-              <span>用户名</span>
-              <input type="text"/>
-            </label>
-            <label>
-              <span>邮箱</span>
-              <input type="email"/>
-            </label>
-            <label>
-              <span>密码</span>
-              <input type="password"/>
-            </label>
-            <button type="button" class="submit">注 册</button>
-            <button type="button" class="fb-btn">使用 <span>facebook</span> 帐号注册</button>
-          </div>
+          <button type="button" class="submit">注 册</button>
+          <button type="button" class="fb-btn">使用 <span>facebook</span> 帐号注册</button>
         </div>
       </div>
     </div>
@@ -72,23 +53,13 @@
 </template>
 
 <script>
-import ArticleLayout from '@/components/Article/ArticleLayout'
-import Neumorphism from '@/views/neumorphism'
-
 export default {
-  name: 'LogIn_SignIn',
-  components: { Neumorphism },
-  data: function () {
-    return {
-      isActive: true,
-      mounted: function () {
-      }
-    }
-  }
+  name: 'FromBody'
 }
 </script>
 
 <style scoped>
+
 *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
@@ -370,121 +341,5 @@ input {
 .content.s--signup .sign-up {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
-}
-</style>
-<style lang="less" scoped>
-.nav {
-  ul.sidenav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 25%;
-    background-color: #f1f1f1;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-  }
-
-  ul.sidenav li a {
-    display: block;
-    color: #000;
-    padding: 8px 16px;
-    text-decoration: none;
-  }
-
-  ul.sidenav li a.active {
-    background-color: #4CAF50;
-    color: white;
-  }
-
-  ul.sidenav li a:hover:not(.active) {
-    background-color: #555;
-    color: white;
-  }
-
-  ul.sidenav {
-    width: 100%;
-    height: auto;
-  }
-
-  ul.sidenav li a {
-    float: left;
-    padding: 15px;
-  }
-}
-</style>
-<style scoped>
-.circle-container {
-  position: relative;
-  width: 20em;
-  height: 20em;
-  border-radius: 50%;
-  padding: 0;
-  list-style: none;
-  margin: 5em auto 0;
-  border: solid 5px tomato;
-}
-
-.circle-container > * {
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -3em;
-  width: 6em;
-  height: 6em;
-}
-
-.circle-container > *:nth-of-type(1) {
-  transform: rotate(0deg) translate(10em) rotate(0deg);
-}
-
-.circle-container > *:nth-of-type(2) {
-  transform: rotate(45deg) translate(10em) rotate(-45deg);
-}
-
-.circle-container > *:nth-of-type(3) {
-  transform: rotate(90deg) translate(10em) rotate(-90deg);
-}
-
-.circle-container > *:nth-of-type(4) {
-  transform: rotate(135deg) translate(10em) rotate(-135deg);
-}
-
-.circle-container > *:nth-of-type(5) {
-  transform: rotate(180deg) translate(10em) rotate(-180deg);
-}
-
-.circle-container > *:nth-of-type(6) {
-  transform: rotate(225deg) translate(10em) rotate(-225deg);
-}
-
-.circle-container > *:nth-of-type(7) {
-  transform: rotate(270deg) translate(10em) rotate(-270deg);
-}
-
-.circle-container > *:nth-of-type(8) {
-  transform: rotate(315deg) translate(10em) rotate(-315deg);
-}
-
-.circle-container img {
-  display: block;
-  max-width: 100%;
-  border-radius: 25%;/*圆角度*/
-  filter: grayscale(100%);
-  border: solid 5px tomato;
-  transition: .15s;
-}
-
-.circle-container img:hover {
-  filter: grayscale(0);
-  /*颜色*/
-}
-
-</style>
-<style scoped>
-.circleAPPs{
-  margin-top: 10%;
-  float: left;
 }
 </style>
