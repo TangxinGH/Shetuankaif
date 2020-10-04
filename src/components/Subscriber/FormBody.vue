@@ -1,5 +1,4 @@
 <template>
-  <div class="lessForLoginSignup">
     <div class="content " v-bind:class="{ 's--signup': isActive}">
       <div class="form sign-in">
         <h2>欢迎回来</h2>
@@ -49,12 +48,18 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
 export default {
-  name: 'FromBody'
+  name: 'FromBody',
+  data: function () {
+    return {
+      isActive: true,
+      mounted: function () {
+      }
+    }
+  }
 }
 </script>
 
