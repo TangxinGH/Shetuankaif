@@ -13,26 +13,24 @@
         </span>
       </a-menu-item>
       <a-sub-menu key="sub1">
-        <span slot="title"><a-icon type="user"/><span>
-          <router-link to="/browseArticle">浏览文章</router-link>
-          </span></span>
+        <span slot="title"><a-icon type="user"/><span>浏览 </span></span>
         <a-menu-item key="3">
-          Tom
+          <router-link to="/browseNotice">浏览公告</router-link>
         </a-menu-item>
         <a-menu-item key="4">
-          Bill
+          <router-link to="/browseNews">浏览新闻</router-link>
         </a-menu-item>
         <a-menu-item key="5">
-          Alex
+          <router-link to="/browseComment">浏览评论</router-link>
         </a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="sub2">
         <span slot="title"><a-icon type="team"/><span><a href="/compose?ds=xx">用户管理</a></span></span>
         <a-menu-item key="6">
-          Team 1
+          <router-link to="/browseComment"> 会员</router-link>
         </a-menu-item>
         <a-menu-item key="8">
-          Team 2
+          游客
         </a-menu-item>
       </a-sub-menu>
       <a-menu-item key="9">

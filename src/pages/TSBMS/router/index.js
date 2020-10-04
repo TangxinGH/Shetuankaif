@@ -1,27 +1,38 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../../../views/Home.vue'
+import common from '@/pages/TSBMS/tableList/common'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/editNotice',
+    path: '/browseNotice',
     // redirect: '/tsbms/test',
-    name: 'Home',
-    component: Home
+    name: 'browseNotice',
+    component: common
   },
   {
-    path: '/test',
-    name: 'About',
+    path: '/browseNews',
+    name: 'browseNews',
     // route level code-splitting
     // this generates a separate chunk (author.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "author" */ '../../../views/About.vue')
+    component: () => import(/* webpackChunkName: "author" */ '../tableList/common')
   },
   {
-    path: 'tsbmstest',
-    name: 'tsbmstes'
+    path: '/browseComment',
+    name: 'browseComment',
+    component: common
+  },
+  {
+    path: '/MangeUser',
+    name: 'MangeUser',
+    component: common
+  },
+  {
+    path: '/MangeUserVIP',
+    name: 'MangeUserVIP',
+    component: common
   }
 ]
 
