@@ -40,12 +40,11 @@
   </a-comment>
 </template>
 <script>
-// import {moment} from 'ant-design-vue'
-import moment from 'ant-design-vue'
+import moment from 'moment' // 一个日期库
+import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
 import Vue from 'vue'
-Vue.use(moment)
-// Vue.use(moment)
+Vue.use(Antd)
 export default {
   name: 'CommentBasic',
   data () {

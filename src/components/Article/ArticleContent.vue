@@ -94,10 +94,12 @@
           </a><li><a href="6311.htm"></a><a href="6271.htm">下一篇：关于停开2020秋专业选修（限选）课和公共选修（任选）课的通知</a></li><a href="6271.htm">
           </a></ul>
         </div>
+        <a-divider/>
+        <CommentBasic></CommentBasic>
+        <a-divider/>
         <div class="categories">
           <a href="#">Minimum corrumpit </a> <a href="#">Regione suscipit </a> <a href="#">Has et partem </a>
         </div>
-
       </div>
       <div class="pagefooter">
         This page was last edited on 29.07.2017 | Template by <a href="http://html5-templates.com/" target="_blank" rel="nofollow">HTML5 Templates</a> <!-- Please leave this link unchanged -->
@@ -113,8 +115,12 @@
 </template>
 
 <script>
+import CommentBasic from '@/views/CommentBasic'
 export default {
-  name: 'ArticleContent'
+  name: 'ArticleContent',
+  components: {
+    CommentBasic
+  }
 }
 </script>
 

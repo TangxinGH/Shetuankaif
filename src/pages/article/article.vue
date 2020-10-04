@@ -2,7 +2,6 @@
     <div class="g-doc">
       <ArticleLayout/>
 <ArticleContent></ArticleContent>
-      <CommentBasic></CommentBasic>
     </div>
 </template>
 <script>
@@ -12,7 +11,6 @@ import CommentBasic from '@/views/CommentBasic'
 export default {
   name: 'index-app',
   components: {
-    CommentBasic,
     ArticleContent,
     ArticleLayout
   },

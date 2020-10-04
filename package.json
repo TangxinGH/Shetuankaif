@@ -17,6 +17,7 @@
     "jquery": "^3.5.1",
     "less": "^3.12.2",
     "less-loader": "^7.0.1",
+    "moment": "^2.29.0",
     "reqwest": "^2.0.5",
     "tinymce": "^5.5.1",
     "urijs": "^1.19.2",
