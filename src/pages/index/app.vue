@@ -2,7 +2,9 @@
     <div class="g-doc">
         <navigation></navigation>
       <a-divider/>
-        <Carousel></Carousel>
+<!--        <Carousel></Carousel>-->
+      <FadingCarousel></FadingCarousel>
+
       <a-divider/>
         <HomeContent></HomeContent>
         <Footer></Footer>
@@ -14,9 +16,12 @@ import navigation from '@/components/Home/navigation'
 import Carousel from '@/components/Home/Carousel'
 import HomeContent from '@/components/Home/essayBody'
 import pageFooter from '@/components/Home/pageFooter'
+import Neumorphism from '@/views/neumorphism'
+import FadingCarousel from '@/views/FadingCarousel'
 export default {
   name: 'index-app',
   components: {
+    FadingCarousel,
     Footer: pageFooter,
     navigation,
     Carousel,
