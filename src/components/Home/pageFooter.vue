@@ -15,7 +15,7 @@ export default {
      margin-top: 20px;
         height:50px;
         width: 100vw;
-        position:fixed;bottom:0px;left:0px;
+        //position:fixed;bottom:0px;left:0px;
     }
     .el-header, .el-footer {
         background-color: #B3C0D1;

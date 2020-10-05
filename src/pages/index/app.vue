@@ -1,7 +1,9 @@
 <template>
     <div class="g-doc">
         <navigation></navigation>
+      <a-divider/>
         <Carousel></Carousel>
+      <a-divider/>
         <HomeContent></HomeContent>
         <Footer></Footer>
 <!--        <modules :topics="topics" :page="page" />-->

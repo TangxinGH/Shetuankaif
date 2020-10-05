@@ -12,8 +12,10 @@ Vue.use(ElementUI)
 Vue.use(Antd)
 Vue.use(Meta)
 
-const app = new Vue({
-  ...App
-})
-
-app.$mount('#app')
+new Vue({
+  render: h => h(App)
+}).$mount('#app')
+//
+// const app = new Vue({
+//   render: createElement => createElement(App)
+// }).$mount('#app')

@@ -1,8 +1,9 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <hello-world></hello-world>
+
   </div>
+
 </template>
 
 <script>
@@ -13,6 +14,14 @@ export default {
   name: 'Home',
   components: {
     HelloWorld: drawer
+  },
+  data () {
+    return {
+      metaInfo: '>Home - Vincie.web'
+    }
   }
 }
 </script>
+<style scoped>
+
+</style>

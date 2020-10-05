@@ -1,7 +1,7 @@
 <template>
     <div class="block" style="position: relative">
         <span class="demonstration">默认 Hover 指示器触发</span>
-        <el-carousel height="400px" type="card">
+        <el-carousel  height="400px" autoplay>
             <el-carousel-item v-for="item in items" :key="item" style="background: #54d9e0;display: flex;justify-content: center">
                 <h3 class="small">{{ item }}</h3>
 
@@ -47,5 +47,15 @@ export default {
 </script>
 
 <style scoped>
+.ant-carousel >>> .slick-slide {
+  text-align: center;
+  height: 160px;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
+}
 
+.ant-carousel >>> .slick-slide h3 {
+  color: #fff;
+}
 </style>
