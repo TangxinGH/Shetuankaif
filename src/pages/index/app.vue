@@ -2,35 +2,38 @@
     <div class="g-doc">
         <navigation></navigation>
       <a-divider/>
-<!--        <Carousel></Carousel>-->
+<!--      <blog-card style="margin-left: 60%"/>-->
       <FadingCarousel></FadingCarousel>
-
       <a-divider/>
         <HomeContent></HomeContent>
         <Footer></Footer>
-<!--        <modules :topics="topics" :page="page" />-->
     </div>
 </template>
 <script>
 import navigation from '@/components/Home/navigation'
-import Carousel from '@/components/Home/Carousel'
 import HomeContent from '@/components/Home/essayBody'
 import pageFooter from '@/components/Home/pageFooter'
-import Neumorphism from '@/views/neumorphism'
 import FadingCarousel from '@/views/FadingCarousel'
+import blogCard from '@/views/About'
 export default {
   name: 'index-app',
   components: {
-    FadingCarousel,
+    blogCard,
     Footer: pageFooter,
     navigation,
-    Carousel,
-    HomeContent
+    HomeContent,
+    FadingCarousel
   },
   data () {
     return {
       page: Number(new URLSearchParams(window.location.search).get('page')) || 1,
-      topics: []
+      topics: [],
+      items: [{ name: 'Malacca', url: 'https://farm9.staticflickr.com/8059/28286750501_dcc27b1332_h_d.jpg' },
+        { name: 'Cameron Highland', url: 'https://farm6.staticflickr.com/5812/23394215774_b76cd33a87_h_d.jpg' },
+        { name: 'New Delhi', url: 'https://farm8.staticflickr.com/7455/27879053992_ef3f41c4a0_h_d.jpg' },
+        { name: 'Ladakh', url: 'https://farm8.staticflickr.com/7367/27980898905_72d106e501_h_d.jpg' },
+        { name: 'Nubra Valley', url: 'https://farm8.staticflickr.com/7356/27980899895_9b6c394fec_h_d.jpg' }]
+
     }
   },
   async mounted () {
@@ -44,4 +47,5 @@ export default {
 .g-doc{
   margin-top: 10px;
 }
+
 </style>

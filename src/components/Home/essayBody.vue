@@ -1,9 +1,9 @@
 <template>
     <div>
-        <el-row type="flex" class="row-bg" justify="space-around">
-            <el-col :span="6"><div class="grid-content bg-purple">  <Notice></Notice> </div></el-col>
-            <el-col :span="6"><div class="grid-content bg-purple-light"><news></news> </div></el-col>
-            <el-col :span="6"><div class="grid-content bg-purple"></div> <Introduction> </Introduction></el-col>
+        <el-row class="row-bg" >
+            <el-col :xs="{ span: 16, offset: 8 }" :md="{ span: 6, offset: 1 }" :lg="{ span: 6, offset: 2 }" ><div class="grid-content bg-purple">  <Notice></Notice> </div></el-col>
+            <el-col :xs="{ span: 16, offset: 8 }" :md="{ span: 6, offset: 0 }" :lg="{ span: 6, offset: 1 }"><div class="grid-content bg-purple-light"><news></news> </div></el-col>
+            <el-col :xs="{ span: 16, offset: 8 }" :md="{ span: 6, offset: 0 }" :lg="{ span: 6, offset: 1 }"><div class="grid-content bg-purple"></div> <Introduction> </Introduction></el-col>
         </el-row>
     </div>
 </template>
@@ -20,4 +20,8 @@ export default {
 </script>
 
 <style scoped>
+@import "https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@200&display=swap";
+*{
+  font-family: 'Noto Serif SC', serif;
+  }
 </style>
