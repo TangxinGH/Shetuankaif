@@ -1,12 +1,6 @@
 pipeline {
 environment {
 
-
-
-        MAVEN_OPTS = '-Xmx512m -XX:MaxPermSize=256m‘
-
-    }
-
     agent {
         docker {
             image 'maven:3-alpine' 
@@ -16,7 +10,7 @@ environment {
     stages {
         stage('Build') { 
             steps {
-                sh 'mvn -B -DskipTests clean package' 
+                sh 'mvn  clean package' 
             }
         }
     }
