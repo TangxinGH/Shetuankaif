@@ -64,4 +64,9 @@
 
 ![image-20200929170114270](https://img.vim-cn.com/76/b3ec63d1e9a913818c7813b22981b87b2bcaf5.png)
 
->>>>>>> 5b98b54f29ff393f223f297068eee04c22940395
+### jenkinsfile 
+
+docker 挂载 -v .m2文件目录。配置里面镜像maven 镜像
+
+![image-20201006230404149](https://img.vim-cn.com/72/c772bbdf81745f9f1ab5c56587768aafca2a7b.png)
+
