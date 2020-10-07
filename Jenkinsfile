@@ -1,7 +1,7 @@
 pipeline {
 	agent {
 			docker {
-				image 'node:6-alpine' 
+				image 'node:current-alpine3.12' 
 				args '-p 4000:3000 -v /home/kunpengUI:/dist' 
 			}
 		}
@@ -10,6 +10,7 @@ pipeline {
 			
 			steps {
 				sh 'ls -a'
+				sh 'npm config set registry http://registry.npm.taobao.org'
 				sh 'npm install'
 				sh 'npm build'
 			}
