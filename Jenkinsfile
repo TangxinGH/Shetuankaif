@@ -10,10 +10,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-				sh 'cd kotlin/'
-				sh 'mvn  clean kotlin:compile install'
-				sh 'cd ../app/'
-                sh 'mvn   package -pl app -am ' 
+				sh 'clean kotlin:compile package -Dmaven.test.skip=true'
             }
         }
     }
