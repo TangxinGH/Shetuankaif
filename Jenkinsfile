@@ -13,7 +13,7 @@ pipeline {
 				sh 'cd kotlin/'
 				sh 'mvn  clean kotlin:compile install'
 				sh 'cd ../app/'
-                sh 'mvn   package ' 
+                sh 'mvn   package -pl app -am ' 
             }
         }
     }
