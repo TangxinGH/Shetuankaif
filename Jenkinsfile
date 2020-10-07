@@ -7,7 +7,7 @@ pipeline {
 			agent {
 				docker {
 					image 'node:6-alpine'
-					args ' -v /home/kunpengUI:/var/jenkins_home/workspace/kunpengshetuan/dist' 
+					args '-p 4000:3000 -v /home/kunpengUI:/var/jenkins_home/workspace/kunpengshetuan/dist' 
 					}
 			}
 		
