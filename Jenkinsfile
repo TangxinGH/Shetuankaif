@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-				sh 'clean kotlin:compile package -Dmaven.test.skip=true'
+				sh ' mvn clean kotlin:compile package -Dmaven.test.skip=true'
             }
         }
     }
