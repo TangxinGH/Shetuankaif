@@ -2,7 +2,7 @@ pipeline {
 	agent {
 			docker {
 				image 'node:current-alpine3.12' 
-				args '-p 4000:3000 -v /home/kunpengUI:/dist' 
+				args '-p 4000:3000 -v /home/kunpengUI:/var/jenkins_home/workspace/kunpengUI/dist/' 
 			}
 		}
 	stages {
