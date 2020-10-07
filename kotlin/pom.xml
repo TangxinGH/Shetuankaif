@@ -67,6 +67,7 @@
                 </executions>
                 <configuration>
                     <sourceDirs>
+<!--                        这个一定要配置，而且只在这里生效-->
                         <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
                         <sourceDir>${project.basedir}/src/main/java</sourceDir>
                     </sourceDirs>
