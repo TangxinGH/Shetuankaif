@@ -12,7 +12,7 @@ pipeline {
 				sh 'ls -a'
 				sh 'npm config set registry http://registry.npm.taobao.org'
 				sh 'npm install'
-				sh 'npm build'
+				sh 'npm run build'
 			}
 		}
 	}	
