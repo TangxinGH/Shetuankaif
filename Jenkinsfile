@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'mvn -B -DskipTests  clean kotlin:compile install package' 
+                sh 'mvn  clean kotlin:compile  package' 
             }
         }
     }
