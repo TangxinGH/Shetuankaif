@@ -5,6 +5,7 @@ pipeline {
 				args '-p 4000:3000 -v /home/kunpengUI:./dist' 
 			}
 		}
+	stages {
 		stage('build') {
 			
 			steps {
@@ -13,5 +14,5 @@ pipeline {
 				sh 'npm build'
 			}
 		}
-		
+	}	
 }
