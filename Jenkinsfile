@@ -16,7 +16,7 @@ pipeline {
 			}
 		
 			steps {
-					sh 'ls'
+					sh 'tree -d -L 6 ../'
 					sh 'rm -rf Shetuankaif'
 					sh ' git clone -b kunpengUI https://gitee.com/mai-tao/Shetuankaif.git'
 					sh 'cd Shetuankaif '
