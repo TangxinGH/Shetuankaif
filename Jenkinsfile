@@ -11,7 +11,7 @@ pipeline {
 				dockerfile {
 					filename 'dockerfile'
 					dir 'UIbuild'
-					label 'my-defined-label'
+					
 					additionalBuildArgs  '--build-arg version=1.0.2'
 					args ' -v /home/kunpengUI:/home/kunpengUI/'
 				}
