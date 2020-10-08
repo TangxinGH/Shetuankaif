@@ -13,9 +13,11 @@ dowload:
                ls
                npm install --prefix ./Shetuankaif
                npm run build --prefix ./Shetuankaif
+               ls
                rm -rf app/src/main/resource/public/*
-               ls app/src/main/resource/public/
+               ls
                cp -rf Shetuankaif/dist/* app/src/main/resource/public/
+               ls
 
 build:
     steps:
