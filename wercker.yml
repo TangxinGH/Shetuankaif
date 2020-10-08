@@ -1,6 +1,6 @@
 # box: debian:stable-slim
+box: node:current-alpine3.12
 dowload:
-    box: node:current-alpine3.12
     steps:
         - script:
           name: UI
