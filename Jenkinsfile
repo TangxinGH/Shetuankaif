@@ -16,10 +16,11 @@ pipeline {
 			}
 		
 			steps {
-					sh 'tree -d -L 6 ../'
+					sh 'tree -P app -d -L 6 '
 					sh 'rm -rf Shetuankaif'
 					sh ' git clone -b kunpengUI https://gitee.com/mai-tao/Shetuankaif.git'
 					sh 'cd Shetuankaif '
+					sh 'tree -d -L 6 -I '*node_module|.git|tests' '
 					sh 'npm install'
 					sh 'npm run build'
 					sh 'tree -d -L 6 ../'
