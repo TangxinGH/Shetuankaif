@@ -1,5 +1,5 @@
 box: debian:stable-slim
-dowload:
+download:
     box: node:current-alpine3.12
     steps:
         - script:
