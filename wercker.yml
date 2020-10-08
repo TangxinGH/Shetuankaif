@@ -1,4 +1,4 @@
-box: debian:stable-slim
+# box: debian:stable-slim
 dowload:
     box: node:current-alpine3.12
     steps:
@@ -57,6 +57,6 @@ deploy:
   steps:
     - heroku-deploy:
         key: $HEROKU_KEY
-        key-name: HEROKU_KEY_PAIR_PRIVATE
+        key-name: HEROKU_KEY_PAIR
         user: $HEROKU_USER
         app-name: $HEROKU_APP_NAME        
