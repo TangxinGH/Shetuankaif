@@ -1,4 +1,12 @@
 box: debian:stable-slim
+test:
+    steps: 
+        - script:
+          name: testls
+          code: |
+               ls app/
+               ls app/src
+               ls $WERCKER_ROOT/app/src
 dowload:
     box: node:current-alpine3.12
     steps:
@@ -8,6 +16,7 @@ dowload:
                echo "hello word"
                ls
                apk --no-cache add git
+               apk add tree
                rm -rf Shetuankaif
                git clone -b kunpengUI https://gitee.com/mai-tao/Shetuankaif.git
                ls
@@ -16,9 +25,10 @@ dowload:
                ls
                rm -rf app/src/main/resource/public/*
                ls
+               tree  -P app/*
                echo $WERCKER_ROOT
                echo $WERCKER_SOURCE_DIR
-               cp -rf Shetuankaif/dist/* app/src/main/resource/public/
+               cp -Rf Shetuankaif/dist/* app/src/main/resources/public
                ls
 
 build:
