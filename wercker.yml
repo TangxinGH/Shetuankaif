@@ -26,33 +26,6 @@ dowload:
                rm -rf Shetuankaif
                ls
 
-build:
-    steps:
-        - shellcheck:
-            files: run.sh
-
-        - install-packages:
-            packages: curl
-
-        - script:
-            name: build shellcheck
-            code: |
-                curl -L https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client.tgz > /tmp/heroku-client.tgz
-                mkdir /tmp/heroku/
-                tar xzvf /tmp/heroku-client.tgz -C /tmp/heroku/
-
-        - script:
-            name: prepare output
-            code: |
-                mkdir -p $WERCKER_ROOT/vendor/heroku
-                mv /tmp/heroku/heroku-client/* $WERCKER_ROOT/vendor/heroku
-                rm -rf $WERCKER_ROOT/.git $WERCKER_ROOT/.gitignore
-
-publish:
-  steps:
-    - internal/publish-step:
-        owner: wercker
-
 deploy:
   steps:
     - heroku-deploy:
