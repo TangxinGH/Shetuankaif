@@ -1,7 +1,9 @@
 pipeline {
 
 	agent none
-    
+        environment { 
+        CC = 'clang'
+    }
     stages {
 	
 
@@ -21,7 +23,7 @@ pipeline {
 					sh 'rm -rf Shetuankaif'
 					sh ' git clone -b kunpengUI https://gitee.com/mai-tao/Shetuankaif.git'
 					sh 'ls'
-					sh 'cd /Shetuankaif/'
+					sh 'cd ./Shetuankaif/'
 					
 					sh "ls  "
 					sh 'npm install'
