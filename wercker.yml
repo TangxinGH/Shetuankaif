@@ -1,0 +1,44 @@
+box: debian:stable-slim
+dowload:
+    box: node:current-alpine3.12
+    steps:
+        - script:
+          name: echo
+          code: |
+               echo "hello word"
+               ls
+               apk --no-cache add git
+               git clone -b kunpengUI https://gitee.com/mai-tao/Shetuankaif.git
+               ls
+               npm install --prefix ./Shetuankaif
+               npm run build --prefix ./Shetuankaif
+               rm -rf app/src/main/resource/public/*
+               ls app/src/main/resource/public/
+               cp -rf Shetuankaif/dist/* app/src/main/resource/public/
+
+build:
+    steps:
+        - shellcheck:
+            files: run.sh
+
+        - install-packages:
+            packages: curl
+
+        - script:
+            name: build shellcheck
+            code: |
+                curl -L https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client.tgz > /tmp/heroku-client.tgz
+                mkdir /tmp/heroku/
+                tar xzvf /tmp/heroku-client.tgz -C /tmp/heroku/
+
+        - script:
+            name: prepare output
+            code: |
+                mkdir -p $WERCKER_ROOT/vendor/heroku
+                mv /tmp/heroku/heroku-client/* $WERCKER_ROOT/vendor/heroku
+                rm -rf $WERCKER_ROOT/.git $WERCKER_ROOT/.gitignore
+
+publish:
+  steps:
+    - internal/publish-step:
+        owner: wercker
