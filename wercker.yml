@@ -11,7 +11,7 @@ dowload:
     box: node:current-alpine3.12
     steps:
         - script:
-          name: echo
+          name: clone
           code: |
                echo "hello word"
                ls
@@ -25,10 +25,13 @@ dowload:
                ls
                rm -rf app/src/main/resource/public/*
                ls
-               tree  -P app/*
+               tree -a -P app/
                echo $WERCKER_ROOT
                echo $WERCKER_SOURCE_DIR
                cp -Rf Shetuankaif/dist/* app/src/main/resources/public
+               tee -a -P app/
+               echo "删除UI"
+               rm -rf Shetuankaif
                ls
 
 build:
