@@ -46,7 +46,7 @@ module.exports = {
   },
   devServer: {
     index: '/',
-    open: false, // process.platform === 'darwin', 根据平台打开浏览器？？
+    //open: false, // process.platform === 'darwin', 根据平台打开浏览器？？
     host: '',
     port: 9527,
     https: false,
