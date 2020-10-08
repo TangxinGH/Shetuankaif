@@ -3,7 +3,7 @@ dowload:
     box: node:current-alpine3.12
     steps:
         - script:
-          name: echo
+          name: UI
           code: |
                echo "hello word"
                ls
@@ -17,12 +17,12 @@ dowload:
                ls
                rm -rf app/src/main/resource/public/*
                ls
-               tree   app/src/main/resource/
+               tree   app
                echo $WERCKER_ROOT
                echo $WERCKER_SOURCE_DIR
                cp -Rf Shetuankaif/dist/* app/src/main/resources/public
                echo "之后"
-               tree   app/src/main/resource/
+               tree   app
                rm -rf Shetuankaif
                ls
 
@@ -52,3 +52,10 @@ publish:
   steps:
     - internal/publish-step:
         owner: wercker
+
+deploy:
+  steps:
+    - heroku-deploy:
+        key: $HEROKU_KEY
+        user: $HEROKU_USER
+        app-name: $HEROKU_APP_NAME        
