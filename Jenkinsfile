@@ -19,15 +19,17 @@ pipeline {
 					sh 'ls '
 					
 					sh 'rm -rf Shetuankaif'
-					sh ' git clone -b kunpengUI https://gitee.com/mai-tao/Shetuankaif.git'
+					sh 'rm -rf /tmp/Shetuankaif'
+					sh " git clone -b kunpengUI https://gitee.com/mai-tao/Shetuankaif.git '/tmp/Shetuankaif'"
 					sh 'ls'
-					sh 'cd Shetuankaif'
+					sh 'cd /tmp/Shetuankaif/'
 					
 					sh "ls  "
 					sh 'npm install'
 					sh 'npm run build'
 					
-					sh 'rm -rf ../app/src/main/resource/public/*'
+					sh 'rm -rf /var/jenkins_home/workspace/kunpengshetuan/app/src/main/resource/public/*'
+					sh 'cp /tmp/Shetuankaif/dist /var/jenkins_home/workspace/kunpengshetuan/app/src/main/resource/public/ '
 				}
         }
         stage('Build') { 
