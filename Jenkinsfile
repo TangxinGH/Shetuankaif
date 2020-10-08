@@ -11,7 +11,6 @@ pipeline {
 				dockerfile {
 					filename 'dockerfile'
 					dir 'UIbuild'
-					
 					additionalBuildArgs  '--build-arg version=1.0.2'
 					args ' -v /home/kunpengUI:/home/kunpengUI/'
 				}
@@ -19,17 +18,9 @@ pipeline {
 			}
 		
 			steps {
-					sh ' git clone -b kunpengUI https://gitee.com/mai-tao/Shetuankaif.git'
-					sh 'cd Shetuankaif '
-					sh 'npm install'
-					sh 'npm run build'
-					sh 'rm -rf ../app/src/main/resource/public/*'
-					sh ' mv dist/* ../app/src/main/resource/public'
-					sh 'cd ../'
-					sh 'rm -rf Shetuankaif'
+					
 				}
         }
-	
         stage('Build') { 
 			agent {
 				docker {
