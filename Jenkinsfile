@@ -23,11 +23,11 @@ pipeline {
 					sh 'rm -rf Shetuankaif'
 					sh ' git clone -b kunpengUI https://gitee.com/mai-tao/Shetuankaif.git'
 					sh 'ls'
-					sh 'cd ./Shetuankaif/'
+
 					
 					sh "ls  "
-					sh 'npm install'
-					sh 'npm run build'
+					sh 'npm install --prefix ./Shetuankaif'
+					sh 'npm run build ./Shetuankaif'
 					
 					sh 'rm -rf ../app/src/main/resource/public/*'
 				}
