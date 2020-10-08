@@ -27,9 +27,10 @@ pipeline {
 					
 					sh "ls  "
 					sh 'npm install --prefix ./Shetuankaif'
-					sh 'npm run build ./Shetuankaif'
+					sh 'npm run build --prefix ./Shetuankaif'
 					
-					sh 'rm -rf ../app/src/main/resource/public/*'
+					sh 'rm -rf app/src/main/resource/public/*'
+					ls 'app/src/main/resource/public/'
 				}
         }
         stage('Build') { 
