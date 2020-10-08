@@ -19,6 +19,7 @@ pipeline {
 		
 			steps {
 					sh 'ls '
+					sh 'echo pwd'
 					
 					sh 'rm -rf Shetuankaif'
 					sh ' git clone -b kunpengUI https://gitee.com/mai-tao/Shetuankaif.git'
@@ -31,7 +32,7 @@ pipeline {
 					
 					sh 'rm -rf app/src/main/resource/public/*'
 					sh 'ls app/src/main/resource/public/'
-					sh 'cp -rfb Shetuankaif/dist/* app/src/main/resource/public/'
+					sh 'cp -rf Shetuankaif/dist/* app/src/main/resource/public/'
 				}
         }
         stage('Build') { 
