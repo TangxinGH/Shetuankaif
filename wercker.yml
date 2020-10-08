@@ -57,5 +57,6 @@ deploy:
   steps:
     - heroku-deploy:
         key: $HEROKU_KEY
+        key-name: $HEROKU_KEY_PAIR_PRIVATE
         user: $HEROKU_USER
         app-name: $HEROKU_APP_NAME        
