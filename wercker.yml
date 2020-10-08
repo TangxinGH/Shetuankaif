@@ -16,6 +16,8 @@ dowload:
                ls
                rm -rf app/src/main/resource/public/*
                ls
+               echo $WERCKER_ROOT
+               echo $WERCKER_SOURCE_DIR
                cp -rf Shetuankaif/dist/* app/src/main/resource/public/
                ls
 
