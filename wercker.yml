@@ -25,11 +25,12 @@ dowload:
                ls
                rm -rf app/src/main/resource/public/*
                ls
-               tree -a -P app/
+               tree  -a app/ |grep public
+               echo "结束"
                echo $WERCKER_ROOT
                echo $WERCKER_SOURCE_DIR
                cp -Rf Shetuankaif/dist/* app/src/main/resources/public
-               tee -a -P app/
+               tee  -a app/ |grep public
                echo "删除UI"
                rm -rf Shetuankaif
                ls
