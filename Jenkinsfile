@@ -11,14 +11,18 @@ pipeline {
 				dockerfile {
 					filename 'dockerfile'
 					
-					
 				}
 			
 			}
 		
 			steps {
 					sh 'ls'
-					sh 'git'
+					sh ' git clone -b kunpengUI https://gitee.com/mai-tao/Shetuankaif.git'
+					sh 'cd Shetuankaif '
+					sh 'npm install'
+					sh 'npm run build'
+					sh 'tree -d -L 6 ../'
+					sh 'rm -rf ../app/src/main/resource/public/*'
 				}
         }
         stage('Build') { 
