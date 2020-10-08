@@ -31,7 +31,7 @@ pipeline {
 					
 					sh 'rm -rf app/src/main/resource/public/*'
 					sh 'ls app/src/main/resource/public/'
-					sh 'cp Shetuankaif/dist/* app/src/main/resource/public/'
+					sh 'cp -rfb Shetuankaif/dist/* app/src/main/resource/public/'
 				}
         }
         stage('Build') { 
@@ -43,6 +43,7 @@ pipeline {
 			}
             steps {
 				sh ' mvn clean kotlin:compile package -Dmaven.test.skip=true'
+				sh 'echo ${env.WORKSPACE}'
             }
         }
 		
