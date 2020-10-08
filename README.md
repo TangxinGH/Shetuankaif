@@ -50,7 +50,7 @@
 
    5、**总结、在父项目下有的子项目在首次运行clean 和install前应该先运行父项目的clean和install**
 
-   
+
 
    3. 使用maven打包而不是idea
 
