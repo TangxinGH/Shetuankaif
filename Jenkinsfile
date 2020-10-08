@@ -44,7 +44,6 @@ pipeline {
 			}
             steps {
 				sh ' mvn clean kotlin:compile package -Dmaven.test.skip=true'
-				sh 'echo ${env.WORKSPACE}'
             }
         }
 		
