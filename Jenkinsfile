@@ -31,6 +31,7 @@ pipeline {
 					
 					sh 'rm -rf app/src/main/resource/public/*'
 					sh 'ls app/src/main/resource/public/'
+					sh 'cp Shetuankaif/dist/* app/src/main/resource/public/'
 				}
         }
         stage('Build') { 
