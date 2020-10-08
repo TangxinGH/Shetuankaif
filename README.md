@@ -46,7 +46,7 @@
 
    > Failed to execute goal on project ...: Could not resolve dependencies for project ...
 
-   这样测错误，最后发现原来是自己没有首先对父项目也就是interface-test项目进行clean和install ，
+   这样测 错误，最后发现原来是自己没有首先对父项目也就是interface-test项目进行clean和install ，
 
    5、**总结、在父项目下有的子项目在首次运行clean 和install前应该先运行父项目的clean和install**
 
