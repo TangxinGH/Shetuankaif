@@ -30,7 +30,7 @@ pipeline {
 					sh 'npm run build --prefix ./Shetuankaif'
 					
 					sh 'rm -rf app/src/main/resource/public/*'
-					ls 'app/src/main/resource/public/'
+					sh 'ls app/src/main/resource/public/'
 				}
         }
         stage('Build') { 
