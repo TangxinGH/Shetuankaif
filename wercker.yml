@@ -8,6 +8,7 @@ dowload:
                echo "hello word"
                ls
                apk --no-cache add git
+               rm -rf Shetuankaif
                git clone -b kunpengUI https://gitee.com/mai-tao/Shetuankaif.git
                ls
                npm install --prefix ./Shetuankaif
