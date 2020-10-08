@@ -1,17 +1,9 @@
 box: debian:stable-slim
-test:
-    steps: 
-        - script:
-          name: testls
-          code: |
-               ls app/
-               ls app/src
-               ls $WERCKER_ROOT/app/src
 dowload:
     box: node:current-alpine3.12
     steps:
         - script:
-          name: clone
+          name: echo
           code: |
                echo "hello word"
                ls
@@ -25,13 +17,12 @@ dowload:
                ls
                rm -rf app/src/main/resource/public/*
                ls
-               tree  -a app/ |grep public
-               echo "结束"
+               tree   app/src/main/resource/
                echo $WERCKER_ROOT
                echo $WERCKER_SOURCE_DIR
                cp -Rf Shetuankaif/dist/* app/src/main/resources/public
-               tee  -a app/ |grep public
-               echo "删除UI"
+               echo "之后"
+               tree   app/src/main/resource/
                rm -rf Shetuankaif
                ls
 
