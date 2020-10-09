@@ -11,6 +11,7 @@
 <packaging>jar</packaging>
     <artifactId>app</artifactId>
     <dependencies>
+<!--        module-->
         <dependency>
             <groupId>org.shetuan</groupId>
             <artifactId>Service</artifactId>
@@ -21,6 +22,12 @@
             <artifactId>kotlin</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.shetuan</groupId>-->
+<!--            <artifactId>DAL</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--        </dependency>-->
+<!-- module       -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>

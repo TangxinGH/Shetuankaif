@@ -1,9 +1,11 @@
 package entity;
 
-import java.util.Date;
 
 public class User {
- 
+ public User(){
+     super();
+//     无参构造方法。根据usermapper.xml的配置 ，反射构造出 实例化
+ }
     private Integer Sno;
     private String Sname;
     private String SCollege;

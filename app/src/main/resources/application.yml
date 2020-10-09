@@ -8,6 +8,20 @@ spring:
     username: lab_445104143
     password: 076f690c7326_#@Aa
 #  type: com.alibaba.druid.pool.DruidDataSource
-mybatis:
+#mybatis:
+#  config-location: classpath:mybatis/mybatis-config.xml
   ##xml文件的路径配置
-  mapper-locations:  classpath:mapper/*.xml
+#  mapper-locations:  classpath*:mapper/*.xml
+
+#  classpath:/xxx 和 classpath:xxx是一样的 。
+    #.
+    #classpath:xxx 和 classpath*:xxx是不一样的，前者表示引入一个，后者表示引入多个。
+    #.
+    #而且classpath*不仅包含class路径，还包括jar文件中(class路径)进行查找。
+  #.
+  #classpath:mapper/**/*.xml：查找类路径下mapper包下面所有子包中的所有xml。
+
+logging:
+    level:
+      root: debug
+# 详细日志输出

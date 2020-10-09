@@ -17,6 +17,7 @@ public class Test {
     @org.junit.jupiter.api.Test
     public  void test(){
         userService.login();//测试
+        userService.login("sff","xxxx");
         System.out.println("autowiredxx");
     }
     @org.junit.jupiter.api.Test
