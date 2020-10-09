@@ -36,7 +36,7 @@
     <delete id="deleteANoticeByTitle" parameterType="String">
         DELETE FROM notice WHERE 1 = 0
         <if test="Nt_Title != null">
-            or Nt.Nt_Title = #{Nt_Title,jdbcType = VARCHAR}
+            or Nt_Title = #{Nt_Title,jdbcType = VARCHAR}
         </if>
     </delete>
 

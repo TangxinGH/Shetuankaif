@@ -36,7 +36,7 @@
     <delete id="deleteAnActivityByTitle" parameterType="String">
         DELETE FROM activity WHERE 1 = 0
         <if test="Act_Title != null">
-            or Act.Act_Title = #{Act_Title,jdbcType = VARCHAR}
+            or Act_Title = #{Act_Title,jdbcType = VARCHAR}
         </if>
     </delete>
 
