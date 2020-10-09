@@ -14,7 +14,7 @@ public class UserService {
     private UserMapper userMapper;
 
 
-    public User login(String username, String password){return userMapper.login(sno,sname);}
+    //public User login(String username, String password){return userMapper.login(sno,sname);}
 
 
     public int register(User user){return userMapper.register(user);}

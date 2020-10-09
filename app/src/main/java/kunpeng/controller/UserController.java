@@ -21,7 +21,8 @@ public class UserController  {
     @ResponseBody
     public String login(@RequestParam String username, @RequestParam String password) {
         System.out.println("username:" + username + ", password:" + password);
-        User user = userService.login(username, password);
+        //User user = userService.login(username, password);
+        User user = new User();
         if (user != null) {
 
             return "loginsucess";

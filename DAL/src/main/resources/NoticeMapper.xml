@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mapper.NoticeMapper">
+
+    <!-- 查询所有 -->
+    <select id="getAllNotices" resultType="entity.Notice">
+        SELECT * FROM notice
+    </select>
+
+    <!-- 根据标题查询 -->
+    <select id="getNoticeByNoticeTitle" resultType="entity.Notice" parameterType="String">
+        SELECT * FROM notice Nt WHERE 1=1
+        <if test="Nt_Title != null">
+            and Nt.Nt_Title = #{Nt_Title,jdbcType = VARCHAR}
+        </if>
+    </select>
+
+    <!--查询所有标题-->
+    <select id = "getAllNoticeTitles" resultType="String">
+        SELECT Nt_Title FROM notice
+    </select>
+
+    <!-- 添加公告 -->
+    <insert id="addANotice" parameterType="entity.Notice">
+        INSERT INTO notice(Nt_Title, Nt_Content, Nt_Publish_Time,Nt_Author, Nt_Attachment)
+        VALUES (#{Nt_Title,jdbcType = VARCHAR},
+         #{Nt_Content,jdbcType = VARCHAR},
+         #{Nt_Publish_Time,jdbcType = VARCHAR},
+         #{Nt_Author,jdbcType = INTEGER},
+         #{Nt_Attachment,jdbcType = VARCHAR}
+         )
+    </insert>
+
+    <!-- 删除公告 -->
+    <delete id="deleteANoticeByTitle" parameterType="String">
+        DELETE FROM notice WHERE 1 = 0
+        <if test="Nt_Title != null">
+            or Nt.Nt_Title = #{Nt_Title,jdbcType = VARCHAR}
+        </if>
+    </delete>
+
+    <!-- 更新公告 -->
+    <update id="updateANoticeByTitle" parameterType="entity.Notice">
+        UPDATE notice
+        <trim prefix = "set" suffixOverrides=",">
+            <if test = "Nt_Title != null">Nt_Title = #{Nt_Title,jdbcType = VARCHAR},</if>
+            <if test = "Nt_Content != null">Nt_Content = #{Nt_Content,jdbcType = TEXT},</if>
+            <if test = "Nt_Publish_Time != null">Nt_Publish_Time = #{Nt_Publish_Time,jdbcType = DATETIME},</if>
+            <if test = "Nt_Author != null">Nt_Author = #{Nt_Author,jdbcType = INTEGER},</if>
+            <if test = "Nt_Author != null">Nt_Attachment = #{Nt_Attachment,jdbcType = TEXT}</if>
+        </trim>
+        WHERE 1 = 0
+        <if test="Nt_Title != null">
+            or Nt_Title = #{Nt_Title,jdbcType = VARCHAR}
+        </if>
+    </update>
+
+</mapper>
