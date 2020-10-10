@@ -48,7 +48,7 @@
             <if test = "Act_Content != null">Act_Content = #{Act_Content,jdbcType = TEXT},</if>
             <if test = "Act_Publish_Time != null">Act_Publish_Time = #{Act_Publish_Time,jdbcType = DATETIME},</if>
             <if test = "Act_Author != null">Act_Author = #{Act_Author,jdbcType = INTEGER},</if>
-            <if test = "Act_Author != null">Act_Attachment = #{Act_Attachment,jdbcType = TEXT}</if>
+            <if test = "Act_Attachment != null">Act_Attachment = #{Act_Attachment,jdbcType = TEXT}</if>
         </trim>
         WHERE 1 = 0
         <if test="Act_Title != null">
