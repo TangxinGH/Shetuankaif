@@ -25,10 +25,10 @@
     <insert id="addANotice" parameterType="entity.Notice">
         INSERT INTO notice(Nt_Title, Nt_Content, Nt_Publish_Time,Nt_Author, Nt_Attachment)
         VALUES (#{Nt_Title,jdbcType = VARCHAR},
-         #{Nt_Content,jdbcType = VARCHAR},
-         #{Nt_Publish_Time,jdbcType = VARCHAR},
+         #{Nt_Content,jdbcType = TEXT},
+         #{Nt_Publish_Time,jdbcType = DATETIME},
          #{Nt_Author,jdbcType = INTEGER},
-         #{Nt_Attachment,jdbcType = VARCHAR}
+         #{Nt_Attachment,jdbcType = TEXT}
          )
     </insert>
 

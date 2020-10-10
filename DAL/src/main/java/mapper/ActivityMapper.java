@@ -1,5 +1,6 @@
 package mapper;
 
+import entity.Activity;
 import entity.Notice;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -10,7 +11,7 @@ public interface ActivityMapper {
    List<String> getAllActivityTitles();
    List<Notice> getAllActivities();
    Notice getNoticeByActivityTitle(String Title);
-   int addAnActivity(Notice notice);
+   int addAnActivity(Activity activity);
    int deleteAnActivityByTitle(String Title);
-   int updateAnActivityByTitle(String Title);
+   int updateAnActivityByTitle(Activity activity);
 }
