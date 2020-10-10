@@ -31,6 +31,9 @@ public class Test {
         System.out.println("hello world");
     }*/
 
+    @Autowired
+    NoticeService noticeService;
+
     @org.junit.jupiter.api.Test
     public void test2(){
         Notice notice = new Notice();
@@ -40,7 +43,7 @@ public class Test {
         notice.setNt_Content("刘忠好骚");
         notice.setNt_Attachment("www.baidu.com");
         notice.setNt_Publish_Time(new Date());
-        NoticeService service = new NoticeService();
-        System.out.println(service.addANotice(notice) == 1);
+        //NoticeService service = new NoticeService();
+        System.out.println(noticeService.addANotice(notice) == 1);
     }
 }
