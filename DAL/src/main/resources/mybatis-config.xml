@@ -24,6 +24,8 @@
 <!--        所有的sql 都得先注册，不然都得报错找不到。-->
 <!--        使用接口方法-->
         <mapper resource="Department.xml"/>
+<!--        <mapper resource="userMapper.xml"/>-->
+<!--        // 这个没有影响-->
 <!--        使用xml -->
         <mapper resource="Department2.xml"/>
 <!--        试试 resultMap 而不要实体类 会不会报错-->
