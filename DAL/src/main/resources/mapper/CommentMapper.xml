@@ -4,14 +4,14 @@
 
     <!-- 查询所有 -->
     <select id="getAllComments" resultType="entity.Comment">
-        SELECT * FROM Comment
+        SELECT * FROM comment
     </select>
 
     <!-- 根据标题查询 -->
-    <select id="getCommentByCommentTitle" resultType="entity.Comment" parameterType="String">
-        SELECT * FROM Comment Nt WHERE 1=1
-        <if test="Nt_Title != null">
-            and Nt.Nt_Title = #{Nt_Title,jdbcType = VARCHAR}
+    <select id="getCommentByUser" resultType="entity.Comment" parameterType="INTEGER">
+        SELECT * FROM comment Cmt, user u WHERE Cmt.Sno = u.Sno
+        <if test="Sno != null">
+            and Cmt.Sno = #{Nt_Title,jdbcType = VARCHAR}
         </if>
     </select>
 

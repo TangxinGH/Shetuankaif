@@ -6,7 +6,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Primary;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
-import service.UserService;
+import service.*;
+import entity.*;
+
+import java.util.Date;
+
 //@RunWith(SpringRunner.class)
 @SpringBootTest(classes = App.class)
 @DirtiesContext
