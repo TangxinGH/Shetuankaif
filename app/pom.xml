@@ -22,11 +22,7 @@
             <artifactId>kotlin</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.shetuan</groupId>-->
-<!--            <artifactId>DAL</artifactId>-->
-<!--            <version>0.0.1-SNAPSHOT</version>-->
-<!--        </dependency>-->
+
 <!-- module       -->
 
 

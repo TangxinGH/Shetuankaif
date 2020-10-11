@@ -13,4 +13,5 @@ public interface ActivityMapper {
    int addAnActivity(Activity activity);
    int deleteAnActivityByTitle(String Title);
    int updateAnActivityByTitle(Activity activity);
+   List<Activity> findAll();
 }
