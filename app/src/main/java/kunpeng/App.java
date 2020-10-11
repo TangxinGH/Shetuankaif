@@ -9,6 +9,7 @@ import pojo.helloword;
 import static POJO.ENTIYKt.dao;
 @MapperScan(value ={"mapper"})//扫描 mapper包
 @ComponentScan(value = {"service"}) //需要
+@ComponentScan(value = {"kunpeng.controller"})
 @SpringBootApplication
 public class App {
     public static void main(String[] args) {

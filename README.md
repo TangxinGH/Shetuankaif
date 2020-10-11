@@ -75,4 +75,5 @@ wercker
 No MyBatis mapper was found in '[kunpeng]' package. Please check your configuration.
 
 
-？？？ 
+//不要两个相同的 控制器路径
+public 不要有东西，会404  如/api/xx之类的都会404
