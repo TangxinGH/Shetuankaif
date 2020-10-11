@@ -4,14 +4,15 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://rm-bp17rs6x3634h47kkdo.mysql.rds.aliyuncs.com:3306/rds_mysql_4180jtd
-    username: lab_445104143
-    password: 076f690c7326_#@Aa
+    url: jdbc:mysql://121.37.129.14:3306/kunpeng
+    username: tangxin
+    password: tangxin
 #  type: com.alibaba.druid.pool.DruidDataSource
-#mybatis:
+mybatis:
 #  config-location: classpath:mybatis/mybatis-config.xml
   ##xml文件的路径配置
-#  mapper-locations:  classpath*:mapper/*.xml
+  mapper-locations:  classpath*:mapper/*.xml
+#    最好建议个目录 不然其它的 lib 库也会扫描进去
 
 #  classpath:/xxx 和 classpath:xxx是一样的 。
     #.

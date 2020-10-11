@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import javax.sound.midi.Soundbank;
 @Service
-
 public class testB {
     public  void te(){
     }

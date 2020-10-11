@@ -11,6 +11,13 @@
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
       <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <dependency>spring_boot_kunpeng.App</dependency>
+          <file>file://$MODULE_DIR$/src/main/java/kunpeng/App.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/kunpeng/Configuration/myConfiguration.java</file>
+        </fileset>
+      </configuration>
+      <configuration>
         <fileset id="fileset" name="MyConfiguration" removed="false">
           <file>file://$MODULE_DIR$/src/main/java/kunpeng/Configuration/myConfiguration.java</file>
         </fileset>
