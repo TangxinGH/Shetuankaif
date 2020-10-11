@@ -14,9 +14,9 @@ import java.io.IOException;
 * */
 //@RestController 等于 @Controller + @ResponseBody  REST风格
 @Controller
-@RequestMapping("/")
+@RequestMapping("/api")
 public class mainController {
-    @RequestMapping("/")
+    @RequestMapping("/a")
 public @ResponseBody    String Helloword(){//@ResponseBody 数据写进body里。
     return "helloworld. this is from controller";
 }

@@ -8,10 +8,10 @@ spring:
     username: lab_445104143
     password: 076f690c7326_#@Aa
 #  type: com.alibaba.druid.pool.DruidDataSource
-#mybatis:
-#  config-location: classpath:mybatis/mybatis-config.xml
+mybatis:
+  # config-location: classpath:mybatis/mybatis-config.xml
   ##xml文件的路径配置
-#  mapper-locations:  classpath*:mapper/*.xml
+  mapper-locations:  classpath*:mapper/*.xml
 
 #  classpath:/xxx 和 classpath:xxx是一样的 。
     #.
@@ -24,4 +24,5 @@ spring:
 logging:
     level:
       root: debug
+
 # 详细日志输出

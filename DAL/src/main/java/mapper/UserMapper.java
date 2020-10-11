@@ -3,10 +3,13 @@ package mapper;
 import entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface UserMapper {
-    public User login(String sno, String sname);
-//DAO文件 映射数据库
-    int register(User user);
+    public User login(Integer Sno, String Password);
 
+    int register(User user);
+    User findById(Integer id);
+    List<User> findAll();
 }
