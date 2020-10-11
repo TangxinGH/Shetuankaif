@@ -1,7 +1,9 @@
 import kunpeng.App;
 import kunpeng.Configuration.testB;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Primary;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import service.UserService;
@@ -14,7 +16,8 @@ public class Test {
 
     @Autowired
     UserService userService;
-    @Autowired
+//    @Autowired
+//    @Qualifier("tes") //因为我在自定义bean中 为testB 取了别名
     testB testB;
     @org.junit.jupiter.api.Test
     public  void test(){
