@@ -17,11 +17,6 @@
           <file>file://$MODULE_DIR$/src/main/java/kunpeng/Configuration/myConfiguration.java</file>
         </fileset>
       </configuration>
-      <configuration>
-        <fileset id="fileset" name="MyConfiguration" removed="false">
-          <file>file://$MODULE_DIR$/src/main/java/kunpeng/Configuration/myConfiguration.java</file>
-        </fileset>
-      </configuration>
     </facet>
     <facet type="web" name="Web">
       <configuration>
