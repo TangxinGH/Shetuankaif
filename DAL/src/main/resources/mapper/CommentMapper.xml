@@ -13,6 +13,15 @@
         <if test="Sno != null">
             and Cmt.Sno = #{Nt_Title,jdbcType = VARCHAR}
         </if>
+        SELECT * FROM Comment
+    </select>
+
+    <!-- 根据标题查询 -->
+    <select id="getCommentByCommentTitle" resultType="entity.Comment" parameterType="String">
+        SELECT * FROM Comment Nt WHERE 1=1
+        <if test="Nt_Title != null">
+            and Nt.Nt_Title = #{Nt_Title,jdbcType = VARCHAR}
+        </if>
     </select>
 
     <!--查询所有标题-->
@@ -29,6 +38,7 @@
          #{Nt_Author,jdbcType = INTEGER},
          #{Nt_Attachment,jdbcType = TEXT}
          )
+#
     </insert>
 
     <!-- 删除公告 -->

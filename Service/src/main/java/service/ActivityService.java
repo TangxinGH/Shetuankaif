@@ -6,6 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+@Service
+@Component
 public class ActivityService {
     
     @Autowired

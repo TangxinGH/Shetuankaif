@@ -6,7 +6,7 @@ public class Notice {
     private Integer NtID;
     private String Nt_Content;
     private Date Nt_Publish_Time;
-    private String Nt_Author;
+    private int Nt_Author;
     private String Nt_Attachment;
     private String Nt_Undefined;
     private String Nt_Title;
@@ -43,11 +43,11 @@ public class Notice {
         Nt_Publish_Time = nt_Publish_Time;
     }
 
-    public String getNt_Author() {
+    public int getNt_Author() {
         return Nt_Author;
     }
 
-    public void setNt_Author(String nt_Author) {
+    public void setNt_Author(int nt_Author) {
         Nt_Author = nt_Author;
     }
 
