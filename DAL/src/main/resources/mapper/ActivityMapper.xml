@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mapper.ActivityMapper">
+
+    <!-- 查询所有 -->
+    <select id="getAllActivities" resultType="entity.Activity">
+        SELECT * FROM activity
+    </select>
+
+    <!-- 根据标题查询 -->
+    <select id="getActivityByActivityTitle" resultType="entity.Activity" parameterType="String">
+        SELECT * FROM activity Act WHERE 1=1
+        <if test="Act_Title != null">
+            and Act.Act_Title = #{Act_Title,jdbcType = VARCHAR}
+        </if>
+    </select>
+
+    <!--查询所有标题-->
+    <select id = "getAllActivityTitles" resultType="String">
+        SELECT Act_Title FROM activity
+    </select>
+
+    <!-- 添加公告 -->
+    <insert id="addAnActivity" parameterType="entity.Activity">
+        INSERT INTO activity(Act_Title, Act_Content, Act_Publish_Time,Act_Author, Act_Attachment)
+        VALUES (#{Act_Title,jdbcType = VARCHAR},
+         #{Act_Content,jdbcType = VARCHAR},
+         #{Act_Publish_Time,jdbcType = VARCHAR},
+         #{Act_Author,jdbcType = INTEGER},
+         #{Act_Attachment,jdbcType = VARCHAR}
+         )
+    </insert>
+
+    <!-- 删除公告 -->
+    <delete id="deleteAnActivityByTitle" parameterType="String">
+        DELETE FROM activity WHERE 1 = 0
+        <if test="Act_Title != null">
+            or Act_Title = #{Act_Title,jdbcType = VARCHAR}
+        </if>
+    </delete>
+
+    <!-- 更新公告 -->
+    <update id="updateAnActivityByTitle" parameterType="entity.Activity">
+    </update>
+
+</mapper>

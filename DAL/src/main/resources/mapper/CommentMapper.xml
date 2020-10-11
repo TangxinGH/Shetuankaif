@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.CommentMapper">
+
+    <!-- 查询所有 -->
+    <select id="getAllComments" resultType="entity.Comment">
+        SELECT * FROM Comment
+    </select>
+
+    <!-- 根据标题查询 -->
+    <select id="getCommentByCommentTitle" resultType="entity.Comment" parameterType="String">
+        SELECT * FROM Comment Nt WHERE 1=1
+        <if test="Nt_Title != null">
+            and Nt.Nt_Title = #{Nt_Title,jdbcType = VARCHAR}
+        </if>
+    </select>
+
+    <!--查询所有标题-->
+    <select id = "getAllCommentTitles" resultType="String">
+        SELECT Nt_Title FROM Comment
+    </select>
+
+    <!-- 添加公告 -->
+    <insert id="addAComment" parameterType="entity.Comment">
+#
+    </insert>
+
+    <!-- 删除公告 -->
+    <delete id="deleteACommentByTitle" parameterType="String">
+        DELETE FROM Comment WHERE 1 = 0
+        <if test="Nt_Title != null">
+            or Nt_Title = #{Nt_Title,jdbcType = VARCHAR}
+        </if>
+    </delete>
+
+    <!-- 更新公告 -->
+    <update id="updateACommentByTitle" parameterType="entity.Comment">
+
+  </update>
+
+</mapper>

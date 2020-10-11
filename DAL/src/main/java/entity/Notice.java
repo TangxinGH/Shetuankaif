@@ -6,9 +6,18 @@ public class Notice {
     private Integer NtID;
     private String Nt_Content;
     private Date Nt_Publish_Time;
-    private String Nt_Author;
+    private int Nt_Author;
     private String Nt_Attachment;
     private String Nt_Undefined;
+    private String Nt_Title;
+
+    public String getNt_Title(){
+        return Nt_Title;
+    }
+
+    public void setNt_Title(String Nt_Title){
+        this.Nt_Title = Nt_Title;
+    }
 
     public Integer getNtID() {
         return NtID;
@@ -34,11 +43,11 @@ public class Notice {
         Nt_Publish_Time = nt_Publish_Time;
     }
 
-    public String getNt_Author() {
+    public int getNt_Author() {
         return Nt_Author;
     }
 
-    public void setNt_Author(String nt_Author) {
+    public void setNt_Author(int nt_Author) {
         Nt_Author = nt_Author;
     }
 
@@ -62,6 +71,7 @@ public class Notice {
     public String toString() {
         return "Notice{" +
                 "NtID=" + NtID +
+                ", Nt_Title=" + Nt_Title +
                 ", Nt_Content='" + Nt_Content + '\'' +
                 ", Nt_Publish_Time=" + Nt_Publish_Time +
                 ", Nt_Author='" + Nt_Author + '\'' +
