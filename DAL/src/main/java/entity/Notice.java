@@ -6,9 +6,9 @@ public class Notice {
     private Integer NtID;
     private String Nt_Content;
     private Date Nt_Publish_Time;
-    private int Nt_Author;
+    private Integer Nt_Author_ID;
     private String Nt_Attachment;
-    private String Nt_Undefined;
+    private String Nt_Author;
     private String Nt_Title;
 
     public String getNt_Title(){
@@ -43,12 +43,12 @@ public class Notice {
         Nt_Publish_Time = nt_Publish_Time;
     }
 
-    public int getNt_Author() {
-        return Nt_Author;
+    public int getNt_Author_ID() {
+        return Nt_Author_ID;
     }
 
-    public void setNt_Author(int nt_Author) {
-        Nt_Author = nt_Author;
+    public void setNt_Author_ID(int Nt_Author_ID) {
+        this.Nt_Author_ID = Nt_Author_ID;
     }
 
     public String getNt_Attachment() {
@@ -59,12 +59,12 @@ public class Notice {
         Nt_Attachment = nt_Attachment;
     }
 
-    public String getNt_Undefined() {
-        return Nt_Undefined;
+    public String getNt_Author() {
+        return Nt_Author;
     }
 
-    public void setNt_Undefined(String nt_Undefined) {
-        Nt_Undefined = nt_Undefined;
+    public void setNt_Author(String nt_Ad_Name) {
+        Nt_Author = nt_Ad_Name;
     }
 
     @Override
@@ -74,9 +74,9 @@ public class Notice {
                 ", Nt_Title=" + Nt_Title +
                 ", Nt_Content='" + Nt_Content + '\'' +
                 ", Nt_Publish_Time=" + Nt_Publish_Time +
+                ", Nt_Author_ID='" + Nt_Author_ID + '\'' +
                 ", Nt_Author='" + Nt_Author + '\'' +
                 ", Nt_Attachment='" + Nt_Attachment + '\'' +
-                ", Nt_Undefined='" + Nt_Undefined + '\'' +
                 '}';
     }
 }

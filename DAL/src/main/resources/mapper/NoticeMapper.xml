@@ -22,17 +22,14 @@
 
     <!-- 添加公告 -->
     <insert id="addANotice" parameterType="entity.Notice">
-        INSERT INTO notice(Nt_Title, Nt_Content, Nt_Publish_Time,Nt_Author, Nt_Attachment)
+        INSERT INTO notice(Nt_Title, Nt_Content, Nt_Publish_Time, Nt_Author, Nt_Author_ID, Nt_Attachment)
         VALUES (#{Nt_Title,jdbcType = VARCHAR},
-         #{Nt_Content,jdbcType = CLOB},
-         #{Nt_Publish_Time,jdbcType = TIMESTAMP},
-         #{Nt_Author,jdbcType = INTEGER},
-         #{Nt_Attachment,jdbcType = VARCHAR}
-         #{Nt_Content,jdbcType = TEXT},
-         #{Nt_Publish_Time,jdbcType = DATETIME},
-         #{Nt_Author,jdbcType = INTEGER},
-         #{Nt_Attachment,jdbcType = TEXT}
-         )
+            #{Nt_Content,jdbcType = CLOB},
+            #{Nt_Publish_Time,jdbcType = TIMESTAMP},
+            #{Nt_Author,jdbcType = VARCHAR},
+            #{Nt_Author_ID,jdbcType = INTEGER},
+            #{Nt_Attachment,jdbcType = CLOB}
+        )
     </insert>
 
     <!-- 删除公告 -->
@@ -48,10 +45,9 @@
         UPDATE notice
         <trim prefix = "set" suffixOverrides=",">
             <if test = "Nt_Title != null">Nt_Title = #{Nt_Title,jdbcType = VARCHAR},</if>
-            <if test = "Nt_Content != null">Nt_Content = #{Nt_Content,jdbcType = TEXT},</if>
-            <if test = "Nt_Publish_Time != null">Nt_Publish_Time = #{Nt_Publish_Time,jdbcType = DATETIME},</if>
-            <if test = "Nt_Author != null">Nt_Author = #{Nt_Author,jdbcType = INTEGER},</if>
-            <if test = "Nt_Attachment != null">Nt_Attachment = #{Nt_Attachment,jdbcType = TEXT}</if>
+            <if test = "Nt_Content != null">Nt_Content = #{Nt_Content,jdbcType = CLOB},</if>
+            <if test = "Nt_Publish_Time != null">Nt_Publish_Time = #{Nt_Publish_Time,jdbcType = TIMESTAMP},</if>
+            <if test = "Nt_Attachment != null">Nt_Attachment = #{Nt_Attachment,jdbcType = CLOB}</if>
         </trim>
         WHERE 1 = 0
         <if test="Nt_Title != null">

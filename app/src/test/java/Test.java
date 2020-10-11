@@ -2,6 +2,7 @@ import kunpeng.App;
 import kunpeng.Configuration.testB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import service.*;
@@ -43,13 +44,72 @@ public class Test {
     @org.junit.jupiter.api.Test
     public void testNoticeService(){
         Notice notice = new Notice();
-        notice .setNt_Title("刘忠骚吗");
+        notice.setNt_Title("刘忠骚吗");
         notice.setNtID(1);
-        notice.setNt_Author(123);
+        notice.setNt_Author_ID(123);
+        notice.setNt_Author("刘忠");
         notice.setNt_Content("刘忠好骚");
         notice.setNt_Attachment("www.baidu.com");
         notice.setNt_Publish_Time(new Date());
         //NoticeService service = new NoticeService();
-        System.out.println(noticeService.addANotice(notice) == 1);
+        try {
+            System.out.println(noticeService.addANotice(notice) == 1);
+        }
+        catch (Exception e){
+            if (e instanceof DataIntegrityViolationException){
+                System.err.println("外键约束生效！对应表中无该记录！插入失败！");
+            }
+            else {throw e;}
+        }
+    }
+
+    @Autowired
+    ActivityService activityService;
+
+    @org.junit.jupiter.api.Test
+    public void testActivityService(){
+        Activity activity = new Activity();
+        activity.setAct_Title("西部支援计划");
+        activity.setAct_Content(activity.getAct_Title()+"不存在！");
+        activity.setActID(1);
+        activity.setAct_Author_ID(666);
+        activity.setAct_Publish_Time(new Date());
+        activity.setAct_Author("黄晓明");
+        activity.setAct_Attachment("www.bing.com");
+        try {
+            System.out.println(activityService.addAnActivity(activity)==0);
+        }
+        catch (Exception e){
+            if (e instanceof DataIntegrityViolationException){
+                System.err.println("外键约束生效！对应表中无该记录！插入失败！");
+            }
+            else {
+                throw e;
+            }
+        }
+    }
+
+    @Autowired
+    CommentService commentService;
+
+    @org.junit.jupiter.api.Test
+    public void testCommentService(){
+        Comment comment = new Comment();
+        comment.setActID(1);
+        comment.setCmt_Content("日批，亲嘴");
+        comment.setCmt_Date(new Date());
+        comment.setSno(1234567890);
+        comment.setCmt_Sname("骚忠");
+        try{
+            commentService.addAComment(comment);
+        }
+        catch (Exception e){
+            if (e instanceof DataIntegrityViolationException){
+                System.err.println("外键约束生效！对应表中无该记录！插入失败！");
+            }
+            else {
+                throw e;
+            }
+        }
     }
 }

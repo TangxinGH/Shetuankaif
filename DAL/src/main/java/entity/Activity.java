@@ -8,8 +8,17 @@ public class Activity {
     private String Act_Content;
     private Date Act_Publish_Time;
     private String Act_Author;
+    private Integer Act_Author_ID;
     private String Act_Attachment;
     private String Act_Undefined;
+
+    public Integer getAct_Author_ID(){
+        return Act_Author_ID;
+    }
+
+    public void setAct_Author_ID(Integer Act_Author_ID){
+        this.Act_Author_ID = Act_Author_ID;
+    }
 
     public Integer getActID() {
         return ActID;
@@ -75,6 +84,7 @@ public class Activity {
                 ", Act_Content='" + Act_Content + '\'' +
                 ", Act_Publish_Time=" + Act_Publish_Time +
                 ", Act_Author='" + Act_Author + '\'' +
+                ", Act_Author_ID='" + Act_Author_ID + '\'' +
                 ", Act_Attachment='" + Act_Attachment + '\'' +
                 ", Act_Undefined='" + Act_Undefined + '\'' +
                 '}';
