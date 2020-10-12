@@ -57,6 +57,7 @@ public class CodeMsg {
 	public static CodeMsg ORDER_SN_ERROR = new CodeMsg(-11, "订单编号错误！");
 	public static CodeMsg PHONE_ERROR = new CodeMsg(-12, "手机号错误！");
 	public static CodeMsg ORDER_AUTH_ERROR = new CodeMsg(-13, "\u8ba2\u5355\u9a8c\u8bc1\u5931\u8d25\uff0c\u8ba2\u5355\u7f16\u53f7\u6216\u624b\u673a\u53f7\u8f93\u5165\u6709\u8bef\u6216\u8005\u53ef\u80fd\u4f60\u8d2d\u4e70\u7684\u662f\u76d7\u7248\uff0c\u8bf7\u8054\u7cfb\u3010\u733f\u6765\u5165\u6b64\u3011\u5ba2\u670d\uff01");
+	public static CodeMsg UNKNOWN_ERROR = new CodeMsg(Integer.MIN_VALUE,"未知错误，请联系管理员解决问题！");
 	
 	
 	//后台管理类错误码
@@ -148,4 +149,11 @@ public class CodeMsg {
 	public static CodeMsg HOME_STUDENT_REPORTED_NO_EXIST = new CodeMsg(-40002, "举报信息不存在！");
 	//前端用户评论
 	public static CodeMsg HOME_STUDENT_COMMENT_ADD_ERROR = new CodeMsg(-50000, "评论失败，请联系管理员！");
+	public static CodeMsg HOME_STUDENT_COMMENT_CONTENT_EMPTY = new CodeMsg(-50001,"评论内容为空！请输入内容！");
+	public static CodeMsg HOME_WRONG_STUDENT_NUMBER_FORMAT = new CodeMsg(-50002,"学号格式错误！");
+	public static CodeMsg ADD_COMMENT_SUCCESSFULLY = new CodeMsg(40,"添加评论成功！");
+	public static CodeMsg BAD_ACTIVITYID_FORMAT  = new CodeMsg(-50003,"活动号格式错误！");
+	public static CodeMsg GET_COMMENTS_SUCCESSFULLY = new CodeMsg(70,"获取评论列表成功！");
+	public static CodeMsg DELETE_COMMENT_SUCCESSFULLY = new CodeMsg(80,"删除评论成功！");
+	public static CodeMsg DELETE_COMMENT_ERROR = new CodeMsg(-50004,"删除评论失败！");
 }
