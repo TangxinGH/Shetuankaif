@@ -1,72 +1,70 @@
 <template>
-    <div class="content shadow" v-bind:class="{ 's--signup': isActive}">
-      <form  @submit="checkSignInForm">
+  <div class="content shadow" v-bind:class="{ 's--signup': isActive}">
+    <form @submit="checkSignInForm">
       <div class="form sign-in">
         <h2>欢迎回来</h2>
         <label>
-          <span>学号 {{sno}}</span>
+          <span>学号 {{ sno }}</span>
           <input type="text" v-model="sno" v-bind:pattern="sno_pattern" v-bind:title="sno_title" required/>
         </label>
         <label>
-          <span>密码{{password}}</span>
+          <span>密码{{ password }}</span>
           <input type="password" v-model="password" v-bind:pattern="pass_pattern" v-bind:title="pass_title" required/>
         </label>
         <p class="forgot-pass"><a href="javascript:">忘记密码？</a></p>
         <button type="submit" class="submit">登 录</button>
         <button type="button" class="fb-btn">使用 <span>QQ</span> 帐号登录</button>
       </div>
-      </form>
-      <div class="sub-cont">
-        <div class="img">
-          <div class="img__text m--up">
-            <h2>还未注册？</h2>
-            <p>立即注册，发现大量机会！</p>
-          </div>
-          <div class="img__text m--in">
-            <h2>已有帐号？</h2>
-            <p>有帐号就登录吧，好久不见了！</p>
-          </div>
-          <div class="img__btn" v-on:click="isActive=!isActive">
-            <span class="m--up">注 册</span>
-            <span class="m--in">登 录</span>
-          </div>
+    </form>
+    <div class="sub-cont">
+      <div class="img">
+        <div class="img__text m--up">
+          <h2>还未注册？</h2>
+          <p>立即注册，发现大量机会！</p>
         </div>
-        <form  @submit="checkSignUpForm">
+        <div class="img__text m--in">
+          <h2>已有帐号？</h2>
+          <p>有帐号就登录吧，好久不见了！</p>
+        </div>
+        <div class="img__btn" v-on:click="isActive=!isActive">
+          <span class="m--up">注 册</span>
+          <span class="m--in">登 录</span>
+        </div>
+      </div>
+      <form @submit="checkSignUpForm">
         <div class="form sign-up">
           <h2>立即注册</h2>
           <label>
             <span>学号</span>
-            <input type="text" v-model="sign_up_sno" v-bind:pattern="sno_pattern" v-bind:title="sno_title" required />
+            <input type="text" v-model="sign_up_sno" v-bind:pattern="sno_pattern" v-bind:title="sno_title" required/>
           </label>
           <label>
-            <span>昵称</span>
+            <span>姓名</span>
             <input type="text" v-model="sign_up_name"
-                  v-bind:pattern="username_pattern"
+                   v-bind:pattern="username_pattern"
                    v-bind:title="username_title "/>
           </label>
           <label>
             <span>密码</span>
-            <input type="password" v-model="sign_up_password" v-bind:pattern="pass_pattern"  v-bind:title="pass_title" required/>
-<!--             aria-required属性经常在提供之前表明用户输入是必须的。aria-required属性有true和false两个值。
-例如，如果用户必须输入地址区域，将aria-required设置为true。
-注1： 当星号和其他文本符号编程式与区域联系，-->
+            <input type="password" v-model="sign_up_password" v-bind:pattern="pass_pattern" v-bind:title="pass_title"
+                   required/>
+          </label>
+          <label>
+            <span>确认密码</span>
+            <input type="password" v-model="sign_up_password_confirm" v-bind:pattern="pass_pattern" v-bind:title="pass_title"
+                   required/>
           </label>
           <button type="submit" class="submit">注 册</button>
-            <button type="button" class="fb-btn">使用 <span>QQ</span> 帐号注册</button>
+          <button type="button" class="fb-btn">使用 <span>QQ</span> 帐号注册</button>
         </div>
-        </form>
-      </div>
-<!--      <p v-if="errors.length">-->
-<!--        <b>Please correct the following error(s): </b>-->
-<!--       <ul>-->
-<!--         <li v-for="error in errors"> {{ error }} </li>-->
-<!--        </ul>-->
-<!--      </p>-->
-
+      </form>
     </div>
+  </div>
 </template>
 
 <script>
+import qs from 'qs'
+
 export default {
   name: 'FromBody',
   data: function () {
@@ -76,28 +74,114 @@ export default {
       pass_pattern: '^[\\w_-]{3,10}$',
       pass_title: '3-10位 可以包含小写大母和大写字母数字下划线和减号',
       sno_pattern: '^\\d{3,11}$',
-      sno_title: '3 到11位数',
+      sno_title: '3 到11位数字',
       username_pattern: '^[a-zA-Z\u4E00-\u9FA5][a-zA-Z0-9\u4E00-\u9FA5_-]{3,10}',
       username_title: '3 到10字符  首字母只能是大小写字母 小大写 数字 下划线  允许中文',
-
+      errors: false,
       /* // 数据与v-model 绑定 */
       sno: '',
       password: '',
       /* 注册 */
       sign_up_sno: '',
       sign_up_password: '',
+      sign_up_password_confirm: '',
       sign_up_name: '',
       mounted: function () {
       }
     }
   },
   methods: {
-    checkSignInForm: function (e) {
-
-      // e.preventDefault() 这是什么？
+    checkSignInForm: async function (e) {
+      e.preventDefault() // 这是什么？ 方法将取消事件（如果可取消）
+      // 检查登录
+      // const options = {
+      //   method: 'POST',
+      //   headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      //   data: qs.stringify({ Sno: this.sno, Password: this.password }),
+      //   url: '/api/login'
+      // }
+      // this.$axios(options)
+      let that = this/* 这是一个this指向问题,this始终指向Vue,所以需要将this保存在that中,在使用其他操作的时候可以用that代替。不然下面的$Message未定义！！！what */
+      await this.$axios.post('/api/login',
+        null,
+        {
+          params: {
+            Sno: this.sno,
+            Password: this.password
+          }
+        }
+        // qs 会转换为 pplication/x-www-form-urlencoded https://github.com/axios/axios#interceptors
+      ).then(function (response) {
+        window.console.log('login post' + response)
+        let code = response.code
+        if (code != null) {
+          switch (parseInt(response.code)) {
+            case 20:
+              console.log('成功')
+              that.$message.success('登录成功')
+              that.$router.push({ path: '/user' })
+              break
+            case 21:
+              console.log('用户不存在')
+              that.$message.error('用户不存在')
+              break
+            case 22:
+              console.log('密码错误')
+              that.$message.error('密码错误')
+              break
+            default:
+              console.log('未知错误')
+              that.$message.error('未知错误')
+              break
+          }
+        } else that.$message.error('返回空')
+      }).catch(error =>
+        console.log(error))
     },
-    checkSignUpForm: function (e) {
-
+    checkSignUpForm: async function (e) {
+      e.preventDefault()
+      if (this.sign_up_password !== this.sign_up_password_confirm) {
+        this.$message.error('两次密码不一致')
+        return
+      }
+      let that = this
+      await this.$axios.post('/api/register',
+        {
+          sno: this.sign_up_sno,
+          password: this.sign_up_password,
+          sname: this.sign_up_name,
+          scollege: '桂林理工大学',
+          sex: '男',
+          age: '18',
+          joined: false
+        }
+        // qs 会转换为 pplication/x-www-form-urlencoded https://github.com/axios/axios#interceptors
+      ).then(function (response) {
+        window.console.log('register post' + response)
+        let code = response.code
+        if (code != null) {
+          switch (parseInt(response.code)) {
+            case 30:
+              console.log('成功')
+              that.$message.success('注册成功')
+              that.isActive = false
+              break
+            case 31:
+              console.log('用户已存在')
+              that.$message.error('用户已存在')
+              break
+            case 32:
+              console.log('用户格式不对')
+              that.$message.error('用户格式不对')
+              break
+            default:
+              console.log('密码格式不对或者')
+              that.$message.error('密码格式不对或者')
+              break
+          }
+        } else that.$message.error('返回空')
+      }).catch(error =>
+        console.log(error))
     },
     validEmail (email) {
       return false
@@ -107,9 +191,10 @@ export default {
 </script>
 
 <style scoped>
-.shadow{
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /*阴影*/
+.shadow {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /*阴影*/
 }
+
 *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
@@ -324,7 +409,7 @@ h2 {
 label {
   display: block;
   width: 260px;
-  margin: 25px auto 0;
+  margin: 10px auto 0;
   text-align: center;
 }
 
