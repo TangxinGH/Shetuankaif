@@ -1,19 +1,21 @@
 <template>
-    <div class="content " v-bind:class="{ 's--signup': isActive}">
+    <div class="content shadow" v-bind:class="{ 's--signup': isActive}">
+      <form  @submit="checkSignInForm">
       <div class="form sign-in">
         <h2>欢迎回来</h2>
         <label>
-          <span>邮箱</span>
-          <input type="email"/>
+          <span>学号 {{sno}}</span>
+          <input type="text" v-model="sno" v-bind:pattern="sno_pattern" v-bind:title="sno_title" required/>
         </label>
         <label>
-          <span>密码</span>
-          <input type="password"/>
+          <span>密码{{password}}</span>
+          <input type="password" v-model="password" v-bind:pattern="pass_pattern" v-bind:title="pass_title" required/>
         </label>
         <p class="forgot-pass"><a href="javascript:">忘记密码？</a></p>
-        <button type="button" class="submit">登 录</button>
-        <button type="button" class="fb-btn">使用 <span>facebook</span> 帐号登录</button>
+        <button type="submit" class="submit">登 录</button>
+        <button type="button" class="fb-btn">使用 <span>QQ</span> 帐号登录</button>
       </div>
+      </form>
       <div class="sub-cont">
         <div class="img">
           <div class="img__text m--up">
@@ -29,24 +31,38 @@
             <span class="m--in">登 录</span>
           </div>
         </div>
+        <form  @submit="checkSignUpForm">
         <div class="form sign-up">
           <h2>立即注册</h2>
           <label>
-            <span>用户名</span>
-            <input type="text"/>
+            <span>学号</span>
+            <input type="text" v-model="sign_up_sno" v-bind:pattern="sno_pattern" v-bind:title="sno_title" required />
           </label>
           <label>
-            <span>邮箱</span>
-            <input type="email"/>
+            <span>昵称</span>
+            <input type="text" v-model="sign_up_name"
+                  v-bind:pattern="username_pattern"
+                   v-bind:title="username_title "/>
           </label>
           <label>
             <span>密码</span>
-            <input type="password"/>
+            <input type="password" v-model="sign_up_password" v-bind:pattern="pass_pattern"  v-bind:title="pass_title" required/>
+<!--             aria-required属性经常在提供之前表明用户输入是必须的。aria-required属性有true和false两个值。
+例如，如果用户必须输入地址区域，将aria-required设置为true。
+注1： 当星号和其他文本符号编程式与区域联系，-->
           </label>
-          <button type="button" class="submit">注 册</button>
-          <button type="button" class="fb-btn">使用 <span>facebook</span> 帐号注册</button>
+          <button type="submit" class="submit">注 册</button>
+            <button type="button" class="fb-btn">使用 <span>QQ</span> 帐号注册</button>
         </div>
+        </form>
       </div>
+<!--      <p v-if="errors.length">-->
+<!--        <b>Please correct the following error(s): </b>-->
+<!--       <ul>-->
+<!--         <li v-for="error in errors"> {{ error }} </li>-->
+<!--        </ul>-->
+<!--      </p>-->
+
     </div>
 </template>
 
@@ -56,15 +72,44 @@ export default {
   data: function () {
     return {
       isActive: true,
+      /* validate */
+      pass_pattern: '^[\\w_-]{3,10}$',
+      pass_title: '3-10位 可以包含小写大母和大写字母数字下划线和减号',
+      sno_pattern: '^\\d{3,11}$',
+      sno_title: '3 到11位数',
+      username_pattern: '^[a-zA-Z\u4E00-\u9FA5][a-zA-Z0-9\u4E00-\u9FA5_-]{3,10}',
+      username_title: '3 到10字符  首字母只能是大小写字母 小大写 数字 下划线  允许中文',
+
+      /* // 数据与v-model 绑定 */
+      sno: '',
+      password: '',
+      /* 注册 */
+      sign_up_sno: '',
+      sign_up_password: '',
+      sign_up_name: '',
       mounted: function () {
       }
+    }
+  },
+  methods: {
+    checkSignInForm: function (e) {
+
+      // e.preventDefault() 这是什么？
+    },
+    checkSignUpForm: function (e) {
+
+    },
+    validEmail (email) {
+      return false
     }
   }
 }
 </script>
 
 <style scoped>
-
+.shadow{
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /*阴影*/
+}
 *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
