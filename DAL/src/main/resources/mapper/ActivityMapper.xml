@@ -7,6 +7,9 @@
     <select id="getAllActivities" resultType="entity.Activity">
         SELECT * FROM activity
     </select>
+    <select id="findAll" resultType="entity.Activity">
+        SELECT * FROM user
+    </select>
 
     <!-- 根据标题查询 -->
     <select id="getActivityByActivityTitle" resultType="entity.Activity" parameterType="String">
@@ -56,4 +59,46 @@
         </if>
     </update>
 
+
+
+  <!--  &lt;!&ndash; 根据ID查询 &ndash;&gt;
+    <select id="findById" resultType="com.example.demo.entity.User" parameterType="Integer">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+    &lt;!&ndash;登录&ndash;&gt;
+    <select id="login" resultType="entity.Activity" parameterType="String">
+        SELECT * FROM user WHERE username = #{param1} and password = #{param2}
+    </select>
+
+    &lt;!&ndash;登录&ndash;&gt;
+    <select id="register" resultType="entity.Activity" parameterType="User">
+        insert into user (username,password) values ( #{username} , #{password})
+    </select>
+
+    &lt;!&ndash; 创建 &ndash;&gt;
+    <insert id="create" parameterType="entity.Activity">
+        INSERT INTO user(username, password) VALUES (#{username}, #{password})
+    </insert>
+
+    &lt;!&ndash; 删除 &ndash;&gt;
+    <delete id="delete" parameterType="Long">
+        DELETE FROM user WHERE id = #{id}
+    </delete>
+
+    &lt;!&ndash; 更新 &ndash;&gt;
+    <update id="update" parameterType="entity.Activity">
+        UPDATE user SET WHERE 1=1
+        <if test="username != null">
+            username = #{username},
+        </if>
+        <if test="password != null">
+            password = #{password}
+        </if>
+        WHERE id = #{id}
+    </update>
+
+    &lt;!&ndash; 根据用户名查询 &ndash;&gt;
+    <select id="findByName" parameterType="String" resultType="entity.Activity">
+        SELECT * FROM user WHERE username = #{username}
+    </select>-->
 </mapper>

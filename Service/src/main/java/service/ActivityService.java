@@ -13,9 +13,14 @@ import java.util.List;
 @Service
 @Component
 public class ActivityService {
-    
+
     @Autowired
     private ActivityMapper activityMapper;
+    public List<Activity> findAll(){
+        return activityMapper.findAll();
+
+    }
+
     public int addAnActivity(Activity activity){
         //return 0;
         return activityMapper.addAnActivity(activity);
@@ -40,5 +45,5 @@ public class ActivityService {
     public int updateActivityByTitle(Activity activity){
         return activityMapper.updateAnActivityByTitle(activity);
     }
-    
+
 }
