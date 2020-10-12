@@ -53,8 +53,9 @@ public class UserController  {
      }
 
      @RequestMapping(value = "/register",method = RequestMethod.POST)
-     public String Register(@RequestBody Usertest uste) {
-         System.out.println("xx");
+     public String Register(@RequestBody User user) {
+
+       int register = userService.register(user);
 //         Usertest usertest;
 //         ObjectMapper objectMapper=new ObjectMapper();
 //         try {
@@ -70,7 +71,7 @@ java 转 kotlin 时会自动小写。
 *
 *
 * *///         System.out.println(user.getSex());
-         int register = 1;
+        /* int register = 1;*/
          if (register==1) {
 
              return "30";
@@ -78,25 +79,25 @@ java 转 kotlin 时会自动小写。
              return "32";
          }
      }
-     @RequestMapping("/updateUser")
-     @ResponseBody
-     public String Update(@RequestBody User user) {
+    @RequestMapping("/edit")
+    @ResponseBody
+    public String Update(@RequestBody User user) {
 
-         int register = userService.register(user);
-         if (register==1) {
+        int i = userService.update(user);
+        if (i==1) {
 
-             return "loginsucess";
-         } else {
-             return "loginError";
-         }
-     }
-     @RequestMapping("/user/{id}")
-     @ResponseBody
-     public User check(@PathVariable Integer id) {
+            return "loginsucess";
+        } else {
+            return "loginError";
+        }
+    }
+    @RequestMapping("/getUsers")
+    @ResponseBody
+    public User check(@RequestParam Integer id) {
 
-         User user = userService.findById(id);
-       return user;
-     }
+        User user = userService.findById(id);
+        return user;
+    }
     @RequestMapping("/findAll")
     @ResponseBody
     public List<User> findAll(){ //return userService.findAll();

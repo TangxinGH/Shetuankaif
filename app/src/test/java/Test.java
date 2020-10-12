@@ -22,7 +22,7 @@ public class Test {
     testB testB;
     @org.junit.jupiter.api.Test
     public  void test(){
-        userService.login();//测试
+      /*  userService.login();//测试*/
       /*  userService.login("sff","xxxx");*/
         System.out.println("autowiredxx");
     }
