@@ -40,7 +40,7 @@ const params = new URLSearchParams();
 params.append('param1', 'value1');
 params.append('param2', 'value2');
 axios.post('/foo', params);
-Note that URLSearchParams is not supported by all browsers (see caniuse.com), but there is a polyfill available (make sure to polyfill the global environment).
+Note that URLSearchParams is not supported by all browsers (see caniuse.com), but self is a polyfill available (make sure to polyfill the global environment).
 
 Alternatively, you can encode data using the qs library:
 
