@@ -49,7 +49,7 @@ public class Result<T> {
 	}
 
 	public static <T>Result<T> success(CodeMsg successCodeMessage){
-		if (successCodeMessage.getCode() < 0){
+		if (successCodeMessage.getCode() % 10 != 0){
 			return error(successCodeMessage);
 		}
 		return new Result<T>(successCodeMessage);

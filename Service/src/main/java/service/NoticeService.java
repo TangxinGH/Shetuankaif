@@ -23,7 +23,7 @@ public class NoticeService {
         return noticeMapper.addANotice(notice);
     }
 
-    public int deleteNoticeByTitle(String title){
+    public int deleteNoticeByID(Integer title){
         return noticeMapper.deleteANoticeByTitle(title);
     }
 
@@ -39,7 +39,7 @@ public class NoticeService {
         return noticeMapper.getAllNoticeTitles();
     }
 
-    public int updateNoticeByTitle(Notice notice){
+    public int updateNoticeByID(Notice notice){
         return noticeMapper.updateANoticeByTitle(notice);
     }
 

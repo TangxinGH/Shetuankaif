@@ -11,6 +11,6 @@ public interface NoticeMapper {
    List<Notice> getAllNotices();
    Notice getNoticeByNoticeTitle(String Title);
    int addANotice(Notice notice);
-   int deleteANoticeByTitle(String Title);
+   int deleteANoticeByTitle(Integer ntID);
    int updateANoticeByTitle(Notice notice);
 }

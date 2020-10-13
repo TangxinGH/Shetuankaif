@@ -2,13 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="mapper.NoticeMapper">
 
+    <resultMap id="noticeMap" type="entity.Notice">
+        <id column="NtID" property="ntID"/>
+        <result column="Nt_Content" property="ntContent"/>
+        <result column="Nt_Publish_Time" property="ntPublishTime"/>
+        <result column="Nt_Author_ID" property="ntAuthorID"/>
+        <result column="Nt_Attachment" property="ntAttachment"/>
+        <result column="Nt_Author" property="ntAuthor"/>
+        <result column="Nt_Title" property="ntTitle"/>
+    </resultMap>
+    
     <!-- 查询所有 -->
     <select id="getAllNotices" resultType="entity.Notice">
-        SELECT * FROM notice
+        SELECT * FROM notice order by Nt_Publish_Time desc
     </select>
 
     <!-- 根据标题查询 -->
-    <select id="getNoticeByNoticeTitle" resultType="entity.Notice" parameterType="String">
+    <select id="getNoticeByNoticeTitle" resultMap="noticeMap" parameterType="String">
         SELECT * FROM notice Nt WHERE 1=1
         <if test="Nt_Title != null">
             and Nt.Nt_Title = #{Nt_Title,jdbcType = VARCHAR}
@@ -23,20 +33,20 @@
     <!-- 添加公告 -->
     <insert id="addANotice" parameterType="entity.Notice">
         INSERT INTO notice(Nt_Title, Nt_Content, Nt_Publish_Time, Nt_Author, Nt_Author_ID, Nt_Attachment)
-        VALUES (#{Nt_Title,jdbcType = VARCHAR},
-            #{Nt_Content,jdbcType = CLOB},
-            #{Nt_Publish_Time,jdbcType = TIMESTAMP},
-            #{Nt_Author,jdbcType = VARCHAR},
-            #{Nt_Author_ID,jdbcType = INTEGER},
-            #{Nt_Attachment,jdbcType = CLOB}
+        VALUES (#{ntTitle,jdbcType = VARCHAR},
+            #{ntContent,jdbcType = CLOB},
+            #{ntPublishTime,jdbcType = TIMESTAMP},
+            #{ntAuthor,jdbcType = VARCHAR},
+            #{ntAuthorID,jdbcType = INTEGER},
+            #{ntAttachment,jdbcType = CLOB}
         )
     </insert>
 
     <!-- 删除公告 -->
-    <delete id="deleteANoticeByTitle" parameterType="String">
+    <delete id="deleteANoticeByTitle" parameterType="Integer">
         DELETE FROM notice WHERE 1 = 0
-        <if test="Nt_Title != null">
-            or Nt_Title = #{Nt_Title,jdbcType = VARCHAR}
+        <if test="NtID != null">
+            or NtID = #{NtID,jdbcType = INTEGER}
         </if>
     </delete>
 
@@ -44,14 +54,14 @@
     <update id="updateANoticeByTitle" parameterType="entity.Notice">
         UPDATE notice
         <trim prefix = "set" suffixOverrides=",">
-            <if test = "Nt_Title != null">Nt_Title = #{Nt_Title,jdbcType = VARCHAR},</if>
-            <if test = "Nt_Content != null">Nt_Content = #{Nt_Content,jdbcType = CLOB},</if>
-            <if test = "Nt_Publish_Time != null">Nt_Publish_Time = #{Nt_Publish_Time,jdbcType = TIMESTAMP},</if>
-            <if test = "Nt_Attachment != null">Nt_Attachment = #{Nt_Attachment,jdbcType = CLOB}</if>
+            <if test = "Nt_Title != null">Nt_Title = #{ntTitle,jdbcType = VARCHAR},</if>
+            <if test = "Nt_Content != null">Nt_Content = #{ntContent,jdbcType = CLOB},</if>
+            <if test = "Nt_Publish_Time != null">Nt_Publish_Time = #{ntPublishTime,jdbcType = TIMESTAMP},</if>
+            <if test = "Nt_Attachment != null">Nt_Attachment = #{ntAttachment,jdbcType = CLOB}</if>
         </trim>
         WHERE 1 = 0
-        <if test="Nt_Title != null">
-            or Nt_Title = #{Nt_Title,jdbcType = VARCHAR}
+        <if test="NtID != null">
+            or NtID = #{ntID,jdbcType = INTEGER}
         </if>
     </update>
 
