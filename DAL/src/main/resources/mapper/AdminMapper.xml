@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mapper.AdminMapper">
+    <resultMap type="entity.Admin" id="adminMap">
+        <id column="Ad_no" property="adNo"></id>
+        <result column="Ad_name" property="adName"/>
+        <result column="Ad_College" property="adCollege"/>
+        <result column="Ad_password" property="adPassword"/>
+        <result column="Ad_Sex" property="adSex"/>
+        <result column="Ad_Portrait" property="adPortrait"/>
+        <result column="Ad_age" property="Ad_age"/>
+    </resultMap>
+
+    <!-- 查询所有 -->
+    <select id="findAll" resultMap="userMap">
+        SELECT * FROM admin
+    </select>
+
+
+    <!--查看管理员信息-->
+     <select id="findByAdminInfo" resultMap="adminMap" parameterType="Integer">
+         SELECT * FROM admin WHERE Ad_No= #{adNo}
+     </select>
+
+    <!--登录-->
+    <select id="adminLogin" resultMap="adminMap" >
+        SELECT * FROM admin WHERE Ad_No = #{param1} and Ad_password = #{param2}
+    </select>
+
+    <!--增加管理员-->
+    <insert id="addAdmin"   parameterType="entity.Admin">
+        insert into admin (Ad_name,Ad_College,Ad_password,Ad_Sex,Ad_age) values ( #{adName}, #{adCollege}, #{adPassword}, #{adSex}, #{Ad_age})
+    </insert>
+
+
+<!--      <insert id="create" parameterType="kunpeng.entity.User">
+          INSERT INTO user(username, password) VALUES (#{username}, #{password})
+      </insert>-->
+
+
+    <!--删除管理员信息-->
+      <delete id="deleteAdmin" parameterType="Long">
+          DELETE FROM  admin WHERE Ad_No= #{adNo}
+      </delete>
+
+    <!--修改信息-->
+    <update id="updateAdmin"  parameterType="entity.Admin">
+        UPDATE  admin SET WHERE 1=1
+        <if test="Ad_name!= null">
+            Ad_name = #{adName}
+        </if>
+        <if test=" Ad_College!= null">
+            Ad_College = #{adCollege}
+        </if> <if test="Ad_Sex!= null">
+        Ad_Sex = #{adSex}
+    </if> <if test="Ad_age!= null">
+        Ad_age = #{age}
+    </if>
+        WHERE Ad_No= #{adNo}
+    </update>
+
+    <!-- 根据用户名查询 -->
+  <!--  <select id="findBySno" parameterType="String" resultMap="userMap">
+        SELECT * FROM user WHERE Sno = #{sno}
+    </select>-->
+
+</mapper>

@@ -1,40 +1,80 @@
 package entity;
 
 public class Admin {
-    private Integer Ad_no;
-    private String Ad_name;
-    private String Ad_College;
+    private Integer adNo;
+    private String adName;
+    private String adCollege;
+    private String adPassword;
+    private String adSex;
+    private String adPortrait;
+    private String adAge;
 
-    public Integer getAd_no() {
-        return Ad_no;
+    public Integer getAdNo() {
+        return adNo;
     }
 
-    public void setAd_no(Integer ad_no) {
-        Ad_no = ad_no;
+    public void setAdNo(Integer adNo) {
+        this.adNo = adNo;
     }
 
-    public String getAd_name() {
-        return Ad_name;
+    public String getAdName() {
+        return adName;
     }
 
-    public void setAd_name(String ad_name) {
-        Ad_name = ad_name;
+    public void setAdName(String adName) {
+        this.adName = adName;
     }
 
-    public String getAd_College() {
-        return Ad_College;
+    public String getAdCollege() {
+        return adCollege;
     }
 
-    public void setAd_College(String ad_College) {
-        Ad_College = ad_College;
+    public void setAdCollege(String adCollege) {
+        this.adCollege = adCollege;
+    }
+
+    public String getAdPassword() {
+        return adPassword;
+    }
+
+    public void setAdPassword(String adPassword) {
+        this.adPassword = adPassword;
+    }
+
+    public String getAdSex() {
+        return adSex;
+    }
+
+    public void setAdSex(String adSex) {
+        this.adSex = adSex;
+    }
+
+    public String getAdPortrait() {
+        return adPortrait;
+    }
+
+    public void setAdPortrait(String adPortrait) {
+        this.adPortrait = adPortrait;
+    }
+
+    public String getAdAge() {
+        return adAge;
+    }
+
+    public void setAdAge(String adAge) {
+        this.adAge = adAge;
     }
 
     @Override
     public String toString() {
         return "Admin{" +
-                "Ad_no=" + Ad_no +
-                ", Ad_name='" + Ad_name + '\'' +
-                ", Ad_College='" + Ad_College + '\'' +
+                "adNo=" + adNo +
+                ", adName='" + adName + '\'' +
+                ", adCollege='" + adCollege + '\'' +
+                ", adPassword='" + adPassword + '\'' +
+                ", adSex='" + adSex + '\'' +
+                ", adPortrait='" + adPortrait + '\'' +
+                ", adAge='" + adAge + '\'' +
                 '}';
     }
 }

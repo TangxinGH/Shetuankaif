@@ -1,4 +1,3 @@
-/*
 package kunpeng.controller;
 
 import entity.Activity;
@@ -21,6 +20,11 @@ public class ActivityController {
         List<Activity> activities = activityService.findAll();
         return activities;
     }
+    @RequestMapping("/queryactivity")
+    @ResponseBody
+    public List<String>getAllActivitiesTitles() { //return userService.findAll();
+        List<String> allActivitiesTitles = activityService.getAllActivitiesTitles();
+        return allActivitiesTitles;
+    }
 
 }
-*/

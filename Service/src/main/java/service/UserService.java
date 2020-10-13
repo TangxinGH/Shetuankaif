@@ -25,15 +25,15 @@ String sname="234";
     }*/
 
 
-    public User login(Integer Sno, String Password){return userMapper.login(Sno,Password);}
+    public User login(String Sno, String Password){return userMapper.login(Sno,Password);}
 
-    public   Integer  update(User user) {
-        return userMapper.update(user); }
+    public   int  update(User user) { return userMapper.update(user); }
     public   int register(User user){return userMapper.register(user);}
-    public User findById(Integer id) {
-        return userMapper.findById(id);
+    public User findBySno(String sno) {
+        return userMapper.findBySno(sno);
     }
     public List<User> findAll(){
         return userMapper.findAll();
     }
+    public int deleteUser(String sno){ return  userMapper.deleteUser(sno); }
 }

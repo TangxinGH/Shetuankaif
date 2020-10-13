@@ -38,15 +38,15 @@
         insert into user (Sno,Sname,SCollege,Password,Sex,Age,Joined) values ( #{sno} ,#{sname}, #{scollege}, #{password}, #{sex}, #{age},#{joined})
     </insert>
 
-    <!--   创建
+  <!--  &lt;!&ndash;修改信息&ndash;&gt;
       <insert id="create" parameterType="kunpeng.entity.User">
           INSERT INTO user(username, password) VALUES (#{username}, #{password})
       </insert>
-
-       删除
-      <delete id="delete" parameterType="Long">
-          DELETE FROM user WHERE id = #{id}
-      </delete>-->
+-->
+    <!--删除信息-->
+      <delete id="deleteUser" parameterType="String">
+          DELETE FROM user WHERE Sno= #{sno}
+      </delete>
 
     <!--修改信息-->
     <update id="update"  parameterType="entity.User">
@@ -65,8 +65,8 @@
     </update>
 
     <!-- 根据用户名查询 -->
-    <select id="findById" parameterType="Integer" resultMap="userMap">
-        SELECT * FROM user WHERE Sno = #{Sno}
+    <select id="findBySno" parameterType="String" resultMap="userMap">
+        SELECT * FROM user WHERE Sno = #{sno}
     </select>
 
 </mapper>

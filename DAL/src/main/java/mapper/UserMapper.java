@@ -8,11 +8,12 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
-    public User login(Integer Sno, String Password);
+    public User login(String Sno, String Password);
 
   int register(User user);
-    User findById(Integer id);
+    User findBySno(String sno);
     List<User> findAll();
-    Integer  update(User user);
+    int  update(User user);
+    int deleteUser(String sno);
 
 }
