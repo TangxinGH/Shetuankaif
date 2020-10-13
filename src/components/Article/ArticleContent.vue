@@ -88,6 +88,7 @@
 
 <script>
 import CommentBasic from '@/views/CommentBasic'
+import htmlTxt from '../../pages/article/test'
 export default {
   name: 'ArticleContent',
   components: {
@@ -95,7 +96,7 @@ export default {
   },
   data: function () {
     return {
-      content_data: '<p> helloword</p>'
+      content_data: htmlTxt
     }
   },
   mounted () {
