@@ -51,37 +51,9 @@
 
       </div>
       <div class="article">
-        <h1>Simple Wikipedia Website Template</h1>
-        <p class="siteSub">From Wikipedia, the free encyclopedia</p>
-        <p class="roleNote">This article is about the writing implement. For other uses, see Pencil (disambiguation).</p>
 
-        <div class="articleRight">
-          <div class="articleRightInner">
-            <img width="200" src="../../assets/img/taxi-no-connection.png" alt="pencil" />
-          </div>
-          This is a blue <a href="">pencil</a>
-        </div>
+      <div id="article_content" v-html="content_data"> </div>
 
-        <div class="contentsPanel">
-          <div class="contentsHeader">Contents</div>
-          <ul>
-            <li>
-              <span>1</span><a href="#">History</a>
-              <ul>
-                <li><span>1.1</span><a href="#">Camel's hair pencil</a> </li>
-                <li><span>1.2</span><a href="#">Discovery of graphite deposit</a> </li>
-                <li><span>1.3</span><a href="#">Wood holders added </a></li>
-                <li><span>1.4</span><a href="#">The pencil in America </a></li>
-                <li><span>1.5</span><a href="#">Eraser attached </a></li>
-                <li><span>1.6</span><a href="#">Marking material </a></li>
-                <li><span>1.7</span><a href="#">Pencil extenders </a></li>
-              </ul>
-            </li>
-            <li><span>2</span><a href="#">Health</a></li>
-            <li><span>3</span><a href="#">Manufacture</a></li>
-            <li><span>4</span><a href="#">Grading and classification</a></li>
-          </ul>
-        </div>
         <div v-show="true">
           <!--  附件区域   attachment -->
           <a-divider/>
@@ -120,7 +92,20 @@ export default {
   name: 'ArticleContent',
   components: {
     CommentBasic
+  },
+  data: function () {
+    return {
+      content_data: '<p> helloword</p>'
+    }
+  },
+  mounted () {
+    this.$axios.get('').then(res => {
+
+    }).catch(err => {
+      console.log(err)
+    })
   }
+
 }
 </script>
 

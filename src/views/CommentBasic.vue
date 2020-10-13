@@ -1,75 +1,75 @@
 <template>
-  <a-comment>
-    <template slot="actions">
-      <span key="comment-basic-like">
-        <a-tooltip title="Like">
-          <a-icon type="like" :theme="action === 'liked' ? 'filled' : 'outlined'" @click="like" />
+  <a-list
+      class="comment-list"
+      :header="`${data.length} replies`"
+      item-layout="horizontal"
+      :data-source="data"
+  >
+    <a-list-item slot="renderItem" slot-scope="item, index">
+      <a-comment :author="item.author" :avatar="item.avatar">
+        <template slot="actions">
+          <span v-for="action in item.actions">{{ action }}</span>
+        </template>
+        <p slot="content">
+          {{ item.content }}
+        </p>
+        <a-tooltip slot="datetime" :title="item.datetime.format('YYYY-MM-DD HH:mm:ss')">
+          <span>{{ item.datetime.fromNow() }}</span>
         </a-tooltip>
-        <span style="padding-left: '8px';cursor: 'auto'">
-          {{ likes }}
-        </span>
-      </span>
-      <span key="comment-basic-dislike">
-        <a-tooltip title="Dislike">
-          <a-icon
-              type="dislike"
-              :theme="action === 'disliked' ? 'filled' : 'outlined'"
-              @click="dislike"
-          />
-        </a-tooltip>
-        <span style="padding-left: '8px';cursor: 'auto'">
-          {{ dislikes }}
-        </span>
-      </span>
-      <span key="comment-basic-reply-to">Reply to</span>
-    </template>
-    <a slot="author">Han Solo</a>
-    <a-avatar
-        slot="avatar"
-        src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-        alt="Han Solo"
-    />
-    <p slot="content">
-      We supply a series of design principles, practical patterns and high quality design resources
-      (Sketch and Axure), to help people create their product prototypes beautifully and
-      efficiently.
-    </p>
-    <a-tooltip slot="datetime" :title="moment().format('YYYY-MM-DD HH:mm:ss')">
-      <span>{{ moment().fromNow() }}</span>
-    </a-tooltip>
-  </a-comment>
+      </a-comment>
+    </a-list-item>
+  </a-list>
 </template>
 <script>
-import moment from 'moment' // 一个日期库
-import Antd from 'ant-design-vue'
-import 'ant-design-vue/dist/antd.css'
-import Vue from 'vue'
-Vue.use(Antd)
+import moment from 'moment'
+
 export default {
   name: 'CommentBasic',
   data () {
     return {
-      likes: 0,
-      dislikes: 0,
-      action: null,
+      data: [
+        {
+          actions: ['Reply to'],
+          author: 'Han Solo',
+          avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+          content:
+              'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
+          datetime: moment().subtract(1, 'days')
+        },
+        {
+          actions: ['Reply to'],
+          author: 'Han Solo',
+          avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+          content:
+              'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
+          datetime: moment().subtract(2, 'days')
+        }
+      ],
       moment
     }
   },
-  methods: {
-    like () {
-      this.likes = 1
-      this.dislikes = 0
-      this.action = 'liked'
-    },
-    dislike () {
-      this.likes = 0
-      this.dislikes = 1
-      this.action = 'disliked'
-    }
+  mounted () {
+    this.$axios.get('/api/getComments', { params: { actID: 42 } }).then(res => {
+      // 从接口得到数据 常见于数据
+      console.log(res)
+      /* map() 方法返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值。
+
+map() 方法按照原始数组元素顺序依次处理元素。
+
+注意： map() 不会对空数组进行检测。
+
+注意： map() 不会改变原始数组。 */
+      this.data = res.data.comments.map(item => ({
+        ...item,
+        author: item.Sno,
+        content: item.Cmt_Content,
+        datetime: moment(item.Cmt_Date)
+      }))
+      console.log('输出映射后的评论数据')
+      console.log(this.data)
+    }).catch(err => {
+      console.log(err)
+    })
   }
 }
 </script>
-
-<style scoped>
-
-</style>

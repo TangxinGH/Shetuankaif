@@ -20,7 +20,7 @@ export default {
     },
     height: {
       type: Number,
-      default: 360
+      default: 1300
     },
     language: {
       type: String,

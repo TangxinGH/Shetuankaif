@@ -54,16 +54,27 @@ export default {
         language: 'zh_CN', // 语言
         skin_url: '/tinymce/skins/ui/oxide', // skin路径
         content_css: '/tinymce/skins/content/default/content.css',
-        height: 300, // 编辑器高度
+        height: 800, // 编辑器高度
         plugins: this.plugins,
         toolbar: this.toolbar,
         branding: false, // 是否禁用“Powered by TinyMCE”
         menubar: false, // 顶部菜单栏显示
         // 此处为图片上传处理函数，这个直接用了base64的图片形式上传图片，
-        // 如需ajax上传可参考https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_handler
+        // 如需ajax上传可参考 https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_handler
         images_upload_handler: (blobInfo, success, failure) => {
-          const img = 'data:image/jpeg;base64,' + blobInfo.base64()
-          success(img)
+          let param = new FormData() // 创建form对象
+          param.append('image', blobInfo.blob())// 通过append向form对象添加数据
+          // console.log(param.get('file')) // FormData私有类对象，访问不到，可以通过get判断值是否传进去
+          let config = { headers: { 'Content-Type': 'multipart/form-data' } } // 添加请求头
+
+          this.$axios.post('https://api.imgbb.com/1/upload?key=4cf8fa68d0e094302371bfb88f67fdbb', param, config).then(res => {
+            success(res.data.data.url)
+            this.$message.success(' 图片上传成功')
+          }).catch(err => {
+            failure(err)
+          })
+          // const img = 'data:image/jpeg;base64,' + blobInfo.base64()
+          // success(img)
         }
       },
       myValue: this.value

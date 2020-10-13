@@ -5,7 +5,7 @@
       <div class="article_editor_content">
         <div class="wrapper">
           <div class="article_editor_page">
-            <div class="article_editor_title"><input type="text" placeholder="请在这里输入标题" name="title" max-length="64">
+            <div class="article_editor_title"><input v-model="notice_title" type="text" placeholder="请在这里输入标题" name="title" max-length="64">
             </div>
             <div class="article_editor_info">
               <select name="" id="">
@@ -21,7 +21,7 @@
                 <input type="text" class="s" placeholder="0">
               </label>
             </div>
-            <div class="article_editor_textarea">    <tinymceEditor></tinymceEditor>
+            <div class="article_editor_textarea">    <tinymceEditor ref="editor_tinymce"></tinymceEditor>
               </div>
             <div class="article_editor_options">
               <div class="article_editor_info2">
@@ -56,7 +56,7 @@
         <div class="wrapper">
           <div class="fl"><span>正文字数<i class="article_editor_charCount">0</i></span></div>
           <div class="fr">
-            <button type="submit" value="sdff">保存发布</button>
+            <button type="button" @click="submit_publish">保存发布</button>
             <button>取消发布</button>
           </div>
         </div>
@@ -67,9 +67,40 @@
 
 <script>
 import tinymceEditor from '@/components/EditEssay/Tinymce'
+import moment from 'moment'
 export default {
   name: 'editNotice',
-  components: { tinymceEditor }
+  components: { tinymceEditor },
+  data: function () {
+    return {
+      notice_title: ''
+    }
+  },
+  methods: {
+    submit_publish () {
+      if (this.notice_title != '') {
+        let data = {
+          notice: {
+            Nt_Title: this.notice_title,
+            Nt_Author: 'xxxx',
+            Nt_Publish_Time: moment().format('YYYY-MM-DD'),
+            Nt_Content: this.$refs.editor_tinymce.myValue,
+            Nt_Attachment: '',
+            Nt_Author_ID: 121545
+          }
+        }
+        this.$axios.post('/api/publishANotice', data).then(res => {
+          console.log('发布公告')
+          console.log(res)
+          this.$message.info(' 公告已发送')
+        }).catch(err => {
+          console.log(err)
+          this.$message.error(' 公告发送失败')
+        })
+      }
+    }
+  }
+
 }
 </script>
 

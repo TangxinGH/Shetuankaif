@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import common from '@/pages/TSBMS/tableList/common'
-
+import users from '@/views/users'
+import MVPUsers from '@/views/MVPUsers'
 Vue.use(VueRouter)
 
 const routes = [
@@ -27,12 +28,12 @@ const routes = [
   {
     path: '/MangeUser',
     name: 'MangeUser',
-    component: common
+    component: users
   },
   {
     path: '/MangeUserVIP',
     name: 'MangeUserVIP',
-    component: common
+    component: MVPUsers
   }
 ]
 

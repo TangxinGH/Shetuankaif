@@ -6,11 +6,11 @@
           style="width: 100%"
           v-decorator="['category_id',{initialValue:article.article_id,rules: [{ required: true, message: '请选择文章分类' }]}]"
       >
-        <a-select-option value="0">请选择分类</a-select-option>
+        <a-select-option value="0">公告</a-select-option>
         <a-select-option v-for="(key,cate) in cate_list" v-bind:key="key"  :value="cate.category_id" >{{ cate.category_name }}</a-select-option>
       </a-select>
     </a-form-item>
-    <a-form-item :label-col="labelCol" :wrapper-col="wrapperColForSelect" label="文章名称">
+    <a-form-item :label-col="labelCol" :wrapper-col="wrapperColForSelect" label="文章标题">
       <a-input
           v-decorator="['article_title',{initialValue:article.article_title,rules: [{ required: true, message: '请填写文章名称' }]}]"/>
     </a-form-item>
@@ -53,7 +53,7 @@
     </a-form-item>
     <a-form-item :label-col="labelCol" :wrapper-col="{ span: 8, offset: 16 }">
             <a-button type="primary" html-type="submit" class="login-form-button" style="margin-top: 8%;">
-              保存
+              保存发布
             </a-button>
           <a-button type="danger" class="login-form-button" @click="resetFields" style="margin-left: 50px">
             重置
@@ -62,15 +62,14 @@
   </a-form>
 </template>
 <script>
-// import {EditArticle,SaveArticle} from "../../axios/api";
 import TinyMce from '@/components/EditEssay/Tinymce'
+import moment from 'moment'
 
 function getBase64 (img, callback) {
   const reader = new FileReader()
   reader.addEventListener('load', () => callback(reader.result))
   reader.readAsDataURL(img)
 }
-
 export default {
   name: 'MenuEdit',
   components: {
@@ -128,12 +127,17 @@ export default {
 
     handleSubmit (e) {
       e.preventDefault()
+
+      console.log(this.$refs.editor.myValue)
+
       this.form.validateFields((errors, values) => {
         if (errors) {
           console.log(errors)
         } else {
           values.article_id = this.article_id
           values.article_pic = this.article_pic
+          console.log('表单值')
+          console.log(values)
           this.postSubmit(values)
         }
       })
@@ -141,17 +145,27 @@ export default {
     resetFields () {
       this.form.resetFields()
     },
-    // postSubmit (param) {
-    //   SaveArticle(param).then((res) => {
-    //     if (res.data.code == 1) {
-    //       this.$message.success(res.data.msg, 2)
-    //     } else {
-    //       this.$message.error(res.data.msg, 2)
-    //     }
-    //   }).catch((error) => {
-    //     console.log(error)
-    //   })
-    // },
+    postSubmit (param) {
+      let data = {
+        activity: {
+          Act_Title: param.article_title,
+          Act_Author: 'XXX',
+          Act_Publish_Time: moment().format('YYYY-MM-DD'),
+          Act_Content: this.$refs.editor.myValue,
+          Act_Attachment: '',
+          Act_Author_ID: 1248545
+        }
+      }
+      this.$axios.post('/api/addAnActivity', data).then(res => {
+        console.log('发布活动')
+        console.log(res)
+        this.$message.info(' 活动发送成功')
+        // res.data.actID 跳转
+      }).catch(err => {
+        console.log(err)
+        this.$message.error(' 活动发送失败')
+      })
+    },
     handleChange (info) {
       if (info.file.status === 'uploading') {
         this.loading = true

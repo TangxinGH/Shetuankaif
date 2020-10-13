@@ -68,7 +68,9 @@ export default {
   background: rgb(16, 0, 254);
   margin: 16px;
 }
-
+.ant-layout-sider{
+  background-color: #222f3e;
+}
 #components-layout-demo-side >>> .logoheader {
   width: 120px;
   height: 31px;

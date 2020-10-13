@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="logo"/>
-    <a-menu theme="light" :default-selected-keys="['1']" mode="inline">
-      <a-menu-item key="1">
+    <a-menu theme="light" mode="inline">
+      <a-menu-item key="1" >
         <a-icon type="pie-chart"/>
-        <span> <router-link to="/compose">发布公告</router-link></span>
+        <span> <a href="/compose" target="_blank">发布公告</a></span>
       </a-menu-item>
       <a-menu-item key="2">
         <a-icon type="desktop"/>
         <span>
-          <router-link to="/compose">发布新闻</router-link>
+          <a href="/compose" target="_blank">发布新闻</a>
         </span>
       </a-menu-item>
       <a-sub-menu key="sub1">
@@ -21,10 +21,10 @@
       <a-sub-menu key="sub2">
         <span slot="title"><a-icon type="team"/><span>用户管理</span></span>
         <a-menu-item key="6">
-          <router-link to="/browseMVP"> 会员</router-link>
+          <router-link to="/MangeUserVIP"> 管理员</router-link>
         </a-menu-item>
         <a-menu-item key="8">
-          游客
+          <router-link to="/MangeUser">   会员 </router-link>
         </a-menu-item>
       </a-sub-menu>
       <a-menu-item key="9">
