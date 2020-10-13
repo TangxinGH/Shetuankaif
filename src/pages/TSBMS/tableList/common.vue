@@ -1,55 +1,36 @@
-<template>
+<template ref="comA">
+  <div>
+    <p> {{this.$route.query.name}}</p>
   <a-table
       :columns="columns"
-      :row-key="record => record.login.uuid"
+      :row-key="record => record.ActID ? record.ActID : record.NotID"
       :data-source="data"
       :pagination="pagination"
       :loading="loading"
       @change="handleTableChange"
       bordered
   >
-    <template slot="name" slot-scope="name"> {{ name.first }} {{ name.last }} </template>
-    <span slot="action" slot-scope="text, record">
-      <a>Invite 一 {{ record.name }}</a>
-      <a-divider type="vertical" />
-      <a>Delete</a>
-      <a-divider type="vertical" />
-      <a class="ant-dropdown-link"> More actions <a-icon type="down" /> </a>
+    <template slot="name" slot-scope="name"> {{ name.first }} {{ name.last }}</template>
+    <span slot="aHref" slot-scope="text, record">
+      <a> {{ record.Act_Title }}</a>
     </span>
+   <news-operation  slot="action" slot-scope="text, record"></news-operation>
   </a-table>
+  </div>
 </template>
 <script>
 import reqwest from 'reqwest'
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    sorter: true,
-    width: '20%',
-    scopedSlots: { customRender: 'name' }
-  },
-  {
-    title: 'Gender',
-    dataIndex: 'gender',
-    filters: [
-      { text: 'Male', value: 'male' },
-      { text: 'Female', value: 'female' }
-    ],
-    width: '20%'
-  },
-  {
-    title: 'Email',
-    dataIndex: 'email'
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    scopedSlots: { customRender: 'action' },
-  }
-]
+import columnsData from '@/pages/TSBMS/tableList/columns_data'
+import NewsOperation from '@/pages/TSBMS/tableList/operation/newsOperation'
+import { EventBus } from '@/pages/TSBMS/tableList/operation/event-bus'
 
+const columns = columnsData.newsData
+const col = columnsData.columns2
 export default {
   name: 'common',
+  components: { NewsOperation },
+  props: ['routerChange'],
+  rotername: '',
   data () {
     return {
       data: [],
@@ -58,8 +39,20 @@ export default {
       columns
     }
   },
+  watch: {
+    routerChange: function () {
+      console.log('数据改变了')
+    }
+  },
   mounted () {
     this.fetch()
+    console.log('传参数' + this.$route.query.name)
+    EventBus.$on('addition', param => {
+      console.log('evenbus')
+    })
+  },
+  updated () {
+    console.log('updated 传参数' + this.$route.query.name)
   },
   methods: {
     handleTableChange (pagination, filters, sorter) {
@@ -67,19 +60,22 @@ export default {
       const pager = { ...this.pagination }
       pager.current = pagination.current
       this.pagination = pager
-      this.fetch({
-        results: pagination.pageSize,
-        page: pagination.current,
-        sortField: sorter.field,
-        sortOrder: sorter.order,
-        ...filters
-      })
+      // this.fetch({  //让服务器来排序
+      //   results: pagination.pageSize,
+      //   page: pagination.current,
+      //   sortField: sorter.field,
+      //   sortOrder: sorter.order,
+      //   ...filters
+      // })
+    },
+    buttonclick: function () {
+      this.data = col
     },
     fetch (params = {}) {
       console.log('params:', params)
       this.loading = true
       reqwest({
-        url: 'https://randomuser.me/api',
+        url: '/api/articles', // getNotices
         method: 'get',
         data: {
           results: 10,
@@ -90,9 +86,10 @@ export default {
         const pagination = { ...this.pagination }
         // Read total count from server
         // pagination.total = data.totalCount;
+        console.log(data)
         pagination.total = 200
         this.loading = false
-        this.data = data.results
+        this.data = data.msg
         this.pagination = pagination
       })
     }

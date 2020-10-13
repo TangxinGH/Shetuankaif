@@ -4,22 +4,51 @@
             <span>公告</span>
             <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
         </div>
-        <div v-for="o in 4" :key="o" class="text item">
-            {{'列表内容 ' + o }}
-            <div>
-                <span>时间</span>
-                <el-divider direction="vertical"></el-divider>
-                <span>标题  </span>
-                <el-divider direction="vertical"></el-divider>
-                <span>作者</span>
-            </div>
-        </div>
+      <div v-for="item in notice_data" :key="item.NtID" class="text item" >
+        <a-space :size="8" >
+          <span  >  {{ item.Nt_Publish_Time }}</span>
+          <a-divider type="vertical" />
+          <a  v-bind:href="item.NtID" target="_blank" >
+            <span >  {{item.Nt_Title }}…</span>
+            <a-divider  type="vertical" />
+          </a>
+          <span  > {{ item.Nt_Author_ID }}</span>
+        </a-space>
+      </div>
     </el-card>
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
-  name: 'notice'
+  name: 'notice',
+  created () {
+    let self = this
+    this.$axios.get('/api/getAllNoticesTitles').then(function (response) {
+      // 压数据
+      if (response.data.msg != null) {
+        // if (response.code == 700) {
+        self.news_data = response.data.msg
+        debugger
+        self.news_data = response.data.msg.map((item) => { //  有同事指出应该声明一个新变量来存储map的结果，这个建议我认为是对的。
+          return {
+            ...item,
+            Act_Publish_Time: moment(item.Act_Publish_Time).format('MM-DD'),
+            Act_Title: item.Act_Title.slice(1, 40) // 截取字符串.slice(4)  20 应该是最多吧
+          }
+        })
+      }
+      // }
+    }).catch(function (err) {
+      window.console.log('err', err)
+    })
+  },
+  data: function () {
+    return {
+      notice_data: []
+    }
+  }
 }
 </script>
 

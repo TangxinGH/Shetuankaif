@@ -1,12 +1,14 @@
 <template>
     <el-container class="topHight">
-        <el-footer>pageFooter </el-footer>
+        <el-footer><jwc-footer/> </el-footer>
     </el-container>
 </template>
 
 <script>
+import JwcFooter from '@/views/jwcFooter'
 export default {
-  name: 'pageFooter'
+  name: 'pageFooter',
+  components: { JwcFooter }
 }
 </script>
 

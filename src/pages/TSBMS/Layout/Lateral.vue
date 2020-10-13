@@ -15,13 +15,28 @@
       <a-sub-menu key="sub1">
         <span slot="title"><a-icon type="user"/><span>浏览 </span></span>
         <a-menu-item key="3">
-          <router-link to="/browseNotice">浏览公告</router-link>
+          <router-link :to="{
+            path: '/browseNotice',
+            query: {
+              name: 'notice'
+            }
+          }">浏览公告</router-link>
         </a-menu-item>
         <a-menu-item key="4">
-          <router-link to="/browseNews">浏览新闻</router-link>
+          <router-link :to="{
+            path: '/browseNews',
+            query: {
+              name: 'news'
+            }
+          }">浏览新闻</router-link>
         </a-menu-item>
         <a-menu-item key="5">
-          <router-link to="/browseComment">浏览评论</router-link>
+          <router-link  :to="{
+            path: '/browseComment',
+            query: {
+              name: 'comment'
+            }
+          }" >浏览评论</router-link>
         </a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="sub2">
@@ -42,9 +57,26 @@
 </template>
 
 <script>
+import { EventBus } from '../tableList/operation/event-bus'
+console.log(EventBus)
 export default {
-  name: 'Lateral'
+  name: 'Lateral',
+  data: function () {
+    return {
+      id: '1',
+      id2: '2',
+      id3: '3'
+    }
+  },
+  methods: {
+    additionHandle () {
+      EventBus.$emit('addition', {
+        num: this.num++
+      })
+    }
+  }
 }
+
 </script>
 
 <style scoped>

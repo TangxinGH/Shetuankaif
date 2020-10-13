@@ -15,6 +15,7 @@ import HomeContent from '@/components/Home/essayBody'
 import pageFooter from '@/components/Home/pageFooter'
 import FadingCarousel from '@/views/FadingCarousel'
 import blogCard from '@/views/About'
+import JwcFooter from '@/views/jwcFooter'
 export default {
   name: 'index-app',
   components: {
