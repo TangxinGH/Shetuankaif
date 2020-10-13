@@ -47,7 +47,7 @@ export default {
   },
   data () {
     return {
-      collapsed: false,
+      collapsed: false
     }
   },
   methods: {
@@ -56,8 +56,8 @@ export default {
     },
     onBreakpoint (broken) {
       console.log(broken)
-    },
-  },
+    }
+  }
 }
 // collapsed-width 为0时
 </script>

@@ -29,7 +29,7 @@ export default {
   },
   created () {
     let self = this
-    this.$axios.get('/api/articles').then(function (response) {
+    this.$axios.get('/api/articlesColumn').then(function (response) {
       // 压数据
       if (response.data.msg != null) {
         // if (response.code == 700) {

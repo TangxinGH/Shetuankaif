@@ -24,19 +24,23 @@ import columnsData from '@/pages/TSBMS/tableList/columns_data'
 import NewsOperation from '@/pages/TSBMS/tableList/operation/newsOperation'
 import { EventBus } from '@/pages/TSBMS/tableList/operation/event-bus'
 
-const columns = columnsData.newsData
-const col = columnsData.columns2
+const articlesColumn = columnsData.newsData
+const allCommentsColumn = columnsData.AllComments
+const NoticesColumn = columnsData.Notices
+
 export default {
   name: 'common',
   components: { NewsOperation },
   props: ['routerChange'],
-  rotername: '',
   data () {
     return {
       data: [],
       pagination: {},
       loading: false,
-      columns
+      articles: articlesColumn,
+      getNotices: NoticesColumn,
+      getAllComments: allCommentsColumn,
+      columns: articlesColumn // 默认
     }
   },
   watch: {
@@ -45,14 +49,10 @@ export default {
     }
   },
   mounted () {
-    this.fetch()
-    console.log('传参数' + this.$route.query.name)
-    EventBus.$on('addition', param => {
-      console.log('evenbus')
-    })
-  },
-  updated () {
-    console.log('updated 传参数' + this.$route.query.name)
+    this.fetch('/api/articles') // 默认
+    EventBus.$on('browseNews', param => { this.fetch('/api/articles'); this.columns = articlesColumn; window.console.log(param.to + 'evenbus') })
+    EventBus.$on('browseComment', param => { this.fetch('/api/getAllComments'); this.columns = allCommentsColumn; console.log(param.to + 'evenbus') })
+    EventBus.$on('browseNotice', param => { this.fetch('/api/getNotices'); this.columns = NoticesColumn; console.log(param.to + 'evenbus') })
   },
   methods: {
     handleTableChange (pagination, filters, sorter) {
@@ -68,14 +68,12 @@ export default {
       //   ...filters
       // })
     },
-    buttonclick: function () {
-      this.data = col
-    },
-    fetch (params = {}) {
+
+    fetch (url, params = {}) { // 获取数据
       console.log('params:', params)
       this.loading = true
       reqwest({
-        url: '/api/articles', // getNotices
+        url: url,
         method: 'get',
         data: {
           results: 10,
@@ -89,7 +87,7 @@ export default {
         console.log(data)
         pagination.total = 200
         this.loading = false
-        this.data = data.msg
+        this.data = data.msg // 赋于数据
         this.pagination = pagination
       })
     }

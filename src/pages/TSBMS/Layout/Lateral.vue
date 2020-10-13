@@ -1,48 +1,27 @@
 <template>
   <div>
     <div class="logo"/>
-    <a-menu theme="dark" :default-selected-keys="['1']" mode="inline">
+    <a-menu theme="light" :default-selected-keys="['1']" mode="inline">
       <a-menu-item key="1">
         <a-icon type="pie-chart"/>
-        <span> <router-link to="/editNotice">发布公告</router-link></span>
+        <span> <router-link to="/compose">发布公告</router-link></span>
       </a-menu-item>
       <a-menu-item key="2">
         <a-icon type="desktop"/>
         <span>
-          <router-link to="/editNews">发布新闻</router-link>
+          <router-link to="/compose">发布新闻</router-link>
         </span>
       </a-menu-item>
       <a-sub-menu key="sub1">
         <span slot="title"><a-icon type="user"/><span>浏览 </span></span>
-        <a-menu-item key="3">
-          <router-link :to="{
-            path: '/browseNotice',
-            query: {
-              name: 'notice'
-            }
-          }">浏览公告</router-link>
-        </a-menu-item>
-        <a-menu-item key="4">
-          <router-link :to="{
-            path: '/browseNews',
-            query: {
-              name: 'news'
-            }
-          }">浏览新闻</router-link>
-        </a-menu-item>
-        <a-menu-item key="5">
-          <router-link  :to="{
-            path: '/browseComment',
-            query: {
-              name: 'comment'
-            }
-          }" >浏览评论</router-link>
-        </a-menu-item>
+        <a-menu-item key="3" @click="changeBrowseHandle('browseNotice')">浏览公告        </a-menu-item>
+        <a-menu-item key="4" @click="changeBrowseHandle('browseNews')">浏览活动</a-menu-item>
+        <a-menu-item key="5" @click="changeBrowseHandle('browseComment')"> 浏览评论        </a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="sub2">
-        <span slot="title"><a-icon type="team"/><span><a href="/compose?ds=xx">用户管理</a></span></span>
+        <span slot="title"><a-icon type="team"/><span>用户管理</span></span>
         <a-menu-item key="6">
-          <router-link to="/browseComment"> 会员</router-link>
+          <router-link to="/browseMVP"> 会员</router-link>
         </a-menu-item>
         <a-menu-item key="8">
           游客
@@ -69,9 +48,20 @@ export default {
     }
   },
   methods: {
-    additionHandle () {
-      EventBus.$emit('addition', {
-        num: this.num++
+    changeBrowseHandle (toCommon) {
+      this.$router.push({ path: toCommon }).catch(err => {
+        // Ignore the vuex err regarding  navigating to the page they are already on.
+        if (
+          err.name !== toCommon &&
+            !err.message.includes('Avoided redundant navigation to current location')
+        ) {
+          // But print any other errors to the console
+          console.log(err)
+        }
+      })
+
+      EventBus.$emit(toCommon, {
+        to: toCommon
       })
     }
   }
