@@ -1,15 +1,17 @@
 package mapper;
 
 import entity.Comment;
-import org.apache.ibatis.annotations.Mapper;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
+
 @Mapper
 public interface CommentMapper {
-    List<String> getAllCommentTitles();
     List<Comment> getAllComments();
-    Comment getCommentByCommentTitle(String Title);
+    List<Comment> getCommentBySno(Integer Sno);
+    List<Comment> getCommentByActivityID(Integer ActID);
     int addAComment(Comment Comment);
-    int deleteACommentByTitle(String Title);
-    int updateACommentByTitle(Comment Comment);
+    int deleteACommentBySno(Integer Sno);
+    int deleteACommentByCommentID(Integer CmtID);
+    int updateACommentBySno(Comment Comment);
 }

@@ -2,40 +2,65 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="mapper.CommentMapper">
 
-    <!-- 查询所有 -->
+    <!-- 查询所有评论 -->
     <select id="getAllComments" resultType="entity.Comment">
-        SELECT * FROM Comment
+        SELECT * FROM comment
     </select>
 
-    <!-- 根据标题查询 -->
-    <select id="getCommentByCommentTitle" resultType="entity.Comment" parameterType="String">
-        SELECT * FROM Comment Nt WHERE 1=1
-        <if test="Nt_Title != null">
-            and Nt.Nt_Title = #{Nt_Title,jdbcType = VARCHAR}
+    <!-- 根据用户学号查询评论 -->
+    <select id="getCommentBySno" resultType="entity.Comment" parameterType="INTEGER">
+        SELECT * FROM comment Cmt WHERE 1=1
+        <if test="Sno != null">
+            and Cmt.Sno = #{Sno,jdbcType = VARCHAR}
         </if>
     </select>
 
-    <!--查询所有标题-->
-    <select id = "getAllCommentTitles" resultType="String">
-        SELECT Nt_Title FROM Comment
+    <!-- 根据活动ID查询评论 -->
+    <select id="getCommentByActivityID" resultType="entity.Comment" parameterType="INTEGER">
+        SELECT * FROM comment Cmt WHERE 1=1
+        <if test="ActID != null">
+            and Cmt.ActID = #{ActID,jdbcType = VARCHAR}
+        </if>
     </select>
 
-    <!-- 添加公告 -->
+    <!-- 添加评论 -->
     <insert id="addAComment" parameterType="entity.Comment">
-#
+        INSERT INTO comment(ActID,Sno,Cmt_Date,Cmt_Content,Cmt_Sname)
+        VALUES (#{ActID,jdbcType = INTEGER},
+            #{Sno,jdbcType = INTEGER},
+            #{Cmt_Date,jdbcType = TIMESTAMP},
+            #{Cmt_Content,jdbcType = CLOB},
+            #{Cmt_Sname,jdbcType = VARCHAR}
+        )
     </insert>
 
-    <!-- 删除公告 -->
-    <delete id="deleteACommentByTitle" parameterType="String">
-        DELETE FROM Comment WHERE 1 = 0
-        <if test="Nt_Title != null">
-            or Nt_Title = #{Nt_Title,jdbcType = VARCHAR}
+    <!-- 删除用户的所有评论 -->
+    <delete id="deleteACommentBySno" parameterType="INTEGER">
+        DELETE FROM comment WHERE 1 = 0
+        <if test="Sno != null">
+            or Sno = #{Sno,jdbcType = VARCHAR}
         </if>
     </delete>
 
-    <!-- 更新公告 -->
-    <update id="updateACommentByTitle" parameterType="entity.Comment">
+    <!-- 通过评论id删除评论 -->
+    <delete id="deleteACommentByCommentID" parameterType="INTEGER">
+        DELETE FROM comment WHERE 1 = 0
+        <if test="Sno != null">
+            or CmtID = #{CmtID,jdbcType = VARCHAR}
+        </if>
+    </delete>
 
-  </update>
+    <!-- 更新评论 -->
+    <update id="updateACommentBySno" parameterType="entity.Comment">
+        UPDATE comment
+        <trim prefix = "set" suffixOverrides=",">
+            <if test = "Cmt_Date != null">Cmt_Date = #{Cmt_Date,jdbcType = TIMESTAMP},</if>
+            <if test = "Cmt_Content != null">Cmt_Content = #{Cmt_Content,jdbcType = CLOB}</if>
+        </trim>
+        WHERE 1 = 0
+        <if test="Sno != null">
+            or Sno = #{Sno,jdbcType = VARCHAR}
+        </if>
+    </update>
 
 </mapper>

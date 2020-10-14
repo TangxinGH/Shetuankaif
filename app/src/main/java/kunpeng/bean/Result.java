@@ -48,6 +48,13 @@ public class Result<T> {
 		return new Result<T>(data,CodeMsg.SUCCESS);
 	}
 
+	public static <T>Result<T> success(CodeMsg successCodeMessage){
+		if (successCodeMessage.getCode() < 0){
+			return error(successCodeMessage);
+		}
+		return new Result<T>(successCodeMessage);
+	}
+
 	/**
 	 * 统一错误返回方法，所有错误都调用此方法
 	 * @param codeMsg
