@@ -7,9 +7,20 @@
         <div class="header-right">
           <a class="active"  v-bind:href="env? './index.html' : './index'"><i></i>首页</a>
           <a v-bind:href="env ? './article.html' : './article'"><i></i>文章页</a>
-          <a v-bind:href="env ? './compose.html' : './compose'"><i></i>编辑文章</a>
-          <a v-bind:href="env ? './subscriber.html' : './subscriber'"><i></i>subscriber登录</a>
-          <a v-bind:href="env ? './tsbms.html' : './tsbms'"><i></i>后台管理</a>
+          <a v-bind:href="env ? './compose.html' : './compose'"><i></i>撰写文章</a>
+          <a v-bind:href="env ? './subscriber.html' : './subscriber'"><i></i>加入我们</a>
+          <a  @click="showModal"> 后台管理</a>
+          <a-modal v-model="visible" title="管理员登录" on-ok="handleOk">
+            <template slot="footer">
+              <a-button key="back" @click="handleCancel">
+                Return
+              </a-button>
+<!--              <a-button key="submit" type="primary" :loading="loading" @click="handleOk">-->
+<!--                Submit-->
+<!--              </a-button>-->
+            </template>
+            <administrator/>
+          </a-modal>
         </div>
       </div>
     </div>
@@ -21,12 +32,31 @@
 // 如果需要，请自行引入以下文件：
 import 'element-ui/lib/theme-chalk/display.css'
 import NetflixShowCarousel from '@/views/NetflixShowCarousel'
+import Administrator from '@/components/Subscriber/administrator'
 
 export default {
   name: 'navigation',
+  components: { Administrator },
   data: function () {
     return {
-      env: process.env.NODE_ENV === 'production' // I think that you should avoid using process directly in template and you can use computed for proxying.
+      env: process.env.NODE_ENV === 'production', // I think that you should avoid using process directly in template and you can use computed for proxying.
+      loading: false,
+      visible: false
+    }
+  },
+  methods: {
+    showModal () {
+      this.visible = true
+    },
+    handleOk (e) {
+      this.loading = true
+      setTimeout(() => {
+        this.visible = false
+        this.loading = false
+      }, 3000)
+    },
+    handleCancel (e) {
+      this.visible = false
     }
   }
 }
