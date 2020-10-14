@@ -1,5 +1,5 @@
 <template>
-    <div id="container">
+    <div id="container" >
       <a class="card-link" href="#">
         <article class="blog-card">
           <img class="post-image" v-bind:src="image" />

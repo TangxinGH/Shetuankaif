@@ -1,7 +1,5 @@
 <template>
-    <el-container class="topHight">
-      <jwc-footer/>
-    </el-container>
+  <jwc-footer style="width: 100vw"/>
 </template>
 
 <script>
@@ -13,9 +11,5 @@ export default {
 </script>
 
 <style scoped>
-    .topHight{
-     margin-top: 20px;
-        width: 100vw;
-        //position:fixed;bottom:0px;left:0px;
-    }
+
 </style>

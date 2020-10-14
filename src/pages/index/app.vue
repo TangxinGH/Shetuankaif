@@ -2,8 +2,15 @@
     <div class="g-doc">
         <navigation></navigation>
       <a-divider/>
-<!--      <blog-card style="margin-left: 60%"/>-->
-      <FadingCarousel></FadingCarousel>
+      <a-row>
+        <a-col :span="12">
+<features-page></features-page>
+<!--                <blog-card style="margin-left:20%"/>-->
+        </a-col>
+        <a-col :span="12">
+          <FadingCarousel></FadingCarousel>
+        </a-col>
+      </a-row>
       <a-divider/>
         <HomeContent></HomeContent>
         <Footer></Footer>
@@ -16,9 +23,12 @@ import pageFooter from '@/components/Home/pageFooter'
 import FadingCarousel from '@/views/FadingCarousel'
 import blogCard from '@/views/About'
 import JwcFooter from '@/views/jwcFooter'
+import FeaturesPage from '@/components/Home/FeaturesPage'
+
 export default {
   name: 'index-app',
   components: {
+    FeaturesPage,
     blogCard,
     Footer: pageFooter,
     navigation,
