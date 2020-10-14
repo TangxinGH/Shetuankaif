@@ -75,13 +75,8 @@ wercker
 No MyBatis mapper was found in '[kunpeng]' package. Please check your configuration.
 
 org.springframework.dao.DataIntegrityViolationException: 
-### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`kunpeng`.`notice`, CONSTRAINT `notice_admin_Ad_no_fk` FOREIGN KEY (`Nt_Author`) REFERENCES `admin` (`Ad_no`) ON DELETE RESTRICT ON UPDATE RESTRICT)
-### The error may exist in file [E:\WorkSpaceIDEA\2020Autumn\Shetuankaif\DAL\target\classes\mapper\NoticeMapper.xml]
-### The error may involve mapper.NoticeMapper.addANotice-Inline
-### The error occurred while setting parameters
-### SQL: INSERT INTO notice(Nt_Title, Nt_Content, Nt_Publish_Time,Nt_Author, Nt_Attachment)         VALUES (?,          ?,          ?,          ?,          ?          )
-### Cause: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`kunpeng`.`notice`, CONSTRAINT `notice_admin_Ad_no_fk` FOREIGN KEY (`Nt_Author`) REFERENCES `admin` (`Ad_no`) ON DELETE RESTRICT ON UPDATE RESTRICT)
-; Cannot add or update a child row: a foreign key constraint fails (`kunpeng`.`notice`, CONSTRAINT `notice_admin_Ad_no_fk` FOREIGN KEY (`Nt_Author`) REFERENCES `admin` (`Ad_no`) ON DELETE RESTRICT ON UPDATE RESTRICT); nested exception is java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`kunpeng`.`notice`, CONSTRAINT `notice_admin_Ad_no_fk` FOREIGN KEY (`Nt_Author`) REFERENCES `admin` (`Ad_no`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+
+k` FOREIGN KEY (`Nt_Author`) REFERENCES `admin` (`Ad_no`) ON DELETE RESTRICT ON UPDATE RESTRICT)
 
 
 
