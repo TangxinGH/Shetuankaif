@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mapper.UserMapper">
+    <resultMap type="entity.User" id="userMap">
+        <id column="Id" property="id"/>
+        <result column="Sno" property="sno"/>
+        <result column="Sname" property="sname"/>
+        <result column="SCollege" property="scollege"/>
+        <result column="Password" property="password"/>
+        <result column="Sex" property="sex"/>
+        <result column="Age" property="age"/>
+        <result column="Headportrait" property="headportrait"/>
+        <result column="Joined" property="joined"/>
+    </resultMap>
+
+   <!-- <select id="login" resultType="kunpeng.entity.User" parameterType="String">
+        SELECT * FROM user WHERE sno = #{param1} and sname = #{param2}
+    </select>-->
+    <!-- 查询所有 -->
+    <select id="findAll" resultMap="userMap">
+        SELECT * FROM user
+    </select>
+
+
+    <!--根据id查询 -->
+   <!-- <select id="findById" resultType="kunpeng.entity.User" parameterType="Integer">
+        SELECT * FROM user WHERE Sno= #{sno}
+    </select>-->
+
+    <!--登录-->
+    <select id="login" resultMap="userMap" >
+        SELECT * FROM user WHERE Sno = #{param1} and Password = #{param2}
+    </select>
+
+    <!--注册-->
+    <insert id="register"   parameterType="entity.User">
+        insert into user (Sno,Sname,SCollege,Password,Sex,Age,Joined) values ( #{sno} ,#{sname}, #{scollege}, #{password}, #{sex}, #{age},#{joined})
+    </insert>
+
+  <!--  &lt;!&ndash;修改信息&ndash;&gt;
+      <insert id="create" parameterType="kunpeng.entity.User">
+          INSERT INTO user(username, password) VALUES (#{username}, #{password})
+      </insert>
+-->
+    <!--删除信息-->
+      <delete id="deleteUser" parameterType="String">
+          DELETE FROM user WHERE Sno= #{sno}
+      </delete>
+
+    <!--修改信息-->
+    <update id="update"  parameterType="entity.User">
+        UPDATE user SET WHERE 1=1
+        <if test="Sname!= null">
+            Sname = #{sname}
+        </if>
+        <if test=" SCollege!= null">
+            SCollege = #{scollege}
+        </if> <if test="Sex!= null">
+        Sex = #{Sex}
+    </if> <if test="Age!= null">
+        Age = #{age}
+    </if>
+        WHERE Sno = #{Sno}
+    </update>
+
+    <!-- 根据用户名查询 -->
+    <select id="findBySno" parameterType="String" resultMap="userMap">
+        SELECT * FROM user WHERE Sno = #{sno}
+    </select>
+
+</mapper>

@@ -32,7 +32,7 @@ public class UserController  {
          Integer Sn = Integer.valueOf(Sno);
         // int i = Integer.parseInt(Sno);
          System.out.println("username:" + Sn + ", password:" +Password);
-         User user = userService.login(Sn, Password);
+         User user = userService.login(Sno, Password);
         if (user == null) {
 
             return Result.error(CodeMsg.DATA_ERROR);
@@ -94,7 +94,7 @@ java 转 kotlin 时会自动小写。
      @ResponseBody
      public User check(@PathVariable Integer id) {
 
-         User user = userService.findById(id);
+         User user = userService.findById(String.valueOf(id));
        return user;
      }
     @RequestMapping("/findAll")

@@ -13,15 +13,15 @@
     </resultMap>
     
     <!-- 查询所有 -->
-    <select id="getAllNotices" resultType="entity.Notice">
+    <select id="getAllNotices" resultMap="noticeMap">
         SELECT * FROM notice order by Nt_Publish_Time desc
     </select>
 
     <!-- 根据标题查询 -->
     <select id="getNoticeByNoticeTitle" resultMap="noticeMap" parameterType="String">
         SELECT * FROM notice Nt WHERE 1=1
-        <if test="Nt_Title != null">
-            and Nt.Nt_Title = #{Nt_Title,jdbcType = VARCHAR}
+        <if test="ntTitle != null">
+            and Nt.Nt_Title = #{ntTitle,jdbcType = VARCHAR}
         </if>
     </select>
 
@@ -46,7 +46,7 @@
     <delete id="deleteANoticeByTitle" parameterType="Integer">
         DELETE FROM notice WHERE 1 = 0
         <if test="NtID != null">
-            or NtID = #{NtID,jdbcType = INTEGER}
+            or NtID = #{ntID,jdbcType = INTEGER}
         </if>
     </delete>
 
@@ -54,13 +54,13 @@
     <update id="updateANoticeByTitle" parameterType="entity.Notice">
         UPDATE notice
         <trim prefix = "set" suffixOverrides=",">
-            <if test = "Nt_Title != null">Nt_Title = #{ntTitle,jdbcType = VARCHAR},</if>
-            <if test = "Nt_Content != null">Nt_Content = #{ntContent,jdbcType = CLOB},</if>
-            <if test = "Nt_Publish_Time != null">Nt_Publish_Time = #{ntPublishTime,jdbcType = TIMESTAMP},</if>
-            <if test = "Nt_Attachment != null">Nt_Attachment = #{ntAttachment,jdbcType = CLOB}</if>
+            <if test = "ntTitle != null">Nt_Title = #{ntTitle,jdbcType = VARCHAR},</if>
+            <if test = "ntContent != null">Nt_Content = #{ntContent,jdbcType = CLOB},</if>
+            <if test = "ntPublishTime != null">Nt_Publish_Time = #{ntPublishTime,jdbcType = TIMESTAMP},</if>
+            <if test = "ntAttachment != null">Nt_Attachment = #{ntAttachment,jdbcType = CLOB}</if>
         </trim>
         WHERE 1 = 0
-        <if test="NtID != null">
+        <if test="ntID != null">
             or NtID = #{ntID,jdbcType = INTEGER}
         </if>
     </update>

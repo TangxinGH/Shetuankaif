@@ -1,10 +1,13 @@
 package kunpeng.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.Activity;
 import kunpeng.bean.CodeMsg;
 import kunpeng.bean.Result;
 import kunpeng.until.RegexUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.NestedCheckedException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.annotation.*;
 import service.ActivityService;
@@ -24,9 +27,19 @@ public class ActivityController {
     @RequestMapping(value = "/addAnActivity",method = RequestMethod.POST)
     @ResponseBody
     public Result<Boolean> addActivity(@RequestBody Activity activity){
-        return activityService.addAnActivity(activity) > 0 ? Result.success(CodeMsg.ADD_ACTIVITY_SUCCESSFULLY) : Result.error(CodeMsg.ADD_ACTIVITY_FAILED);
+        int affected;
+        try{
+            affected = activityService.addAnActivity(activity);
+        }
+        catch (Exception e){
+            if (e instanceof DataIntegrityViolationException)
+                throw e;
+            else {
+                return Result.error(CodeMsg.UNKNOWN_ERROR);
+            }
+        }
+        return affected > 0 ? Result.success(CodeMsg.ADD_ACTIVITY_SUCCESSFULLY) : Result.error(CodeMsg.ADD_ACTIVITY_FAILED);
     }
-
     @RequestMapping(value = "/deleteAcivityByID" ,method = RequestMethod.GET)
     @ResponseBody
     public Result<Boolean> deleteAnActivityByID(@RequestParam String actID){
@@ -49,10 +62,30 @@ public class ActivityController {
     }
 
     @RequestMapping (value = "/updateAnActivity",method = RequestMethod.POST)
-    @ResponseBody
-    public Result<Boolean> updateAnActivity(Activity activity){
-        activity.setAct_Publish_Time(new Date());
-        return activityService.updateActivityByID(activity) > 0 ? Result.success(CodeMsg.UPDATE_ACTIVITY_SUCCESSFULLY) : Result.error(CodeMsg.UPDATE_ACTIVITY_FAILED);
+
+    public Result<Boolean> updateAnActivity(@RequestBody Activity activity){
+        /*System.out.println(s);
+        Activity activity = new Activity();
+        ObjectMapper objectMapper=new ObjectMapper();
+         try {
+              activity = objectMapper.readValue(s, Activity.class);// 可以用第三方的进行调试
+         } catch (JsonProcessingException e) {
+             e.printStackTrace();
+         }
+         return activity.toString();*/
+        int affected;
+        activity.setActPublishTime(new Date());
+        try{
+            affected = activityService.updateActivityByID(activity);
+        }
+        catch (Exception e){
+            if (e instanceof DataIntegrityViolationException)
+                throw e;
+            else {
+                return Result.error(CodeMsg.UNKNOWN_ERROR);
+            }
+        }
+        return affected > 0 ? Result.success(CodeMsg.UPDATE_ACTIVITY_SUCCESSFULLY) : Result.error(CodeMsg.UPDATE_ACTIVITY_FAILED);
     }
 
     @RequestMapping (value = "/findAllActivities")
@@ -67,6 +100,7 @@ public class ActivityController {
         catch (Exception e){
             resultMap.put("resultCode", CodeMsg.UNKNOWN_ERROR);
             resultMap.put("notices",null);
+            throw e;
         }
         return resultMap;
     }

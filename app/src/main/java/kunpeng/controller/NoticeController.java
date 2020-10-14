@@ -6,6 +6,7 @@ import kunpeng.bean.Result;
 import kunpeng.until.RegexUtil;
 import org.omg.CORBA.UNKNOWN;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.annotation.*;
 import service.NoticeService;
 
@@ -31,8 +32,22 @@ public class NoticeController {
         }
         catch (Exception e){
             return Result.error(CodeMsg.ADD_NOTICE_FAILED);
-        }*/
+        }
         return noticeService.addANotice(notice) > 0 ? Result.success(CodeMsg.ADD_NOTICE_SUCCESSFULLY) : Result.error(CodeMsg.ADD_NOTICE_FAILED);
+    */
+        int affected;
+        try {
+            affected = noticeService.addANotice(notice);
+        }
+        catch (Exception e){
+            if (e instanceof DataIntegrityViolationException){
+                throw e;
+            }
+            else {
+                return Result.error(CodeMsg.UNKNOWN_ERROR);
+            }
+        }
+        return affected > 0 ? Result.success(CodeMsg.ADD_NOTICE_SUCCESSFULLY) : Result.error(CodeMsg.ADD_NOTICE_FAILED);
     }
 
 
@@ -68,18 +83,20 @@ public class NoticeController {
 
     @RequestMapping(value = "/updateANotice",method = RequestMethod.POST)
     @ResponseBody
-    public Result<Boolean> updateANotice(Notice notice){
-        /*int affected;
+    public Result<Boolean> updateANotice(@RequestBody Notice notice){
+        int affected;
         try {
+            notice.setNtPublishTime(new Date());
             affected = noticeService.updateNoticeByID(notice);
         }
         catch (Exception e){
             return Result.error(CodeMsg.UNKNOWN_ERROR);
         }
         return affected > 0 ? Result.success(CodeMsg.UPDATE_NOTICE_SUCCESSFULLY) : Result.error(CodeMsg.UPDATE_NOTICE_FAILED);
-    */
-        notice.setNt_Publish_Time(new Date());
+
+        /*notice.setNtPublishTime(new Date());
         return noticeService.updateNoticeByID(notice) > 0 ? Result.success(CodeMsg.UPDATE_NOTICE_SUCCESSFULLY) : Result.error(CodeMsg.UPDATE_NOTICE_FAILED);
+    */
     }
 
     @RequestMapping(value = "/getNotices")
