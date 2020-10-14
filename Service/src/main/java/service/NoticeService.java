@@ -2,7 +2,10 @@ package service;
 
 import entity.Notice;
 import mapper.NoticeMapper;
+import org.apache.ibatis.annotations.Mapper;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +23,7 @@ public class NoticeService {
         return noticeMapper.addANotice(notice);
     }
 
-    public int deleteNoticeByTitle(String title){
+    public int deleteNoticeByID(Integer title){
         return noticeMapper.deleteANoticeByTitle(title);
     }
 
@@ -36,7 +39,7 @@ public class NoticeService {
         return noticeMapper.getAllNoticeTitles();
     }
 
-    public int updateNoticeByTitle(Notice notice){
+    public int updateNoticeByID(Notice notice){
         return noticeMapper.updateANoticeByTitle(notice);
     }
 

@@ -20,24 +20,29 @@ public class CommentService {
         return commentMapper.addAComment(comment);
     }
 
-    public int deleteCommentByTitle(String title){
-        return commentMapper.deleteACommentByTitle(title);
+    public int deleteACommentBySno(Integer Sno){
+        return commentMapper.deleteACommentBySno(Sno);
     }
 
-    public Comment getCommentByTitle(String title){
-        return commentMapper.getCommentByCommentTitle(title);
+    public int deleteACommentByCommentID(Integer CmtID){
+        return commentMapper.deleteACommentByCommentID(CmtID);
     }
 
     public List<Comment> getAllComments(){
         return commentMapper.getAllComments();
     }
 
-    public List<String> getAllCommentsTitles(){
-        return commentMapper.getAllCommentTitles();
+    public List<Comment> getCommentBySno(Integer Sno){
+        return commentMapper.getCommentBySno(Sno);
     }
 
-    public int updateCommentByTitle(Comment comment){
-        return commentMapper.updateACommentByTitle(comment);
+
+    public List<Comment> getCommentByActivityID(Integer ActID){
+        return commentMapper.getCommentByActivityID(ActID);
+    }
+
+    public int updateACommentBySno(Comment comment){
+        return commentMapper.updateACommentBySno(comment);
     }
 
 }

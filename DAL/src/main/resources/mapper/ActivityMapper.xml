@@ -2,13 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="mapper.ActivityMapper">
-
+    <!--以最新的为准-->
     <!-- 查询所有 -->
-    <select id="getAllActivities" resultType="entity.Activity">
+
+    <resultMap id="activityMap" type="entity.Activity">
+        <id column="ActID" property="actID"/>
+        <result column="Act_Content" property="actContent"/>
+        <result column="Act_Publish_Time" property="actPublishTime"/>
+        <result column="Act_Author_ID" property="actAuthorID"/>
+        <result column="Act_Attachment" property="actAttachment"/>
+        <result column="Act_Author" property="actAuthor"/>
+        <result column="At_Title" property="actTitle"/>
+    </resultMap>
+
+    <!--活动-->
+    <select id="getAllActivities" resultMap="activityMap" >
         SELECT * FROM activity
-    </select>
-    <select id="findAll" resultType="entity.Activity">
-        SELECT * FROM user
     </select>
 
     <!-- 根据标题查询 -->
@@ -24,27 +33,39 @@
         SELECT Act_Title FROM activity
     </select>
 
-    <!-- 添加公告 -->
+    <!-- 添加活动 -->
     <insert id="addAnActivity" parameterType="entity.Activity">
-        INSERT INTO activity(Act_Title, Act_Content, Act_Publish_Time,Act_Author, Act_Attachment)
-        VALUES (#{Act_Title,jdbcType = VARCHAR},
-         #{Act_Content,jdbcType = VARCHAR},
-         #{Act_Publish_Time,jdbcType = VARCHAR},
-         #{Act_Author,jdbcType = INTEGER},
-         #{Act_Attachment,jdbcType = VARCHAR}
+        INSERT INTO activity(Act_Title, Act_Content, Act_Publish_Time, Act_Author, Act_Author_ID, Act_Attachment)
+        VALUES (#{actTitle,jdbcType = VARCHAR},
+            #{actContent,jdbcType = CLOB},
+            #{actPublishTime,jdbcType = TIMESTAMP},
+            #{actAuthor,jdbcType = VARCHAR},
+            #{actAuthorID,jdbcType = INTEGER},
+            #{actAttachment,jdbcType = CLOB}
          )
     </insert>
 
-    <!-- 删除公告 -->
-    <delete id="deleteAnActivityByTitle" parameterType="String">
+    <!-- 删除活动 -->
+    <delete id="deleteAnActivityByID" parameterType="Integer">
         DELETE FROM activity WHERE 1 = 0
-        <if test="Act_Title != null">
-            or Act_Title = #{Act_Title,jdbcType = VARCHAR}
+        <if test="ActID != null">
+            or ActID = #{ActID,jdbcType = INTEGER}
         </if>
     </delete>
 
-    <!-- 更新公告 -->
-    <update id="updateAnActivityByTitle" parameterType="entity.Activity">
+    <!-- 更新活动 -->
+    <update id="updateAnActivityByID" parameterType="entity.Activity">
+        UPDATE activity
+        <trim prefix = "set" suffixOverrides=",">
+            <if test = "Act_Title != null">Act_Title = #{actTitle,jdbcType = VARCHAR},</if>
+            <if test = "Act_Content != null">Act_Content = #{actContent,jdbcType = CLOB},</if>
+            <if test = "Act_Publish_Time != null">Act_Publish_Time = #{actPublishTime,jdbcType = TIMESTAMP},</if>
+            <if test = "Act_Attachment != null">Act_Attachment = #{actAttachment,jdbcType = CLOB}</if>
+        </trim>
+        WHERE 1 = 0
+        <if test="ActID != null">
+            or ActID = #{actID,jdbcType = INTEGER}
+        </if>
     </update>
 
 

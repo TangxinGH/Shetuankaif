@@ -3,6 +3,9 @@ package service;
 import entity.Activity;
 import mapper.ActivityMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -12,19 +15,15 @@ import java.util.List;
 public class ActivityService {
 
     @Autowired
-    private ActivityMapper activityMapper;
-    public List<Activity> findAll(){
-        return activityMapper.findAll();
-
-    }
+    ActivityMapper activityMapper;
 
     public int addAnActivity(Activity activity){
         //return 0;
         return activityMapper.addAnActivity(activity);
     }
 
-    public int deleteActivityByTitle(String title){
-        return activityMapper.deleteAnActivityByTitle(title);
+    public int deleteActivityByID(Integer actID){
+        return activityMapper.deleteAnActivityByID(actID);
     }
 
     public Activity getActivityByTitle(String title){
@@ -39,8 +38,8 @@ public class ActivityService {
         return activityMapper.getAllActivityTitles();
     }
 
-    public int updateActivityByTitle(Activity activity){
-        return activityMapper.updateAnActivityByTitle(activity);
+    public int updateActivityByID(Activity activity){
+        return activityMapper.updateAnActivityByID(activity);
     }
 
 }

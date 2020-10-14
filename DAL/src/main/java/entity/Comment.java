@@ -8,7 +8,7 @@ public class Comment {
     private Integer Sno;
     private String Cmt_Content;
     private Date Cmt_Date;
-    private String Cmt_Undefined;
+    private String Cmt_Sname;
 
     public Integer getCmtID() {
         return CmtID;
@@ -50,12 +50,12 @@ public class Comment {
         Cmt_Date = cmt_Date;
     }
 
-    public String getCmt_Undefined() {
-        return Cmt_Undefined;
+    public String getCmt_Sname() {
+        return Cmt_Sname;
     }
 
-    public void setCmt_Undefined(String cmt_Undefined) {
-        Cmt_Undefined = cmt_Undefined;
+    public void setCmt_Sname(String Cmt_Sname) {
+        this.Cmt_Sname = Cmt_Sname;
     }
 
     @Override
@@ -66,7 +66,7 @@ public class Comment {
                 ", Sno=" + Sno +
                 ", Cmt_Content='" + Cmt_Content + '\'' +
                 ", Cmt_Date=" + Cmt_Date +
-                ", Cmt_Undefined='" + Cmt_Undefined + '\'' +
+                ", Cmt_Sname='" + Cmt_Sname + '\'' +
                 '}';
     }
 }
