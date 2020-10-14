@@ -10,11 +10,13 @@
           我们是桂林理工大学最好玩的社团，我们是最爱玩，最会玩的素拓人。定期组织素质拓展活动
 <p/>
           <P>扫码关注  <b>  加入我们</b></P>
+          <img style="width: 120px; height: 120px;" src="../../../assets/img/qrcode.png" alt="qrcode">
         </div>
     </el-card>
 </template>
 
 <script>
+ // let imgUrl = require('src/assets/img/qrcode.png')
 export default {
   name: 'Introduction'
 }
