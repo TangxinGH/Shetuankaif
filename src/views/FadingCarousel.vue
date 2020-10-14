@@ -155,7 +155,7 @@ body {
   padding: 0;
   list-style-type: none;
   width: 100%;
-  height: 500px;
+  height: 532px;
   position: relative;
 }
 

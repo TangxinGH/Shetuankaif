@@ -2,13 +2,13 @@
     <el-card class="box-card">
         <div slot="header" class="clearfix">
             <span>公告</span>
-            <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
+            <el-button style="float: right; padding: 3px 0" type="text"><a v-bind:href="env ? './history.html?NtID=1' : './history?NtID=1'" target="_blank">更多</a></el-button>
         </div>
       <div v-for="item in notice_data" :key="item.NtID" class="text item" >
         <a-space :size="8" >
           <span  >  {{ item.Nt_Publish_Time }}</span>
           <a-divider type="vertical" />
-          <a  v-bind:href="item.NtID" target="_blank" >
+          <a  v-bind:href="env ? './article.html?NtID='+item.NtID : './article?NtID='+item.NtID" target="_blank">
             <span >  {{item.Nt_Title() }}…</span>
             <a-divider  type="vertical" />
           </a>
@@ -46,7 +46,8 @@ export default {
   },
   data: function () {
     return {
-      notice_data: []
+      notice_data: [],
+      env: process.env.NODE_ENV === 'production'
     }
   }
 }

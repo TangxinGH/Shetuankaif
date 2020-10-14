@@ -100,9 +100,16 @@ export default {
     }
   },
   mounted () {
-    this.$axios.get('').then(res => {
-
+    console.log('id号为？')
+    let NtID = Number(new URLSearchParams(window.location.search).get('NtID'))
+    let ActID = Number(new URLSearchParams(window.location.search).get('ActID'))
+    console.log(NtID ? this.content_data = '?NtID=' + NtID : ActID ? this.content_data = '?ActID=' + ActID : 1)
+    this.$axios.get((NtID ? '/api/getNoticebyID' : '/api/getActivitybyID') + this.content_data).then(res => {
+      console.log('数据输出 ')
+      console.log(res.data)
+      this.content_data = (res.data.Nt_Content ? res.data.Nt_Content : res.data.Act_Content) + htmlTxt.toString()
     }).catch(err => {
+      console.log('文章 内容出错')
       console.log(err)
     })
   }

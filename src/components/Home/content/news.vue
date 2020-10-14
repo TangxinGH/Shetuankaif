@@ -2,13 +2,13 @@
     <el-card class="box-card">
         <div slot="header" class="clearfix">
             <span>动态</span>
-            <el-button style="float: right; padding: 3px 0" type="text">更多活动</el-button>
+          <el-button style="float: right; padding: 3px 0" type="text"><a v-bind:href="env ? './history.html' : './history'" target="_blank">更多活动</a></el-button>
         </div>
         <div v-for="item in news_data" :key="item.ActID" class="text item" >
           <a-space :size="8" >
             <span  >  {{ item.Act_Publish_Time }}</span>
             <a-divider type="vertical" />
-          <a  v-bind:href="item.ActID" target="_blank" >
+          <a  v-bind:href="env ? './article.html?ActID='+item.ActID : './article?ActID='+item.ActID" target="_blank" >
           <span >  {{item.Act_Title() }}…</span>
             <a-divider  type="vertical" />
           </a>
@@ -24,7 +24,8 @@ export default {
   name: 'news',
   data: function () {
     return {
-      news_data: []
+      news_data: [],
+      env: process.env.NODE_ENV === 'production'
     }
   },
   created () {

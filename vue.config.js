@@ -37,6 +37,12 @@ module.exports = {
       template: 'public/index.html',
       filename: 'tsbms.html',
       chunks: ['chunk-vendors', 'chunk-common', 'tsbms']
+    },
+    history: {
+      entry: 'src/pages/history/history.js',
+      template: 'public/index.html',
+      filename: 'history.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'history']
     }
   },
   configureWebpack: config => {
@@ -58,7 +64,8 @@ module.exports = {
         { from: /^\/article/, to: '/article.html' }, // 这东西有效？还真有效
         { from: /^\/compose/, to: '/compose.html' },
         { from: /^\/subscriber/, to: '/subscriber.html' },
-        { from: /^\/tsbms/, to: '/tsbms.html' }
+        { from: /^\/tsbms/, to: '/tsbms.html' },
+        { from: /^\/history/, to: '/history.html' }
       ]
     },
     proxy: {
