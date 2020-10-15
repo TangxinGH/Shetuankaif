@@ -154,17 +154,19 @@ public class CodeMsg {
 	public static CodeMsg HOME_WRONG_STUDENT_NUMBER_FORMAT = new CodeMsg(-50003,"学号格式错误！");
 	public static CodeMsg BAD_ACTIVITYID_FORMAT  = new CodeMsg(-50004,"活动号格式错误！");
 	public static CodeMsg GET_COMMENTS_SUCCESSFULLY = new CodeMsg(-50100,"获取评论列表成功！");
-	public static CodeMsg DELETE_COMMENT_SUCCESSFULLY = new CodeMsg(-50200,"删除评论成功！");
-	public static CodeMsg DELETE_COMMENT_ERROR = new CodeMsg(-50201,"删除评论失败！");
+	public static CodeMsg GET_COMMENTS_EMPTY = new CodeMsg(-51001,"获取评论列表成功！但是没有相关记录！");
+	public static CodeMsg GET_COMMENTS_FAILED = new CodeMsg(-51002,"获取评论列表失败！");
+	public static CodeMsg DELETE_COMMENT_SUCCESSFULLY = new CodeMsg(-52000,"删除评论成功！");
+	public static CodeMsg DELETE_COMMENT_ERROR = new CodeMsg(-52001,"删除评论失败！");
 	//后台管理员公告操作
-	public static CodeMsg ADD_NOTICE_SUCCESSFULLY = new CodeMsg(-51000,"添加公告成功！");
-	public static CodeMsg ADD_NOTICE_FAILED = new CodeMsg(-51001,"添加公告失败！");
-	public static CodeMsg DELETE_NOTICE_SUCCESSFULLY = new CodeMsg(-52000,"添加公告成功！");
-	public static CodeMsg DELETE_NOTICE_FAILED = new CodeMsg(-52001,"删除公告失败！");
-	public static CodeMsg UPDATE_NOTICE_SUCCESSFULLY = new CodeMsg(-53000,"更新公告成功！");
-	public static CodeMsg UPDATE_NOTICE_FAILED = new CodeMsg(-53001,"更新公告失败！");
-	public static CodeMsg QUERY_NOTICE_SUCCESSFULLY = new CodeMsg(-54000,"查询公告成功！");
-	public static CodeMsg QUERY_NOTICE_NOT_EXIST = new CodeMsg(-54001,"无公告记录！");
+	public static CodeMsg ADD_NOTICE_SUCCESSFULLY = new CodeMsg(-53000,"添加公告成功！");
+	public static CodeMsg ADD_NOTICE_FAILED = new CodeMsg(-53001,"添加公告失败！");
+	public static CodeMsg DELETE_NOTICE_SUCCESSFULLY = new CodeMsg(-54000,"添加公告成功！");
+	public static CodeMsg DELETE_NOTICE_FAILED = new CodeMsg(-54001,"删除公告失败！");
+	public static CodeMsg UPDATE_NOTICE_SUCCESSFULLY = new CodeMsg(-55000,"更新公告成功！");
+	public static CodeMsg UPDATE_NOTICE_FAILED = new CodeMsg(-55001,"更新公告失败！");
+	public static CodeMsg QUERY_NOTICE_SUCCESSFULLY = new CodeMsg(-56000,"查询公告成功！");
+	public static CodeMsg QUERY_NOTICE_NOT_EXIST = new CodeMsg(-56001,"无公告记录！");
 	//后台管理员活动操作
 	public static CodeMsg ADD_ACTIVITY_SUCCESSFULLY = new CodeMsg(-60000,"添加活动成功！");
 	public static CodeMsg ADD_ACTIVITY_FAILED = new CodeMsg(-60001,"添加活动失败！");

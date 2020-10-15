@@ -113,12 +113,12 @@ public class CommentController {
         Map<String,Object> resultMap = new HashMap<>();
         try {
             List<Comment> comments = commentService.getAllComments();
-            resultMap.put("resultCode",CodeMsg.GET_COMMENTS_SUCCESSFULLY);
+            resultMap.put("resultCode", comments.size() == 0 ? Result.success(CodeMsg.GET_COMMENTS_EMPTY) : Result.success(CodeMsg.GET_COMMENTS_SUCCESSFULLY));
             resultMap.put("comments",comments);
             return resultMap;
         }
         catch (Exception e){
-            resultMap.put("resultCode",CodeMsg.UNKNOWN_ERROR);
+            resultMap.put("resultCode",Result.error(CodeMsg.GET_COMMENTS_FAILED));
             resultMap.put("comments",null);
             return resultMap;
         }
