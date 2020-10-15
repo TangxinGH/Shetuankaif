@@ -27,8 +27,8 @@ public class NoticeService {
         return noticeMapper.deleteANoticeByTitle(title);
     }
 
-    public Notice getNoticeByTitle(String title){
-        return noticeMapper.getNoticeByNoticeTitle(title);
+    public Notice getNoticeByID(Integer ntid){
+        return noticeMapper.getNoticeByNoticeID(ntid);
     }
 
     public List<Notice> getAllNotices(){

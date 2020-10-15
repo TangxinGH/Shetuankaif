@@ -17,11 +17,11 @@
         SELECT * FROM notice order by Nt_Publish_Time desc
     </select>
 
-    <!-- 根据标题查询 -->
-    <select id="getNoticeByNoticeTitle" resultMap="noticeMap" parameterType="String">
-        SELECT * FROM notice Nt WHERE 1=1
-        <if test="ntTitle != null">
-            and Nt.Nt_Title = #{ntTitle,jdbcType = VARCHAR}
+    <!-- 根据id查询 -->
+    <select id="getNoticeByNoticeID" resultMap="noticeMap" parameterType="Integer">
+        SELECT * FROM notice Nt WHERE 1=0
+        <if test="ntID != null">
+            or Nt.NtID = #{ntID,jdbcType = INTEGER}
         </if>
     </select>
 
@@ -45,7 +45,7 @@
     <!-- 删除公告 -->
     <delete id="deleteANoticeByTitle" parameterType="Integer">
         DELETE FROM notice WHERE 1 = 0
-        <if test="NtID != null">
+        <if test="ntID != null">
             or NtID = #{ntID,jdbcType = INTEGER}
         </if>
     </delete>

@@ -9,7 +9,7 @@ import java.util.List;
 public interface ActivityMapper {
    List<String> getAllActivityTitles();
    List<Activity> getAllActivities();
-   Activity getActivityByActivityTitle(String Title);
+   Activity getActivityByActivityID(Integer actID);
    int addAnActivity(Activity activity);
    int deleteAnActivityByID(Integer ID);
    int updateAnActivityByID(Activity activity);

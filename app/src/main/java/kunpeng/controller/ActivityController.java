@@ -25,7 +25,6 @@ public class ActivityController {
     private ActivityService activityService;
 
     @RequestMapping(value = "/addAnActivity",method = RequestMethod.POST)
-    @ResponseBody
     public Result<Boolean> addActivity(@RequestBody Activity activity){
         int affected;
         try{
@@ -40,8 +39,8 @@ public class ActivityController {
         }
         return affected > 0 ? Result.success(CodeMsg.ADD_ACTIVITY_SUCCESSFULLY) : Result.error(CodeMsg.ADD_ACTIVITY_FAILED);
     }
+
     @RequestMapping(value = "/deleteAcivityByID" ,method = RequestMethod.GET)
-    @ResponseBody
     public Result<Boolean> deleteAnActivityByID(@RequestParam String actID){
         if (!actID.matches(RegexUtil.IDRegex)){
             return Result.error(CodeMsg.BAD_ACTIVITYID_FORMAT);
@@ -62,7 +61,6 @@ public class ActivityController {
     }
 
     @RequestMapping (value = "/updateAnActivity",method = RequestMethod.POST)
-
     public Result<Boolean> updateAnActivity(@RequestBody Activity activity){
         /*System.out.println(s);
         Activity activity = new Activity();
@@ -89,7 +87,6 @@ public class ActivityController {
     }
 
     @RequestMapping (value = "/findAllActivities")
-    @ResponseBody
     public Map<String,Object> getAllActivities(){
         Map<String,Object> resultMap = new HashMap<>();
         try{
@@ -105,4 +102,8 @@ public class ActivityController {
         return resultMap;
     }
 
+    @RequestMapping (value = "/getActivitybyID")
+    public Activity getActivityByID(@RequestParam String actID){
+        return activityService.getActivityByID(Integer.parseInt(actID));
+    }
 }

@@ -24,7 +24,6 @@ public class NoticeController {
 
 
     @RequestMapping(value = "/publishANotice",method = RequestMethod.POST)
-    @ResponseBody
     public Result<Boolean> addANotice(@RequestBody Notice notice){
         //noticeService.addANotice(notice);
         /*try {
@@ -51,25 +50,12 @@ public class NoticeController {
     }
 
 
-    @RequestMapping(value = "/getAllNoticesTitles")
-    @ResponseBody
-    public Map<String,Object> getAllNoticesTitles(){//获取公告
-        Map<String,Object> resultMap = new HashMap<>();
-        try {
-            List<String> noticeTitles = noticeService.getAllNoticesTitles();
-            resultMap.put("resultCode", CodeMsg.SUCCESS);
-            resultMap.put("noticeTitles",noticeTitles);
-        }
-        catch (Exception e){
-            resultMap.put("resultCode", CodeMsg.UNKNOWN_ERROR);
-            resultMap.put("noticeTitles",null);
-            //resultMap.remove("noticeTitles");
-        }
-        return resultMap;
+    @RequestMapping(value = "/getNoticebyID")
+    public Notice getAllNoticesTitles(@RequestParam String ntID){//获取公告
+        return noticeService.getNoticeByID(Integer.parseInt(ntID));
     }
 
     @RequestMapping(value = "/delNotice")
-    @ResponseBody
     public Result<Boolean> deleteANotice(@RequestParam String ntID){
         int affected;
         try {
@@ -82,7 +68,6 @@ public class NoticeController {
     }
 
     @RequestMapping(value = "/updateANotice",method = RequestMethod.POST)
-    @ResponseBody
     public Result<Boolean> updateANotice(@RequestBody Notice notice){
         int affected;
         try {
@@ -100,7 +85,6 @@ public class NoticeController {
     }
 
     @RequestMapping(value = "/getNotices")
-    @ResponseBody
     public Map<String,Object> getAllNotices(){
         Map<String,Object> resultMap = new HashMap<>();
         try{
