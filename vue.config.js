@@ -43,6 +43,12 @@ module.exports = {
       template: 'public/index.html',
       filename: 'history.html',
       chunks: ['chunk-vendors', 'chunk-common', 'history']
+    },
+    sichuan: {
+      entry: 'src/pages/Sichuan/Sichuan.js',
+      template: 'src/pages/Sichuan/sichuan.html',
+      filename: 'sichuan.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'sichuan']
     }
   },
   configureWebpack: config => {
@@ -65,7 +71,8 @@ module.exports = {
         { from: /^\/compose/, to: '/compose.html' },
         { from: /^\/subscriber/, to: '/subscriber.html' },
         { from: /^\/tsbms/, to: '/tsbms.html' },
-        { from: /^\/history/, to: '/history.html' }
+        { from: /^\/history/, to: '/history.html' },
+        { from: /^\/sichuan/, to: '/sichuan.html' }
       ]
     },
     proxy: {

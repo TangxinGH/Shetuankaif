@@ -1,0 +1,859 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0022)http://sau.scu.edu.cn/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link href="./sichuan_files/lrtk.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="./sichuan_files/terminator2.2.min.js.下载" async="true"></script><script src="./sichuan_files/jquery-1.8.3.min.js.下载"></script>
+
+    <script type="text/javascript" src="./sichuan_files/koala.min.1.5.js.下载"></script>
+    <title> 桂林理工大学学生社团工作网站</title>
+
+    <style type="text/css">
+        body {
+            margin-left: 0px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+            background-color: #ffffff;
+            font-family: "微软雅黑";
+            font-size: 12px;
+            color: #888c90;
+            line-height: 16pt;
+        }
+
+        a {
+            text-decoration: none;
+            color: #5d5d5d;
+        }
+
+            a:hover {
+                color: #505050;
+            }
+
+        .STYLE4 {
+            font-size: 15px;
+            color: #000000;
+        }
+
+        .font_w1 {
+            color: #FFF;
+            font-size: 13px;
+        }
+
+        .font_b1 {
+            color: #434343;
+            font-size: 13px;
+            line-height: 20pt;
+        }
+
+        .font_b2 {
+            color: #8d8d8d;
+            font-size: 13px;
+            line-height: 18pt;
+        }
+
+        .STYLE5 {
+            color: #FFFFFF;
+        }
+
+        .STYLE7 {
+            font-size: 18px;
+            color: #CC0000;
+        }
+
+        img {
+            border: 0px solid gold;
+            margin: 0px 0px 0 0;
+        }
+
+        .font1 {
+            color: #434343;
+            line-height: 18pt;
+        }
+
+        .font2 {
+            color: #434343;
+            font-size: 14px;
+            line-height: 18pt;
+        }
+
+        .font3 {
+            color: #d0000e;
+            line-height: 17pt;
+            font-size: 15px;
+        }
+
+        .font4 {
+            color: #d0000e;
+            line-height: 26pt;
+            font-size: 16px;
+        }
+
+        #nav {
+            line-height: 37px;
+            list-style-type: none;
+            MARGIN-RIGHT: auto;
+            MARGIN-LEFT: auto;
+        }
+
+            #nav a {
+                display: block;
+                width: 130px;
+                 line-height: 37px;
+                text-align: center;
+            }
+
+                #nav a:link {
+                    color: #fff;
+                    text-decoration: none;
+                }
+
+                #nav a:visited {
+                    color: #fff;
+                    text-decoration: none;
+                }
+
+                #nav a:hover {
+                    color: #FFF;
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+
+            #nav li {
+                float: left;
+                width: 140px;
+                position:relative;
+            }
+
+                #nav li a:hover {
+                    background: #fcb17a;
+                }
+
+                #nav li ul {
+                    line-height: 30px;
+                    list-style-type: none;
+                    text-align: center;
+                    /*left: -999em;*/
+                    left:0;
+                    top:37px;
+                    width: 140px;
+                    position: absolute;
+                    display:none;
+                }
+
+                    #nav li ul li {
+                        float: left;
+                        width: 140px;
+                        background: #F6F6F6;
+                        font-size: 14px;
+                    }
+
+                    #nav li ul a {
+                        display: block;
+                        width: 140px;
+                        text-align: center;
+                        padding-left: 0px;
+                    }
+
+                        #nav li ul a:link {
+                            color: #666;
+                            text-decoration: none;
+                        }
+
+                        #nav li ul a:visited {
+                            color: #666;
+                            text-decoration: none;
+                        }
+
+                        #nav li ul a:hover {
+                            color: #F3F3F3;
+                            text-decoration: none;
+                            font-weight: normal;
+                            background: #ff890b;
+                        }
+
+                #nav li:hover ul {
+                    display:block;
+                }
+
+                /*#nav li.sfhover ul {
+
+                    display:block;
+                }*/
+
+        #content {
+            clear: left;
+        }
+
+        .STYLE1 {
+            font-family: "微软雅黑";
+            font-size: 13px;
+            color: #999999;
+        }
+
+        .STYLE2 {
+            font-family: "微软雅黑";
+            color: #ed4800;
+            font-size: 13px;
+        }
+
+        .STYLE3 {
+            font-family: "微软雅黑";
+            font-size: 19px;
+            color: #cb2d28;
+        }
+
+        /*input {
+            background: #fafafa;
+            height: 30px;
+            border-radius: 6px;
+            resize: none;
+            border: 1px solid #cccccc;
+        }*/
+        /*select {
+            color: #6E6060;
+            border-radius: 6px;
+            border: 1px solid #cccccc;
+            height: 35px;
+            width: 257px;
+        }
+        TextArea {
+            color: #6E6060;
+            border-radius: 6px;
+            border: 1px solid #cccccc;
+        }*/
+
+        label.error {
+            color: Red;
+            font-size: 12px;
+            margin-left: 5px;
+            padding-left: 16px;
+            background: url(/images/error.png) left no-repeat;
+            background-size: 15px 15px;
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader( src='/images/error.png', sizingMethod='scale');
+        }
+        /*.txtbox {
+            color: #6E6060;
+            font-size: 12px;
+            width: 250px;
+            padding-left: 5px;
+            background: #ffffff;
+        }*/
+
+        .formtable {
+            width: 100%;
+        }
+
+            .formtable th {
+                color: #434343;
+                font-size: 13px;
+                line-height: 35px;
+                width: 20%;
+                font-weight: 400;
+                text-align: right;
+                padding-right: 10px;
+            }
+
+            .formtable td {
+            }
+
+        .list {
+            width: 100%;
+            border-collapse: collapse;
+            padding: 0;
+            margin: 0;
+        }
+
+            .list th {
+                font-size: 14px;
+                font-weight: 400;
+                color: #888c90;
+                border-right: 1px solid #DFE2E4;
+                border-left: 1px solid #DFE2E4;
+                border-bottom: 1px solid #DFE2E4;
+                border-top: 1px solid #DFE2E4;
+                letter-spacing: 2px;
+                background: #F5F5F5 no-repeat;
+            }
+
+            .list td {
+                border-right: 1px solid #DFE2E4;
+                border-top: 1px solid #DFE2E4;
+                border-left: 1px solid #DFE2E4;
+                border-bottom: 1px solid #DFE2E4;
+                background: #fff;
+                font-size: 14px;
+                color: #4f6b72;
+            }
+
+        .primary-button {
+            color: white;
+            background-color: #FA710D;
+            height: 30px;
+            padding: 0;
+            padding-left: 2px;
+            width: 80px;
+            font-size: 14px;
+            letter-spacing: 2px;
+            border-radius: 3px;
+            text-align: center;
+            border: 1px solid #B51919;
+            position: relative;
+            transition: top .2s;
+            top: 0;
+        }
+
+        div#badoopager {
+            padding-right: 0px;
+            padding-left: 0px;
+            font-size: 13px;
+            padding-bottom: 10px;
+            color: #6e7efd;
+            padding-top: 10px;
+            font-family: arial, helvetica, sans-serif;
+            text-align: center;
+        }
+
+            div#badoopager a {
+                padding-right: 5px;
+                border-top: #fff 2px solid;
+                border-right: #fff 2px solid;
+                border-left: #fff 2px solid;
+                border-bottom: #fff 2px solid;
+                padding-left: 5px;
+                padding-bottom: 2px;
+                margin: 0px 2px;
+                color: #434343;
+                padding-top: 2px;
+                text-decoration: none;
+            }
+
+                div#badoopager a:hover {
+                    border-right: #ff5a00 2px solid;
+                    border-top: #ff5a00 2px solid;
+                    border-left: #ff5a00 2px solid;
+                    color: #ff5a00;
+                    border-bottom: #ff5a00 2px solid;
+                }
+
+                div#badoopager a:active {
+                    border-right: #ff5a00 2px solid;
+                    border-top: #ff5a00 2px solid;
+                    border-left: #ff5a00 2px solid;
+                    color: #ff5a00;
+                    border-bottom: #ff5a00 2px solid;
+                }
+
+            div#badoopager span.current {
+                border-right: #ff5a00 2px solid;
+                padding-right: 5px;
+                border-top: #ff5a00 2px solid;
+                padding-left: 5px;
+                font-weight: bold;
+                padding-bottom: 2px;
+                border-left: #ff5a00 2px solid;
+                color: #fff;
+                padding-top: 2px;
+                border-bottom: #ff5a00 2px solid;
+                background-color: #ff6c16;
+            }
+
+            div#badoopager a.disabled {
+                display: none;
+            }
+
+            div#badoopager input[type=text] {
+                width: 30px;
+                color: #787878;
+            }
+
+            div#badoopager input[type=button] {
+                color: #6e7efd;
+                width: 40px;
+                height: 23px;
+                border: 2px solid #f0f0f0;
+                font-family: arial, helvetica, sans-serif;
+                background-color: transparent;
+                text-align: center;
+            }
+
+                div#badoopager input[type=button]:hover {
+                    color: #ff5a00;
+                    border: #ff5a00 2px solid;
+                }
+
+        .menu {
+            position: relative;
+        }
+
+            .menu img {
+                left: 106px;
+                top: 46px;
+                position: absolute;
+                position: absolute;
+            }
+
+            .menu div {
+                left: 7px;
+                top: 130px;
+                font-size: 14px;
+                color: white;
+                position: absolute;
+                position: absolute;
+            }
+
+            .menu:hover img {
+                display: block;
+                position: absolute;
+                position: absolute;
+                left: 106px;
+                top: 46px;
+            }
+    </style>
+    <script type="text/javascript">
+
+<!--//--><![CDATA[//><!--
+    //function menuFix() {
+    //    var sfEls = document.getElementById("nav").getElementsByTagName("li");
+    //    for (var i = 0; i < sfEls.length; i++) {
+    //        sfEls[i].onmouseover = function () {
+    //            this.className += (this.className.length > 0 ? " " : "") + "sfhover";
+    //        }
+    //        sfEls[i].onMouseDown = function () {
+    //            this.className += (this.className.length > 0 ? " " : "") + "sfhover";
+    //        }
+    //        sfEls[i].onMouseUp = function () {
+    //            this.className += (this.className.length > 0 ? " " : "") + "sfhover";
+    //        }
+    //        sfEls[i].onmouseout = function () {
+    //            this.className = this.className.replace(new RegExp("( ?|^)sfhover\\b"),
+    //            "");
+    //        }
+    //    }
+    //}
+    //window.onload = menuFix;
+    //--><!]]>
+    </script>
+
+<link href="./sichuan_files/unifull.min.css" rel="stylesheet" type="text/css"></head>
+<body>
+<div id="app"></div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tbody><tr>
+            <td align="center">
+
+                <table style="margin: 0; padding: 0; border: 0; font-family: arial, 微软雅黑, serif; font-size: 15px;" width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td align="center">
+                            <table width="1000" border="0" align="center" cellpadding="0" cellspacing="0">
+                                <tbody><tr>
+                                    <td width="300">
+                                        <img src="./sichuan_files/title.png" width="376" height="91"></td>
+                                    <td width="350"></td>
+                                    <td width="350" valign="top">
+                                        <table width="96%" border="0" cellspacing="0" cellpadding="0">
+                                            <tbody><tr>
+                                                <td height="16" colspan="2"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" align="right">
+                                                    <span class="STYLE1"><a href="javascript:void(0)" onclick="AddFavorite(window.location,document.title)">加入收藏</a> | <a href=" http://jwc.glut.cn">联系我们</a> | <span class="STYLE2"><a target="_blank" id="loginhref" href="#" style="color: #ed4800">登录</a></span></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="10"></td>
+                                            </tr>
+                                            <tr>
+                                                <td height="15" colspan="2"></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="89%" align="right">
+                                                    <input name="textfield" id="textfield" type="text" style="height:25px" placeholder="搜索" class="txtbox" value=""></td>
+                                                <td width="11%" align="right"><a href="javascript:void(0)" id="btnsearch">
+                                                    <img src="./sichuan_files/f_ss.gif" width="27" height="27"></a></td>
+                                            </tr>
+                                        </tbody></table>
+                                    </td>
+                                </tr>
+
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="37" align="center">
+                            <div id="sichuanMenu">
+<!--     这里是顶部菜单栏-->
+                            </div>
+                        </td>
+                    </tr>
+                </tbody></table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div align="center"></div>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+
+<script src="./sichuan_files/JsScroll.js.下载"></script>
+<style>
+
+    dd, dl {
+        margin: 0;
+        padding: 0;
+    }
+    .box {
+        height: 120px;
+        overflow: hidden;
+        width: 700px;
+        margin: 10px auto;
+        position: relative;
+    }
+
+    .s-event {
+        padding-left: 2px;
+    }
+
+        .s-event dd {
+            width: 206px;
+            height: 105px;
+            border: 1px solid #eee;
+            float: left;
+            margin-right: 5px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+
+            .s-event dd:hover {
+                border-color: #F70B19;
+            }
+
+            .s-event dd.evenitem {
+                background-color: rgba(250,250,250,.2);
+            }
+
+            .s-event dd > a {
+            color:#5d5d5d;
+            }
+
+    .s-event dd > a .s-date,
+    .s-event dd > a .s-place,
+    .s-event dd > a .s-title {
+        text-align:left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+          color:#5d5d5d;
+    }
+                .s-event dd > a .s-title {
+                    font-size: 16px;
+                    font-weight: 500;
+                      color: #F70B19;
+                }
+
+            /*.s-event dd:hover> a .s-title {
+            color: #F70B19;
+            }*/
+
+              .s-event dd > a .s-key {
+                  text-align:left;
+                      height: 40px;
+                       overflow: hidden;
+                         color:#5d5d5d;
+            }
+                .s-event dd > a .s-date {
+            }
+                  .s-event dd > a .s-place {
+            }
+
+    .box span {
+        position: absolute;
+        bottom: 40%;
+        display: inline-block;
+        width: 50px;
+        text-align: center;
+        cursor: pointer;
+        background: red;
+        z-index: 90;
+        color: #fff;
+    }
+
+    .box .next {
+        right: 0;
+    }
+</style>
+
+<table width="1000" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td height="16" colspan="3">
+            <div id="fsD1" class="focus" style="margin-left:3px">
+                <div id="D1pic1" class="fPic">
+                            <div class="fcon" style="display: none;">
+                                <a target="_blank" href="http://sau.scu.edu.cn/chronicle/newsDetail?newsid=19082"> <img src="./sichuan_files/73078cf3-f556-4bd2-aa05-8260f1545e4b.png" style="opacity: 1;"></a>
+                                <span class="shadow"><a target="_blank" href="http://sau.scu.edu.cn/chronicle/newsDetail?newsid=19082"> 【江安2号体育场2】</a></span>
+                            </div>
+                            <div class="fcon" style="display: none;">
+                                <a target="_blank" href="http://sau.scu.edu.cn/chronicle/newsDetail?newsid=19080"> <img src="./sichuan_files/f2ff6ff5-7c0b-4f68-a7f5-59db377acf19.png" style="opacity: 1;"></a>
+                                <span class="shadow"><a target="_blank" href="http://sau.scu.edu.cn/chronicle/newsDetail?newsid=19080"> 【江安2号体育场】</a></span>
+                            </div>
+                            <div class="fcon" style="display: none;">
+                                <a target="_blank" href="http://sau.scu.edu.cn/chronicle/newsDetail?newsid=19079"> <img src="./sichuan_files/41e42aac-76f8-471c-a6d1-610155e796b2.png" style="opacity: 1;"></a>
+                                <span class="shadow"><a target="_blank" href="http://sau.scu.edu.cn/chronicle/newsDetail?newsid=19079"> 【环形大道】</a></span>
+                            </div>
+                            <div class="fcon" style="display: block;">
+                                <a target="_blank" href="http://sau.scu.edu.cn/chronicle/newsDetail?newsid=19078"> <img src="./sichuan_files/f3fcb73b-a3ed-48d0-bb84-5f1400ee62b6.png" style="opacity: 1;"></a>
+                                <span class="shadow"><a target="_blank" href="http://sau.scu.edu.cn/chronicle/newsDetail?newsid=19078"> 【江安长桥】</a></span>
+                            </div>
+
+                </div>
+                <div class="fbg">
+                    <div class="D1fBt" id="D1fBt">
+                                <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>1</i></a>
+                                <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>2</i></a>
+                                <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>3</i></a>
+                                <a href="javascript:void(0)" hidefocus="true" target="_self" class="current"><i>4</i></a>
+
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td width="272">
+            <img src="./sichuan_files/lm_wsp.gif" width="272" height="44" usemap="#Map2">
+            <map name="Map2" id="Map2"><area shape="rect" coords="229,15,270,37" href="http://sau.scu.edu.cn/eventvideo" onclick="ClickTip(this,event)" onfocus="this.blur() "></map>
+        </td>
+        <td width="25" height="16"></td>
+        <td width="703" height="16" valign="bottom">
+            <img src="./sichuan_files/lm_xwgg2.gif" id="imggg" width="703" height="29" usemap="#Map3">
+            <map name="Map3" id="Map3">
+                <area shape="rect" id="slxw" coords="96,2,183,29" href="javascript:void(0)" onclick="ClickTip(this,event)" onfocus="this.blur() ">
+                <area shape="rect" id="slgg" coords="2,2,87,29" href="javascript:void(0)" onclick="ClickTip(this,event)" onfocus="this.blur() ">
+                <area  shape="rect" id="slsrc" coords="656,4,700,25" href="http://sau.scu.edu.cn/club/clubnews" target="_blank" onclick="ClickTip(this,event)" onfocus="this.blur() ">
+            </map>
+
+        </td>
+    </tr>
+    <tr>
+        <td width="272" valign="top">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+                    <tbody><tr>
+                        <td>
+
+                            <a target="_blank" href="https://www.glut.edu.cn/">
+                                <div class="menu" style="width: 272px; height: 153px; background: url(https://static01.imgkr.com/temp/4b6b8daab5da4a8084842fe9b14aa040.png);background-size:272px 153px;filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=&#39;upload/news/2015-12-10/2e2ab0c8-fb5e-4b2e-a012-2f1641039b65.png&#39; , sizingmethod=&#39;scale&#39; );">
+                                    <img src="./sichuan_files/play.png" class="imgplay" style="width:60px;height:60px">
+                                    <div> 桂林理工大学学生社团2014-2015学年回顾</div>
+                                </div>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                            <a target="_blank" href="https://www.glut.edu.cn/">
+                                <div class="menu" style="width: 272px; height: 153px; background: url(https://static01.imgkr.com/temp/3617aa43b7304ad09d134c5bfa5072b8.jpg);background-size:272px 153px;filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=&#39;upload/news/2015-12-10/db662267-e9c9-4e91-92c8-97d4718273e8.png&#39; , sizingmethod=&#39;scale&#39; );">
+                                    <img src="./sichuan_files/play.png" class="imgplay" style="width:60px;height:60px">
+                                    <div> 桂林理工大学学生社团联合会宣传片</div>
+                                </div>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+
+                <tr>
+                    <td>
+                        <img src="./sichuan_files/lm_yqlj.gif" width="272" height="47" usemap="#Map5">
+                        <map name="Map5" id="Map5"><area shape="rect" coords="228,18,270,43" target="_blank" href="http://sau.scu.edu.cn/home/linklist" onclick="ClickTip(this,event)" onfocus="this.blur() "></map>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+                            <tbody><tr>
+                                <td align="left" class="font1">
+                                            <a href="https://www.glut.edu.cn/" target="_blank"> 桂林理工大学</a>
+                                                <br>
+                                            <a href="https://www.glut.edu.cn/" target="_blank">青春川大（ 桂林理工大学团委网站）</a>
+                                                <br>
+                                            <a href="https://www.glut.edu.cn/" target="_blank">学工部</a>
+                                                <br>
+
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+                </tr>
+            </tbody></table>
+        </td>
+        <td width="25" valign="top">
+            <script type="text/javascript">
+                Qfast.add('widgets', { path: "js/terminator2.2.min.js", type: "js", requires: ['fx'] });
+                Qfast(false, 'widgets', function () {
+                    K.tabs({
+                        id: 'fsD1',   //焦点图包裹id
+                        conId: "D1pic1",  //** 大图域包裹id
+                        tabId: "D1fBt",
+                        tabTn: "a",
+                        conCn: '.fcon', //** 大图域配置class
+                        auto: 1,   //自动播放 1或0
+                        effect: 'fade',   //效果配置
+                        eType: 'click', //** 鼠标事件
+                        pageBt: true,//是否有按钮切换页码
+                        bns: ['.prev', '.next'],//** 前后按钮配置class
+                        interval: 3000  //** 停顿时间
+                    })
+                })
+            </script>
+        </td>
+        <td width="703" valign="top" bgcolor="#FFFFFF">
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tbody><tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td height="10"></td>
+                </tr>
+                <tr>
+                 <div id="sichuanContent"></div>
+                </tr>
+            </tbody></table>
+
+            <table style="width:100%">
+                <tbody><tr>
+                    <td colspan="3" style="border-bottom: solid 1px #F70B19;">
+                        <img src="./sichuan_files/lm_hdyg.gif" width="703" height="44" usemap="#Map">
+                        <map name="Map" id="Map"><area shape="rect" coords="651,15,700,37" href="http://sau.scu.edu.cn/eventvideo/eventList" onclick="ClickTip(this,event)" onfocus="this.blur() "></map>
+
+                    </td>
+                </tr>
+            </tbody></table>
+
+            <div class="box">
+
+                <dl id="s-event" class="s-event" style="width: 700px;">
+
+                        <dd class="evenitem">
+                            <a style="color: #F70B19" href="http://sau.scu.edu.cn/eventvideo/eventdetail?eventid=30544">
+                                <div class="s-title">信科学院桂工 “一起读书 懒癌克服”读书结伴打卡活动</div>
+                                <div class="s-key">线上读书打卡</div>
+                                <div class="s-date"> 时间：2020年05月07日 12:00</div>
+                                <div class="s-place">地点：线上举办</div>
+                            </a>
+                        </dd>
+
+                </dl>
+
+            </div>
+        </td>
+    </tr>
+
+</tbody></table>
+
+<script type="text/javascript" src="./sichuan_files/jsapi">
+</script>
+<script>
+    function ClickTip(type, event) { }
+    $(function () {
+        $(".menu").hover(
+              function () {
+                  $(this).find(".imgplay").attr("src", "https://static01.imgkr.com/temp/43db23d16f0543f5aa59d5ac021350ac.png");
+              },
+              function () {
+                  $(this).find(".imgplay").attr("src", "https://static01.imgkr.com/temp/43db23d16f0543f5aa59d5ac021350ac.png");
+              }
+        );
+        $("#slgg").click(function () {
+            $("#imggg").attr("src", "./sichuan_files/lm_xwgg.gif");
+            $("#tbgg").show();
+            $("#tbst").hide();
+            // $("#slsrc").attr("href", "/chronicle/Notice")
+        });
+
+        $("#slxw").click(function () {
+            $("#imggg").attr("src", "./sichuan_files/lm_xwgg2.gif");
+            $("#tbgg").hide();
+            $("#tbst").show();
+            // $("#slsrc").attr("href", "/club/clubnews")
+        });
+    })
+</script>
+
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+
+                <table width="1000" border="0" cellspacing="0" cellpadding="0">
+                    <tbody><tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td valign="top">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <iframe name="I2" src="./sichuan_files/foot.html" height="100" width="100%" scrolling="no" border="0" frameborder="0" __idm_frm__="406"></iframe>
+                        </td>
+                    </tr>
+                </tbody></table>
+            </td>
+        </tr>
+    </tbody></table>
+    <script>
+        $(function () {
+
+            $(".primary-button").hover(function () {
+                $(this).css("background-color", "red");
+            }, function () {
+                $(this).css("background-color", "#FA710D");
+
+            })
+
+            $("#tophtml").load("/shared/top", function (response, status, xhr) {
+                $('#tophtml').html(response);
+            });
+
+            $("#btnsearch").click(function () {
+                if ($("#textfield").val() != "") {
+                    var strSearch = window.location.href.toLowerCase();
+                    if (strSearch.indexOf("home/searchlist") >= 0) {
+
+                        window.location.href = "/home/searchList?strCondition=" + $("#textfield").val();
+                    } else {
+                        window.open("/home/searchList?strCondition=" + $("#textfield").val());
+                    }
+                }
+            })
+        })
+
+        function AddFavorite(sURL, sTitle) {
+            try {
+                window.external.addFavorite(sURL, sTitle);
+            }
+            catch (e) {
+                try {
+                    window.sidebar.addPanel(sTitle, sURL, "");
+                }
+                catch (e) {
+                    alert("加入收藏失败，请使用Ctrl+D进行添加");
+                }
+            }
+        }
+    </script>
+
+</body></html>

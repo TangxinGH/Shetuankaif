@@ -1,21 +1,21 @@
 <template>
-    <el-card class="box-card">
+    <a-card class="box-card">
         <div slot="header" class="clearfix">
             <span>动态</span>
-          <el-button style="float: right; padding: 3px 0" type="text"><a v-bind:href="env ? './history.html' : './history'" target="_blank">更多活动</a></el-button>
+          <a-button style="float: right; padding: 3px 0" type="text"><a v-bind:href="env ? './history.html' : './history'" target="_blank">更多活动</a></a-button>
         </div>
         <div v-for="item in news_data" :key="item.ActID" class="text item" >
           <a-space :size="8" >
             <span  >  {{ item.Act_Publish_Time }}</span>
             <a-divider type="vertical" />
           <a  v-bind:href="env ? './article.html?ActID='+item.ActID : './article?ActID='+item.ActID" target="_blank" >
-          <span >  {{item.Act_Title() }}…</span>
+          <span >  {{item.Act_Title }}…</span>
             <a-divider  type="vertical" />
           </a>
        <span  > {{ item.Act_Author }}</span>
           </a-space>
         </div>
-    </el-card>
+    </a-card>
 </template>
 
 <script>
@@ -29,20 +29,20 @@ export default {
     }
   },
   created () {
-    let self = this
-    this.$axios.get('/api/findAllActivities').then(function (response) {
+    this.$axios.get('/api/findAllActivities').then(response => {
       // 压数据
       if (response.data.msg != null) {
         // if (response.code == 700) {
-        self.news_data = response.data.msg
+        this.news_data = response.data.msg
         console.log('活动 home' + response.data.msg)
-        self.news_data = response.data.msg.map((item) => { //  有同事指出应该声明一个新变量来存储map的结果，这个建议我认为是对的。
+        this.news_data = response.data.msg.map((item) => { //  有同事指出应该声明一个新变量来存储map的结果，这个建议我认为是对的。
           return {
             ...item,
             Act_Publish_Time: moment(item.Act_Publish_Time).format('MM-DD'),
-            Act_Title: function () { return item.Act_Title.slice(1, 40) ? item.Act_Title.slice(1, 40) : item.Act_Title } // 截取字符串.slice(4)  20 应该是最多吧
+            Act_Title: (function () { return item.Act_Title.slice(1, 40) ? item.Act_Title.slice(1, 40) : item.Act_Title })() // 截取字符串.slice(4)  20 应该是最多吧
           }
         })
+        this.$emit('parentFunctionNews', this.news_data[0]) // 向父组件传值
       }
       // }
     }).catch(function (err) {
