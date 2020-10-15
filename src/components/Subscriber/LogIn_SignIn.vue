@@ -2,10 +2,19 @@
   <a-row>
   <div class="nav">
       <ul class="sidenav">
-        <li><a class="active" href="#home">主页</a></li>
-        <li><a href="#news">新闻</a></li>
+        <li><a class="active"  v-bind:href="env? './sichuan.html' : './sichuan'">主页</a></li>
+        <li><a v-bind:href="env? './history.html?ActID=1' : './history?ActID=1'">新闻</a></li>
         <li><a href="#contact">联系</a></li>
-        <li style="float: right;margin-right: 10vw"><a href="#about">关于</a></li>
+        <li><a href="#contact">关于</a></li>
+        <li style="float: right;margin-right: 10vw"><a   @click="showModal">管理员登录</a></li>
+        <a-modal v-model="visible" title="管理员登录" on-ok="handleOk">
+          <template slot="footer">
+            <a-button key="back" @click="handleCancel">
+              Return
+            </a-button>
+          </template>
+          <administrator/>
+        </a-modal>
       </ul>
     </div>
       <a-col :xs="{ span: 0, offset: 0 }" :lg="{ span: 6, offset: 2 }">
@@ -23,13 +32,37 @@ import FromBody from '@/components/Subscriber/FormBody'
 import { Row, Col } from 'ant-design-vue'
 import Vue from 'vue'
 import 'ant-design-vue/dist/antd.css'
+import Administrator from '@/components/Subscriber/administrator'
 Vue.use(Row)
 Vue.use(Col)
 export default {
   name: 'LogIn_SignIn',
   components: {
+    Administrator,
     FromBody,
     CircleAPPs
+  },
+  data: function () {
+    return {
+      env: process.env.NODE_ENV === 'production',
+      loading: false,
+      visible: false
+    }
+  },
+  methods: {
+    showModal () {
+      this.visible = true
+    },
+    handleOk (e) {
+      this.loading = true
+      setTimeout(() => {
+        this.visible = false
+        this.loading = false
+      }, 3000)
+    },
+    handleCancel (e) {
+      this.visible = false
+    }
   }
 
 }
