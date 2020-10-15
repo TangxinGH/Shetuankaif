@@ -16,4 +16,5 @@ public interface UserMapper {
     int  update(User user);
     int deleteUser(String sno);
 
+    int updateJoinedStatusBySno(String sno);
 }

@@ -10,6 +10,29 @@ public class User {
     private String sex;
     private String age;
     private String headportrait;
+    private String joined;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "sno=" + sno +
+                ", sname='" + sname + '\'' +
+                ", sCollege='" + sCollege + '\'' +
+                ", password='" + password + '\'' +
+                ", sex='" + sex + '\'' +
+                ", age='" + age + '\'' +
+                ", headportrait='" + headportrait + '\'' +
+                ", joined='" + joined + '\'' +
+                '}';
+    }
+
+    public String getJoined() {
+        return joined;
+    }
+
+    public void setJoined(String joined) {
+        this.joined = joined;
+    }
 
     public Integer getSno() {
         return sno;
@@ -67,16 +90,4 @@ public class User {
         this.headportrait = headportrait;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "Sno=" + sno +
-                ", Sname='" + sname + '\'' +
-                ", SCollege='" + sCollege + '\'' +
-                ", Password='" + password + '\'' +
-                ", Sex='" + sex + '\'' +
-                ", Age='" + age + '\'' +
-                ", Headportrait='" + headportrait + '\'' +
-                '}';
-    }
 }

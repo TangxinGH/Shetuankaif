@@ -158,6 +158,10 @@ public class CodeMsg {
 	public static CodeMsg GET_COMMENTS_FAILED = new CodeMsg(-51002,"获取评论列表失败！");
 	public static CodeMsg DELETE_COMMENT_SUCCESSFULLY = new CodeMsg(-52000,"删除评论成功！");
 	public static CodeMsg DELETE_COMMENT_ERROR = new CodeMsg(-52001,"删除评论失败！");
+	//前端用户加入社团
+	public static CodeMsg APPLY_JOINED_SUCCESSFULLY = new CodeMsg(-71000,"申请加入成功！");
+	public static CodeMsg APPLY_JOINED_FAILED = new CodeMsg(-71001,"申请加入失败！");
+
 	//后台管理员公告操作
 	public static CodeMsg ADD_NOTICE_SUCCESSFULLY = new CodeMsg(-53000,"添加公告成功！");
 	public static CodeMsg ADD_NOTICE_FAILED = new CodeMsg(-53001,"添加公告失败！");

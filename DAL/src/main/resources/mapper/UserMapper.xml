@@ -69,4 +69,9 @@
         SELECT * FROM user WHERE Sno = #{sno}
     </select>
 
+    <update id="updateJoinedStatusBySno" parameterType="String">
+        UPDATE user set Joined = 'auditing' where Joined = 'false'
+        <if test="sno != null">and Sno = #{sno}</if>
+    </update>
+
 </mapper>

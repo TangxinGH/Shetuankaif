@@ -13,7 +13,7 @@ public class UserService {
 
     @Autowired
     private UserMapper userMapper; //抽象类不能实例化
-    public  void  login(){
+    public void login(){
     System.out.println("登录中");
 }
 
@@ -35,5 +35,9 @@ String sname="234";
     }
     public List<User> findAll(){
         return userMapper.findAll();
+    }
+
+    public int updateJoinedStatusBySno(String sno){
+        return userMapper.updateJoinedStatusBySno(sno);
     }
 }

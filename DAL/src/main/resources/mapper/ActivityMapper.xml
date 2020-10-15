@@ -21,10 +21,10 @@
     </select>
 
     <!-- 根据标题查询 -->
-    <select id="getActivityByActivityID" resultMap="activityMap" parameterType="INTEGER">
+    <select id="getActivityByActivityID" resultType="entity.Activity" parameterType="INTEGER">
         SELECT * FROM activity Act WHERE 1=0
         <if test="actID != null">
-            and Act.ActID = #{actID,jdbcType = INTEGER}
+            or Act.ActID = #{actID,jdbcType = INTEGER}
         </if>
     </select>
 

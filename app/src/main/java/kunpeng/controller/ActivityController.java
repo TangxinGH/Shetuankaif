@@ -86,7 +86,7 @@ public class ActivityController {
         return affected > 0 ? Result.success(CodeMsg.UPDATE_ACTIVITY_SUCCESSFULLY) : Result.error(CodeMsg.UPDATE_ACTIVITY_FAILED);
     }
 
-    @RequestMapping (value = "/findAllActivities")
+    @RequestMapping ("/findAllActivities")
     public Map<String,Object> getAllActivities(){
         Map<String,Object> resultMap = new HashMap<>();
         try{
@@ -102,7 +102,7 @@ public class ActivityController {
         return resultMap;
     }
 
-    @RequestMapping (value = "/getActivitybyID")
+    @RequestMapping ("/getActivitybyID")
     public Activity getActivityByID(@RequestParam String actID){
         return activityService.getActivityByID(Integer.parseInt(actID));
     }
