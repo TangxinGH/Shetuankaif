@@ -1,6 +1,6 @@
 <template>
     <div class="g-doc">
-      <ArticleLayout/>
+<!--      <ArticleLayout/>-->
 <ArticleContent></ArticleContent>
     </div>
 </template>
@@ -32,4 +32,8 @@ export default {
 
 </script>
 <style scoped>
+.g-doc{
+  width: 66%;
+  margin-left: 17%;
+}
 </style>

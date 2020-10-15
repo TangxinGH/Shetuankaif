@@ -2,17 +2,17 @@
     <a-card class="box-card">
         <div slot="header" class="clearfix">
             <span>公告</span>
-            <a-button style="float: right; padding: 3px 0" type="text"><a v-bind:href="env ? './history.html?NtID=1' : './history?NtID=1'" target="_blank">更多</a></a-button>
+            <a-button style="float: right; padding: 3px 0" type="text"><a v-bind:href="env ? './history.html?ntID=1' : './history?ntID=1'" target="_blank">更多</a></a-button>
         </div>
-      <div v-for="item in notice_data" :key="item.NtID" class="text item" >
+      <div v-for="item in notice_data" :key="item.ntID" class="text item" >
         <a-space :size="8" >
-          <span  >  {{ item.Nt_Publish_Time }}</span>
+          <span  >  {{ item.ntPublishTime }}</span>
           <a-divider type="vertical" />
-          <a  v-bind:href="env ? './article.html?NtID='+item.NtID : './article?NtID='+item.NtID" target="_blank">
-            <span >  {{item.Nt_Title }}…</span>
+          <a  v-bind:href="env ? './article.html?ntID='+item.ntID : './article?ntID='+item.ntID" target="_blank">
+            <span >  {{item.ntTitle }}…</span>
             <a-divider  type="vertical" />
           </a>
-          <span  > {{ item.Nt_Author }}</span>
+          <span  > {{ item.ntAuthor }}</span>
         </a-space>
       </div>
     </a-card>
@@ -34,8 +34,8 @@ export default {
         this.notice_data = response.data.msg.map((item) => { //  有同事指出应该声明一个新变量来存储map的结果，这个建议我认为是对的。
           return {
             ...item,
-            Nt_Publish_Time: moment(item.Nt_Publish_Time).format('MM-DD'),
-            Nt_Title: (function () { return item.Nt_Title.slice(1, 80) ? item.Nt_Title.slice(1, 80) : item.Nt_Title })() // 截取字符串.slice(4)  20 应该是最多吧
+            ntPublishTime: moment(item.ntPublishTime).format('MM-DD'),
+            ntTitle: (function () { return item.ntTitle.slice(1, 80) ? item.ntTitle.slice(1, 80) : item.ntTitle })() // 截取字符串.slice(4)  20 应该是最多吧
           }
         })
         this.$emit('parentFunctionNotice', this.notice_data[0]) // 向父组件传值

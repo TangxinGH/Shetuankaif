@@ -6,21 +6,15 @@
       </div>
       <div class="navigation">
         <ul>
-          <li><a href="#">Main page</a></li>
-          <li><a href="#">Contents</a></li>
-          <li><a href="#">Featured content</a></li>
+          <li><a href="#">主页</a></li>
+          <li><a href="#">内容</a></li>
+          <li><a href="#">关健内容</a></li>
         </ul>
-        <h3>Interaction</h3>
+        <h3>相关的</h3>
         <ul>
-          <li><a href="#">Help</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Portal</a></li>
-        </ul>
-        <h3>Interaction</h3>
-        <ul>
-          <li><a href="#">Help</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Portal</a></li>
+          <li><a href="#">帮助</a></li>
+          <li><a href="#">关于</a></li>
+          <li><a href="#">门户</a></li>
         </ul>
       </div>
 
@@ -28,17 +22,17 @@
     </div>
     <div class="mainsection">
       <div class="headerLinks">
-        <span class="user">Not logged in</span> <a href="#">Talk</a> <a href="#">Contributions</a> <a href="#">Create account</a> <a href="#">Log in</a>
+        <span class="user"> 未登录</span> <a href="#"> 收藏</a> <a href="#">贡献</a> <a href="#"> </a> <a href="#">登录</a>
       </div>
       <div class="tabs clearfix">
         <div class="tabsLeft">
           <ul>
-            <li><a href="#" class="active">Article</a></li>
-            <li><a href="#">Talk</a></li>
+            <li><a href="#" class="active">文章页</a></li>
+            <li><a href="#">交流</a></li>
           </ul>
         </div>
         <div id="simpleSearch">
-          <input type="text" name="searchInput" id="searchInput" placeholder="Search Wikipedia" size="12" />
+          <input type="text" name="searchInput" id="searchInput" placeholder="搜索" size="12" />
           <div id="submitSearch"></div>
         </div>
         <div class="tabsRight">
@@ -57,26 +51,26 @@
         <div v-show="true">
           <!--  附件区域   attachment -->
           <a-divider/>
-          <a-button>附件区域 有则渲染</a-button>
+          <a-button v-if="attachment">附件</a-button>
         </div>
         <div>
           <a-divider/>
           <ul>
-            <li><a href="6311.htm">上一篇：关于2020级新生查看课表上课的通知</a></li><a href="6311.htm">
-          </a><li><a href="6311.htm"></a><a href="6271.htm">下一篇：关于停开2020秋专业选修（限选）课和公共选修（任选）课的通知</a></li><a href="6271.htm">
+            <li><a href="6311.htm">上一篇：关于2020级新生迎接活动的通知</a></li><a href="6311.htm">
+          </a><li><a href="6311.htm"></a><a href="6271.htm">下一篇：关于开展一年一度素质拓展活动课的通知</a></li><a href="6271.htm">
           </a></ul>
         </div>
         <a-divider/>
         <CommentBasic></CommentBasic>
         <a-divider/>
         <div class="categories">
-          <a href="#">Minimum corrumpit </a> <a href="#">Regione suscipit </a> <a href="#">Has et partem </a>
+          <a href="#">桂林理工大学 </a> <a href="#">鲲鹏素质拓展社团 </a> <a href="#"> 版权所有 </a>
         </div>
       </div>
       <div class="pagefooter">
-        This page was last edited on 29.07.2017 | Template by <a href="http://html5-templates.com/" target="_blank" rel="nofollow">HTML5 Templates</a> <!-- Please leave this link unchanged -->
+       本页撰写于 29.07.2020 | 模板 by <a href="http://html5-templates.com/" target="_blank" rel="nofollow">HTML5  技术</a> <!-- Please leave this link unchanged -->
         <div class="footerlinks">
-          <a href="#">Privacy policy</a> <a href="#">About</a> <a href="#">Terms and conditions</a> <a href="#">Cookie statement</a> <a href="#">Developers</a>
+          <a href="#">隐私</a> <a href="#">关于</a> <a href="#">Terms and conditions</a> <a href="#">Cookie 声明</a> <a href="#">开发者</a>
         </div>
       </div>
 
@@ -96,18 +90,19 @@ export default {
   },
   data: function () {
     return {
-      content_data: htmlTxt
+      content_data: htmlTxt,
+      attachment: ''
     }
   },
   mounted () {
     console.log('id号为？')
-    let NtID = Number(new URLSearchParams(window.location.search).get('NtID'))
-    let ActID = Number(new URLSearchParams(window.location.search).get('ActID'))
-    console.log(NtID ? this.content_data = '?NtID=' + NtID : ActID ? this.content_data = '?ActID=' + ActID : 1)
-    this.$axios.get((NtID ? '/api/getNoticebyID' : '/api/getActivitybyID') + this.content_data).then(res => {
+    let ntID = Number(new URLSearchParams(window.location.search).get('ntID'))
+    let actID = Number(new URLSearchParams(window.location.search).get('actID'))
+    console.log(ntID ? this.content_data = '?ntID=' + ntID : actID ? this.content_data = '?actID=' + actID : 1)
+    this.$axios.get((ntID ? '/api/getNoticebyID' : '/api/getActivitybyID') + this.content_data).then(res => {
       console.log('数据输出 ')
       console.log(res.data)
-      this.content_data = (res.data.Nt_Content ? res.data.Nt_Content : res.data.Act_Content) + htmlTxt.toString()
+      this.content_data = (res.data.ntContent ? res.data.ntContent : res.data.actContent) + htmlTxt.toString()
     }).catch(err => {
       console.log('文章 内容出错')
       console.log(err)

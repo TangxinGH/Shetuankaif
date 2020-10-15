@@ -1,4 +1,5 @@
 <template>
+  <div>
   <a-list
       class="comment-list"
       :header="`${data.length} replies`"
@@ -19,6 +20,10 @@
       </a-comment>
     </a-list-item>
   </a-list>
+
+    <a-textarea placeholder="发表一下评论吧" v-model="commentSubmit"> </a-textarea>
+    <a-button @click="submitComments" style="float: right ; margin-top: 15px; margin-bottom: 20px; color: yellow"  type="primary">发布</a-button>
+  </div>
 </template>
 <script>
 import moment from 'moment'
@@ -45,7 +50,8 @@ export default {
           datetime: moment().subtract(2, 'days')
         }
       ],
-      moment
+      moment,
+      commentSubmit: ''
     }
   },
   mounted () {
@@ -70,6 +76,22 @@ map() 方法按照原始数组元素顺序依次处理元素。
     }).catch(err => {
       console.log(err)
     })
+  },
+  methods: {
+    submitComments: function () {
+      if (this.commentSubmit == '') {
+        this.$message.error('内容不能为空')
+        return
+      }
+
+      this.data.push({
+        author: 'xxxx',
+        content: this.commentSubmit,
+        datetime: moment()
+      })
+      this.$message.success('发表成功')
+      this.$message.error('你没有登录！')
+    }
   }
 }
 </script>

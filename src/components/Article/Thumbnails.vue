@@ -3,8 +3,7 @@
     <div class="overlay">
       <h1>Simply The Best</h1>
       <h3>Reasons for Choosing US</h3>
-      <p> join  us </p>
-      <button>READ MORE</button>
+      <button>阅读更多</button>
     </div>
   </header>
 </template>
