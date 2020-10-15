@@ -2,14 +2,14 @@ import moment from 'moment'
 const newsData = [
   {
     title: '发布时间',
-    dataIndex: 'Act_Publish_Time',
-    sorter: (a, b) => moment(a.Act_Publish_Time) - moment(b.Act_Publish_Time), // arr.sort(function(a, b){return a < b ? 1 : -1;  }); ? 1 : -1  转为日期才能排
+    dataIndex: 'actPublishTime',
+    sorter: (a, b) => moment(a.actPublishTime) - moment(b.actPublishTime), // arr.sort(function(a, b){return a < b ? 1 : -1;  }); ? 1 : -1  转为日期才能排
     width: '20%',
-    scopedSlots: { customRender: 'Act_Publish_Time' }
+    scopedSlots: { customRender: 'actPublishTime' }
   },
   {
     title: '文章作者',
-    dataIndex: 'Act_Author',
+    dataIndex: 'actAuthor',
     filters: [
       { text: 'Male', value: 'male' },
       { text: 'Female', value: 'female' }
@@ -18,7 +18,7 @@ const newsData = [
   },
   {
     title: '标题',
-    dataIndex: 'Act_Title',
+    dataIndex: 'actTitle',
     scopedSlots: { customRender: 'aHref' }
   },
   {
@@ -31,14 +31,14 @@ const newsData = [
 const Notices = [
   {
     title: '发布时间',
-    dataIndex: 'Nt_Publish_Time',
-    sorter: (a, b) => moment(a.Act_Publish_Time) - moment(b.Act_Publish_Time), // arr.sort(function(a, b){return a < b ? 1 : -1;  }); ? 1 : -1  转为日期才能排
+    dataIndex: 'ntPublishTime',
+    sorter: (a, b) => moment(a.ntPublishTime) - moment(b.ntPublishTime), // arr.sort(function(a, b){return a < b ? 1 : -1;  }); ? 1 : -1  转为日期才能排
     width: '20%',
-    scopedSlots: { customRender: 'Act_Publish_Time' }
+    scopedSlots: { customRender: 'actPublishTime' }
   },
   {
     title: '公告作者',
-    dataIndex: 'Nt_Author',
+    dataIndex: 'ntAuthor',
     filters: [
       { text: 'Male', value: 'male' },
       { text: 'Female', value: 'female' }
@@ -47,7 +47,7 @@ const Notices = [
   },
   {
     title: '公告标题',
-    dataIndex: 'Nt_Title',
+    dataIndex: 'ntTitle',
     scopedSlots: { customRender: 'aHref' }
   },
   {
@@ -62,9 +62,9 @@ const AllComments = [
   {
     title: '评论时间',
     dataIndex: 'Cmt_Date',
-    sorter: (a, b) => moment(a.Act_Publish_Time) - moment(b.Act_Publish_Time), // arr.sort(function(a, b){return a < b ? 1 : -1;  }); ? 1 : -1  转为日期才能排
+    sorter: (a, b) => moment(a.actPublishTime) - moment(b.actPublishTime), // arr.sort(function(a, b){return a < b ? 1 : -1;  }); ? 1 : -1  转为日期才能排
     width: '10%',
-    scopedSlots: { customRender: 'Act_Publish_Time' }
+    scopedSlots: { customRender: 'actPublishTime' }
   },
   {
     title: '学号',
