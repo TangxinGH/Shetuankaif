@@ -4,17 +4,16 @@
   <a-menu
       theme="dark"
       mode="horizontal"
-      :default-selected-keys="['2']"
       :style="{ lineHeight: '64px'  }"
   >
     <a-menu-item key="1">
-      导航 1
+       <a href="/sichuan.html"> 首页</a>
     </a-menu-item>
     <a-menu-item key="2">
-      导航 2
+      <a> 个人信息</a>
     </a-menu-item>
     <a-menu-item key="3">
-      导航 3
+      <a>登出</a>
     </a-menu-item>
   </a-menu>
   </div>
