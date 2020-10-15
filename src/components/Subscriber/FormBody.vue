@@ -119,6 +119,8 @@ export default {
             case 20:
               console.log('成功')
               that.$message.success('登录成功')
+              // localStorage 对象存储的数据没有时间限制。第二天、第二周或下一年之后，数据依然可用。
+              localStorage.Sno = that.sno // 存储
               that.$router.push({ path: '/user' })
               break
             case 21:

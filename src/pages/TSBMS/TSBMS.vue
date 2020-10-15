@@ -24,7 +24,7 @@
             <a-breadcrumb-item>Bill</a-breadcrumb-item>
           </a-breadcrumb>
           <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
-            <p>视图位置</p>
+            <p> </p>
             <router-view></router-view>
           </div>
         </a-layout-content>
@@ -63,14 +63,6 @@ export default {
 </script>
 
 <style scoped>
-#components-layout-demo-side >>> .logo { /*深度选择器  传递给子组件 */
-  height: 142px;
-  background: rgb(16, 0, 254);
-  margin: 16px;
-}
-.ant-layout-sider{
-  background-color: #222f3e;
-}
 #components-layout-demo-side >>> .logoheader {
   width: 120px;
   height: 31px;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="logo"/>
+    <div ><img src="../../../assets/img/avstar.jpg"></div>
     <a-menu theme="light" mode="inline">
       <a-menu-item key="1" >
         <a-icon type="pie-chart"/>

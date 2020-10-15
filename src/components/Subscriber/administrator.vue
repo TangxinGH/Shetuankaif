@@ -37,6 +37,7 @@ export default {
       if (!regS.test(this.admin)) { this.$message.warn('帐号3 到11 位数字'); return }
       if (!regP.test(this.adminPass)) { this.$message.warn('密码 格式不对 3-10位 可以包含小写大母和大写字母数字下划线和减号'); return }
       if (this.admin != '' && this.adminPass != '') { window.open(this.env ? '/tsbms.html' : '/tsbms', '_blank') } else this.$message.warn('请输入帐号或者密码')
+      localStorage.admin = this.admin
     }
   }
 }
