@@ -5,6 +5,8 @@ import mapper.AdminMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AdminService {
     @Autowired
@@ -15,13 +17,14 @@ public class AdminService {
    public int addAdmin(Admin admin){
        return adminMapper.addAdmin(admin);
    }
-    public int deleteAdmin(Integer adNo){
+    public int deleteAdmin(Long adNo){
        return adminMapper.deleteAdmin(adNo);
     }
     public int updateAdmin(Admin admin){
        return adminMapper.updateAdmin(admin);
     }
-    public  Admin findByAdminInfo(){
-       return adminMapper.findByAdminInfo();
+    public  Admin findByAdminNO(Integer adNo){
+       return adminMapper.findByAdminNO(adNo);
     }
+    public List<Admin> findAllAdmin(){return adminMapper.findAllAdmin();}
 }

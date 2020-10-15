@@ -59,12 +59,14 @@ public class CodeMsg {
 	public static CodeMsg ORDER_AUTH_ERROR = new CodeMsg(-13, "\u8ba2\u5355\u9a8c\u8bc1\u5931\u8d25\uff0c\u8ba2\u5355\u7f16\u53f7\u6216\u624b\u673a\u53f7\u8f93\u5165\u6709\u8bef\u6216\u8005\u53ef\u80fd\u4f60\u8d2d\u4e70\u7684\u662f\u76d7\u7248\uff0c\u8bf7\u8054\u7cfb\u3010\u733f\u6765\u5165\u6b64\u3011\u5ba2\u670d\uff01");
 	public static CodeMsg UNKNOWN_ERROR = new CodeMsg(Integer.MIN_VALUE,"未知错误，请联系管理员解决问题！");
 
-	
 
-
+	public static CodeMsg LOGIN_SUCCESS = new CodeMsg(20, "登录成功");
+	public static CodeMsg USER_NAME_NO_EXIST = new CodeMsg(21, "该用户名不存在！");
 	public static CodeMsg USERNAME_NO_EXIST = new CodeMsg(-3000, "该用户名不存在！");
-	public static CodeMsg USER_PASSWORD_ERROR = new CodeMsg(-3001, "密码错误！");
-	public static CodeMsg USER_INFO = new CodeMsg(50, "用户个人信息");
+	public static CodeMsg USER_PASSWORD_ERROR = new CodeMsg(22, "密码错误！");
+	public static CodeMsg USER_INFO = new CodeMsg(700, "用户个人信息");
+	public static CodeMsg USERS_INFO = new CodeMsg(100, "用户信息");
+	public static CodeMsg MEMBERS_INFO = new CodeMsg(50, "用户个人信息");
 	//注册类
 	public static CodeMsg USER_INFO_EMPTY  = new CodeMsg(34, "请填写个人信息");
 	public static CodeMsg User_SNO_EMPTY = new CodeMsg(34, "学号不能为空！");
@@ -74,18 +76,34 @@ public class CodeMsg {
 	public static CodeMsg User_SCOLLEGE_EMPTY = new CodeMsg(34, "学院不能为空");
 	public static CodeMsg User_SEX_EMPTY = new CodeMsg(34, "性别不能为空");
 	public static CodeMsg User_AGE_EMPTY = new CodeMsg(34, "年龄不能为空");
-	public static CodeMsg Unknown_ERROR= new CodeMsg(34, "未知错误");
+	public static CodeMsg Unknown_ERROR= new CodeMsg(101, "未知错误");
 	public static CodeMsg REGISTER_SUCCESS= new CodeMsg(30, "成功");
-	public static CodeMsg DELETE_USER_SUCCESS = new CodeMsg(60, "删除用户成功");
-	public static CodeMsg DELETE_USER_EORROR= new CodeMsg(61, "删除用户失败");
-	public static CodeMsg UPDATE_USER_SUCCESS = new CodeMsg(60, "修改用户信息成功");
-	public static CodeMsg UPDATE_USER_EORROR= new CodeMsg(61, "修改用户信息失败");
+	public static CodeMsg DELETE_USER_SUCCESS = new CodeMsg(600, "删除用户成功");
+	public static CodeMsg DELETE_USER_ERROR= new CodeMsg(601, "删除用户失败");
+	public static CodeMsg UPDATE_USER_SUCCESS = new CodeMsg(200, "修改用户信息成功");
+	public static CodeMsg UPDATE_USER_ERROR= new CodeMsg(201, "修改用户信息失败");
+	public static CodeMsg ADD_ADMIN_SUCCESS= new CodeMsg(300, "添加管理员成功");
+	public static CodeMsg UPDATE_ADMIN_SUCCESS = new CodeMsg(301, "修改管理员信息成功");
+	public static CodeMsg UPDATE_ADMIN_ERROR= new CodeMsg(81, "修改管理员信息失败");
+	public static CodeMsg ADMIN_INFO = new CodeMsg(90, "管理员个人信息");
+	public static CodeMsg DELETE_ADMIN_SUCCESS = new CodeMsg(500, "删管理员成功");
+	public static CodeMsg DELETE_ADMIN_ERROR= new CodeMsg(501, "删除管理员失败");
+	public static CodeMsg joinCommunity_SUCCESS = new CodeMsg(100, "申请进入社团请求发送成功");
+	public static CodeMsg joinCommunity_EORROR= new CodeMsg(101, "申请进入社团请求发送失败");
+	public static CodeMsg rejectJoin_SUCCESS = new CodeMsg(100, "申请进入社团请求已被拒绝");
+	public static CodeMsg rejectJoin_ERROR= new CodeMsg(101, "申请进入社团请求发生错误");
+	public static CodeMsg acceptJoin_SUCCESS = new CodeMsg(100, "申请进入社团请求已通过");
+	public static CodeMsg acceptJoin_ERROR= new CodeMsg(101, "申请进入社团请求发生错误");
+
+
 
 	//后台管理类错误码
 	//用户管理类错误
 	public static CodeMsg ADMIN_USERNAME_EMPTY = new CodeMsg(-2000, "用户名不能为空！");
 	public static CodeMsg ADMIN_PASSWORD_EMPTY = new CodeMsg(-2001, "密码不能为空！");
 	public static CodeMsg ADMIN_NO_RIGHT = new CodeMsg(-2002, "您所属的角色没有该权限！");
+	public static CodeMsg ADMINS_INFO = new CodeMsg(400, "获取管理员信息成功！");
+	public static CodeMsg ADMINS_INFO_ERROR = new CodeMsg(401, "获取管理员信息失败！");
 
 	
 	//登录类错误码

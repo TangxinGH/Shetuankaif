@@ -1,20 +1,22 @@
 package entity;
 
 public class Admin {
-    private Integer adNo;
+    private Integer adId;
     private String adName;
     private String adCollege;
     private String adPassword;
     private String adSex;
     private String adPortrait;
     private String adAge;
+    private Integer adAuthority;
+    private String adNO;
 
-    public Integer getAdNo() {
-        return adNo;
+    public Integer getAdId() {
+        return adId;
     }
 
-    public void setAdNo(Integer adNo) {
-        this.adNo = adNo;
+    public void setAdId(Integer adId) {
+        this.adId = adId;
     }
 
     public String getAdName() {
@@ -65,16 +67,34 @@ public class Admin {
         this.adAge = adAge;
     }
 
+    public Integer getAdAuthority() {
+        return adAuthority;
+    }
+
+    public void setAdAuthority(Integer adAuthority) {
+        this.adAuthority = adAuthority;
+    }
+
+    public String getAdNO() {
+        return adNO;
+    }
+
+    public void setAdNO(String adNO) {
+        this.adNO = adNO;
+    }
+
     @Override
     public String toString() {
         return "Admin{" +
-                "adNo=" + adNo +
+                "adId=" + adId +
                 ", adName='" + adName + '\'' +
                 ", adCollege='" + adCollege + '\'' +
                 ", adPassword='" + adPassword + '\'' +
                 ", adSex='" + adSex + '\'' +
                 ", adPortrait='" + adPortrait + '\'' +
                 ", adAge='" + adAge + '\'' +
+                ", adAuthority=" + adAuthority +
+                ", adNO='" + adNO + '\'' +
                 '}';
     }
 }

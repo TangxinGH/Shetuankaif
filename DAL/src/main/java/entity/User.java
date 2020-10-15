@@ -2,13 +2,14 @@ package entity;
 
 
 public class User {
-    private  Integer id;
+    private Integer id;
+
     private String sno;
     private String sname;
     private String scollege;
     private String password;
     private String sex;
-    private String age;
+    private Integer age;
     private String headportrait;
     private String joined;
 
@@ -60,11 +61,11 @@ public class User {
         this.sex = sex;
     }
 
-    public String getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -93,7 +94,7 @@ public class User {
                 ", scollege='" + scollege + '\'' +
                 ", password='" + password + '\'' +
                 ", sex='" + sex + '\'' +
-                ", age='" + age + '\'' +
+                ", age=" + age +
                 ", headportrait='" + headportrait + '\'' +
                 ", joined='" + joined + '\'' +
                 '}';

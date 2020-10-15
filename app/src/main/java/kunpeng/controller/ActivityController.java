@@ -1,3 +1,4 @@
+/*
 package kunpeng.controller;
 
 import entity.Activity;
@@ -78,3 +79,4 @@ public class ActivityController {
     }
 
 }
+*/

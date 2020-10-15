@@ -1,6 +1,8 @@
 package service;
 
+import entity.Admin;
 import entity.User;
+import jdk.nashorn.internal.ir.CallNode;
 import mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,13 +29,18 @@ String sname="234";
 
     public User login(String Sno, String Password){return userMapper.login(Sno,Password);}
 
-    public   int  update(User user) { return userMapper.update(user); }
+    public   int  updateUser(User user) { return userMapper.updateUser(user); }
     public   int register(User user){return userMapper.register(user);}
     public User findBySno(String sno) {
         return userMapper.findBySno(sno);
     }
-    public List<User> findAll(){
-        return userMapper.findAll();
+    public List<User> findAllUser(){
+        return userMapper.findAllUser();
     }
     public int deleteUser(String sno){ return  userMapper.deleteUser(sno); }
+    public List<User> findMembers(){return  userMapper.findMembers();}
+    public  int  joinCommunity(String sno){return userMapper.joinCommunity(sno);}
+    public  int acceptJoin(String sno){return userMapper.acceptJoin(sno);};
+    public int rejectJoin(String sno){return userMapper.rejectJoin(sno);};
+
 }

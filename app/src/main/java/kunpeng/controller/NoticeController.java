@@ -1,3 +1,4 @@
+/*
 package kunpeng.controller;
 
 import entity.Notice;
@@ -26,12 +27,14 @@ public class NoticeController {
     @ResponseBody
     public Result<Boolean> addANotice(@RequestBody Notice notice){
         //noticeService.addANotice(notice);
-        /*try {
+        */
+/*try {
             noticeService.addANotice(notice);
         }
         catch (Exception e){
             return Result.error(CodeMsg.ADD_NOTICE_FAILED);
-        }*/
+        }*//*
+
         return noticeService.addANotice(notice) > 0 ? Result.success(CodeMsg.ADD_NOTICE_SUCCESSFULLY) : Result.error(CodeMsg.ADD_NOTICE_FAILED);
     }
 
@@ -69,7 +72,8 @@ public class NoticeController {
     @RequestMapping(value = "/updateANotice",method = RequestMethod.POST)
     @ResponseBody
     public Result<Boolean> updateANotice(Notice notice){
-        /*int affected;
+        */
+/*int affected;
         try {
             affected = noticeService.updateNoticeByID(notice);
         }
@@ -77,7 +81,8 @@ public class NoticeController {
             return Result.error(CodeMsg.UNKNOWN_ERROR);
         }
         return affected > 0 ? Result.success(CodeMsg.UPDATE_NOTICE_SUCCESSFULLY) : Result.error(CodeMsg.UPDATE_NOTICE_FAILED);
-    */
+    *//*
+
         notice.setNt_Publish_Time(new Date());
         return noticeService.updateNoticeByID(notice) > 0 ? Result.success(CodeMsg.UPDATE_NOTICE_SUCCESSFULLY) : Result.error(CodeMsg.UPDATE_NOTICE_FAILED);
     }
@@ -99,3 +104,4 @@ public class NoticeController {
     }
 
 }
+*/
