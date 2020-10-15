@@ -3,7 +3,7 @@
     <p> {{this.$route.query.name}}</p>
   <a-table
       :columns="columns"
-      :row-key="record => record.ActID ? record.ActID : record.NotID"
+      :row-key="record => record.actID ? record.actID : record.ntID"
       :data-source="data"
       :pagination="pagination"
       :loading="loading"
@@ -12,7 +12,7 @@
   >
     <template slot="name" slot-scope="name"> {{ name.first }} {{ name.last }}</template>
     <span slot="aHref" slot-scope="text, record">
-      <a> {{ record.Act_Title }}</a>
+      <a target="_blank" v-bind:href="(env ? '/article.html?' : '/article?') + (record.actID ? 'actID='+ record.actID : 'ntID='+ record.ntID)"> {{ record.actTitle ? record.actTitle : record.ntTitle}}</a>
     </span>
    <news-operation  slot="action" slot-scope="text, record"></news-operation>
   </a-table>
@@ -34,6 +34,7 @@ export default {
   props: ['routerChange'],
   data () {
     return {
+      env: process.env.NODE_ENV === 'production',
       data: [],
       pagination: {},
       loading: false,
@@ -49,8 +50,8 @@ export default {
     }
   },
   mounted () {
-    this.fetch('/api/articles') // 默认
-    EventBus.$on('browseNews', param => { this.fetch('/api/articles'); this.columns = articlesColumn; window.console.log(param.to + 'evenbus') })
+    this.fetch('/api/findAllActivities') // 默认
+    EventBus.$on('browseNews', param => { this.fetch('/api/findAllActivities'); this.columns = articlesColumn; window.console.log(param.to + 'evenbus') })
     EventBus.$on('browseComment', param => { this.fetch('/api/getAllComments'); this.columns = allCommentsColumn; console.log(param.to + 'evenbus') })
     EventBus.$on('browseNotice', param => { this.fetch('/api/getNotices'); this.columns = NoticesColumn; console.log(param.to + 'evenbus') })
   },

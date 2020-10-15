@@ -1,15 +1,15 @@
 <template>
   <div>
-    <div ><img src="../../../assets/img/avstar.jpg"></div>
+    <div ><img width="200" src="../../../assets/img/avstar.jpg"></div>
     <a-menu theme="light" mode="inline">
       <a-menu-item key="1" >
         <a-icon type="pie-chart"/>
-        <span> <a href="/compose" target="_blank">发布公告</a></span>
+        <span> <router-link to="/editNews"> 发布公告</router-link></span>
       </a-menu-item>
       <a-menu-item key="2">
         <a-icon type="desktop"/>
         <span>
-          <a href="/compose" target="_blank">发布新闻</a>
+          <router-link to="/editNotice">发布新闻</router-link>
         </span>
       </a-menu-item>
       <a-sub-menu key="sub1">

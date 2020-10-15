@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import common from '@/pages/TSBMS/tableList/common'
 import users from '@/views/users'
 import MVPUsers from '@/views/MVPUsers'
+import editNews from '@/pages/compose/category/editNews'
+import editNotice from '@/pages/compose/category/editNotice'
 Vue.use(VueRouter)
 
 const routes = [
@@ -34,6 +36,16 @@ const routes = [
     path: '/MangeUserVIP',
     name: 'MangeUserVIP',
     component: MVPUsers
+  },
+  {
+    path: '/editNews',
+    name: 'editNews',
+    component: editNews
+  },
+  {
+    path: '/editNotice',
+    name: 'editNotice',
+    component: editNotice
   }
 ]
 
