@@ -5,10 +5,12 @@ import entity.User;
 import kunpeng.bean.CodeMsg;
 import kunpeng.bean.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import service.AdminService;
 import service.UserService;
+import sun.security.util.Password;
 
 import java.util.HashMap;
 import java.util.List;
@@ -39,6 +41,25 @@ public class AdminController {
         }
 
     }*/
+
+    @RequestMapping (value = "/loginAdmin", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object>  login(@RequestParam String adNo, @RequestParam String adPassword) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        String password = DigestUtils.md5DigestAsHex(adPassword.getBytes());
+        Admin admin = adminService.findByAdminNO(adNo);
+        if (admin == null) {
+            map.put("code", CodeMsg.ADMIN_USERNAME_NO_EXIST);
+            return map;
+        } else if (admin.getAdPassword().equals(password)) {
+            map.put("code", CodeMsg.LOGIN_SUCCESS);
+            map.put("admir", admin);
+            return map;
+        } else {
+            map.put("code", CodeMsg.ADMIN_PASSWORD_ERROR);
+            return map;
+        }
+    }
 /*    @RequestMapping(value = "/addAdmin", method = RequestMethod.POST)
     @ResponseBody
     public Result<Boolean> addAComment(@RequestParam String sno, @RequestParam String sname, @RequestParam String commentContent, @RequestParam String actID){
@@ -77,61 +98,16 @@ public class AdminController {
         return Result.success(CodeMsg.ADD_COMMENT_SUCCESSFULLY);
     }*/
 
-    /*@RequestMapping(value = "/getComments",method = RequestMethod.GET)
-    @ResponseBody
-    public Map<String,Object> getAllCommentsOfAnActivity(@RequestParam String actID){
-        Map<String,Object> resultMap = new HashMap<>();
-        if(!actID.matches(IDRegex)){
-            resultMap.put("resultCode",CodeMsg.BAD_ACTIVITYID_FORMAT);
-            resultMap.put("comments",null);
-            return resultMap;
-        }
-        try {
-            List<Comment> comments = commentService.getCommentByActivityID(Integer.valueOf(actID));
-            resultMap.put("resultCode",CodeMsg.GET_COMMENTS_SUCCESSFULLY);
-            resultMap.put("comments",comments);
-            return resultMap;
-        }
-        catch (Exception e){
-            resultMap.put("resultCode",CodeMsg.UNKNOWN_ERROR);
-            resultMap.put("comments",null);
-            return resultMap;
-        }
-    }
 
 
-    @RequestMapping(value = "/DelComment",method = RequestMethod.GET)
-    @ResponseBody
-    public Result<Boolean> DeleteAComment(String commentID){
-        if (!commentID.matches(IDRegex)){
-            return Result.error(CodeMsg.BAD_ACTIVITYID_FORMAT);
-        }
-        try {
-            int affected = commentService.deleteACommentByCommentID(Integer.parseInt(commentID));
-            if (affected >= 1){
-                return Result.success(CodeMsg.DELETE_COMMENT_SUCCESSFULLY);
-            }
-            else {
-                return Result.error(CodeMsg.DELETE_COMMENT_ERROR);
-            }
-        }
-        catch (Exception e){
-            return Result.error(CodeMsg.UNKNOWN_ERROR);
-        }*/
-
-/*    int addAdmin(Admin admin);
-    int deleteAdmin(Integer adNo);
-    int updateAdmin(Admin admin);
-    Admin findByAdminInfo();
-    Admin  adminLogin(String adName,String adPassword);*/
 
 @RequestMapping(value = "/addAdmin",method = RequestMethod.POST)
-public Result<Boolean>  Register(@RequestBody Admin admin) {
-    if(admin == null){
-        return Result.error(CodeMsg.DATA_ERROR);
+public Result<Boolean>  Register(@RequestBody User user,@RequestBody Admin admin) {
+    if(admin.getAdAuthority()!="1"){
+        return Result.error(CodeMsg.LEVEL_ERROR);
     }
 
-    if(adminService.addAdmin(admin) <= 0){
+    if(adminService.addAdmin(user) <= 0){
 
         return Result.error(CodeMsg.Unknown_ERROR);
     }
@@ -178,7 +154,7 @@ public Result<Boolean>  Register(@RequestBody Admin admin) {
 
     @RequestMapping(value = "/adminInfo",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> check(@RequestParam Integer adNo) {
+    public Map<String, Object> check(@RequestParam String adNo) {
         Map<String,Object> map=new HashMap<String,Object>();
         Admin admin = adminService.findByAdminNO(adNo);
         map.put("code",CodeMsg.ADMIN_INFO);
@@ -189,7 +165,7 @@ public Result<Boolean>  Register(@RequestBody Admin admin) {
 
     @RequestMapping(value = "/delAdmin",method = RequestMethod.DELETE)
     @ResponseBody
-    public Result<Boolean> DeleteAdmin(@RequestParam Long adNo){
+    public Result<Boolean> DeleteAdmin(@RequestParam String adNo){
         if (adNo==null){
             return Result.error(CodeMsg.Unknown_ERROR);
         }
@@ -208,7 +184,7 @@ public Result<Boolean>  Register(@RequestBody Admin admin) {
 
     }
 
-    private boolean isExist(Integer adNo){
+    private boolean isExist(String adNo){
         Admin admin = adminService.findByAdminNO(adNo);
         if(admin == null)return false;
         return true;

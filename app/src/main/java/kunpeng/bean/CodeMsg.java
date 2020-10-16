@@ -61,6 +61,7 @@ public class CodeMsg {
 
 
 	public static CodeMsg LOGIN_SUCCESS = new CodeMsg(20, "登录成功");
+	public static CodeMsg LEVEL_ERROR = new CodeMsg(800, "你没有权限执行该操作");
 	public static CodeMsg USER_NAME_NO_EXIST = new CodeMsg(21, "该用户名不存在！");
 	public static CodeMsg USERNAME_NO_EXIST = new CodeMsg(-3000, "该用户名不存在！");
 	public static CodeMsg USER_PASSWORD_ERROR = new CodeMsg(22, "密码错误！");
@@ -104,6 +105,7 @@ public class CodeMsg {
 	public static CodeMsg ADMIN_NO_RIGHT = new CodeMsg(-2002, "您所属的角色没有该权限！");
 	public static CodeMsg ADMINS_INFO = new CodeMsg(400, "获取管理员信息成功！");
 	public static CodeMsg ADMINS_INFO_ERROR = new CodeMsg(401, "获取管理员信息失败！");
+
 
 	
 	//登录类错误码

@@ -21,7 +21,7 @@
 
 
     <!--查看管理员信息-->
-     <select id="findByAdminNO" resultMap="adminMap" parameterType="Integer">
+     <select id="findByAdminNO" resultMap="adminMap" parameterType="String">
          SELECT * FROM admin WHERE Ad_No= #{adNo}
      </select>
 
@@ -32,7 +32,7 @@
 
     <!--增加管理员-->
     <insert id="addAdmin" >
-        insert into admin (Ad_name,Ad_College,Ad_password,Ad_Sex,Ad_age,Ad_authority) values ( #{adName}, #{adCollege}, #{adPassword}, #{adSex}, #{adAge},#{adAuthority})
+        insert into admin (Ad_no,Ad_name,Ad_College,Ad_password,Ad_Sex,Ad_age) values (#{sno},#{sname}, #{scollege}, #{password}, #{sex}, #{age})
     </insert>
 
 
@@ -42,7 +42,7 @@
 
 
     <!--删除管理员信息-->
-      <delete id="deleteAdmin" parameterType="Long">
+      <delete id="deleteAdmin" parameterType="String">
           DELETE FROM  admin WHERE Ad_No= #{adNo}
       </delete>
 

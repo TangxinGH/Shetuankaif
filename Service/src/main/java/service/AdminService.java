@@ -1,6 +1,7 @@
 package service;
 
 import entity.Admin;
+import entity.User;
 import mapper.AdminMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,16 +15,16 @@ public class AdminService {
    public Admin  adminLogin(String adName,String adPassword){
        return  adminMapper.adminLogin( adName,adPassword);
    }
-   public int addAdmin(Admin admin){
-       return adminMapper.addAdmin(admin);
+   public int addAdmin(User user){
+       return adminMapper.addAdmin(user);
    }
-    public int deleteAdmin(Long adNo){
+    public int deleteAdmin(String adNo){
        return adminMapper.deleteAdmin(adNo);
     }
     public int updateAdmin(Admin admin){
        return adminMapper.updateAdmin(admin);
     }
-    public  Admin findByAdminNO(Integer adNo){
+    public  Admin findByAdminNO(String adNo){
        return adminMapper.findByAdminNO(adNo);
     }
     public List<Admin> findAllAdmin(){return adminMapper.findAllAdmin();}

@@ -8,7 +8,7 @@ public class Admin {
     private String adSex;
     private String adPortrait;
     private String adAge;
-    private Integer adAuthority;
+    private String adAuthority;
     private String adNO;
 
     public Integer getAdId() {
@@ -67,11 +67,11 @@ public class Admin {
         this.adAge = adAge;
     }
 
-    public Integer getAdAuthority() {
+    public String getAdAuthority() {
         return adAuthority;
     }
 
-    public void setAdAuthority(Integer adAuthority) {
+    public void setAdAuthority(String adAuthority) {
         this.adAuthority = adAuthority;
     }
 
@@ -93,7 +93,7 @@ public class Admin {
                 ", adSex='" + adSex + '\'' +
                 ", adPortrait='" + adPortrait + '\'' +
                 ", adAge='" + adAge + '\'' +
-                ", adAuthority=" + adAuthority +
+                ", adAuthority='" + adAuthority + '\'' +
                 ", adNO='" + adNO + '\'' +
                 '}';
     }

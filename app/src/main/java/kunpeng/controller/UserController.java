@@ -53,16 +53,21 @@ public class UserController  {
 
      @RequestMapping (value = "/login", method = RequestMethod.POST)
      @ResponseBody
-     public Result<Boolean>  login(@RequestParam String Sno, @RequestParam String Password) {
+     public Map<String, Object>  login(@RequestParam String Sno, @RequestParam String Password) {
+         Map<String,Object> map=new HashMap<String,Object>();
          String password = DigestUtils.md5DigestAsHex(Password.getBytes());
          System.out.println("username:" + Sno + ", password:" +Password);
          User user =userService.findBySno(Sno);
          if (user == null) {
-            return Result.error(CodeMsg.USER_NAME_NO_EXIST);
+             map.put("code",CodeMsg.USER_NAME_NO_EXIST);
+            return map;
         } else if (user.getPassword().equals(password)){
-             return  Result.success(CodeMsg.LOGIN_SUCCESS);
+             map.put("code",CodeMsg.LOGIN_SUCCESS);
+             map.put("user",user);
+             return  map;
         }else {
-            return Result.error(CodeMsg.USER_PASSWORD_ERROR);
+             map.put("code",CodeMsg.USER_PASSWORD_ERROR);
+            return map;
         }
        /*if(user !=null) {
            return "20";
