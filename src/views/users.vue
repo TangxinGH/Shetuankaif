@@ -1,4 +1,5 @@
 <template>
+  <div>
   <a-table
       :row-key="record => record.Sno "
       :columns="columns"
@@ -24,19 +25,25 @@
     <template slot="operation" slot-scope="text, record, index">
       <div class="editable-row-operations">
         <span v-if="record.editable">
-          <a @click="() => save(record.key)">Save</a>
-          <a-popconfirm title="Sure to cancel?" @confirm="() => cancel(record.key)">
-            <a>Cancel</a>
+          <a @click="() => save(record.key)">保存</a>
+          <a-popconfirm title="确定取消?" @confirm="() => cancel(record.key)">
+            <a>取消</a>
           </a-popconfirm>
         </span>
         <span v-else>
-          <a :disabled="editingKey !== ''" @click="() => edit(record.key)">Edit</a>
+          <a :disabled="editingKey !== ''" @click="() => edit(record.key)">编辑</a>
         </span>
+        <a-divider type="vertical"/>
+        <span>添加为管理员  <a-switch></a-switch> </span>
       </div>
     </template>
   </a-table>
+    <a-divider/>
+    <add-group> </add-group>
+  </div>
 </template>
 <script>
+import AddGroup from '@/pages/TSBMS/tableList/addGroup'
 const columns = [
   {
     title: '学号',
@@ -76,6 +83,7 @@ const columns = [
 const data = []
 export default {
   name: 'users',
+  components: { AddGroup },
   data () {
     this.cacheData = data.map(item => ({ ...item }))
     return {

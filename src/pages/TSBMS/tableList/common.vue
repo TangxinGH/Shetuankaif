@@ -1,9 +1,11 @@
 <template ref="comA">
   <div>
     <p> {{this.$route.query.name}}</p>
+    <a-input-search style="width: 200px; float: right" placeholder="输入关健词搜索" enter-button @search="onSearch" />
+    <br /><br /><br/>
   <a-table
       :columns="columns"
-      :row-key="record => record.actID ? record.actID : record.ntID"
+      :row-key="record => record.actID ? record.actID : record.ntID ? record.ntID :record.CmtID"
       :data-source="data"
       :pagination="pagination"
       :loading="loading"
@@ -16,6 +18,7 @@
     </span>
    <news-operation  slot="action" slot-scope="text, record"></news-operation>
   </a-table>
+
   </div>
 </template>
 <script>
@@ -23,6 +26,7 @@ import reqwest from 'reqwest'
 import columnsData from '@/pages/TSBMS/tableList/columns_data'
 import NewsOperation from '@/pages/TSBMS/tableList/operation/newsOperation'
 import { EventBus } from '@/pages/TSBMS/tableList/operation/event-bus'
+import AddGroup from '@/pages/TSBMS/tableList/addGroup'
 
 const articlesColumn = columnsData.newsData
 const allCommentsColumn = columnsData.AllComments
@@ -30,7 +34,7 @@ const NoticesColumn = columnsData.Notices
 
 export default {
   name: 'common',
-  components: { NewsOperation },
+  components: { AddGroup, NewsOperation },
   props: ['routerChange'],
   data () {
     return {
@@ -91,6 +95,9 @@ export default {
         this.data = data.msg // 赋于数据
         this.pagination = pagination
       })
+    },
+    onSearch: function () {
+
     }
   }
 }

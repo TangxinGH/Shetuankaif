@@ -24,13 +24,13 @@
     <template slot="operation" slot-scope="text, record, index">
       <div class="editable-row-operations">
         <span v-if="record.editable">
-          <a @click="() => save(record.key)">Save</a>
+          <a @click="() => save(record.key)">保存</a>
           <a-popconfirm title="Sure to cancel?" @confirm="() => cancel(record.key)">
-            <a>Cancel</a>
+            <a>取消</a>
           </a-popconfirm>
         </span>
         <span v-else>
-          <a :disabled="editingKey !== ''" @click="() => edit(record.key)">Edit</a>
+          <a :disabled="editingKey !== ''" @click="() => edit(record.key)">编辑</a>
         </span>
       </div>
     </template>
