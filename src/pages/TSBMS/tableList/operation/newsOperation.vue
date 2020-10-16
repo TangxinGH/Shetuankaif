@@ -1,7 +1,7 @@
 <template>
  <span>
       <a-divider type="vertical"/>
-      <a-button icon="edit" /> <!--跳转到相应文章编辑-->
+      <a-button @click="handleChangeSelect" icon="edit" /> <!--跳转到相应文章编辑-->
       <a-divider type="vertical"/>
       <a-button type="danger">Delete</a-button>
     </span>
@@ -15,7 +15,7 @@ export default {
 
     },
     handleChangeSelect: function () {
-
+      this.$router.push({ path: '/editNews?actID=' })
     }
   }
 }
