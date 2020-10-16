@@ -8,11 +8,13 @@ import kunpeng.bean.CodeMsg;
 import kunpeng.bean.Result;
 import kunpeng.until.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import service.UserService;
 
+import java.sql.SQLSyntaxErrorException;
 import java.util.List;
 @RestController
 @RequestMapping("/api")
@@ -28,11 +30,11 @@ public class UserController  {
 
      @RequestMapping (value = "/login", method = RequestMethod.POST)
      @ResponseBody
-     public Result<Boolean>  login(@RequestParam String Sno, @RequestParam String Password) {
+     public Result<Boolean> login(@RequestParam String Sno, @RequestParam String Password) {
          Integer Sn = Integer.valueOf(Sno);
         // int i = Integer.parseInt(Sno);
          System.out.println("username:" + Sn + ", password:" +Password);
-         User user = userService.login(Sn, Password);
+         User user = userService.login(Sno, Password);
         if (user == null) {
 
             return Result.error(CodeMsg.DATA_ERROR);
@@ -94,7 +96,7 @@ java 转 kotlin 时会自动小写。
      @ResponseBody
      public User check(@PathVariable Integer id) {
 
-         User user = userService.findById(id);
+         User user = userService.findById(String.valueOf(id));
        return user;
      }
     @RequestMapping("/findAll")
@@ -102,6 +104,23 @@ java 转 kotlin 时会自动小写。
     public List<User> findAll(){ //return userService.findAll();
         return   userService.findAll();
 
+    }
+
+    @RequestMapping("/joinCommunity")
+    public Result<Boolean> applyJoinCommunity(@RequestParam String sno){
+        int affected;
+        try {
+            affected = userService.updateJoinedStatusBySno(sno);
+        }
+        catch (Exception e){
+            if (e instanceof DataIntegrityViolationException || e instanceof SQLSyntaxErrorException){
+                throw e;
+            }
+            else {
+                return Result.error(CodeMsg.UNKNOWN_ERROR);
+            }
+        }
+        return affected > 0 ? Result.success(CodeMsg.APPLY_JOINED_SUCCESSFULLY) : Result.error(CodeMsg.APPLY_JOINED_FAILED);
     }
 
 }

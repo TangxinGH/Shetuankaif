@@ -3,90 +3,90 @@ package entity;
 import java.util.Date;
 
 public class Activity {
-    private Integer ActID;
-    private String Act_Title;
-    private String Act_Content;
-    private Date Act_Publish_Time;
-    private String Act_Author;
-    private Integer Act_Author_ID;
-    private String Act_Attachment;
-    private String Act_Undefined;
-
-    public Integer getAct_Author_ID(){
-        return Act_Author_ID;
-    }
-
-    public void setAct_Author_ID(Integer Act_Author_ID){
-        this.Act_Author_ID = Act_Author_ID;
-    }
+    private Integer actID;
+    private String actTitle;
+    private String actContent;
+    private Date actPublishTime;
+    private String actAuthor;
+    private Integer actAuthorID;
+    private String actAttachment;
+    private String actUndefined;
 
     public Integer getActID() {
-        return ActID;
+        return actID;
     }
 
     public void setActID(Integer actID) {
-        ActID = actID;
+        this.actID = actID;
     }
 
-    public String getAct_Title() {
-        return Act_Title;
+    public String getActTitle() {
+        return actTitle;
     }
 
-    public void setAct_Title(String act_Title) {
-        Act_Title = act_Title;
+    public void setActTitle(String actTitle) {
+        this.actTitle = actTitle;
     }
 
-    public String getAct_Content() {
-        return Act_Content;
+    public String getActContent() {
+        return actContent;
     }
 
-    public void setAct_Content(String act_Content) {
-        Act_Content = act_Content;
+    public void setActContent(String actContent) {
+        this.actContent = actContent;
     }
 
-    public Date getAct_Publish_Time() {
-        return Act_Publish_Time;
+    public Date getActPublishTime() {
+        return actPublishTime;
     }
 
-    public void setAct_Publish_Time(Date act_Publish_Time) {
-        Act_Publish_Time = act_Publish_Time;
+    public void setActPublishTime(Date actPublishTime) {
+        this.actPublishTime = actPublishTime;
     }
 
-    public String getAct_Author() {
-        return Act_Author;
+    public String getActAuthor() {
+        return actAuthor;
     }
 
-    public void setAct_Author(String act_Author) {
-        Act_Author = act_Author;
+    public void setActAuthor(String actAuthor) {
+        this.actAuthor = actAuthor;
     }
 
-    public String getAct_Attachment() {
-        return Act_Attachment;
+    public Integer getActAuthorID() {
+        return actAuthorID;
     }
 
-    public void setAct_Attachment(String act_Attachment) {
-        Act_Attachment = act_Attachment;
+    public void setActAuthorID(Integer actAuthorID) {
+        this.actAuthorID = actAuthorID;
     }
 
-    public String getAct_Undefined() {
-        return Act_Undefined;
+    public String getActAttachment() {
+        return actAttachment;
     }
 
-    public void setAct_Undefined(String act_Undefined) {
-        Act_Undefined = act_Undefined;
+    public void setActAttachment(String actAttachment) {
+        this.actAttachment = actAttachment;
+    }
+
+    public String getActUndefined() {
+        return actUndefined;
+    }
+
+    public void setActUndefined(String actUndefined) {
+        this.actUndefined = actUndefined;
     }
 
     @Override
     public String toString() {
         return "Activity{" +
-                "ActID=" + ActID +
-                ", Act_Title='" + Act_Title + '\'' +
-                ", Act_Content='" + Act_Content + '\'' +
-                ", Act_Publish_Time=" + Act_Publish_Time +
-                ", Act_Author='" + Act_Author + '\'' +
-                ", Act_Author_ID='" + Act_Author_ID + '\'' +
-                ", Act_Attachment='" + Act_Attachment + '\'' +
-                ", Act_Undefined='" + Act_Undefined + '\'' +
+                "actID=" + actID +
+                ", actTitle='" + actTitle + '\'' +
+                ", actContent='" + actContent + '\'' +
+                ", actPublishTime=" + actPublishTime +
+                ", actAuthor='" + actAuthor + '\'' +
+                ", actAuthorID=" + actAuthorID +
+                ", actAttachment='" + actAttachment + '\'' +
+                ", actUndefined='" + actUndefined + '\'' +
                 '}';
     }
 }

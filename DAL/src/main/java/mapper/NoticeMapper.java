@@ -9,8 +9,8 @@ import java.util.List;
 public interface NoticeMapper {
    List<String> getAllNoticeTitles();
    List<Notice> getAllNotices();
-   Notice getNoticeByNoticeTitle(String Title);
+   Notice getNoticeByNoticeID(Integer ntID);
    int addANotice(Notice notice);
-   int deleteANoticeByTitle(String Title);
+   int deleteANoticeByTitle(Integer ntID);
    int updateANoticeByTitle(Notice notice);
 }

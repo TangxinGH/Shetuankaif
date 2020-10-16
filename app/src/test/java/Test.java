@@ -44,13 +44,13 @@ public class Test {
     @org.junit.jupiter.api.Test
     public void testNoticeService(){
         Notice notice = new Notice();
-        notice.setNt_Title("刘忠骚吗");
+        notice.setNtTitle("刘忠骚吗");
         notice.setNtID(1);
-        notice.setNt_Author_ID(123);
-        notice.setNt_Author("刘忠");
-        notice.setNt_Content("刘忠好骚");
-        notice.setNt_Attachment("www.baidu.com");
-        notice.setNt_Publish_Time(new Date());
+        notice.setNtAuthorID(123);
+        notice.setNtAuthor("刘忠");
+        notice.setNtContent("刘忠好骚");
+        notice.setNtAttachment("www.baidu.com");
+        notice.setNtPublishTime(new Date());
         //NoticeService service = new NoticeService();
         try {
             System.out.println(noticeService.addANotice(notice) == 1);
@@ -69,13 +69,13 @@ public class Test {
     @org.junit.jupiter.api.Test
     public void testActivityService(){
         Activity activity = new Activity();
-        activity.setAct_Title("西部支援计划");
-        activity.setAct_Content(activity.getAct_Title()+"不存在！");
+        activity.setActTitle("西部支援计划");
+        activity.setActContent(activity.getActTitle()+"不存在！");
         activity.setActID(1);
-        activity.setAct_Author_ID(666);
-        activity.setAct_Publish_Time(new Date());
-        activity.setAct_Author("黄晓明");
-        activity.setAct_Attachment("www.bing.com");
+        activity.setActAuthorID(666);
+        activity.setActPublishTime(new Date());
+        activity.setActAuthor("黄晓明");
+        activity.setActAttachment("www.bing.com");
         try {
             System.out.println(activityService.addAnActivity(activity)==0);
         }
