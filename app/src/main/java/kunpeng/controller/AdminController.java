@@ -21,6 +21,8 @@ import java.util.Map;
 public class AdminController {
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private UserService userService;
 
 
    /* @RequestMapping(value = "/loginAdmin", method = RequestMethod.POST)
@@ -102,17 +104,30 @@ public class AdminController {
 
 
 @RequestMapping(value = "/addAdmin",method = RequestMethod.POST)
-public Result<Boolean>  Register(@RequestBody User user,@RequestBody Admin admin) {
-    if(admin.getAdAuthority()!="1"){
+public Result<Boolean>  Register(@RequestParam String sno,@RequestParam String adNo) {
+    User user = userService.findBySno(sno);
+    Admin admin = adminService.findByAdminNO(adNo);
+    if (admin.getAdAuthority().equals(1)) {
         return Result.error(CodeMsg.LEVEL_ERROR);
     }
-
-    if(adminService.addAdmin(user) <= 0){
+    try{
+        Admin admin1 = new Admin();
+        admin1.setAdNo(user.getSno());
+        admin1.setAdName(user.getSname());
+        admin1.setAdCollege(user.getScollege());
+        admin1.setAdPassword(user.getPassword());
+        admin1.setAdSex(user.getSex());
+        admin1.setAdAge(user.getAge());
+        int affected = adminService.addAdmin(admin1);
+        if (affected >=1){
+        return Result.success(CodeMsg.ADD_ADMIN_SUCCESS);
+        }else{
+            return Result.error(CodeMsg.Unknown_ERROR);
+        }
+    } catch (Exception e) {
 
         return Result.error(CodeMsg.Unknown_ERROR);
     }
-
-    return Result.success(CodeMsg.ADD_ADMIN_SUCCESS);
 }
 
     @RequestMapping("/updateAdmin")

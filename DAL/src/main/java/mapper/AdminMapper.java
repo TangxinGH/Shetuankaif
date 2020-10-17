@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 @Mapper
 public interface AdminMapper {
-    int addAdmin(User user);
+    int addAdmin(Admin admin);
     int deleteAdmin(String adNo);
     int updateAdmin(Admin admin);
      Admin findByAdminNO(String adNo);

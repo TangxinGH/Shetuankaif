@@ -32,7 +32,7 @@
 
     <!--增加管理员-->
     <insert id="addAdmin" >
-        insert into admin (Ad_no,Ad_name,Ad_College,Ad_password,Ad_Sex,Ad_age) values (#{sno},#{sname}, #{scollege}, #{password}, #{sex}, #{age})
+        insert into admin (Ad_no,Ad_name,Ad_College,Ad_password,Ad_Sex,Ad_age) values (#{adNo},#{adName}, #{adCollege}, #{adPassword}, #{adSex}, #{adAge})
     </insert>
 
 

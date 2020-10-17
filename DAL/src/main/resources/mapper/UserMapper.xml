@@ -69,11 +69,11 @@
         SELECT * FROM user WHERE Sno = #{sno}
     </select>
     <select id="findMembers" parameterType="String" resultMap="userMap">
-        SELECT * FROM user WHERE Joined=true
+        SELECT * FROM user WHERE Joined='true'
     </select>
 
     <update id="joinCommunity"  parameterType="String">
-        UPDATE user SET Joined='1' where Sno=#{sno};
+        UPDATE user SET Joined='true'where Sno=#{sno};
     </update>
     <update id="acceptJoin"  parameterType="String">
         UPDATE user SET Joined='2' where Sno=#{sno};

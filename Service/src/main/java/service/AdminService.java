@@ -15,8 +15,8 @@ public class AdminService {
    public Admin  adminLogin(String adName,String adPassword){
        return  adminMapper.adminLogin( adName,adPassword);
    }
-   public int addAdmin(User user){
-       return adminMapper.addAdmin(user);
+   public int addAdmin(Admin admin){
+       return adminMapper.addAdmin(admin);
    }
     public int deleteAdmin(String adNo){
        return adminMapper.deleteAdmin(adNo);
