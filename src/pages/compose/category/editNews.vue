@@ -147,14 +147,13 @@ export default {
     },
     postSubmit (param) {
       let data = {
-        activity: {
-          Act_Title: param.article_title,
-          Act_Author: 'XXX',
-          Act_Publish_Time: moment().format('YYYY-MM-DD'),
-          Act_Content: this.$refs.editor.myValue,
-          Act_Attachment: '',
-          Act_Author_ID: 1248545
-        }
+          actTitle: param.article_title,
+          actAuthor: 'XXX',
+          actPublishTime: moment().format('YYYY-MM-DD'),
+          actContent: this.$refs.editor.myValue,
+          actAttachment: '',
+          actAuthorID: 1248545
+
       }
       this.$axios.post('/api/addAnActivity', data).then(res => {
         console.log('发布活动')

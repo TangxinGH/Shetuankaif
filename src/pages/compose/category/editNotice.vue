@@ -80,14 +80,14 @@ export default {
     submit_publish () {
       if (this.notice_title != '') {
         let data = {
-          notice: {
-            Nt_Title: this.notice_title,
-            Nt_Author: 'xxxx',
-            Nt_Publish_Time: moment().format('YYYY-MM-DD'),
-            Nt_Content: this.$refs.editor_tinymce.myValue,
-            Nt_Attachment: '',
-            Nt_Author_ID: 121545
-          }
+
+          ntTitle: this.notice_title,
+          ntAuthor: 'xxxx',
+          ntPublishTime: moment().format('YYYY-MM-DD'),
+          ntContent: this.$refs.editor_tinymce.myValue,
+          ntAttachment: '',
+          ntAuthorID: 121545
+
         }
         this.$axios.post('/api/publishANotice', data).then(res => {
           console.log('发布公告')
