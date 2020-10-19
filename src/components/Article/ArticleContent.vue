@@ -361,7 +361,15 @@ textarea {
     page-break-after: avoid;
   }
 }
-
+h1, h2, h3, h4, h5, h6 {
+  color: #000;
+  background: none;
+  font-weight: normal;
+  margin: 0;
+  overflow: hidden;
+  padding-top: 0.5em;
+  padding-bottom: 0.17em;
+}
 p.siteSub {
   font-size: 92%;
 }
@@ -371,6 +379,13 @@ ul {
   list-style-image: none;
   margin: 0;
   padding: 0.3em 0 0 0;
+}
+h1 {
+  line-height: 1.3;
+  margin-bottom: 0.25em;
+  padding: 0;
+  letter-spacing: 0;
+  font-size: 2.3em;
 }
 a, a:visited {
   color: #0645ad;
@@ -521,7 +536,7 @@ div.articleRightInner {
   border-left: 1px solid #a7d7f9;
   background: #FFF;
   line-height: 1.6;
-  font-size: 0.875em;
+  font-size: 1.15em;
   border-top: 1px solid #a7d7f9;
   border-bottom: 1px solid #a7d7f9;
 }
