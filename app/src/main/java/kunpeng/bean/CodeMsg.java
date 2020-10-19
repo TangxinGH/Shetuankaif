@@ -59,7 +59,7 @@ public class CodeMsg {
 	public static CodeMsg ORDER_AUTH_ERROR = new CodeMsg(-13, "\u8ba2\u5355\u9a8c\u8bc1\u5931\u8d25\uff0c\u8ba2\u5355\u7f16\u53f7\u6216\u624b\u673a\u53f7\u8f93\u5165\u6709\u8bef\u6216\u8005\u53ef\u80fd\u4f60\u8d2d\u4e70\u7684\u662f\u76d7\u7248\uff0c\u8bf7\u8054\u7cfb\u3010\u733f\u6765\u5165\u6b64\u3011\u5ba2\u670d\uff01");
 	public static CodeMsg UNKNOWN_ERROR = new CodeMsg(Integer.MIN_VALUE,"未知错误，请联系管理员解决问题！");
 	
-	
+
 	//后台管理类错误码
 	//用户管理类错误
 	public static CodeMsg LOGIN_SUCCESS = new CodeMsg(20, "登录成功");
@@ -116,6 +116,7 @@ public class CodeMsg {
 	public static CodeMsg ADMIN_USER_UNABLE = new CodeMsg(-3002, "该用户已被冻结，请联系管理员！");
 	public static CodeMsg ADMIN_USER_ROLE_UNABLE = new CodeMsg(-3003, "该用户所属角色状态不可用，请联系管理员！");
 	public static CodeMsg ADMIN_USER_ROLE_AUTHORITES_EMPTY = new CodeMsg(-3004, "该用户所属角色无可用权限，请联系管理员！");
+	public static CodeMsg User_Login_Success = new CodeMsg(20, "登录成功！");
 
 	//后台菜单管理类错误码
 	public static CodeMsg ADMIN_MENU_ADD_ERROR = new CodeMsg(-4000, "菜单添加失败，请联系管理员！");
@@ -160,35 +161,35 @@ public class CodeMsg {
 	public static CodeMsg ADMIN_STUDENT_STATUS_ERROR = new CodeMsg(-9102, "学生状态错误！");
 	public static CodeMsg ADMIN_STUDENT_EDIT_ERROR = new CodeMsg(-9103, "学生编辑错误，请联系管理员！");
 	public static CodeMsg ADMIN_STUDENT_DELETE_ERROR = new CodeMsg(-9104, "该学生下存在关联数据（物品、求购物品、评论、举报信息等），请先删除关联数据再操作！");
-
+	
 	//后台友情链接管理
 	public static CodeMsg ADMIN_NEWS_ADD_ERROR = new CodeMsg(-9200, "友情链接添加失败，请联系管理员！");
 	public static CodeMsg ADMIN_NEWS_EDIT_ERROR = new CodeMsg(-9201, "友情链接编辑失败，请联系管理员！");
 	//后台友情链接管理
 	public static CodeMsg ADMIN_FRIENDLINK_ADD_ERROR = new CodeMsg(-9300, "友情链接添加失败，请联系管理员！");
 	public static CodeMsg ADMIN_FRIENDLINK_EDIT_ERROR = new CodeMsg(-9301, "友情链接编辑失败，请联系管理员！");
-
+	
 	//网站设置
 	public static CodeMsg ADMIN_SITESETTING_EDIT_ERROR = new CodeMsg(-9400, "网站设置失败，请联系管理员！");
 	
 	//前端用户登录注册类错误码
-	public static CodeMsg HOME_STUDENT_REGISTER_SN_EXIST = new CodeMsg(-10001, "该学号已存在，请勿重复注册！");
-	public static CodeMsg HOME_STUDENT_REGISTER_ERROR = new CodeMsg(-10002, "注册失败，请联系管理员！");
-	public static CodeMsg HOME_STUDENT_SN_NO_EXIST = new CodeMsg(-10003, "该学号不存在！");
-	public static CodeMsg HOME_STUDENT_PASSWORD_ERROR = new CodeMsg(-10004, "密码错误！");
-	public static CodeMsg HOME_STUDENT_UNABLE = new CodeMsg(-10005, "该用户已被冻结，请联系管理员！");
+	public static CodeMsg HOME_STUDENT_REGISTER_SN_EXIST = new CodeMsg(-10000, "该学号已存在，请勿重复注册！");
+	public static CodeMsg HOME_STUDENT_REGISTER_ERROR = new CodeMsg(-10001, "注册失败，请联系管理员！");
+	public static CodeMsg HOME_STUDENT_SN_NO_EXIST = new CodeMsg(-10002, "该学号不存在！");
+	public static CodeMsg HOME_STUDENT_PASSWORD_ERROR = new CodeMsg(-10003, "密码错误！");
+	public static CodeMsg HOME_STUDENT_UNABLE = new CodeMsg(-10003, "该用户已被冻结，请联系管理员！");
 	//前端用户中心错误码
-	public static CodeMsg HOME_STUDENT_EDITINFO_ERROR = new CodeMsg(-20001, "基本信息修改失败，请联系管理员！");
-	public static CodeMsg HOME_STUDENT_EDITPWD_OLD_ERROR = new CodeMsg(-20002, "原密码错误！");
+	public static CodeMsg HOME_STUDENT_EDITINFO_ERROR = new CodeMsg(-20000, "基本信息修改失败，请联系管理员！");
+	public static CodeMsg HOME_STUDENT_EDITPWD_OLD_ERROR = new CodeMsg(-20001, "原密码错误！");
 	//前端用户发布物品错误码
-	public static CodeMsg HOME_STUDENT_PUBLISH_ERROR = new CodeMsg(-30001, "物品发布失败，请联系管理员！");
-	public static CodeMsg HOME_STUDENT_GOODS_EDIT_ERROR = new CodeMsg(-30002, "物品发布失败，请联系管理员！");
-	public static CodeMsg HOME_STUDENT_GOODS_NO_EXIST = new CodeMsg(-30003, "物品不存在！");
-	public static CodeMsg HOME_STUDENT_PUBLISH_CATEGORY_EMPTY = new CodeMsg(-30004, "请选择物品分类！");
+	public static CodeMsg HOME_STUDENT_PUBLISH_ERROR = new CodeMsg(-30000, "物品发布失败，请联系管理员！");
+	public static CodeMsg HOME_STUDENT_GOODS_EDIT_ERROR = new CodeMsg(-30001, "物品发布失败，请联系管理员！");
+	public static CodeMsg HOME_STUDENT_GOODS_NO_EXIST = new CodeMsg(-30002, "物品不存在！");
+	public static CodeMsg HOME_STUDENT_PUBLISH_CATEGORY_EMPTY = new CodeMsg(-30003, "请选择物品分类！");
 	//前端用户举报物品
-	public static CodeMsg HOME_STUDENT_REPORT_GOODS_ERROR = new CodeMsg(-40001, "举报失败，请联系管理员！");
-	public static CodeMsg HOME_STUDENT_REPORTED_GOODS = new CodeMsg(-40002, "您已经举报过该物品，请勿重复举报！");
-	public static CodeMsg HOME_STUDENT_REPORTED_NO_EXIST = new CodeMsg(-40003, "举报信息不存在！");
+	public static CodeMsg HOME_STUDENT_REPORT_GOODS_ERROR = new CodeMsg(-40000, "举报失败，请联系管理员！");
+	public static CodeMsg HOME_STUDENT_REPORTED_GOODS = new CodeMsg(-40001, "您已经举报过该物品，请勿重复举报！");
+	public static CodeMsg HOME_STUDENT_REPORTED_NO_EXIST = new CodeMsg(-40002, "举报信息不存在！");
 	//前端用户评论
 	public static CodeMsg ADD_COMMENT_SUCCESSFULLY = new CodeMsg(-50000,"添加评论成功！");
 	public static CodeMsg HOME_STUDENT_COMMENT_ADD_ERROR = new CodeMsg(-50001, "评论失败，请联系管理员！");
