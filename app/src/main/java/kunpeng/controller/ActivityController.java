@@ -92,11 +92,11 @@ public class ActivityController {
         Map<String,Object> resultMap = new HashMap<>();
         try{
             List<Activity> notices = activityService.getAllActivities();
-            resultMap.put("resultCode", notices.size() > 0 ? Result.success(CodeMsg.QUERY_ACTIVITY_SUCCESSFULLY) : Result.error(CodeMsg.QUERY_ACTIVITY_NOT_EXIST));
+            resultMap.put("code", notices.size() > 0 ? Result.success(CodeMsg.QUERY_ACTIVITY_SUCCESSFULLY) : Result.error(CodeMsg.QUERY_ACTIVITY_NOT_EXIST));
             resultMap.put("notices",notices);
         }
         catch (Exception e){
-            resultMap.put("resultCode", CodeMsg.UNKNOWN_ERROR);
+            resultMap.put("code", CodeMsg.UNKNOWN_ERROR);
             resultMap.put("notices",null);
             throw e;
         }

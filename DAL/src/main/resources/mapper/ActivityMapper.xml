@@ -47,9 +47,9 @@
 
     <!-- 删除活动 -->
     <delete id="deleteAnActivityByID" parameterType="Integer">
-        DELETE FROM activity WHERE 1 = 0
-        <if test="ActID != null">
-            or ActID = #{ActID,jdbcType = INTEGER}
+        DELETE FROM activity WHERE 1 = 1
+        <if test="actID != null">
+            and ActID = #{actID,jdbcType = INTEGER}
         </if>
     </delete>
 
@@ -62,9 +62,9 @@
             <if test = "actPublishTime != null">Act_Publish_Time = #{actPublishTime,jdbcType = TIMESTAMP},</if>
             <if test = "actAttachment != null">Act_Attachment = #{actAttachment,jdbcType = CLOB}</if>
         </trim>
-        WHERE 1 = 0
+        WHERE 1 = 1
         <if test="actID != null">
-            or ActID = #{actID,jdbcType = INTEGER}
+            and ActID = #{actID,jdbcType = INTEGER}
         </if>
     </update>
 

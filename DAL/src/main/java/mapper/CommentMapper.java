@@ -8,10 +8,10 @@ import java.util.List;
 @Mapper
 public interface CommentMapper {
     List<Comment> getAllComments();
-    List<Comment> getCommentBySno(Integer Sno);
-    List<Comment> getCommentByActivityID(Integer ActID);
+    List<Comment> getCommentBySno(Integer sno);
+    List<Comment> getCommentByActivityID(Integer actID);
     int addAComment(Comment Comment);
-    int deleteACommentBySno(Integer Sno);
-    int deleteACommentByCommentID(Integer CmtID);
-    int updateACommentBySno(Comment Comment);
+    int deleteACommentBySno(Integer cmtID);
+    int deleteACommentByCommentID(Integer cmtID);
+    int updateACommentBySno(Comment comment);
 }

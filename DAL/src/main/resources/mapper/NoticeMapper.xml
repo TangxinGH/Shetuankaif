@@ -44,9 +44,9 @@
 
     <!-- 删除公告 -->
     <delete id="deleteANoticeByTitle" parameterType="Integer">
-        DELETE FROM notice WHERE 1 = 0
+        DELETE FROM notice WHERE 1 = 1
         <if test="ntID != null">
-            or NtID = #{ntID,jdbcType = INTEGER}
+            and NtID = #{ntID,jdbcType = INTEGER}
         </if>
     </delete>
 
@@ -59,9 +59,9 @@
             <if test = "ntPublishTime != null">Nt_Publish_Time = #{ntPublishTime,jdbcType = TIMESTAMP},</if>
             <if test = "ntAttachment != null">Nt_Attachment = #{ntAttachment,jdbcType = CLOB}</if>
         </trim>
-        WHERE 1 = 0
+        WHERE 1 = 1
         <if test="ntID != null">
-            or NtID = #{ntID,jdbcType = INTEGER}
+            and NtID = #{ntID,jdbcType = INTEGER}
         </if>
     </update>
 
