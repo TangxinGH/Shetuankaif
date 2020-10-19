@@ -2,20 +2,30 @@ package entity;
 
 
 public class User {
+    private Integer id;
 
-    private Integer sno;
+    private String sno;
     private String sname;
-    private String sCollege;
+    private String scollege;
     private String password;
     private String sex;
-    private String age;
+    private Integer age;
     private String headportrait;
+    private String joined;
 
-    public Integer getSno() {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getSno() {
         return sno;
     }
 
-    public void setSno(Integer sno) {
+    public void setSno(String sno) {
         this.sno = sno;
     }
 
@@ -27,12 +37,12 @@ public class User {
         this.sname = sname;
     }
 
-    public String getsCollege() {
-        return sCollege;
+    public String getScollege() {
+        return scollege;
     }
 
-    public void setsCollege(String sCollege) {
-        this.sCollege = sCollege;
+    public void setScollege(String scollege) {
+        this.scollege = scollege;
     }
 
     public String getPassword() {
@@ -51,11 +61,11 @@ public class User {
         this.sex = sex;
     }
 
-    public String getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -67,16 +77,26 @@ public class User {
         this.headportrait = headportrait;
     }
 
+    public String getJoined() {
+        return joined;
+    }
+
+    public void setJoined(String joined) {
+        this.joined = joined;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "Sno=" + sno +
-                ", Sname='" + sname + '\'' +
-                ", SCollege='" + sCollege + '\'' +
-                ", Password='" + password + '\'' +
-                ", Sex='" + sex + '\'' +
-                ", Age='" + age + '\'' +
-                ", Headportrait='" + headportrait + '\'' +
+                "id=" + id +
+                ", sno='" + sno + '\'' +
+                ", sname='" + sname + '\'' +
+                ", scollege='" + scollege + '\'' +
+                ", password='" + password + '\'' +
+                ", sex='" + sex + '\'' +
+                ", age=" + age +
+                ", headportrait='" + headportrait + '\'' +
+                ", joined='" + joined + '\'' +
                 '}';
     }
 }

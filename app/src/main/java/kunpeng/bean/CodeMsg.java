@@ -59,22 +59,65 @@ public class CodeMsg {
 	public static CodeMsg ORDER_AUTH_ERROR = new CodeMsg(-13, "\u8ba2\u5355\u9a8c\u8bc1\u5931\u8d25\uff0c\u8ba2\u5355\u7f16\u53f7\u6216\u624b\u673a\u53f7\u8f93\u5165\u6709\u8bef\u6216\u8005\u53ef\u80fd\u4f60\u8d2d\u4e70\u7684\u662f\u76d7\u7248\uff0c\u8bf7\u8054\u7cfb\u3010\u733f\u6765\u5165\u6b64\u3011\u5ba2\u670d\uff01");
 	public static CodeMsg UNKNOWN_ERROR = new CodeMsg(Integer.MIN_VALUE,"未知错误，请联系管理员解决问题！");
 	
-	
+
+	//后台管理类错误码
+	//用户管理类错误
+	public static CodeMsg LOGIN_SUCCESS = new CodeMsg(20, "登录成功");
+	public static CodeMsg LEVEL_ERROR = new CodeMsg(800, "你没有权限执行该操作");
+	public static CodeMsg USER_NAME_NO_EXIST = new CodeMsg(21, "该用户名不存在！");
+	public static CodeMsg USERNAME_NO_EXIST = new CodeMsg(-3000, "该用户名不存在！");
+	public static CodeMsg USER_PASSWORD_ERROR = new CodeMsg(22, "密码错误！");
+	public static CodeMsg USER_INFO = new CodeMsg(700, "用户个人信息");
+	public static CodeMsg USERS_INFO = new CodeMsg(100, "用户信息");
+	public static CodeMsg MEMBERS_INFO = new CodeMsg(50, "用户个人信息");
+	//注册类
+	public static CodeMsg USER_INFO_EMPTY  = new CodeMsg(34, "请填写个人信息");
+	public static CodeMsg User_SNO_EMPTY = new CodeMsg(34, "学号不能为空！");
+	public static CodeMsg USER_SNO_IS_EXIST = new CodeMsg(31, "用户已存在");
+	public static CodeMsg USER_USERNAME_EMPTY = new CodeMsg(34, "姓名不能为空");
+	public static CodeMsg USER_PASSWORD_EMPTY = new CodeMsg(34, "密码不能为空！");
+	public static CodeMsg User_SCOLLEGE_EMPTY = new CodeMsg(34, "学院不能为空");
+	public static CodeMsg User_SEX_EMPTY = new CodeMsg(34, "性别不能为空");
+	public static CodeMsg User_AGE_EMPTY = new CodeMsg(34, "年龄不能为空");
+	public static CodeMsg Unknown_ERROR= new CodeMsg(101, "未知错误");
+	public static CodeMsg REGISTER_SUCCESS= new CodeMsg(30, "成功");
+	public static CodeMsg DELETE_USER_SUCCESS = new CodeMsg(600, "删除用户成功");
+	public static CodeMsg DELETE_USER_ERROR= new CodeMsg(601, "删除用户失败");
+	public static CodeMsg UPDATE_USER_SUCCESS = new CodeMsg(200, "修改用户信息成功");
+	public static CodeMsg UPDATE_USER_ERROR= new CodeMsg(201, "修改用户信息失败");
+	public static CodeMsg ADD_ADMIN_SUCCESS= new CodeMsg(300, "添加管理员成功");
+	public static CodeMsg UPDATE_ADMIN_SUCCESS = new CodeMsg(301, "修改管理员信息成功");
+	public static CodeMsg UPDATE_ADMIN_ERROR= new CodeMsg(81, "修改管理员信息失败");
+	public static CodeMsg ADMIN_INFO = new CodeMsg(90, "管理员个人信息");
+	public static CodeMsg DELETE_ADMIN_SUCCESS = new CodeMsg(500, "删管理员成功");
+	public static CodeMsg DELETE_ADMIN_ERROR= new CodeMsg(501, "删除管理员失败");
+	public static CodeMsg joinCommunity_SUCCESS = new CodeMsg(100, "申请进入社团请求发送成功");
+	public static CodeMsg joinCommunity_EORROR= new CodeMsg(101, "申请进入社团请求发送失败");
+	public static CodeMsg rejectJoin_SUCCESS = new CodeMsg(100, "申请进入社团请求已被拒绝");
+	public static CodeMsg rejectJoin_ERROR= new CodeMsg(101, "申请进入社团请求发生错误");
+	public static CodeMsg acceptJoin_SUCCESS = new CodeMsg(100, "申请进入社团请求已通过");
+	public static CodeMsg acceptJoin_ERROR= new CodeMsg(101, "申请进入社团请求发生错误");
+
+
+
 	//后台管理类错误码
 	//用户管理类错误
 	public static CodeMsg ADMIN_USERNAME_EMPTY = new CodeMsg(-2000, "用户名不能为空！");
 	public static CodeMsg ADMIN_PASSWORD_EMPTY = new CodeMsg(-2001, "密码不能为空！");
 	public static CodeMsg ADMIN_NO_RIGHT = new CodeMsg(-2002, "您所属的角色没有该权限！");
+	public static CodeMsg ADMINS_INFO = new CodeMsg(400, "获取管理员信息成功！");
+	public static CodeMsg ADMINS_INFO_ERROR = new CodeMsg(401, "获取管理员信息失败！");
 
-	
+
+
 	//登录类错误码
-	public static CodeMsg USERNAME_NO_EXIST = new CodeMsg(-3000, "该用户名不存在！");
-	public static CodeMsg User_PASSWORD_ERROR = new CodeMsg(-3001, "密码错误！");
+	public static CodeMsg ADMIN_USERNAME_NO_EXIST = new CodeMsg(-3000, "该用户名不存在！");
+	public static CodeMsg ADMIN_PASSWORD_ERROR = new CodeMsg(-3001, "密码错误！");
 	public static CodeMsg ADMIN_USER_UNABLE = new CodeMsg(-3002, "该用户已被冻结，请联系管理员！");
 	public static CodeMsg ADMIN_USER_ROLE_UNABLE = new CodeMsg(-3003, "该用户所属角色状态不可用，请联系管理员！");
 	public static CodeMsg ADMIN_USER_ROLE_AUTHORITES_EMPTY = new CodeMsg(-3004, "该用户所属角色无可用权限，请联系管理员！");
 	public static CodeMsg User_Login_Success = new CodeMsg(20, "登录成功！");
-	
+
 	//后台菜单管理类错误码
 	public static CodeMsg ADMIN_MENU_ADD_ERROR = new CodeMsg(-4000, "菜单添加失败，请联系管理员！");
 	public static CodeMsg ADMIN_MENU_EDIT_ERROR = new CodeMsg(-4001, "菜单编辑失败，请联系管理员！");
@@ -93,14 +136,14 @@ public class CodeMsg {
 	public static CodeMsg ADMIN_USE_NO_EXIST = new CodeMsg(-6003, "用户不存在！");
 	public static CodeMsg ADMIN_USE_EDIT_ERROR = new CodeMsg(-6004, "用户编辑失败，请联系管理员！");
 	public static CodeMsg ADMIN_USE_DELETE_ERROR = new CodeMsg(-6005, "该用户存在关联数据，不允许删除！");
-	
+
 	//后台用户修改密码类错误码
 	public static CodeMsg ADMIN_USER_UPDATE_PWD_ERROR = new CodeMsg(-7000, "旧密码错误！");
 	public static CodeMsg ADMIN_USER_UPDATE_PWD_EMPTY = new CodeMsg(-7001, "新密码不能为空！");
-	
+
 	//后台用户修改密码类错误码
 	public static CodeMsg ADMIN_DATABASE_BACKUP_NO_EXIST = new CodeMsg(-8000, "备份记录不存在！");
-	
+
 	//后台物品及分类管理类错误码
 	public static CodeMsg ADMIN_GOODSCATEGORY_ADD_ERROR = new CodeMsg(-9000, "分类添加失败，请联系管理员！");
 	public static CodeMsg ADMIN_GOODSCATEGORY_EDIT_ERROR = new CodeMsg(-9001, "分类编辑失败，请联系管理员！");
@@ -111,7 +154,7 @@ public class CodeMsg {
 	public static CodeMsg ADMIN_GOODS_EDIT_ERROR = new CodeMsg(-9006, "物品状态编辑失败，请联系管理员！");
 	public static CodeMsg ADMIN_GOODS_STATUS_UNABLE = new CodeMsg(-9007, "物品状态不可编辑（已出售的物品不可上架）！");
 	public static CodeMsg ADMIN_GOODS_DELETE_ERROR = new CodeMsg(-9008, "该物品存在评论信息或举报信息，不允许删除，请先删除评论信息或举报信息后再操作！");
-	
+
 	//后台学生管理
 	public static CodeMsg ADMIN_STUDENT_NO_EXIST = new CodeMsg(-9100, "学生不存在！");
 	public static CodeMsg ADMIN_STUDENT_STATUS_NO_CHANGE = new CodeMsg(-9101, "学生状态未发生变化！");
@@ -148,12 +191,36 @@ public class CodeMsg {
 	public static CodeMsg HOME_STUDENT_REPORTED_GOODS = new CodeMsg(-40001, "您已经举报过该物品，请勿重复举报！");
 	public static CodeMsg HOME_STUDENT_REPORTED_NO_EXIST = new CodeMsg(-40002, "举报信息不存在！");
 	//前端用户评论
-	public static CodeMsg HOME_STUDENT_COMMENT_ADD_ERROR = new CodeMsg(-50000, "评论失败，请联系管理员！");
-	public static CodeMsg HOME_STUDENT_COMMENT_CONTENT_EMPTY = new CodeMsg(-50001,"评论内容为空！请输入内容！");
-	public static CodeMsg HOME_WRONG_STUDENT_NUMBER_FORMAT = new CodeMsg(-50002,"学号格式错误！");
-	public static CodeMsg ADD_COMMENT_SUCCESSFULLY = new CodeMsg(40,"添加评论成功！");
-	public static CodeMsg BAD_ACTIVITYID_FORMAT  = new CodeMsg(-50003,"活动号格式错误！");
-	public static CodeMsg GET_COMMENTS_SUCCESSFULLY = new CodeMsg(70,"获取评论列表成功！");
-	public static CodeMsg DELETE_COMMENT_SUCCESSFULLY = new CodeMsg(80,"删除评论成功！");
-	public static CodeMsg DELETE_COMMENT_ERROR = new CodeMsg(-50004,"删除评论失败！");
+	public static CodeMsg ADD_COMMENT_SUCCESSFULLY = new CodeMsg(-50000,"添加评论成功！");
+	public static CodeMsg HOME_STUDENT_COMMENT_ADD_ERROR = new CodeMsg(-50001, "评论失败，请联系管理员！");
+	public static CodeMsg HOME_STUDENT_COMMENT_CONTENT_EMPTY = new CodeMsg(-50002,"评论内容为空！请输入内容！");
+	public static CodeMsg HOME_WRONG_STUDENT_NUMBER_FORMAT = new CodeMsg(-50003,"学号格式错误！");
+	public static CodeMsg BAD_ACTIVITYID_FORMAT  = new CodeMsg(-50004,"活动号格式错误！");
+	public static CodeMsg GET_COMMENTS_SUCCESSFULLY = new CodeMsg(-50100,"获取评论列表成功！");
+	public static CodeMsg GET_COMMENTS_EMPTY = new CodeMsg(-51001,"获取评论列表成功！但是没有相关记录！");
+	public static CodeMsg GET_COMMENTS_FAILED = new CodeMsg(-51002,"获取评论列表失败！");
+	public static CodeMsg DELETE_COMMENT_SUCCESSFULLY = new CodeMsg(-52000,"删除评论成功！");
+	public static CodeMsg DELETE_COMMENT_ERROR = new CodeMsg(-52001,"删除评论失败！");
+	//前端用户加入社团
+	public static CodeMsg APPLY_JOINED_SUCCESSFULLY = new CodeMsg(-71000,"申请加入成功！");
+	public static CodeMsg APPLY_JOINED_FAILED = new CodeMsg(-71001,"申请加入失败！");
+
+	//后台管理员公告操作
+	public static CodeMsg ADD_NOTICE_SUCCESSFULLY = new CodeMsg(-53000,"添加公告成功！");
+	public static CodeMsg ADD_NOTICE_FAILED = new CodeMsg(-53001,"添加公告失败！");
+	public static CodeMsg DELETE_NOTICE_SUCCESSFULLY = new CodeMsg(-54000,"添加公告成功！");
+	public static CodeMsg DELETE_NOTICE_FAILED = new CodeMsg(-54001,"删除公告失败！");
+	public static CodeMsg UPDATE_NOTICE_SUCCESSFULLY = new CodeMsg(-55000,"更新公告成功！");
+	public static CodeMsg UPDATE_NOTICE_FAILED = new CodeMsg(-55001,"更新公告失败！");
+	public static CodeMsg QUERY_NOTICE_SUCCESSFULLY = new CodeMsg(-56000,"查询公告成功！");
+	public static CodeMsg QUERY_NOTICE_NOT_EXIST = new CodeMsg(-56001,"无公告记录！");
+	//后台管理员活动操作
+	public static CodeMsg ADD_ACTIVITY_SUCCESSFULLY = new CodeMsg(-60000,"添加活动成功！");
+	public static CodeMsg ADD_ACTIVITY_FAILED = new CodeMsg(-60001,"添加活动失败！");
+	public static CodeMsg DELETE_ACTIVITY_SUCCESSFULLY = new CodeMsg(-61000,"删除活动成功！");
+	public static CodeMsg DELETE_ACTIVITY_FAILED = new CodeMsg(-61001,"删除活动失败！");
+	public static CodeMsg UPDATE_ACTIVITY_SUCCESSFULLY = new CodeMsg(-62000,"更新活动成功！");
+	public static CodeMsg UPDATE_ACTIVITY_FAILED = new CodeMsg(-62001,"更新活动失败！");
+	public static CodeMsg QUERY_ACTIVITY_SUCCESSFULLY = new CodeMsg(-64000,"查询活动成功！");
+	public static CodeMsg QUERY_ACTIVITY_NOT_EXIST= new CodeMsg(-64001,"无活动记录！");
 }

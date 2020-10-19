@@ -15,23 +15,19 @@ import java.util.List;
 public class ActivityService {
 
     @Autowired
-    private ActivityMapper activityMapper;
-    public List<Activity> findAll(){
-        return activityMapper.findAll();
-
-    }
+    ActivityMapper activityMapper;
 
     public int addAnActivity(Activity activity){
         //return 0;
         return activityMapper.addAnActivity(activity);
     }
 
-    public int deleteActivityByTitle(String title){
-        return activityMapper.deleteAnActivityByTitle(title);
+    public int deleteActivityByID(Integer actID){
+        return activityMapper.deleteAnActivityByID(actID);
     }
 
-    public Activity getActivityByTitle(String title){
-        return activityMapper.getActivityByActivityTitle(title);
+    public Activity getActivityByID(Integer actID){
+        return activityMapper.getActivityByActivityID(actID);
     }
 
     public List<Activity> getAllActivities(){
@@ -42,8 +38,8 @@ public class ActivityService {
         return activityMapper.getAllActivityTitles();
     }
 
-    public int updateActivityByTitle(Activity activity){
-        return activityMapper.updateAnActivityByTitle(activity);
+    public int updateActivityByID(Activity activity){
+        return activityMapper.updateAnActivityByID(activity);
     }
 
 }
