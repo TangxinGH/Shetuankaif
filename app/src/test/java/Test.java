@@ -96,10 +96,10 @@ public class Test {
     public void testCommentService(){
         Comment comment = new Comment();
         comment.setActID(1);
-        comment.setCmt_Content("日批，亲嘴");
-        comment.setCmt_Date(new Date());
+        comment.setCmtContent("日批，亲嘴");
+        comment.setCmtDate(new Date());
         comment.setSno(1234567890);
-        comment.setCmt_Sname("骚忠");
+        comment.setCmtSname("骚忠");
         try{
             commentService.addAComment(comment);
         }
