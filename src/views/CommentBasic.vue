@@ -73,9 +73,9 @@ map() 方法按照原始数组元素顺序依次处理元素。
 注意： map() 不会改变原始数组。 */
       this.data = res.data.comments.map(item => ({
         ...item,
-        author: item.Sno,
-        content: item.Cmt_Content,
-        datetime: moment(item.Cmt_Date)
+        author: item.sno,
+        content: item.cmtContent,
+        datetime: moment(item.cmtDate)
       }))
       console.log('输出映射后的评论数据')
       console.log(this.data)

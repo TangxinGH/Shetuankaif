@@ -1,42 +1,49 @@
 <template>
-  <a-table
-      :row-key="record => record.Ad_no "
-      :columns="columns"
-      :data-source="data"
-      bordered>
-    <template
-        v-for="col in ['name', 'age', 'address']"
-        :slot="col"
-        slot-scope="text, record, index"
-    >
-      <div :key="col">
-        <a-input
-            v-if="record.editable"
-            style="margin: -5px 0"
-            :value="text"
-            @change="e => handleChange(e.target.value, record.key, col)"
-        />
-        <template v-else>
-          {{ text }}
-        </template>
-      </div>
-    </template>
-    <template slot="operation" slot-scope="text, record, index">
-      <div class="editable-row-operations">
+  <div>
+    <a-table
+        :row-key="record => record.Ad_no "
+        :columns="columns"
+        :data-source="data"
+        bordered>
+      <template
+          v-for="col in ['name', 'age', 'address']"
+          :slot="col"
+          slot-scope="text, record, index"
+      >
+        <div :key="col">
+          <a-input
+              v-if="record.editable"
+              style="margin: -5px 0"
+              :value="text"
+              @change="e => handleChange(e.target.value, record.key, col)"
+          />
+          <template v-else>
+            {{ text }}
+          </template>
+        </div>
+      </template>
+      <template slot="operation" slot-scope="text, record, index">
+        <div class="editable-row-operations">
         <span v-if="record.editable">
           <a @click="() => save(record.key)">保存</a>
           <a-popconfirm title="Sure to cancel?" @confirm="() => cancel(record.key)">
             <a>取消</a>
           </a-popconfirm>
         </span>
-        <span v-else>
+          <span v-else>
           <a :disabled="editingKey !== ''" @click="() => edit(record.key)">编辑</a>
         </span>
-      </div>
-    </template>
-  </a-table>
+
+        </div>
+      </template>
+    </a-table>
+    <a-divider/>
+<!--    <add-admin/>-->
+  </div>
 </template>
 <script>
+import AddAdmin from '@/views/addAdmin'
+
 const columns = [
   {
     title: '名字',
@@ -76,6 +83,7 @@ const columns = [
 const data = []
 export default {
   name: 'MVPUsers',
+  components: { AddAdmin },
   data () {
     this.cacheData = data.map(item => ({ ...item }))
     return {
@@ -133,7 +141,9 @@ export default {
         this.data = newData
       }
     }
+
   }
+
 }
 </script>
 <style scoped>

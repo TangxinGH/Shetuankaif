@@ -1,5 +1,5 @@
 <template>
-    <a-card class="box-card">
+    <a-card class="box-card" >
         <div slot="header" class="clearfix">
             <span>动态</span>
           <a-button style="float: right; padding: 3px 0" type="text"><a v-bind:href="env ? './history.html' : './history'" target="_blank">更多活动</a></a-button>
@@ -9,7 +9,7 @@
             <span  >  {{ item.actPublishTime }}</span>
             <a-divider type="vertical" />
           <a  v-bind:href="env ? './article.html?actID='+item.actID : './article?actID='+item.actID" target="_blank" >
-          <span >  {{item.actTitle }}…</span>
+          <span style="white-space:pre">  {{item.actTitle }}…</span>
             <a-divider  type="vertical" />
           </a>
        <span  > {{ item.actAuthor }}</span>
@@ -31,15 +31,15 @@ export default {
   created () {
     this.$axios.get('/api/findAllActivities').then(response => {
       // 压数据
-      if (response.data.msg != null) {
+      if (response.data.activities != null) {
         // if (response.code == 700) {
-        this.news_data = response.data.msg
-        console.log('活动 home' + response.data.msg)
-        this.news_data = response.data.msg.map((item) => { //  有同事指出应该声明一个新变量来存储map的结果，这个建议我认为是对的。
+        this.news_data = response.data.activities
+        console.log('活动 home' + response.data.activities)
+        this.news_data = response.data.activities.map((item) => { //  有同事指出应该声明一个新变量来存储map的结果，这个建议我认为是对的。
           return {
             ...item,
             actPublishTime: moment(item.actPublishTime).format('MM-DD'),
-            actTitle: (function () { return item.actTitle.slice(1, 40) ? item.actTitle.slice(1, 40) : item.actTitle })() // 截取字符串.slice(4)  20 应该是最多吧
+            actTitle: (function () { return item.actTitle.slice(0, 40) ? item.actTitle.slice(0, 40).padEnd(40, ' ') : item.actTitle })() // 截取字符串.slice(4)  20 应该是最多吧
           }
         })
         this.$emit('parentFunctionNews', this.news_data[0]) // 向父组件传值

@@ -35,6 +35,13 @@
         </span>
         <a-divider type="vertical"/>
         <span>添加为管理员  <a-switch></a-switch> </span>
+        <a-divider type="vertical"/>
+        <a-popconfirm
+            v-if="data.length"
+            title="确定删除?"
+            @confirm="() => handleDelete(record.Sno)"
+        ><a href="javascript:;">删除</a>
+        </a-popconfirm>
       </div>
     </template>
   </a-table>
@@ -145,6 +152,20 @@ export default {
         delete target.editable
         this.data = newData
       }
+    },
+    handleDelete: function (key) {
+      if (!key) {
+        this.$message.error('传值错误')
+        return
+      }
+      const dataSource = [...this.data]
+      this.data = dataSource.filter(item => item.Sno !== key) // 删除行
+      this.$message.success('删除成功')
+      this.$axios.delete('/api/delUser?sno=' + key).then(res => {
+
+      }).catch(err => {
+
+      })
     }
   }
 }

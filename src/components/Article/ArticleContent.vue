@@ -102,7 +102,7 @@ export default {
     this.$axios.get((ntID ? '/api/getNoticebyID' : '/api/getActivitybyID') + this.content_data).then(res => {
       console.log('数据输出 ')
       console.log(res.data)
-      this.content_data = (res.data.ntContent ? res.data.ntContent : res.data.actContent) + htmlTxt.toString()
+      this.content_data = (res.data.ntContent ? res.data.ntContent : res.data.actContent)
     }).catch(err => {
       console.log('文章 内容出错')
       console.log(err)

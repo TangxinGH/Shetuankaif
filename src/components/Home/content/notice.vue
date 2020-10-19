@@ -35,7 +35,7 @@ export default {
           return {
             ...item,
             ntPublishTime: moment(item.ntPublishTime).format('MM-DD'),
-            ntTitle: (function () { return item.ntTitle.slice(1, 80) ? item.ntTitle.slice(1, 80) : item.ntTitle })() // 截取字符串.slice(4)  20 应该是最多吧
+            ntTitle: (function () { return item.ntTitle.slice(0, 40) ? item.ntTitle.slice(0, 40).padEnd(40, ' ') : item.ntTitle })() // 截取字符串.slice(4)  20 应该是最多吧
           }
         })
         this.$emit('parentFunctionNotice', this.notice_data[0]) // 向父组件传值
