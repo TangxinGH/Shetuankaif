@@ -26,8 +26,8 @@ public class ActivityService {
         return activityMapper.deleteAnActivityByID(actID);
     }
 
-    public Activity getActivityByTitle(String title){
-        return activityMapper.getActivityByActivityTitle(title);
+    public Activity getActivityByID(Integer actID){
+        return activityMapper.getActivityByActivityID(actID);
     }
 
     public List<Activity> getAllActivities(){

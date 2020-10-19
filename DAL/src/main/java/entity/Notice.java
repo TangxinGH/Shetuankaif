@@ -11,14 +11,6 @@ public class Notice {
     private String ntAuthor;
     private String ntTitle;
 
-    public String getNt_Title(){
-        return ntTitle;
-    }
-
-    public void setNt_Title(String Nt_Title){
-        ntTitle = Nt_Title;
-    }
-
     public Integer getNtID() {
         return ntID;
     }
@@ -27,56 +19,64 @@ public class Notice {
         this.ntID = ntID;
     }
 
-    public String getNt_Content() {
+    public String getNtContent() {
         return ntContent;
     }
 
-    public void setNt_Content(String nt_Content) {
-        this.ntContent = nt_Content;
+    public void setNtContent(String ntContent) {
+        this.ntContent = ntContent;
     }
 
-    public Date getNt_Publish_Time() {
+    public Date getNtPublishTime() {
         return ntPublishTime;
     }
 
-    public void setNt_Publish_Time(Date nt_Publish_Time) {
-        this.ntPublishTime = nt_Publish_Time;
+    public void setNtPublishTime(Date ntPublishTime) {
+        this.ntPublishTime = ntPublishTime;
     }
 
-    public int getNt_Author_ID() {
+    public Integer getNtAuthorID() {
         return ntAuthorID;
     }
 
-    public void setNt_Author_ID(int Nt_Author_ID) {
-        ntAuthorID = Nt_Author_ID;
+    public void setNtAuthorID(Integer ntAuthorID) {
+        this.ntAuthorID = ntAuthorID;
     }
 
-    public String getNt_Attachment() {
+    public String getNtAttachment() {
         return ntAttachment;
     }
 
-    public void setNt_Attachment(String nt_Attachment) {
-        this.ntAttachment = nt_Attachment;
+    public void setNtAttachment(String ntAttachment) {
+        this.ntAttachment = ntAttachment;
     }
 
-    public String getNt_Author() {
+    public String getNtAuthor() {
         return ntAuthor;
     }
 
-    public void setNt_Author(String nt_Ad_Name) {
-        ntAuthor = nt_Ad_Name;
+    public void setNtAuthor(String ntAuthor) {
+        this.ntAuthor = ntAuthor;
+    }
+
+    public String getNtTitle() {
+        return ntTitle;
+    }
+
+    public void setNtTitle(String ntTitle) {
+        this.ntTitle = ntTitle;
     }
 
     @Override
     public String toString() {
         return "Notice{" +
-                "NtID=" + ntID +
-                ", Nt_Title=" + ntTitle +
-                ", Nt_Content='" + ntContent + '\'' +
-                ", Nt_Publish_Time=" + ntPublishTime +
-                ", Nt_Author_ID='" + ntAuthorID + '\'' +
-                ", Nt_Author='" + ntAuthor + '\'' +
-                ", Nt_Attachment='" + ntAttachment + '\'' +
+                "ntID=" + ntID +
+                ", ntContent='" + ntContent + '\'' +
+                ", ntPublishTime=" + ntPublishTime +
+                ", ntAuthorID=" + ntAuthorID +
+                ", ntAttachment='" + ntAttachment + '\'' +
+                ", ntAuthor='" + ntAuthor + '\'' +
+                ", ntTitle='" + ntTitle + '\'' +
                 '}';
     }
 }

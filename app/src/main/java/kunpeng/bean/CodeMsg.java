@@ -188,5 +188,36 @@ public class CodeMsg {
 	public static CodeMsg HOME_STUDENT_REPORTED_GOODS = new CodeMsg(-40001, "您已经举报过该物品，请勿重复举报！");
 	public static CodeMsg HOME_STUDENT_REPORTED_NO_EXIST = new CodeMsg(-40002, "举报信息不存在！");
 	//前端用户评论
-	public static CodeMsg HOME_STUDENT_COMMENT_ADD_ERROR = new CodeMsg(-50000, "评论失败，请联系管理员！");
+	public static CodeMsg ADD_COMMENT_SUCCESSFULLY = new CodeMsg(-50000,"添加评论成功！");
+	public static CodeMsg HOME_STUDENT_COMMENT_ADD_ERROR = new CodeMsg(-50001, "评论失败，请联系管理员！");
+	public static CodeMsg HOME_STUDENT_COMMENT_CONTENT_EMPTY = new CodeMsg(-50002,"评论内容为空！请输入内容！");
+	public static CodeMsg HOME_WRONG_STUDENT_NUMBER_FORMAT = new CodeMsg(-50003,"学号格式错误！");
+	public static CodeMsg BAD_ACTIVITYID_FORMAT  = new CodeMsg(-50004,"活动号格式错误！");
+	public static CodeMsg GET_COMMENTS_SUCCESSFULLY = new CodeMsg(-50100,"获取评论列表成功！");
+	public static CodeMsg GET_COMMENTS_EMPTY = new CodeMsg(-51001,"获取评论列表成功！但是没有相关记录！");
+	public static CodeMsg GET_COMMENTS_FAILED = new CodeMsg(-51002,"获取评论列表失败！");
+	public static CodeMsg DELETE_COMMENT_SUCCESSFULLY = new CodeMsg(-52000,"删除评论成功！");
+	public static CodeMsg DELETE_COMMENT_ERROR = new CodeMsg(-52001,"删除评论失败！");
+	//前端用户加入社团
+	public static CodeMsg APPLY_JOINED_SUCCESSFULLY = new CodeMsg(-71000,"申请加入成功！");
+	public static CodeMsg APPLY_JOINED_FAILED = new CodeMsg(-71001,"申请加入失败！");
+
+	//后台管理员公告操作
+	public static CodeMsg ADD_NOTICE_SUCCESSFULLY = new CodeMsg(-53000,"添加公告成功！");
+	public static CodeMsg ADD_NOTICE_FAILED = new CodeMsg(-53001,"添加公告失败！");
+	public static CodeMsg DELETE_NOTICE_SUCCESSFULLY = new CodeMsg(-54000,"添加公告成功！");
+	public static CodeMsg DELETE_NOTICE_FAILED = new CodeMsg(-54001,"删除公告失败！");
+	public static CodeMsg UPDATE_NOTICE_SUCCESSFULLY = new CodeMsg(-55000,"更新公告成功！");
+	public static CodeMsg UPDATE_NOTICE_FAILED = new CodeMsg(-55001,"更新公告失败！");
+	public static CodeMsg QUERY_NOTICE_SUCCESSFULLY = new CodeMsg(-56000,"查询公告成功！");
+	public static CodeMsg QUERY_NOTICE_NOT_EXIST = new CodeMsg(-56001,"无公告记录！");
+	//后台管理员活动操作
+	public static CodeMsg ADD_ACTIVITY_SUCCESSFULLY = new CodeMsg(-60000,"添加活动成功！");
+	public static CodeMsg ADD_ACTIVITY_FAILED = new CodeMsg(-60001,"添加活动失败！");
+	public static CodeMsg DELETE_ACTIVITY_SUCCESSFULLY = new CodeMsg(-61000,"删除活动成功！");
+	public static CodeMsg DELETE_ACTIVITY_FAILED = new CodeMsg(-61001,"删除活动失败！");
+	public static CodeMsg UPDATE_ACTIVITY_SUCCESSFULLY = new CodeMsg(-62000,"更新活动成功！");
+	public static CodeMsg UPDATE_ACTIVITY_FAILED = new CodeMsg(-62001,"更新活动失败！");
+	public static CodeMsg QUERY_ACTIVITY_SUCCESSFULLY = new CodeMsg(-64000,"查询活动成功！");
+	public static CodeMsg QUERY_ACTIVITY_NOT_EXIST= new CodeMsg(-64001,"无活动记录！");
 }

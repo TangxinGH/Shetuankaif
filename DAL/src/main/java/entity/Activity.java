@@ -12,14 +12,6 @@ public class Activity {
     private String actAttachment;
     private String actUndefined;
 
-    public Integer getAct_Author_ID(){
-        return actAuthorID;
-    }
-
-    public void setAct_Author_ID(Integer Act_Author_ID){
-        actAuthorID = Act_Author_ID;
-    }
-
     public Integer getActID() {
         return actID;
     }
@@ -28,65 +20,73 @@ public class Activity {
         this.actID = actID;
     }
 
-    public String getAct_Title() {
+    public String getActTitle() {
         return actTitle;
     }
 
-    public void setAct_Title(String act_Title) {
-        actTitle = act_Title;
+    public void setActTitle(String actTitle) {
+        this.actTitle = actTitle;
     }
 
-    public String getAct_Content() {
+    public String getActContent() {
         return actContent;
     }
 
-    public void setAct_Content(String act_Content) {
-        actContent = act_Content;
+    public void setActContent(String actContent) {
+        this.actContent = actContent;
     }
 
-    public Date getAct_Publish_Time() {
+    public Date getActPublishTime() {
         return actPublishTime;
     }
 
-    public void setAct_Publish_Time(Date act_Publish_Time) {
-        actPublishTime = act_Publish_Time;
+    public void setActPublishTime(Date actPublishTime) {
+        this.actPublishTime = actPublishTime;
     }
 
-    public String getAct_Author() {
+    public String getActAuthor() {
         return actAuthor;
     }
 
-    public void setAct_Author(String act_Author) {
-        actAuthor = act_Author;
+    public void setActAuthor(String actAuthor) {
+        this.actAuthor = actAuthor;
     }
 
-    public String getAct_Attachment() {
+    public Integer getActAuthorID() {
+        return actAuthorID;
+    }
+
+    public void setActAuthorID(Integer actAuthorID) {
+        this.actAuthorID = actAuthorID;
+    }
+
+    public String getActAttachment() {
         return actAttachment;
     }
 
-    public void setAct_Attachment(String act_Attachment) {
-        actAttachment = act_Attachment;
+    public void setActAttachment(String actAttachment) {
+        this.actAttachment = actAttachment;
     }
 
-    public String getAct_Undefined() {
+    public String getActUndefined() {
         return actUndefined;
     }
 
-    public void setAct_Undefined(String act_Undefined) {
-        actUndefined = act_Undefined;
+    public void setActUndefined(String actUndefined) {
+        this.actUndefined = actUndefined;
     }
 
     @Override
     public String toString() {
         return "Activity{" +
-                "ActID=" + actID +
-                ", Act_Title='" + actTitle + '\'' +
-                ", Act_Content='" + actContent + '\'' +
-                ", Act_Publish_Time=" + actPublishTime +
-                ", Act_Author='" + actAuthor + '\'' +
-                ", Act_Author_ID='" + actAuthorID + '\'' +
-                ", Act_Attachment='" + actAttachment + '\'' +
-                ", Act_Undefined='" + actUndefined + '\'' +
+                "actID=" + actID +
+                ", actTitle='" + actTitle + '\'' +
+                ", actContent='" + actContent + '\'' +
+                ", actPublishTime=" + actPublishTime +
+                ", actAuthor='" + actAuthor + '\'' +
+                ", actAuthorID=" + actAuthorID +
+                ", actAttachment='" + actAttachment + '\'' +
+                ", actUndefined='" + actUndefined + '\'' +
                 '}';
     }
 }

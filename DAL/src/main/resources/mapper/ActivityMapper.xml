@@ -12,19 +12,19 @@
         <result column="Act_Author_ID" property="actAuthorID"/>
         <result column="Act_Attachment" property="actAttachment"/>
         <result column="Act_Author" property="actAuthor"/>
-        <result column="At_Title" property="actTitle"/>
+        <result column="Act_Title" property="actTitle"/>
     </resultMap>
 
-    <!--活动-->
+    <!--获取所有活动-->
     <select id="getAllActivities" resultMap="activityMap" >
-        SELECT * FROM activity
+        SELECT * FROM activity order by Act_Publish_Time desc
     </select>
 
     <!-- 根据标题查询 -->
-    <select id="getActivityByActivityTitle" resultType="entity.Activity" parameterType="String">
-        SELECT * FROM activity Act WHERE 1=1
-        <if test="Act_Title != null">
-            and Act.Act_Title = #{Act_Title,jdbcType = VARCHAR}
+    <select id="getActivityByActivityID" resultMap="activityMap" parameterType="INTEGER">
+        SELECT * FROM activity WHERE 1=1
+        <if test="actID != null">
+            and ActID = #{actID,jdbcType = INTEGER}
         </if>
     </select>
 
@@ -57,13 +57,13 @@
     <update id="updateAnActivityByID" parameterType="entity.Activity">
         UPDATE activity
         <trim prefix = "set" suffixOverrides=",">
-            <if test = "Act_Title != null">Act_Title = #{actTitle,jdbcType = VARCHAR},</if>
-            <if test = "Act_Content != null">Act_Content = #{actContent,jdbcType = CLOB},</if>
-            <if test = "Act_Publish_Time != null">Act_Publish_Time = #{actPublishTime,jdbcType = TIMESTAMP},</if>
-            <if test = "Act_Attachment != null">Act_Attachment = #{actAttachment,jdbcType = CLOB}</if>
+            <if test = "actTitle != null">Act_Title = #{actTitle,jdbcType = VARCHAR},</if>
+            <if test = "actContent != null">Act_Content = #{actContent,jdbcType = CLOB},</if>
+            <if test = "actPublishTime != null">Act_Publish_Time = #{actPublishTime,jdbcType = TIMESTAMP},</if>
+            <if test = "actAttachment != null">Act_Attachment = #{actAttachment,jdbcType = CLOB}</if>
         </trim>
         WHERE 1 = 0
-        <if test="ActID != null">
+        <if test="actID != null">
             or ActID = #{actID,jdbcType = INTEGER}
         </if>
     </update>
