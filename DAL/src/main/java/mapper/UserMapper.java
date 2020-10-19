@@ -10,11 +10,14 @@ public interface UserMapper {
 
     public User login(String Sno, String Password);
 
-    int register(User user);
+  int register(User user);
     User findBySno(String sno);
-    List<User> findAll();
-    int  update(User user);
+    List<User> findAllUser();
+    int  updateUser(User user);
     int deleteUser(String sno);
+  List<User> findMembers();
+    int  joinCommunity(String sno);
+    int acceptJoin(String sno);
+    int rejectJoin(String sno);
 
-    int updateJoinedStatusBySno(String sno);
 }
