@@ -361,35 +361,7 @@ textarea {
     page-break-after: avoid;
   }
 }
-h1, h2, h3, h4, h5, h6 {
-  color: #000;
-  background: none;
-  font-weight: normal;
-  margin: 0;
-  overflow: hidden;
-  padding-top: 0.5em;
-  padding-bottom: 0.17em;
-}
-.article h1 {
-  font-family: 'Linux Libertine','Georgia','Times',serif;
-  border-bottom: 1px solid #a2a9b1;
-}
-.article h2 {
-  font-size: 1.6em;
-  margin: 0.5em 0 0.5em 0;
-  font-family: 'Linux Libertine','Georgia','Times',serif;
-  border-bottom: 1px solid #a2a9b1;
-  line-height: 1.4em;
-  padding-bottom: 0em;
-}
-.article h3 {
-  font-weight: bold;
-  font-size: 1.2em;
-}
-.article p.roleNote {
-  padding: 1em 0 0 1.6em;
-  font-style: italic;
-}
+
 p.siteSub {
   font-size: 92%;
 }
@@ -399,13 +371,6 @@ ul {
   list-style-image: none;
   margin: 0;
   padding: 0.3em 0 0 0;
-}
-h1 {
-  line-height: 1.3;
-  margin-bottom: 0.25em;
-  padding: 0;
-  letter-spacing: 0;
-  font-size: 2.3em;
 }
 a, a:visited {
   color: #0645ad;

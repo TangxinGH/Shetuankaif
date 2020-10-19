@@ -56,8 +56,8 @@ export default {
               console.log('成功')
               this.$message.success('登录成功')
               // localStorage 对象存储的数据没有时间限制。第二天、第二周或下一年之后，数据依然可用。
-              localStorage.setItem('Ad_no', res.admin.Ad_no) // 存储
-              localStorage.setItem('Ad_name', res.admin.Ad_name) // 存储
+              localStorage.setItem('admin', JSON.stringify(res.data.admin)) // 存储
+              localStorage.setItem('sname', res.data.admin.adName)
               window.open(this.env ? '/tsbms.html' : '/tsbms')
 
               break

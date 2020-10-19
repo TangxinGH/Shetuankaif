@@ -1,6 +1,7 @@
 <template>
   <div>
-    <hello-world></hello-world>
+<!--    <hello-world></hello-world>-->
+    <a href="/index.html">前往首页</a>
 <p> 学号： {{info.sno}}</p>
     <p>名字： {{ info.sname}} </p>
     <p> 大学： {{ info.scollege}}</p>
