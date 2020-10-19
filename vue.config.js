@@ -10,12 +10,12 @@ module.exports = {
   // outputDir: 'E:\\server\\nginx-1.18.0\\html',
   productionSourceMap: false,
   pages: {
-    index: {
-      entry: 'src/pages/index/index.js', // entry for the public page
-      template: 'public/index.html', // source template
-      filename: 'index.html', // output as dist/*
-      chunks: ['chunk-vendors', 'chunk-common', 'index'] //   // 提取出来的通用 chunk 和 vendor chunk。
-    },
+    // index: {
+    //   entry: 'src/pages/index/index.js', // entry for the public page
+    //   template: 'public/index.html', // source template
+    //   filename: 'index.html', // output as dist/*
+    //   chunks: ['chunk-vendors', 'chunk-common', 'index'] //   // 提取出来的通用 chunk 和 vendor chunk。
+    // },
     article: {
       entry: 'src/pages/article/article.js',
       template: 'public/index.html',
@@ -44,11 +44,11 @@ module.exports = {
       filename: 'history.html',
       chunks: ['chunk-vendors', 'chunk-common', 'history']
     },
-    sichuan: {
+    index: {
       entry: 'src/pages/Sichuan/Sichuan.js',
       template: 'src/pages/Sichuan/sichuan.html',
-      filename: 'sichuan.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'sichuan']
+      filename: 'index.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'index']
     }
   },
   configureWebpack: config => {

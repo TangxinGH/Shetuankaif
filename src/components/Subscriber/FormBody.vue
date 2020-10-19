@@ -115,13 +115,15 @@ export default {
         window.console.log('login post' + response)
         let code = response.code
         if (code != null) {
-          switch (parseInt(response.code)) {
+          switch (parseInt(response.code.code)) {
             case 20:
               console.log('成功')
               that.$message.success('登录成功')
               // localStorage 对象存储的数据没有时间限制。第二天、第二周或下一年之后，数据依然可用。
-              localStorage.Sno = that.sno // 存储
-              that.$router.push({ path: '/user' })
+              localStorage.setItem('Sno', that.sno) // 存储
+              localStorage.setItem('user', JSON.stringify(response.user))
+              localStorage.setItem('sname', response.user.sname)
+              that.$router.push({ path: './browseInfo' })
               break
             case 21:
               console.log('用户不存在')
@@ -154,7 +156,7 @@ export default {
           sname: this.sign_up_name,
           scollege: '桂林理工大学',
           sex: '男',
-          age: '18',
+          age: 18,
           joined: false
         }
         // qs 会转换为 pplication/x-www-form-urlencoded https://github.com/axios/axios#interceptors

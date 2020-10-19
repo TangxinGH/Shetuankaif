@@ -146,13 +146,14 @@ export default {
       this.form.resetFields()
     },
     postSubmit (param) {
+      if (sessionStorage.getItem('Ad_no')) { this.$message.warn('未登录 !!'); return } //
       let data = {
-          actTitle: param.article_title,
-          actAuthor: 'XXX',
-          actPublishTime: moment().format('YYYY-MM-DD'),
-          actContent: this.$refs.editor.myValue,
-          actAttachment: '',
-          actAuthorID: 1248545
+        actTitle: param.article_title,
+        actAuthor: sessionStorage.getItem('Ad_name'),
+        actPublishTime: moment().format('YYYY-MM-DD'),
+        actContent: this.$refs.editor.myValue,
+        actAttachment: '',
+        actAuthorID: sessionStorage.getItem('Ad_no')
 
       }
       this.$axios.post('/api/addAnActivity', data).then(res => {

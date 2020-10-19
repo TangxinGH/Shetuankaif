@@ -38,6 +38,9 @@ export default {
       confirmLoading: false
     }
   },
+  mounted () {
+    this.$axios.get('api/getAdmins')
+  },
   methods: {
     showModal () {
       this.visible = true

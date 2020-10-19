@@ -63,9 +63,6 @@ export default {
     return {
       env: process.env.NODE_ENV === 'production'
     }
-  },
-  mounted () {
-    document.getElementById('loginhref').setAttribute('href', this.env ? './subscriber.html' : './subscriber')
   }
 }
 </script>

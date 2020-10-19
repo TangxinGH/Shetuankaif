@@ -51,11 +51,17 @@ export default {
         }
       ],
       moment,
-      commentSubmit: ''
+      commentSubmit: '',
+      ntID: null,
+      actID: null,
+      content_data: null
     }
   },
   mounted () {
-    this.$axios.get('/api/getComments', { params: { actID: 42 } }).then(res => {
+    let ntID = Number(new URLSearchParams(window.location.search).get('ntID'))
+    let actID = Number(new URLSearchParams(window.location.search).get('actID'))
+    ntID ? this.ntID = ntID : this.actID = actID
+    this.$axios.get('/api/getComments', { params: { actID: actID } }).then(res => {
       // 从接口得到数据 常见于数据
       console.log(res)
       /* map() 方法返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值。
@@ -83,14 +89,29 @@ map() 方法按照原始数组元素顺序依次处理元素。
         this.$message.error('内容不能为空')
         return
       }
-
+      if (localStorage.getItem('user')) {
+        this.$message.error('你没有登录！')
+        return
+      }
+      let user = JSON.parse(localStorage.getItem('user'))
       this.data.push({
-        author: 'xxxx',
+        author: user.sname,
         content: this.commentSubmit,
         datetime: moment()
       })
-      this.$message.success('发表成功')
-      this.$message.error('你没有登录！')
+      let config = {
+        params: {
+          sno: user.sno,
+          sname: user.sname,
+          commentContent: this.commentSubmit,
+          actID: this.actID
+        }
+      }
+      this.$axios.post('api/addComment', null, config).then(res => {
+        this.$message.success('发表成功')
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
 }

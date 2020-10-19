@@ -10,9 +10,9 @@ Vue.prototype.$axios = axios
 Vue.use(Antd)
 Vue.use(Meta)
 
-// const app = new Vue({
-//   render: h => h(App)
-// }).$mount('#app')
+const app = new Vue({
+  render: h => h(App)
+}).$mount('#app')
 
 /* 多个实例 */
 const siMenu = new Vue({

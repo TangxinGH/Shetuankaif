@@ -66,13 +66,13 @@ export default {
           this.history_data = response.data.msg.map((item) => { //  有同事指出应该声明一个新变量来存储map的结果，这个建议我认为是对的。
             return {
               ...item,
-              ID: 'NtID=' + item.NtID,
+              ID: 'ntID=' + item.ntID,
               Content: (function () {
-                return item.Act_Content.slice(1, 200) ? item.Act_Content.slice(1, 200) : item.Act_Content
+                return item.ntContent.slice(1, 200) ? item.ntContent.slice(1, 200) : item.ntContent
               })(),
-              Publish_Time: moment(item.Nt_Publish_Time).format('YYYY-MM-DD'),
+              Publish_Time: moment(item.ntPublishTime).format('YYYY-MM-DD'),
               Title: (function () {
-                return item.Nt_Title.slice(1, 40) ? item.Nt_Title.slice(1, 40) : item.Nt_Title
+                return item.ntTitle.slice(1, 40) ? item.ntTitle.slice(1, 40) : item.ntTitle
               })()// 截取字符串.slice(4)  20 应该是最多吧
             }
           })
@@ -91,13 +91,13 @@ export default {
           this.history_data = response.data.msg.map((item) => { //  有同事指出应该声明一个新变量来存储map的结果，这个建议我认为是对的。
             return {
               ...item,
-              ID: 'ActID=' + item.ActID,
+              ID: 'actID=' + item.actID,
               Content: (function () {
-                return item.Act_Content.slice(1, 200) ? item.Act_Content.slice(1, 200) : item.Act_Content
+                return item.actContent.slice(1, 200) ? item.actContent.slice(1, 200) : item.actContent
               })(),
-              Publish_Time: moment(item.Act_Publish_Time).format('YYYY-MM-DD'),
+              Publish_Time: moment(item.actPublishTime).format('YYYY-MM-DD'),
               Title: (function () {
-                return item.Act_Title.slice(1, 40) ? item.Act_Title.slice(1, 40) : item.Act_Title
+                return item.actTitle.slice(1, 40) ? item.actTitle.slice(1, 40) : item.actTitle
               })() // 截取字符串.slice(4)  20 应该是最多吧
             }
           })

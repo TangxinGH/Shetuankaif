@@ -2,7 +2,7 @@
   <a-row>
   <div class="nav">
       <ul class="sidenav">
-        <li><a class="active"  v-bind:href="env? './sichuan.html' : './sichuan'">主页</a></li>
+        <li><a class="active"  v-bind:href="env? './index.html' : './index'">主页</a></li>
         <li><a v-bind:href="env? './history.html?ActID=1' : './history?ActID=1'">新闻</a></li>
         <li><a href="#contact">联系</a></li>
         <li><a href="#contact">关于</a></li>
@@ -21,7 +21,8 @@
 <!--        <circle-a-p-ps/>-->
       </a-col>
       <a-col :xs="{ span: 11, offset: 1 }" :lg="{ span: 6, offset: 2 }">
-        <FromBody></FromBody>
+        <router-view></router-view>
+<!--        <FromBody></FromBody>-->
       </a-col>
     </a-row>
 </template>

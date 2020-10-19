@@ -81,6 +81,8 @@ export default {
       this.form.validateFields((err, values) => {
         if (!err) {
           console.log('Received values of form: ', values)
+          this.$message.success('提交成功')
+          this.form.resetFields()
         }
       })
     }
