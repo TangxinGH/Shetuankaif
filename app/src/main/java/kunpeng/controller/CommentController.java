@@ -1,4 +1,3 @@
-/*
 package kunpeng.controller;
 
 import entity.User;
@@ -126,4 +125,4 @@ public class CommentController {
     }
 
 }
-*/
+

@@ -1,4 +1,4 @@
-/*
+
 package kunpeng.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -114,4 +114,4 @@ public class ActivityController {
         return activityService.getActivityByID(Integer.parseInt(actID));
     }
 }
-*/
+
