@@ -95,12 +95,12 @@ public class CommentController {
         Map<String,Object> resultMap = new HashMap<>();
         try {
             List<Comment> comments = commentService.getAllComments();
-            resultMap.put("code", comments.size() == 0 ? Result.success(CodeMsg.GET_COMMENTS_EMPTY) : Result.success(CodeMsg.GET_COMMENTS_SUCCESSFULLY));
+            resultMap.put("code", comments.size() == 0 ? Result.success(CodeMsg.GET_COMMENTS_EMPTY).getCode() : Result.success(CodeMsg.GET_COMMENTS_SUCCESSFULLY).getCode());
             resultMap.put("comments",comments);
             return resultMap;
         }
         catch (Exception e){
-            resultMap.put("code",Result.error(CodeMsg.GET_COMMENTS_FAILED));
+            resultMap.put("code",Result.error(CodeMsg.GET_COMMENTS_FAILED).getCode());
             resultMap.put("comments",null);
             return resultMap;
         }
