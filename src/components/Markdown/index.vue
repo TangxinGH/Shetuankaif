@@ -1,93 +1,386 @@
 <template>
-    <div :id="id">
-      <editor
-          :options="options"
-      />
-    </div>
+  <div>
+    <section class="article_editor">
+      <div class="article_editor_toolbar"></div>
+      <div class="article_editor_content">
+        <div class="wrapper">
+          <div class="article_editor_page">
+            <div class="article_editor_title"><input v-bind:value="article_title" type="text" placeholder="请在这里输入标题"  name="title" max-length="64">
+            </div>
+            <div class="article_editor_info">
+              <select name="" id="">
+                <option value="">新闻中心</option>
+                <option value="">行业资讯</option>
+              </select>
+              <label>
+                <span>发布于</span>
+                <input type="text" class="l" placeholder="2020-01-31 19:47:09">
+              </label>
+              <label>
+                <span>阅读数</span>
+                <input type="text" class="s" placeholder="0">
+              </label>
+            </div>
+            <div class="article_editor_textarea">    <tinymceEditor ref="editor_tinymce" :value="msg"></tinymceEditor>
+            </div>
+            <div class="article_editor_options">
+              <div class="article_editor_info2">
+                <div class="tit">封面摘要</div>
+                <div class="con">
+                  <div class="fl">
+                    <div class="thumb"></div>
+                  </div>
+                  <div class="fr"><textarea placeholder="选填，摘要会在文章列表页显露，帮助读者快速了解内容，如不填写则默认抓取正文前54字"></textarea></div>
+                </div>
+              </div>
+              <div class="article_editor_setting">
+                <div class="tit">文章设置</div>
+                <div class="con">
+                  <ul>
+                    <li>
+                      <div class="box"><span>关键词：</span><input type="text" placeholder="选填，关键字将会影响百度收录，每个关键字用逗号隔开">
+                      </div>
+                    </li>
+                    <li>
+                      <div class="box"><span>推荐位：</span><label><input type="checkbox">头条</label><label><input
+                          type="checkbox">推荐</label><label><input type="checkbox">未审核</label></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="article_editor_savebar">
+        <div class="wrapper">
+          <div class="fl"><span>正文字数<i class="article_editor_charCount">0</i></span></div>
+          <div class="fr">
+            <button type="button" @click="submit_publish">保存发布</button>
+            <button>取消发布</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
-<script>
-import 'codemirror/lib/codemirror.css'
-import '@toast-ui/editor/dist/toastui-editor.css'
 
-import { Editor } from '@toast-ui/vue-editor'
-// import Editor from 'tui-editor/dist/tui-editor-Editor-all.js' // all （chart...）
+<script>
+import tinymceEditor from '@/components/EditEssay/Tinymce'
+import moment from 'moment'
 export default {
-  components: { editor: Editor },
+  name: 'editNotice',
+  components: { tinymceEditor },
   props: {
-    value: {
+    msg: {
+      type: String,
+      defautl: ''
+    },
+    article_title: {
       type: String,
       default: ''
-    },
-    height: {
-      type: Number,
-      default: 1300
-    },
-    language: {
-      type: String,
-      default: 'zh_CN'
     }
+
   },
-  data () {
+  data: function () {
     return {
-      editor: '',
-      id: `vue-markdown-tui.editor-${new Date().getTime()}`,
-      options: {
-        height: this.height,
-        initialValue: this.value,
-        previewStyle: 'vertical',
-        language: this.language,
-        useCommandShortcut: true,
-        useDefaultHTMLSanitizer: true,
-        usageStatistics: false, // 禁止收集数据
-        hideModeSwitch: false,
-        toolbarItems: ['heading', 'bold', 'italic', 'strike', 'divider', 'hr', 'quote', 'divider', 'ul', 'ol', 'task', 'indent', 'outdent', 'divider', 'table', 'image', 'link', 'divider', 'code', 'codeblock'],
-        exts: [
-          {
-            name: 'chart',
-            minWidth: 100,
-            maxWidth: 600,
-            minHeight: 100,
-            maxHeight: 600
-          },
-          'scrollSync',
-          'colorSyntax',
-          'uml',
-          'mark',
-          'table'
-        ]
-      }
-    }
-  },
-  watch: {
-    language (val) {
-      console.log(this.editor)
-      this.destroyEditor()
-      this.$nextTick(() => {
-        this.options.language = val
-        this.initEditor()
-      })
+      notice_title: this.article_title
     }
   },
   mounted () {
+    this.notice_title = this.article_title
   },
   methods: {
-    initEditor () {
-      this.editor = new Editor({
-        el: document.getElementById(this.id),
-        ...this.options
-      })
-      this.editor.on('change', () => {
-        this.$emit('input', this.editor.getValue())
-      })
-    },
-    destroyEditor () {
-      if (!this.editor) return
-      this.editor.off('change')
-      this.editor.remove()
-    },
-    getEditor () {
-      return this.editor
+    submit_publish () {
+      if (localStorage.getItem('Ad_no')) { this.$message.warn('未登录 !!'); return } //
+      if (this.notice_title != '') {
+        let data = {
+
+          ntTitle: this.notice_title,
+          ntAuthor: localStorage.getItem('Ad_name'),
+          ntPublishTime: moment().format('YYYY-MM-DD'),
+          ntContent: this.$refs.editor_tinymce.myValue,
+          ntAttachment: '',
+          ntAuthorID: localStorage.getItem('Ad_no')
+
+        }
+        this.$axios.post('/api/publishANotice', data).then(res => {
+          console.log('发布公告')
+          console.log(res)
+          this.$message.info(' 公告已发送')
+        }).catch(err => {
+          console.log(err)
+          this.$message.error(' 公告发送失败')
+        })
+      }
     }
   }
+
 }
 </script>
+
+<style scoped>
+
+html {
+  height: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.wrapper {
+  max-width: 980px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.article_editor {
+  background: #F5F5F5;
+  padding: 80px 0;
+  /*font-size: 0;/没事设什么0啊 sb box-sizing*/
+  box-sizing: border-box;
+  position: relative;
+}
+
+.article_editor_page {
+  background: #FFFFFF;
+  padding: 60px;
+  box-sizing: border-box;
+  border: 1px solid #EEEEEE; /*box-shadow:0 1px 5px 0 rgba(0,0,0,0.05);*/
+}
+
+.article_editor_title input {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  height: 30px;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.article_editor_toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999999999;
+}
+
+.article_editor_info {
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #EEEEEE;
+}
+
+.article_editor_info span {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 14px;
+  padding: 0;
+  border: 0;
+  height: 30px;
+  line-height: 30px;
+  color: #999999;
+  outline: 0;
+  padding-right: 5px;
+  cursor: text;
+}
+
+.article_editor_info input {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 14px;
+  padding: 0;
+  border: 0;
+  height: 30px;
+  outline: 0;
+}
+
+.article_editor_info input.l {
+  width: 150px;
+}
+
+.article_editor_info input.s {
+  width: 60px;
+}
+
+.article_editor_info select {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 14px;
+  padding: 0;
+  border: 0;
+  height: 30px;
+  outline: 0;
+  margin: 0;
+  color: #288BDE;
+  padding-right: 10px;
+}
+
+.article_editor_info select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.article_editor_info select::-ms-expand {
+  display: none;
+}
+
+.article_editor_info2 .con {
+  position: relative;
+  padding-left: 180px;
+}
+
+.article_editor_info2 .con .fl {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.article_editor_info2 .con .fl .thumb {
+  position: absolute;
+  box-sizing: border-box;
+  width: 160px;
+  height: 114px;
+  border: 2px dashed #EEEEEE;
+}
+
+.article_editor_info2 .con .fr textarea {
+  resize: none;
+  padding: 10px;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 23px;
+  height: 114px;
+  border: 1px solid #EEEEEE;
+  outline: 0;
+}
+
+.article_editor_options {
+  border-top: 1px solid #EEEEEE;
+  margin-top: 20px;
+}
+
+.article_editor_options .tit {
+  font-size: 16px;
+  padding: 20px 0 15px 0;
+}
+
+.article_editor_options .con ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-top: 1px solid #EEEEEE;
+}
+
+.article_editor_options .con li .box {
+  position: relative;
+  border: 1px solid #EEEEEE;
+  font-size: 14px;
+  color: #666666;
+  padding-left: 80px;
+  border-top: 0;
+}
+
+.article_editor_options .con li .box span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 35px;
+  padding-left: 10px;
+}
+
+.article_editor_options .con li .box input {
+  outline: 0;
+}
+
+.article_editor_options .con li .box input[type=radio],
+.article_editor_options .con li .box input[type=checkbox] {
+  margin: 0;
+  margin-right: 5px;
+  vertical-align: -2px;
+}
+
+.article_editor_options .con li .box input[type=text] {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 35px;
+}
+
+.article_editor_options .con li .box label {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 35px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.article_editor_savebar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999999999;
+}
+
+.article_editor_savebar .fl {
+  float: left;
+}
+
+.article_editor_savebar .fl i {
+  margin-left: 8px;
+  font-style: normal;
+}
+
+.article_editor_savebar .fl span {
+  font-size: 14px;
+  color: #999999;
+  line-height: 30px;
+}
+
+.article_editor_savebar .fr {
+  float: right;
+}
+
+.article_editor_savebar .fr button {
+  border: 1px solid #E7E7E7;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  text-align: left;
+  padding: 0;
+  padding: 0 22px;
+  line-height: 30px;
+  margin-left: 12px;
+  cursor: pointer;
+  outline: 0;
+}
+
+.article_editor_savebar .fr button:first-child {
+  background: #44B549;
+  border-color: #44B549;
+  color: #FFFFFF;
+}
+
+.article_editor_savebar .wrapper {
+  background: #FFFFFF;
+  border: 1px solid #EEEEEE;
+  padding: 25px 60px;
+  overflow: hidden;
+  border-bottom: 0;
+}
+
+.article_editor_textarea {
+  font-size: 16px;
+}
+</style>

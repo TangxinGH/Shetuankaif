@@ -7,7 +7,7 @@ module.exports = {
   lintOnSave: false,
   // publicPath: process.env.NODE_ENV === 'production' ? 'https://www.baidu.com/' : '/', // baseUrl 从 Vue CLI 3.3 起已弃用，请使用publicPath。
   publicPath: '/',
-  // outputDir: 'E:\\server\\nginx-1.18.0\\html',
+  outputDir: 'E:\\WorkSpaceIDEA\\2020Autumn\\Shetuankaif\\app\\src\\main\\resources\\public',
   productionSourceMap: false,
   pages: {
     // index: {

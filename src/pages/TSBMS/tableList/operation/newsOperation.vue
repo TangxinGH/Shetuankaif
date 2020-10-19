@@ -1,10 +1,5 @@
 <template>
- <span>
-      <a-divider type="vertical"/>
-      <a-button @click="handleChangeSelect" icon="edit" /> <!--跳转到相应文章编辑-->
-      <a-divider type="vertical"/>
-      <a-button type="danger" @click="handleDelete">删除</a-button>
-    </span>
+ <div></div>
 </template>
 
 <script>
@@ -14,7 +9,8 @@ export default {
     onChangeSwitch: function () {
 
     },
-    handleDelete: function () {
+    handleDelete: function (key) {
+      // this.$axios.get('api/delNotice')
       this.$message.success('删除成功')
     },
     handleChangeSelect: function () {

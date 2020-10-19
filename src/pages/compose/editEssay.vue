@@ -1,17 +1,18 @@
 <template>
   <div>
-    <a-tabs type="card" @change="callback" >
-        <a-tab-pane key="editNews" tab="EditNews" >
-        Content of Tab Pane 1
-      </a-tab-pane>
-      <a-tab-pane key="editNotice" tab="EditNotice">
-        Content of Tab Pane 2
-      </a-tab-pane>
-      <a-tab-pane key="editMarkdown" tab="EditMarkdown">
-        Content of Tab Pane 3
-      </a-tab-pane>
-    </a-tabs>
-    <router-view></router-view>
+<!--    <a-tabs type="card" @change="callback" >-->
+<!--        <a-tab-pane key="editNews" tab="EditNews" >-->
+<!--        Content of Tab Pane 1-->
+<!--      </a-tab-pane>-->
+<!--      <a-tab-pane key="editNotice" tab="EditNotice">-->
+<!--        Content of Tab Pane 2-->
+<!--      </a-tab-pane>-->
+<!--      <a-tab-pane key="editMarkdown" tab="EditMarkdown">-->
+<!--        Content of Tab Pane 3-->
+<!--      </a-tab-pane>-->
+<!--    </a-tabs>-->
+<!--    <router-view></router-view>-->
+    <markdown ref="child" :msg="content" :article_title="title"></markdown>
   </div>
 
 </template>
@@ -19,12 +20,33 @@
 <script>
 import urljs from 'urijs'
 import EditNotice from '@/pages/compose/category/editNotice'
+import markdown from '@/components/Markdown/index.vue'
 // import $ from 'jquery'
 
 export default {
   name: 'editEssay',
+  components: {
+    markdown
+  },
   data: function () {
-    return {}
+    return {
+      content: '',
+      title: ''
+    }
+  },
+  mounted () {
+    let ntID = Number(new URLSearchParams(window.location.search).get('ntID'))
+    let actID = Number(new URLSearchParams(window.location.search).get('actID'))
+    console.log(ntID ? this.content_data = '?ntID=' + ntID : actID ? this.content_data = '?actID=' + actID : 1)
+    this.$axios.get((ntID ? '/api/getNoticebyID' : '/api/getActivitybyID') + this.content_data).then(res => {
+      console.log('数据输出 ')
+      console.log(res.data)
+      this.content = (res.data.ntContent ? res.data.ntContent : res.data.actContent)
+      this.title = (res.data.actTitle ? res.data.actTitle : res.data.ntTitle)
+    }).catch(err => {
+      console.log(' 编辑文章 内容出错')
+      console.log(err)
+    })
   },
   methods: {
     // handleChange (value) {

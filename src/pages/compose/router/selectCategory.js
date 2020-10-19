@@ -18,7 +18,7 @@ const routes = [
     component: editNews
   },
   {
-    path: '/markdown',
+    path: '/',
     name: 'Markdown',
     // route level code-splitting
     // this generates a separate chunk (author.[hash].js) for this route
@@ -35,7 +35,7 @@ const routes = [
 const router = new VueRouter({
   mode: 'hash',
   // base: process.env.BASE_URL,
-  base: process.env.NODE_ENV === 'production' ? '/tsbms.html' : '/tsbms',
+  base: process.env.NODE_ENV === 'production' ? '/compose.html' : '/compose',
   routes
 })
 
