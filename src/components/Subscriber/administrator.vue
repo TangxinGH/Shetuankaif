@@ -51,7 +51,7 @@ export default {
       this.$axios.post('api/loginAdmin', null, config).then(res => {
         let code = res.code
         if (code != null) {
-          switch (parseInt(res.code)) {
+          switch (parseInt(res.code.code)) {
             case 20:
               console.log('成功')
               this.$message.success('登录成功')
