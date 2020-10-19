@@ -27,33 +27,15 @@ public class CommentController {
 
     @RequestMapping(value = "/addComment", method = RequestMethod.POST)
     @ResponseBody
-    public Result<Boolean> addAComment(@RequestParam String sno, @RequestParam String sname, @RequestParam String commentContent, @RequestParam String actID){//添加评论
-        if(!sno.matches(RegexUtil.IDRegex)){
-            return Result.error(CodeMsg.HOME_WRONG_STUDENT_NUMBER_FORMAT);
-        }
-        else if (sname.isEmpty()){
-            return Result.error(CodeMsg.USERNAME_NO_EXIST);
-        }
-        else if (!actID.matches(RegexUtil.IDRegex)){
-            return Result.error(CodeMsg.BAD_ACTIVITYID_FORMAT);
-        }
-        else if (commentContent.equals("") || commentContent.isEmpty()){
-            return Result.error(CodeMsg.HOME_STUDENT_COMMENT_CONTENT_EMPTY);
-        }
-        System.out.println("Adding a comment");
-        Comment comment = new Comment();
-        comment.setCmt_Sname(sname);
-        comment.setCmt_Date(new Date());
-        comment.setCmt_Content(commentContent);
-        comment.setSno(Integer.valueOf(sno));
-        comment.setActID(Integer.valueOf(actID));
+    public Result<Boolean> addAComment(@RequestBody Comment comment){//添加评论
         try {
+            comment.setCmtDate(new Date());
             commentService.addAComment(comment);
             System.out.println("插入成功！");
         }
         catch (Exception e){
             if (e instanceof DataIntegrityViolationException){//外键出现问题，证明用户/活动不在对应数据库
-                return Result.error(CodeMsg.DATA_ERROR);
+                throw e;
             }
 
             else {
@@ -68,18 +50,18 @@ public class CommentController {
     public Map<String,Object> getAllCommentsOfAnActivity(@RequestParam String actID){//获取单个活动的全部评论
         Map<String,Object> resultMap = new HashMap<>();
         if(!actID.matches(RegexUtil.IDRegex)){
-            resultMap.put("resultCode",CodeMsg.BAD_ACTIVITYID_FORMAT);
+            resultMap.put("code",CodeMsg.BAD_ACTIVITYID_FORMAT);
             resultMap.put("comments",null);
             return resultMap;
         }
         try {
             List<Comment> comments = commentService.getCommentByActivityID(Integer.valueOf(actID));
-            resultMap.put("resultCode",CodeMsg.GET_COMMENTS_SUCCESSFULLY);
+            resultMap.put("code",CodeMsg.GET_COMMENTS_SUCCESSFULLY);
             resultMap.put("comments",comments);
             return resultMap;
         }
         catch (Exception e){
-            resultMap.put("resultCode",CodeMsg.UNKNOWN_ERROR);
+            resultMap.put("code",CodeMsg.UNKNOWN_ERROR);
             resultMap.put("comments",null);
             return resultMap;
         }
@@ -88,7 +70,7 @@ public class CommentController {
 
     @RequestMapping(value = "/DelComment",method = RequestMethod.GET)
     @ResponseBody
-    public Result<Boolean> DeleteAComment(String commentID){//删除评论
+    public Result<Boolean> DeleteAComment(@RequestParam String commentID){//删除评论
         if (!commentID.matches(RegexUtil.IDRegex)){
             return Result.error(CodeMsg.BAD_ACTIVITYID_FORMAT);
         }
@@ -113,12 +95,12 @@ public class CommentController {
         Map<String,Object> resultMap = new HashMap<>();
         try {
             List<Comment> comments = commentService.getAllComments();
-            resultMap.put("resultCode", comments.size() == 0 ? Result.success(CodeMsg.GET_COMMENTS_EMPTY) : Result.success(CodeMsg.GET_COMMENTS_SUCCESSFULLY));
+            resultMap.put("code", comments.size() == 0 ? Result.success(CodeMsg.GET_COMMENTS_EMPTY) : Result.success(CodeMsg.GET_COMMENTS_SUCCESSFULLY));
             resultMap.put("comments",comments);
             return resultMap;
         }
         catch (Exception e){
-            resultMap.put("resultCode",Result.error(CodeMsg.GET_COMMENTS_FAILED));
+            resultMap.put("code",Result.error(CodeMsg.GET_COMMENTS_FAILED));
             resultMap.put("comments",null);
             return resultMap;
         }

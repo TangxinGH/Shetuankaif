@@ -3,70 +3,70 @@ package entity;
 import java.util.Date;
 
 public class Comment {
-    private Integer CmtID;
-    private Integer ActID;
-    private Integer Sno;
-    private String Cmt_Content;
-    private Date Cmt_Date;
-    private String Cmt_Sname;
+    private Integer cmtID;
+    private Integer actID;
+    private Integer sno;
+    private String cmtContent;
+    private Date cmtDate;
+    private String cmtSname;
 
     public Integer getCmtID() {
-        return CmtID;
+        return cmtID;
     }
 
     public void setCmtID(Integer cmtID) {
-        CmtID = cmtID;
+        this.cmtID = cmtID;
     }
 
     public Integer getActID() {
-        return ActID;
+        return actID;
     }
 
     public void setActID(Integer actID) {
-        ActID = actID;
+        this.actID = actID;
     }
 
     public Integer getSno() {
-        return Sno;
+        return sno;
     }
 
     public void setSno(Integer sno) {
-        Sno = sno;
+        this.sno = sno;
     }
 
-    public String getCmt_Content() {
-        return Cmt_Content;
+    public String getCmtContent() {
+        return cmtContent;
     }
 
-    public void setCmt_Content(String cmt_Content) {
-        Cmt_Content = cmt_Content;
+    public void setCmtContent(String cmtContent) {
+        this.cmtContent = cmtContent;
     }
 
-    public Date getCmt_Date() {
-        return Cmt_Date;
+    public Date getCmtDate() {
+        return cmtDate;
     }
 
-    public void setCmt_Date(Date cmt_Date) {
-        Cmt_Date = cmt_Date;
+    public void setCmtDate(Date cmtDate) {
+        this.cmtDate = cmtDate;
     }
 
-    public String getCmt_Sname() {
-        return Cmt_Sname;
+    public String getCmtSname() {
+        return cmtSname;
     }
 
-    public void setCmt_Sname(String Cmt_Sname) {
-        this.Cmt_Sname = Cmt_Sname;
+    public void setCmtSname(String cmtSname) {
+        this.cmtSname = cmtSname;
     }
 
     @Override
     public String toString() {
         return "Comment{" +
-                "CmtID=" + CmtID +
-                ", ActID=" + ActID +
-                ", Sno=" + Sno +
-                ", Cmt_Content='" + Cmt_Content + '\'' +
-                ", Cmt_Date=" + Cmt_Date +
-                ", Cmt_Sname='" + Cmt_Sname + '\'' +
+                "cmtID=" + cmtID +
+                ", actID=" + actID +
+                ", sno=" + sno +
+                ", cmtContent='" + cmtContent + '\'' +
+                ", cmtDate=" + cmtDate +
+                ", cmtSname='" + cmtSname + '\'' +
                 '}';
     }
 }

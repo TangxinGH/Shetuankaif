@@ -20,25 +20,25 @@ public class CommentService {
         return commentMapper.addAComment(comment);
     }
 
-    public int deleteACommentBySno(Integer Sno){
-        return commentMapper.deleteACommentBySno(Sno);
+    public int deleteACommentBySno(Integer cmtID){
+        return commentMapper.deleteACommentBySno(cmtID);
     }
 
-    public int deleteACommentByCommentID(Integer CmtID){
-        return commentMapper.deleteACommentByCommentID(CmtID);
+    public int deleteACommentByCommentID(Integer cmtID){
+        return commentMapper.deleteACommentByCommentID(cmtID);
     }
 
     public List<Comment> getAllComments(){
         return commentMapper.getAllComments();
     }
 
-    public List<Comment> getCommentBySno(Integer Sno){
-        return commentMapper.getCommentBySno(Sno);
+    public List<Comment> getCommentBySno(Integer sno){
+        return commentMapper.getCommentBySno(sno);
     }
 
 
-    public List<Comment> getCommentByActivityID(Integer ActID){
-        return commentMapper.getCommentByActivityID(ActID);
+    public List<Comment> getCommentByActivityID(Integer actID){
+        return commentMapper.getCommentByActivityID(actID);
     }
 
     public int updateACommentBySno(Comment comment){
