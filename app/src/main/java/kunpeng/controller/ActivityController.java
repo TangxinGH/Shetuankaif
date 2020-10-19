@@ -1,3 +1,4 @@
+
 package kunpeng.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -101,9 +102,16 @@ public class ActivityController {
         }
         return resultMap;
     }
+    @RequestMapping("/queryactivity")
+    @ResponseBody
+    public List<String>getAllActivitiesTitles() { //return userService.findAll();
+        List<String> allActivitiesTitles = activityService.getAllActivitiesTitles();
+        return allActivitiesTitles;
+    }
 
     @RequestMapping ("/getActivitybyID")
     public Activity getActivityByID(@RequestParam String actID){
         return activityService.getActivityByID(Integer.parseInt(actID));
     }
 }
+

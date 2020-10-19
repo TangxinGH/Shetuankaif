@@ -3,7 +3,7 @@
 
 <mapper namespace="mapper.UserMapper">
     <resultMap type="entity.User" id="userMap">
-        <id column="Id" property="id"/>
+        <id column="Id" property="id"></id>
         <result column="Sno" property="sno"/>
         <result column="Sname" property="sname"/>
         <result column="SCollege" property="scollege"/>
@@ -18,7 +18,7 @@
         SELECT * FROM user WHERE sno = #{param1} and sname = #{param2}
     </select>-->
     <!-- 查询所有 -->
-    <select id="findAll" resultMap="userMap">
+    <select id="findAllUser" resultMap="userMap">
         SELECT * FROM user
     </select>
 
@@ -49,7 +49,7 @@
       </delete>
 
     <!--修改信息-->
-    <update id="update"  parameterType="entity.User">
+    <update id="updateUser"  parameterType="entity.User">
         UPDATE user SET WHERE 1=1
         <if test="Sname!= null">
             Sname = #{sname}
@@ -68,10 +68,18 @@
     <select id="findBySno" parameterType="String" resultMap="userMap">
         SELECT * FROM user WHERE Sno = #{sno}
     </select>
+    <select id="findMembers" parameterType="String" resultMap="userMap">
+        SELECT * FROM user WHERE Joined='true'
+    </select>
 
-    <update id="updateJoinedStatusBySno" parameterType="String">
-        UPDATE user set Joined = 'auditing' where Joined = 'false'
-        <if test="sno != null">and Sno = #{sno}</if>
+    <update id="joinCommunity"  parameterType="String">
+        UPDATE user SET Joined='true'where Sno=#{sno};
+    </update>
+    <update id="acceptJoin"  parameterType="String">
+        UPDATE user SET Joined='2' where Sno=#{sno};
+    </update>
+    <update id="rejectJoin"  parameterType="String">
+        UPDATE user SET Joined='3' where Sno=#{sno};
     </update>
 
 </mapper>

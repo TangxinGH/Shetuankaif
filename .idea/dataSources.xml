@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://121.37.129.14:3306/kunpeng</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="kunpeng@121.37.129.14" uuid="6ea0c4d2-c9b6-433a-9008-f4837bf6004b">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://121.37.129.14:3306/kunpeng</jdbc-url>
+    </data-source>
   </component>
 </project>

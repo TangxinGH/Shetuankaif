@@ -3,23 +3,25 @@
 
 <mapper namespace="mapper.AdminMapper">
     <resultMap type="entity.Admin" id="adminMap">
-        <id column="Ad_no" property="adNo"/>
+        <id column="Ad_id" property="adId"></id>
+        <result column="Ad_no" property="adNo"/>
         <result column="Ad_name" property="adName"/>
         <result column="Ad_College" property="adCollege"/>
         <result column="Ad_password" property="adPassword"/>
         <result column="Ad_Sex" property="adSex"/>
         <result column="Ad_Portrait" property="adPortrait"/>
-        <result column="Ad_age" property="Ad_age"/>
+        <result column="Ad_age" property="adAge"/>
+        <result column="Ad_authority" property="adAuthority"/>
     </resultMap>
 
     <!-- 查询所有 -->
-    <select id="findAll" resultMap="adminMap">
+    <select id="findAllAdmin" resultMap="adminMap">
         SELECT * FROM admin
     </select>
 
 
     <!--查看管理员信息-->
-     <select id="findByAdminInfo" resultMap="adminMap" parameterType="Integer">
+     <select id="findByAdminNO" resultMap="adminMap" parameterType="String">
          SELECT * FROM admin WHERE Ad_No= #{adNo}
      </select>
 
@@ -29,8 +31,8 @@
     </select>
 
     <!--增加管理员-->
-    <insert id="addAdmin"   parameterType="entity.Admin">
-        insert into admin (Ad_name,Ad_College,Ad_password,Ad_Sex,Ad_age) values ( #{adName}, #{adCollege}, #{adPassword}, #{adSex}, #{Ad_age})
+    <insert id="addAdmin" >
+        insert into admin (Ad_no,Ad_name,Ad_College,Ad_password,Ad_Sex,Ad_age) values (#{adNo},#{adName}, #{adCollege}, #{adPassword}, #{adSex}, #{adAge})
     </insert>
 
 
@@ -40,7 +42,7 @@
 
 
     <!--删除管理员信息-->
-      <delete id="deleteAdmin" parameterType="Long">
+      <delete id="deleteAdmin" parameterType="String">
           DELETE FROM  admin WHERE Ad_No= #{adNo}
       </delete>
 
@@ -64,5 +66,6 @@
   <!--  <select id="findBySno" parameterType="String" resultMap="userMap">
         SELECT * FROM user WHERE Sno = #{sno}
     </select>-->
+
 
 </mapper>
