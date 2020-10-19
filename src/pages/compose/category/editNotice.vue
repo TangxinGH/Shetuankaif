@@ -78,15 +78,16 @@ export default {
   },
   methods: {
     submit_publish () {
+      if (localStorage.getItem('Ad_no')) { this.$message.warn('未登录 !!'); return } //
       if (this.notice_title != '') {
         let data = {
 
           ntTitle: this.notice_title,
-          ntAuthor: 'xxxx',
+          ntAuthor: localStorage.getItem('Ad_name'),
           ntPublishTime: moment().format('YYYY-MM-DD'),
           ntContent: this.$refs.editor_tinymce.myValue,
           ntAttachment: '',
-          ntAuthorID: 121545
+          ntAuthorID: localStorage.getItem('Ad_no')
 
         }
         this.$axios.post('/api/publishANotice', data).then(res => {
