@@ -107,7 +107,7 @@ public class AdminController {
 public Result<Boolean>  Register(@RequestParam String sno,@RequestParam String adNo) {
     User user = userService.findBySno(sno);
     Admin admin = adminService.findByAdminNO(adNo);
-    if (admin.getAdAuthority().equals(1)) {
+    if (admin.getAdAuthority().equals("1")) {
         return Result.error(CodeMsg.LEVEL_ERROR);
     }
     try{
