@@ -196,7 +196,7 @@ public class CodeMsg {
 	public static CodeMsg HOME_STUDENT_COMMENT_CONTENT_EMPTY = new CodeMsg(-50002,"评论内容为空！请输入内容！");
 	public static CodeMsg HOME_WRONG_STUDENT_NUMBER_FORMAT = new CodeMsg(-50003,"学号格式错误！");
 	public static CodeMsg BAD_ACTIVITYID_FORMAT  = new CodeMsg(-50004,"活动号格式错误！");
-	public static CodeMsg GET_COMMENTS_SUCCESSFULLY = new CodeMsg(-50100,"获取评论列表成功！");
+	public static CodeMsg GET_COMMENTS_SUCCESSFULLY = new CodeMsg(-51000,"获取评论列表成功！");
 	public static CodeMsg GET_COMMENTS_EMPTY = new CodeMsg(-51001,"获取评论列表成功！但是没有相关记录！");
 	public static CodeMsg GET_COMMENTS_FAILED = new CodeMsg(-51002,"获取评论列表失败！");
 	public static CodeMsg DELETE_COMMENT_SUCCESSFULLY = new CodeMsg(-52000,"删除评论成功！");
@@ -208,7 +208,7 @@ public class CodeMsg {
 	//后台管理员公告操作
 	public static CodeMsg ADD_NOTICE_SUCCESSFULLY = new CodeMsg(-53000,"添加公告成功！");
 	public static CodeMsg ADD_NOTICE_FAILED = new CodeMsg(-53001,"添加公告失败！");
-	public static CodeMsg DELETE_NOTICE_SUCCESSFULLY = new CodeMsg(-54000,"添加公告成功！");
+	public static CodeMsg DELETE_NOTICE_SUCCESSFULLY = new CodeMsg(-54000,"删除公告成功！");
 	public static CodeMsg DELETE_NOTICE_FAILED = new CodeMsg(-54001,"删除公告失败！");
 	public static CodeMsg UPDATE_NOTICE_SUCCESSFULLY = new CodeMsg(-55000,"更新公告成功！");
 	public static CodeMsg UPDATE_NOTICE_FAILED = new CodeMsg(-55001,"更新公告失败！");

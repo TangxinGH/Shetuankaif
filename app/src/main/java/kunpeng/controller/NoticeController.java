@@ -89,11 +89,11 @@ public class NoticeController {
         Map<String,Object> resultMap = new HashMap<>();
         try{
             List<Notice> notices = noticeService.getAllNotices();
-            resultMap.put("code", notices.size() > 0 ? Result.success(CodeMsg.QUERY_NOTICE_SUCCESSFULLY) : Result.error(CodeMsg.QUERY_NOTICE_NOT_EXIST));
+            resultMap.put("code", notices.size() > 0 ? Result.success(CodeMsg.QUERY_NOTICE_SUCCESSFULLY).getCode() : Result.error(CodeMsg.QUERY_NOTICE_NOT_EXIST).getCode());
             resultMap.put("notices",notices);
         }
         catch (Exception e){
-            resultMap.put("code", CodeMsg.UNKNOWN_ERROR);
+            resultMap.put("code", CodeMsg.UNKNOWN_ERROR.getCode());
             resultMap.put("notices",null);
         }
         return resultMap;
