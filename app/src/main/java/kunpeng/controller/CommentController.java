@@ -50,18 +50,18 @@ public class CommentController {
     public Map<String,Object> getAllCommentsOfAnActivity(@RequestParam String actID){//获取单个活动的全部评论
         Map<String,Object> resultMap = new HashMap<>();
         if(!actID.matches(RegexUtil.IDRegex)){
-            resultMap.put("code",CodeMsg.BAD_ACTIVITYID_FORMAT);
+            resultMap.put("code",CodeMsg.BAD_ACTIVITYID_FORMAT.getCode());
             resultMap.put("comments",null);
             return resultMap;
         }
         try {
             List<Comment> comments = commentService.getCommentByActivityID(Integer.valueOf(actID));
-            resultMap.put("code",CodeMsg.GET_COMMENTS_SUCCESSFULLY);
+            resultMap.put("code",CodeMsg.GET_COMMENTS_SUCCESSFULLY.getCode());
             resultMap.put("comments",comments);
             return resultMap;
         }
         catch (Exception e){
-            resultMap.put("code",CodeMsg.UNKNOWN_ERROR);
+            resultMap.put("code",CodeMsg.UNKNOWN_ERROR.getCode());
             resultMap.put("comments",null);
             return resultMap;
         }
