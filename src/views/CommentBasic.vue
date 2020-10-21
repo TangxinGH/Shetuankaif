@@ -95,21 +95,21 @@ map() 方法按照原始数组元素顺序依次处理元素。
       }
       let user = JSON.parse(localStorage.getItem('user'))
       let admin = JSON.parse(localStorage.getItem('admin'))
+      console.log(`admin为 ${admin}  user为: ${user}`)
       this.data.push({
         author: localStorage.getItem('sname'),
         content: this.commentSubmit,
         datetime: moment()
       })
-      let config = {
-        params: {
-          sno: user.sno ? user.sno : admin.sno,
-          sname: localStorage.getItem('sname'),
-          commentContent: this.commentSubmit,
-          actID: this.actID
-        }
+      let data = {
+        sno: user.sno ? user.sno : admin.sno,
+        cmtSname: localStorage.getItem('sname'),
+        cmtContent: this.commentSubmit,
+        actID: this.actID
       }
-      this.$axios.post('api/addComment', null, config).then(res => {
-        if (res.data.code == -50000) { this.$message.success('发表成功') } else this.$message.error(res.data.msg)
+
+      this.$axios.post('api/addComment', data).then(res => {
+        if (res.data.code == -50000) { this.$message.success('发表成功') } else this.$message.error(res.data.toString())
       }).catch(err => {
         console.log(err)
       })

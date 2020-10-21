@@ -73,8 +73,8 @@ export default {
       /* validate */
       pass_pattern: '^[\\w_-]{3,10}$',
       pass_title: '3-10位 可以包含小写大母和大写字母数字下划线和减号',
-      sno_pattern: '^\\d{3,11}$',
-      sno_title: '3 到11位数字',
+      sno_pattern: '^\\d{3,15}$',
+      sno_title: '3 到15位数字',
       username_pattern: '^[a-zA-Z\u4E00-\u9FA5][a-zA-Z0-9\u4E00-\u9FA5_-]{3,10}',
       username_title: '3 到10字符  首字母只能是大小写字母 小大写 数字 下划线  允许中文',
       errors: false,

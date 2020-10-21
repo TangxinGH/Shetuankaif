@@ -22,7 +22,7 @@
     </div>
     <div class="mainsection">
       <div class="headerLinks">
-         <a href="#"> 收藏</a> <a href="#">贡献</a> <a href="#"> </a> <a href="#">登录{{username}}</a>
+         <a href="#"> 收藏</a> <a href="#">贡献</a> <a href="#"> </a> <a href="/subscriber.html">登录{{username}}</a>
       </div>
       <div class="tabs clearfix">
         <div class="tabsLeft">
