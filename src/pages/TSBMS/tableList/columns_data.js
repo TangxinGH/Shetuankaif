@@ -61,14 +61,14 @@ const Notices = [
 const AllComments = [
   {
     title: '评论时间',
-    dataIndex: 'Cmt_Date',
+    dataIndex: 'cmtDate',
     sorter: (a, b) => moment(a.actPublishTime) - moment(b.actPublishTime), // arr.sort(function(a, b){return a < b ? 1 : -1;  }); ? 1 : -1  转为日期才能排
     width: '10%',
     scopedSlots: { customRender: 'actPublishTime' }
   },
   {
     title: '学号',
-    dataIndex: 'Sno',
+    dataIndex: 'sno',
     filters: [
       { text: 'Male', value: 'male' },
       { text: 'Female', value: 'female' }
@@ -77,12 +77,12 @@ const AllComments = [
   },
   {
     title: '文章ID',
-    dataIndex: 'ActID',
+    dataIndex: 'actID',
     width: '20%'
   },
   {
     title: '评论内容',
-    dataIndex: 'Cmt_Content',
+    dataIndex: 'cmtContent',
     ellipsis: true
   },
   {

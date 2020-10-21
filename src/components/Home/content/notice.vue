@@ -26,12 +26,12 @@ export default {
   created () {
     this.$axios.get('/api/getNotices').then(response => {
       // 压数据
-      if (response.data.msg != null) {
+      if (response.data.notices != null) {
         // if (response.code == 700) {
-        this.notice_data = response.data.msg
+        this.notice_data = response.data.notices
         console.log('公告')
-        console.log(response.data.msg)
-        this.notice_data = response.data.msg.map((item) => { //  有同事指出应该声明一个新变量来存储map的结果，这个建议我认为是对的。
+        console.log(response.data.notices)
+        this.notice_data = response.data.notices.map((item) => { //  有同事指出应该声明一个新变量来存储map的结果，这个建议我认为是对的。
           return {
             ...item,
             ntPublishTime: moment(item.ntPublishTime).format('MM-DD'),

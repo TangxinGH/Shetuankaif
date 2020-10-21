@@ -2,11 +2,11 @@
   <div class="wrapAll clearfix">
     <div class="sidebar">
       <div class="logo">
-        <a href="/"><img  src='../../assets/img/taxi-no-connection.png' alt="logo"></a>
+        <a href="/"><img  src='../../assets/img/kunpeng.jpg' alt="logo"></a>
       </div>
       <div class="navigation">
         <ul>
-          <li><a href="#">主页</a></li>
+          <li><a href="/index.html" target="_blank">主页</a></li>
           <li><a href="#">内容</a></li>
           <li><a href="#">关健内容</a></li>
         </ul>
@@ -22,7 +22,7 @@
     </div>
     <div class="mainsection">
       <div class="headerLinks">
-        <span class="user"> 未登录</span> <a href="#"> 收藏</a> <a href="#">贡献</a> <a href="#"> </a> <a href="#">登录</a>
+         <a href="#"> 收藏</a> <a href="#">贡献</a> <a href="#"> </a> <a href="#">登录{{username}}</a>
       </div>
       <div class="tabs clearfix">
         <div class="tabsLeft">
@@ -91,8 +91,12 @@ export default {
   data: function () {
     return {
       content_data: htmlTxt,
-      attachment: ''
+      attachment: '',
+      username: ''
     }
+  },
+  created () {
+    if (localStorage.getItem('sname')) this.username = localStorage.getItem('sname')
   },
   mounted () {
     console.log('id号为？')

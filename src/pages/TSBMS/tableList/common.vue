@@ -5,7 +5,7 @@
     <br/><br/><br/>
     <a-table
         :columns="columns"
-        :row-key="record => record.actID ? record.actID : record.ntID ? record.ntID :record.CmtID"
+        :row-key="record => record.cmtID ? record.cmtID : record.ntID ? record.ntID :record.actID"
         :data-source="data"
         :pagination="pagination"
         :loading="loading"
@@ -27,8 +27,8 @@
         <a-popconfirm
             v-if="data.length"
             title="确定删除?"
-            @confirm="() => handleDelete(record.actID? record.actID : record.ntID ? record.ntID : record.CmtID,
-            record.actID ? 'actID' : record.ntID ? 'ntID' : 'CmtID')"
+            @confirm="() => handleDelete(record.actID? record.actID : record.ntID ? record.ntID : record.cmtID,
+            record.actID ? 'actID' : record.ntID ? 'ntID' : 'cmtID')"
         ><a href="javascript:;">删除</a>
               </a-popconfirm>
     </span>
@@ -124,7 +124,7 @@ export default {
         console.log(data)
         pagination.total = 200
         this.loading = false
-        this.data = data.msg // 赋于数据
+        this.data = data.activities ? data.activities : data.notices ? data.notices : data.comments // 赋于数据
         this.pagination = pagination
       })
     },
@@ -141,7 +141,7 @@ export default {
       this.data = dataSource.filter(item => item[type] !== key) // 删除行
 
       if (type == 'ntID') { this.$axios.get('/api/delNotice?ntID=' + key).then(res => { this.$message.success('删除成功') }); return }
-      if (type == 'CmtID') { this.$axios.get('/api/DelComment?CmtID=' + key).then(res => { this.$message.success('删除成功') }); return }// api/DelComment
+      if (type == 'cmtID') { this.$axios.get('/api/DelComment?cmtID=' + key).then(res => { this.$message.success('删除成功') }); return }// api/DelComment
       if (type == 'actID') { this.$axios.get('/api/deleteAcivityByID?actID=' + key).then(res => { this.$message.success('删除成功') }) }// deleteAcivityByID
     },
     handleEdit: function (record) {

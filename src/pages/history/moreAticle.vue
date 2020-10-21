@@ -59,11 +59,11 @@ export default {
     getHistoryNotices: function () {
       this.$axios.get('/api/getNotices').then(response => {
         // 压数据
-        if (response.data.msg != null) {
+        if (response.data.notices != null) {
           // if (response.code == 700) {
           console.log('history')
-          console.log(response.data.msg)
-          this.history_data = response.data.msg.map((item) => { //  有同事指出应该声明一个新变量来存储map的结果，这个建议我认为是对的。
+          console.log(response.data.notices)
+          this.history_data = response.data.notices.map((item) => { //  有同事指出应该声明一个新变量来存储map的结果，这个建议我认为是对的。
             return {
               ...item,
               ID: 'ntID=' + item.ntID,
@@ -85,10 +85,10 @@ export default {
     getHistoryActivitys: function () {
       this.$axios.get('/api/findAllActivities').then(response => {
         // 压数据
-        if (response.data.msg != null) {
+        if (response.data.activities != null) {
           // if (response.code == 700) {
-          console.log('活动 history' + response.data.msg)
-          this.history_data = response.data.msg.map((item) => { //  有同事指出应该声明一个新变量来存储map的结果，这个建议我认为是对的。
+          console.log('活动 history' + response.data.activities)
+          this.history_data = response.data.activities.map((item) => { //  有同事指出应该声明一个新变量来存储map的结果，这个建议我认为是对的。
             return {
               ...item,
               ID: 'actID=' + item.actID,

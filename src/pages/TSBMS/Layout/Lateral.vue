@@ -4,12 +4,12 @@
     <a-menu theme="light" mode="inline">
       <a-menu-item key="1" >
         <a-icon type="pie-chart"/>
-        <span> <router-link to="/editNews"> 发布公告</router-link></span>
+        <span> <router-link to="/editNews"> 发布新闻</router-link></span>
       </a-menu-item>
       <a-menu-item key="2">
         <a-icon type="desktop"/>
         <span>
-          <router-link to="/editNotice">发布新闻</router-link>
+          <router-link to="/editNotice">发布公告</router-link>
         </span>
       </a-menu-item>
       <a-sub-menu key="sub1">

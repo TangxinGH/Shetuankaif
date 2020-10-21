@@ -89,7 +89,7 @@ map() 方法按照原始数组元素顺序依次处理元素。
         this.$message.error('内容不能为空')
         return
       }
-      if (!localStorage.getItem('user') || !localStorage.getItem('admin')) {
+      if (!(localStorage.getItem('user') ? localStorage.getItem('user') : localStorage.getItem('admin'))) {
         this.$message.error('你没有登录！')
         return
       }
@@ -102,14 +102,14 @@ map() 方法按照原始数组元素顺序依次处理元素。
       })
       let config = {
         params: {
-          sno: user.sno,
-          sname: user.sname,
+          sno: user.sno ? user.sno : admin.sno,
+          sname: localStorage.getItem('sname'),
           commentContent: this.commentSubmit,
           actID: this.actID
         }
       }
       this.$axios.post('api/addComment', null, config).then(res => {
-        if (res.data.code == 40) { this.$message.success('发表成功') } else this.$message.error(res.data.msg)
+        if (res.data.code == -50000) { this.$message.success('发表成功') } else this.$message.error(res.data.msg)
       }).catch(err => {
         console.log(err)
       })

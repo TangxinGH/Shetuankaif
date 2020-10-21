@@ -78,16 +78,16 @@ export default {
   },
   methods: {
     submit_publish () {
-      if (localStorage.getItem('Ad_no')) { this.$message.warn('未登录 !!'); return } //
+      if (!localStorage.getItem('admin')) { this.$message.warn('未登录 !!'); return } //
       if (this.notice_title != '') {
         let data = {
 
           ntTitle: this.notice_title,
-          ntAuthor: localStorage.getItem('Ad_name'),
+          ntAuthor: localStorage.getItem('sname'),
           ntPublishTime: moment().format('YYYY-MM-DD'),
           ntContent: this.$refs.editor_tinymce.myValue,
           ntAttachment: '',
-          ntAuthorID: localStorage.getItem('Ad_no')
+          ntAuthorID: JSON.parse(localStorage.getItem('admin')).adId
 
         }
         this.$axios.post('/api/publishANotice', data).then(res => {

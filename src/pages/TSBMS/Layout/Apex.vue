@@ -7,7 +7,7 @@
       :style="{ lineHeight: '64px'  }"
   >
     <a-menu-item key="1">
-       <a href="/sichuan.html"> 首页</a>
+       <a href="/index.html"> 首页</a>
     </a-menu-item>
     <a-menu-item key="2">
       <a @click="showModal"> 个人信息</a>
@@ -18,12 +18,12 @@
           @ok="handleOk"
           @cancel="handleCancel"
       >
-        <p>学号: 4445454454</p>
-        <p>姓名: 在在是 </p>
+        <p>学号: {{ adminSno }}</p>
+        <p>姓名: {{ adminName}} </p>
       </a-modal>
     </a-menu-item>
     <a-menu-item key="3">
-      <a>登出</a>
+      <span @click="logOut" >登出</span>
     </a-menu-item>
   </a-menu>
   </div>
@@ -35,10 +35,14 @@ export default {
   data () {
     return {
       visible: false,
-      confirmLoading: false
+      confirmLoading: false,
+      adminSno: '',
+      adminName: ''
     }
   },
   mounted () {
+    this.adminName = localStorage.getItem('sname')
+    this.adminSno = JSON.parse(localStorage.getItem('amdin')).sno
     this.$axios.get('api/getAdmins')
   },
   methods: {
@@ -54,6 +58,11 @@ export default {
     },
     handleCancel (e) {
       this.visible = false
+    },
+    logOut: function () {
+      this.$message.warn('2s后清除所有数据')
+      setTimeout(function () { window.open('/index.html') }, 2000)
+      localStorage.clear()// 清除所有
     }
   }
 }

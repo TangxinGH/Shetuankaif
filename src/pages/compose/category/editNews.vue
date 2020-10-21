@@ -146,14 +146,14 @@ export default {
       this.form.resetFields()
     },
     postSubmit (param) {
-      if (localStorage.getItem('Ad_no')) { this.$message.warn('未登录 !!'); return } //
+      if (!localStorage.getItem('admin')) { this.$message.warn('未登录 !!'); return } //
       let data = {
         actTitle: param.article_title,
-        actAuthor: localStorage.getItem('Ad_name'),
+        actAuthor: localStorage.getItem('sname'),
         actPublishTime: moment().format('YYYY-MM-DD'),
         actContent: this.$refs.editor.myValue,
         actAttachment: '',
-        actAuthorID: localStorage.getItem('Ad_no')
+        actAuthorID: JSON.parse(localStorage.getItem('admin')).adId
 
       }
       this.$axios.post('/api/addAnActivity', data).then(res => {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <a-table
-        :row-key="record => record.Ad_no "
+        :row-key="record => record.adNo"
         :columns="columns"
         :data-source="data"
         bordered>
@@ -47,30 +47,30 @@ import AddAdmin from '@/views/addAdmin'
 const columns = [
   {
     title: '名字',
-    dataIndex: 'Ad_name',
+    dataIndex: 'adName',
     width: '25%',
     scopedSlots: { customRender: 'name' }
   },
   {
     title: 'ID',
-    dataIndex: 'Ad_no',
+    dataIndex: 'adNo',
     width: '15%',
     scopedSlots: { customRender: 'age' }
   },
   {
     title: '年龄',
-    dataIndex: 'Ad_age',
+    dataIndex: 'adAge',
     width: '5%'
   },
   {
     title: '性别',
-    dataIndex: 'Ad_Sex',
+    dataIndex: 'adSex',
     width: '5%',
     scopedSlots: { customRender: 'address' }
   },
   {
     title: '大学',
-    dataIndex: 'Ad_College',
+    dataIndex: 'adCollege',
     width: '10%'
   },
   {
@@ -94,8 +94,8 @@ export default {
   },
   mounted () {
     this.$axios.get('/api/getAdmins').then(res => {
-      console.log(res.data.admins)
-      this.data = res.data.admins
+      console.log(res.data.adminsInfo)
+      this.data = res.data.adminsInfo
     }).catch(err => {
       console.log(this + err)
     })
