@@ -169,7 +169,7 @@ export default {
     },
     onSwitchChange: function (sno) {
       this.$axios.get('/api/addAdmin', null, { params: { sno: sno, adNo: JSON.parse(localStorage.getItem('admin')).adNo } }).then(res => {
-        this.$message.success(`添加管理员状态:${sno}`)
+        this.$message.success(`添加管理员状态:${sno}  ${res.data}`)
       }).catch(err => {
         console.log(`增加管理员${err}`)
       })
