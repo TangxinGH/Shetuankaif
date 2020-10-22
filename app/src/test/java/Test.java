@@ -44,11 +44,11 @@ public class Test {
     @org.junit.jupiter.api.Test
     public void testNoticeService(){
         Notice notice = new Notice();
-        notice.setNtTitle("刘忠骚吗");
+        notice.setNtTitle("1");
         notice.setNtID(1);
         notice.setNtAuthorID(123);
-        notice.setNtAuthor("刘忠");
-        notice.setNtContent("刘忠好骚");
+        notice.setNtAuthor("2");
+        notice.setNtContent("3");
         notice.setNtAttachment("www.baidu.com");
         notice.setNtPublishTime(new Date());
         //NoticeService service = new NoticeService();
