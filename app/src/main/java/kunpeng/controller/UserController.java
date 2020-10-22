@@ -227,7 +227,7 @@ java 转 kotlin 时会自动小写。
 
       }
 
-    @RequestMapping(value = "/joinCommunity",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/joinCommunity",method = RequestMethod.GET)
     @ResponseBody
     public Result<Boolean> joinCommunity( @RequestParam String sno){
         if (sno==null){
