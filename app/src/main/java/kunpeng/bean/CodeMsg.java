@@ -58,6 +58,8 @@ public class CodeMsg {
 	public static CodeMsg PHONE_ERROR = new CodeMsg(-12, "手机号错误！");
 	public static CodeMsg ORDER_AUTH_ERROR = new CodeMsg(-13, "\u8ba2\u5355\u9a8c\u8bc1\u5931\u8d25\uff0c\u8ba2\u5355\u7f16\u53f7\u6216\u624b\u673a\u53f7\u8f93\u5165\u6709\u8bef\u6216\u8005\u53ef\u80fd\u4f60\u8d2d\u4e70\u7684\u662f\u76d7\u7248\uff0c\u8bf7\u8054\u7cfb\u3010\u733f\u6765\u5165\u6b64\u3011\u5ba2\u670d\uff01");
 	public static CodeMsg UNKNOWN_ERROR = new CodeMsg(Integer.MIN_VALUE,"未知错误，请联系管理员解决问题！");
+	public static CodeMsg USER_ERROR = new CodeMsg(801,"该用户未加入社团");
+	public static CodeMsg ADMIN_ERROR = new CodeMsg(802,"该用户已是管理员");
 	
 
 	//后台管理类错误码
@@ -85,7 +87,7 @@ public class CodeMsg {
 	public static CodeMsg DELETE_USER_ERROR= new CodeMsg(601, "删除用户失败");
 	public static CodeMsg UPDATE_USER_SUCCESS = new CodeMsg(200, "修改用户信息成功");
 	public static CodeMsg UPDATE_USER_ERROR= new CodeMsg(201, "修改用户信息失败");
-	public static CodeMsg ADD_ADMIN_SUCCESS= new CodeMsg(300, "添加管理员成功");
+	public static CodeMsg ADD_ADMIN_SUCCESS= new CodeMsg(803, "添加管理员成功");
 	public static CodeMsg UPDATE_ADMIN_SUCCESS = new CodeMsg(301, "修改管理员信息成功");
 	public static CodeMsg UPDATE_ADMIN_ERROR= new CodeMsg(81, "修改管理员信息失败");
 	public static CodeMsg ADMIN_INFO = new CodeMsg(90, "管理员个人信息");
