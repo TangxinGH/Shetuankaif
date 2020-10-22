@@ -92,27 +92,42 @@ export default {
   },
   methods: {
     submit_publish () {
-      if (localStorage.getItem('Ad_no')) { this.$message.warn('未登录 !!'); return } //
-      if (this.notice_title != '') {
-        let data = {
+      if (localStorage.getItem('sname')) { this.$message.warn('未登录 !!'); return } //
+      let ntID = Number(new URLSearchParams(window.location.search).get('ntID'))
+      let actID = Number(new URLSearchParams(window.location.search).get('actID'))
+      if (this.notice_title == '') { this.$message.warn('请输入内容'); return }
+      let data = {
 
-          ntTitle: this.notice_title,
-          ntAuthor: localStorage.getItem('Ad_name'),
-          ntPublishTime: moment().format('YYYY-MM-DD'),
-          ntContent: this.$refs.editor_tinymce.myValue,
-          ntAttachment: '',
-          ntAuthorID: localStorage.getItem('Ad_no')
+        ntTitle: this.notice_title,
+        // ntAuthor: localStorage.getItem('sname'),
+        ntPublishTime: moment().format('YYYY-MM-DD'),
+        ntContent: this.$refs.editor_tinymce.myValue,
+        ntAttachment: '',
+        // ntAuthorID: JSON.parse(localStorage.getItem('admin')).adId
+        ntID: ntID
 
-        }
-        this.$axios.post('/api/publishANotice', data).then(res => {
-          console.log('发布公告')
-          console.log(res)
-          this.$message.info(' 公告已发送')
-        }).catch(err => {
-          console.log(err)
-          this.$message.error(' 公告发送失败')
-        })
       }
+      let data2 = {
+        actTitle: this.notice_title,
+        actAttachment: '',
+        actContent: this.$refs.editor_tinymce.myValue,
+        actID: actID
+      }
+      this.$axios.post(ntID ? '/api/updateANotice' : '/api/updateAnActivity', actID ? data2 : data).then(res => {
+        console.log(`更新${actID ? '活动' : '公告'}
+*/.    .   .    *      .
+  .\\*    .    []           *  __
+  */ .   ./\\~~~~~~~~~~~~'\\. |◆
+   \\*   ,/,..,\\,...........,\\.◆
+   ||  ..▎#  ▎田  田 ▎ | ▎◆
+   ||  &&▎   ▎       ▎'|'▎ o
+   || ##■■■■■■■■■■〓   `)
+        console.log(res)
+        this.$message.info(`${actID ? '活动' : '公告'}更新成功\\(^o^)/~`)
+      }).catch(err => {
+        console.log(err)
+        this.$message.error(`${actID ? '活动' : '公告'}更新失败╥﹏╥...`)
+      })
     }
   }
 
