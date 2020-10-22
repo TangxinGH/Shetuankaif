@@ -6,7 +6,7 @@
         :data-source="data"
         bordered>
       <template
-          v-for="col in ['name', 'age', 'address']"
+          v-for="col in ['adName', 'adSex', 'adCollege','adAge']"
           :slot="col"
           slot-scope="text, record, index"
       >
@@ -15,7 +15,7 @@
               v-if="record.editable"
               style="margin: -5px 0"
               :value="text"
-              @change="e => handleChange(e.target.value, record.key, col)"
+              @change="e => handleChange(e.target.value, record.adNo, col)"
           />
           <template v-else>
             {{ text }}
@@ -25,13 +25,13 @@
       <template slot="operation" slot-scope="text, record, index">
         <div class="editable-row-operations">
         <span v-if="record.editable">
-          <a @click="() => save(record.key)">保存</a>
-          <a-popconfirm title="Sure to cancel?" @confirm="() => cancel(record.key)">
+          <a @click="() => save(record.adNo)">保存</a>
+          <a-popconfirm title="Sure to cancel?" @confirm="() => cancel(record.adNo)">
             <a>取消</a>
           </a-popconfirm>
         </span>
           <span v-else>
-          <a :disabled="editingKey !== ''" @click="() => edit(record.key)">编辑</a>
+          <a :disabled="editingKey !== ''" @click="() => edit(record.adNo)">编辑</a>
         </span>
 
         </div>
@@ -42,36 +42,36 @@
   </div>
 </template>
 <script>
-import AddAdmin from '@/views/addAdmin'
 
 const columns = [
   {
     title: '名字',
     dataIndex: 'adName',
     width: '25%',
-    scopedSlots: { customRender: 'name' }
+    scopedSlots: { customRender: 'adName' }
   },
   {
     title: 'ID',
     dataIndex: 'adNo',
-    width: '15%',
-    scopedSlots: { customRender: 'age' }
+    width: '15%'
   },
   {
     title: '年龄',
     dataIndex: 'adAge',
-    width: '5%'
+    width: '5%',
+    scopedSlots: { customRender: 'adAge' }
   },
   {
     title: '性别',
     dataIndex: 'adSex',
     width: '5%',
-    scopedSlots: { customRender: 'address' }
+    scopedSlots: { customRender: 'adSex' }
   },
   {
     title: '大学',
     dataIndex: 'adCollege',
-    width: '10%'
+    width: '10%',
+    scopedSlots: { customRender: 'adCollege' }
   },
   {
     title: '操作',
@@ -83,7 +83,6 @@ const columns = [
 const data = []
 export default {
   name: 'MVPUsers',
-  components: { AddAdmin },
   data () {
     this.cacheData = data.map(item => ({ ...item }))
     return {
@@ -96,6 +95,7 @@ export default {
     this.$axios.get('/api/getAdmins').then(res => {
       console.log(res.data.adminsInfo)
       this.data = res.data.adminsInfo
+      this.cacheData = this.data.map(item => ({ ...item })) // 编辑保存的时候会用到
     }).catch(err => {
       console.log(this + err)
     })
@@ -103,7 +103,7 @@ export default {
   methods: {
     handleChange (value, key, column) {
       const newData = [...this.data]
-      const target = newData.filter(item => key === item.key)[0]
+      const target = newData.filter(item => key === item.adNo)[0]
       if (target) {
         target[column] = value
         this.data = newData
@@ -111,7 +111,7 @@ export default {
     },
     edit (key) {
       const newData = [...this.data]
-      const target = newData.filter(item => key === item.key)[0]
+      const target = newData.filter(item => key === item.adNo)[0]
       this.editingKey = key
       if (target) {
         target.editable = true
@@ -121,8 +121,8 @@ export default {
     save (key) {
       const newData = [...this.data]
       const newCacheData = [...this.cacheData]
-      const target = newData.filter(item => key === item.key)[0]
-      const targetCache = newCacheData.filter(item => key === item.key)[0]
+      const target = newData.filter(item => key === item.adNo)[0]
+      const targetCache = newCacheData.filter(item => key === item.adNo)[0]
       if (target && targetCache) {
         delete target.editable
         this.data = newData
@@ -130,13 +130,15 @@ export default {
         this.cacheData = newCacheData
       }
       this.editingKey = ''
+      // this.$axios.post('/api/api', target).then(res => {}).catch(err => { console.log(`更新个人信息失败${err}`) })
+      this.$message.success('保存成功！')
     },
     cancel (key) {
       const newData = [...this.data]
-      const target = newData.filter(item => key === item.key)[0]
+      const target = newData.filter(item => key === item.adNo)[0]
       this.editingKey = ''
       if (target) {
-        Object.assign(target, this.cacheData.filter(item => key === item.key)[0])
+        Object.assign(target, this.cacheData.filter(item => key === item.adNo)[0])
         delete target.editable
         this.data = newData
       }

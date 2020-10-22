@@ -1,12 +1,12 @@
 <template>
   <div>
   <a-table
-      :row-key="record => record.Sno "
+      :row-key="record => record.id "
       :columns="columns"
       :data-source="data"
       bordered>
     <template
-        v-for="col in ['name', 'age', 'address']"
+        v-for="col in ['sno', 'sname', 'age','sex']"
         :slot="col"
         slot-scope="text, record, index"
     >
@@ -15,7 +15,7 @@
             v-if="record.editable"
             style="margin: -5px 0"
             :value="text"
-            @change="e => handleChange(e.target.value, record.key, col)"
+            @change="e => handleChange(e.target.value, record.id, col)"
         />
         <template v-else>
           {{ text }}
@@ -25,13 +25,13 @@
     <template slot="operation" slot-scope="text, record, index">
       <div class="editable-row-operations">
         <span v-if="record.editable">
-          <a @click="() => save(record.key)">保存</a>
-          <a-popconfirm title="确定取消?" @confirm="() => cancel(record.sno)">
+          <a @click="() => save(record.id)">保存</a>
+          <a-popconfirm title="确定取消?" @confirm="() => cancel(record.id)">
             <a>取消</a>
           </a-popconfirm>
         </span>
         <span v-else>
-          <a :disabled="editingKey !== ''" @click="() => edit(record.sno)">编辑</a>
+          <a :disabled="editingKey !== ''" @click="() => edit(record.id)">编辑</a>
         </span>
         <a-divider type="vertical"/>
         <span>添加为管理员  <a-switch  @change="onSwitchChange(record.sno)"></a-switch> </span>
@@ -46,6 +46,7 @@
     </template>
   </a-table>
     <a-divider/>
+    <p>添加用户：</p>
     <add-group> </add-group>
   </div>
 </template>
@@ -56,24 +57,25 @@ const columns = [
     title: '学号',
     dataIndex: 'sno',
     width: '25%',
-    scopedSlots: { customRender: 'name' }
+    scopedSlots: { customRender: 'sno' }
   },
   {
     title: '名字',
     dataIndex: 'sname',
     width: '15%',
-    scopedSlots: { customRender: 'age' }
+    scopedSlots: { customRender: 'sname' }
   },
   {
     title: '年龄',
     dataIndex: 'age',
-    width: '5%'
+    width: '5%',
+    scopedSlots: { customRender: 'age' }
   },
   {
     title: '性别',
     dataIndex: 'sex',
     width: '5%',
-    scopedSlots: { customRender: 'address' }
+    scopedSlots: { customRender: 'sex' }
   },
   {
     title: '是否加入社团',
@@ -107,6 +109,7 @@ export default {
           joined: item.joined ? '加入' : '未加入'
         }
       })
+      this.cacheData = this.data.map(item => ({ ...item })) // 编辑保存的时候会用到
       console.log(res.data.userinfo)
     }).catch(err => {
       console.log(this + err)
@@ -115,7 +118,8 @@ export default {
   methods: {
     handleChange (value, key, column) {
       const newData = [...this.data]
-      const target = newData.filter(item => key === item.key)[0]
+      // filter() 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。
+      const target = newData.filter(item => key === item.id)[0]
       if (target) {
         target[column] = value
         this.data = newData
@@ -123,7 +127,7 @@ export default {
     },
     edit (key) {
       const newData = [...this.data]
-      const target = newData.filter(item => key === item.key)[0]
+      const target = newData.filter(item => key === item.id)[0]
       this.editingKey = key
       if (target) {
         target.editable = true
@@ -133,8 +137,8 @@ export default {
     save (key) {
       const newData = [...this.data]
       const newCacheData = [...this.cacheData]
-      const target = newData.filter(item => key === item.key)[0]
-      const targetCache = newCacheData.filter(item => key === item.key)[0]
+      const target = newData.filter(item => key === item.id)[0]
+      const targetCache = newCacheData.filter(item => key === item.id)[0]
       if (target && targetCache) {
         delete target.editable
         this.data = newData
@@ -142,13 +146,15 @@ export default {
         this.cacheData = newCacheData
       }
       this.editingKey = ''
+      this.$axios.post('/api/updateUser', target).then(res => {}).catch(err => { console.log(`更新个人信息失败${err}`) })
+      this.$message.success('保存成功！')
     },
     cancel (key) {
       const newData = [...this.data]
-      const target = newData.filter(item => key === item.key)[0]
+      const target = newData.filter(item => key === item.id)[0]
       this.editingKey = ''
       if (target) {
-        Object.assign(target, this.cacheData.filter(item => key === item.key)[0])
+        Object.assign(target, this.cacheData.filter(item => key === item.id)[0])
         delete target.editable
         this.data = newData
       }
@@ -162,14 +168,16 @@ export default {
       this.data = dataSource.filter(item => item.sno !== key) // 删除行
       this.$message.success('删除成功')
       this.$axios.delete('/api/delUser?sno=' + key).then(res => {
-
+        this.$message.warning(`删除成功！${res.data.code}`)
       }).catch(err => {
-
+        console.log(`${err}`)
       })
     },
     onSwitchChange: function (sno) {
-      this.$axios.get('/api/addAdmin', null, { params: { sno: sno, adNo: JSON.parse(localStorage.getItem('admin')).adNo } }).then(res => {
-        this.$message.success(`添加管理员状态:${sno}  ${res.data}`)
+      this.$axios.post('/api/addAdmin', null, { params: { sno: sno, adNo: JSON.parse(localStorage.getItem('admin')).adNo } }).then(res => {
+        if (res.data.code == 803) this.$message.success('添加成功！')
+        else this.$message.error(`o(*≧▽≦)ツ┏━┓ ${res.data.msg}`)
+        // this.$message.success(`添加管理员状态:${sno}  ${res.data.msg}`)
       }).catch(err => {
         console.log(`增加管理员${err}`)
       })

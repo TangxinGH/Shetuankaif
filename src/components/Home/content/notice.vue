@@ -9,7 +9,7 @@
           <span  >  {{ item.ntPublishTime }}</span>
           <a-divider type="vertical" />
           <a  v-bind:href="env ? './article.html?ntID='+item.ntID : './article?ntID='+item.ntID" target="_blank">
-            <span >  {{item.ntTitle }}…</span>
+            <span style="white-space:pre">  {{item.ntTitle }}…</span>
             <a-divider  type="vertical" />
           </a>
           <span  > {{ item.ntAuthor }}</span>

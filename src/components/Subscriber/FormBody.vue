@@ -4,11 +4,11 @@
       <div class="form sign-in">
         <h2>欢迎回来</h2>
         <label>
-          <span>学号 {{ env ? sno : '' }}</span>
+          <span>学号 {{ !env ? sno : '' }}</span>
           <input type="text" v-model="sno" v-bind:pattern="sno_pattern" v-bind:title="sno_title" required/>
         </label>
         <label>
-          <span>密码{{ env ? password : ''   }}</span>
+          <span>密码{{ !env ? password : ''   }}</span>
           <input type="password" v-model="password" v-bind:pattern="pass_pattern" v-bind:title="pass_title" required/>
         </label>
         <p class="forgot-pass"><a href="javascript:">忘记密码？</a></p>
@@ -104,14 +104,14 @@ export default {
       // this.$axios(options)
       let that = this/* 这是一个this指向问题,this始终指向Vue,所以需要将this保存在that中,在使用其他操作的时候可以用that代替。不然下面的$Message未定义！！！what */
       await this.$axios.post('/api/login',
-          null,
-          {
-            params: {
-              Sno: this.sno,
-              Password: this.password
-            }
+        null,
+        {
+          params: {
+            Sno: this.sno,
+            Password: this.password
           }
-          // qs 会转换为 pplication/x-www-form-urlencoded https://github.com/axios/axios#interceptors
+        }
+        // qs 会转换为 pplication/x-www-form-urlencoded https://github.com/axios/axios#interceptors
       ).then(function (response) {
         window.console.log('login post' + response)
         let code = response.code
@@ -143,7 +143,7 @@ export default {
           that.$message.error('返回空')
         }
       }).catch(error =>
-          console.log(error))
+        console.log(error))
     },
     checkSignUpForm: async function (e) {
       e.preventDefault()
@@ -153,16 +153,16 @@ export default {
       }
       let that = this
       await this.$axios.post('/api/register',
-          {
-            sno: this.sign_up_sno,
-            password: this.sign_up_password,
-            sname: this.sign_up_name,
-            scollege: '桂林理工大学',
-            sex: '男',
-            age: 18,
-            joined: false
-          }
-          // qs 会转换为 pplication/x-www-form-urlencoded https://github.com/axios/axios#interceptors
+        {
+          sno: this.sign_up_sno,
+          password: this.sign_up_password,
+          sname: this.sign_up_name,
+          scollege: '桂林理工大学',
+          sex: '男',
+          age: 18,
+          joined: false
+        }
+        // qs 会转换为 pplication/x-www-form-urlencoded https://github.com/axios/axios#interceptors
       ).then(function (response) {
         window.console.log('register post' + response)
         let code = response.code
@@ -190,7 +190,7 @@ export default {
           that.$message.error('返回空')
         }
       }).catch(error =>
-          console.log(error))
+        console.log(error))
     },
     validEmail (email) {
       return false

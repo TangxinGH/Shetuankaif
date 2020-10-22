@@ -42,7 +42,7 @@ export default {
   },
   mounted () {
     this.adminName = localStorage.getItem('sname')
-    this.adminSno = JSON.parse(localStorage.getItem('amdin')).sno
+    this.adminSno = JSON.parse(localStorage.getItem('admin')).sno
     this.$axios.get('api/getAdmins')
   },
   methods: {

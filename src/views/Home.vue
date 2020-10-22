@@ -12,11 +12,11 @@
         <p/>
         <p> 学号： {{info.sno}}</p>
         <p>名字： {{ info.sname}} </p>
-        <p> 大学： {{ info.scollege}}</p>
+        <p> 学院： {{ info.scollege}}</p>
       </template>
     </a-card-meta>
     <span>是否加入社团：</span>
-    <a-switch @change="joinSheTuan"></a-switch>
+    <a-switch @change="joinSheTuan" v-bind:defaultChecked="joined"></a-switch>
     <template slot="actions" class="ant-card-actions">
       <a-icon key="setting" type="setting" />
       <a-icon key="edit" type="edit" />
@@ -34,11 +34,13 @@ export default {
   data () {
     return {
       metaInfo: '>Home - Vincie.web',
-      info: ''
+      info: '',
+      joined: true
     }
   },
   methods: {
     joinSheTuan: function (checked) {
+      if (!localStorage.getItem('user')) this.$message.warning('管理默认加入社团！！')
       this.$axios.get('/api/joinCommunity?sno=' + this.info.sno).then(res => {
         this.$message.success(`${checked ? '加入社团成功，交费即可自动审核通过 ヾ(≧▽≦*)o' : '退出社团成功 ค(TㅅT)ค(TㅅT)'}`)
       }).catch(err => {
@@ -48,9 +50,21 @@ export default {
     }
   },
   mounted () {
-    this.info = JSON.parse(localStorage.getItem('user'))
+    // this.info = JSON.parse(localStorage.getItem('user'))
+    // this.joined = this.info.joined == true
+    // console.log('执行了')
     // this.$axios.post('api/userinfo').then(res=>{
+  },
+  created () {
+    this.info = JSON.parse(localStorage.getItem('user'))
+    this.joined = this.info.joined == true
+  },
+  watch: {
+    // joined: function (val) {
+    //
+    // }
   }
+
 }
 </script>
 <style scoped>
