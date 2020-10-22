@@ -20,7 +20,15 @@
           <ul style="margin: 0; padding: 0; border: 0;">
             <li><a href="http://jwc.glut.edu.cn/chronicle">社团联简介</a></li>
             <li>
-              <a href="http://jwc.glut.edu.cn">社团简介
+              <a  @click="showModal">社团简介
+                <a-modal v-model="visible" title="管理员登录" on-ok="handleOk">
+                  <template slot="footer">
+                    <a-button key="back" @click="handleCancel">
+                      Return
+                    </a-button>
+                  </template>
+                  <features-page></features-page>
+                </a-modal>
               </a>
             </li>
             <li><a href="http://jwc.edu.cn/">学术园地</a></li>
@@ -57,11 +65,32 @@
 </template>
 
 <script>
+import FeaturesPage from '@/components/Home/FeaturesPage'
 export default {
   name: 'sichuanMenu',
+  components: { FeaturesPage },
   data: function () {
     return {
-      env: process.env.NODE_ENV === 'production'
+      env: process.env.NODE_ENV === 'production',
+      loading: false,
+      visible: false
+
+    }
+  },
+
+  methods: {
+    showModal () {
+      this.visible = true
+    },
+    handleOk (e) {
+      this.loading = true
+      setTimeout(() => {
+        this.visible = false
+        this.loading = false
+      }, 3000)
+    },
+    handleCancel (e) {
+      this.visible = false
     }
   }
 }

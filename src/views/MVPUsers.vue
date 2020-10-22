@@ -68,7 +68,7 @@ const columns = [
     scopedSlots: { customRender: 'adSex' }
   },
   {
-    title: '大学',
+    title: '学院',
     dataIndex: 'adCollege',
     width: '10%',
     scopedSlots: { customRender: 'adCollege' }
