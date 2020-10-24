@@ -5,7 +5,7 @@
       <div class="article_editor_content">
         <div class="wrapper">
           <div class="article_editor_page">
-            <div class="article_editor_title"><input v-bind:value="article_title" type="text" placeholder="请在这里输入标题"  name="title" max-length="64">
+            <div class="article_editor_title"><input v-bind:value="article_title" type="text" placeholder="请在这里输入标题"  name="title" max-length="64"/>
             </div>
             <div class="article_editor_info">
               <select name="" id="">
