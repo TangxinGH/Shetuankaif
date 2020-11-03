@@ -10,7 +10,7 @@ download:
                apk --no-cache add git
                apk add tree
                rm -rf Shetuankaif
-               git clone -b kunpengUI https://gitee.com/mai-tao/Shetuankaif.git
+               git clone -b kunpengUI https://github.com/TangXinGithub/Shetuankaif.git
                ls
                npm install --prefix ./Shetuankaif
                npm run build --prefix ./Shetuankaif
