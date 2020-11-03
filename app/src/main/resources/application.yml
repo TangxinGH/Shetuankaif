@@ -1,5 +1,5 @@
 server:
-  port: ${PORT:8081}
+  port: ${PORT:9099}
 
 spring:
   datasource:
@@ -22,7 +22,7 @@ mybatis:
   #.
   #classpath:mapper/**/*.xml：查找类路径下mapper包下面所有子包中的所有xml。
 
-logging:
-    level:
-      root: debug
+#logging:
+#    level:
+#      root: debug
 # 详细日志输出
