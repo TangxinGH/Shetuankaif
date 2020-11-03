@@ -69,7 +69,7 @@
 docker 挂载 -v .m2文件目录。配置里面镜像maven 镜像
 
 ![image-20201006230404149](https://img.vim-cn.com/72/c772bbdf81745f9f1ab5c56587768aafca2a7b.png)
-
+ 
 wercker
 
 No MyBatis mapper was found in '[kunpeng]' package. Please check your configuration.
